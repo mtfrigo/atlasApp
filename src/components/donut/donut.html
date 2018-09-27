@@ -1,0 +1,11 @@
+<div *ngIf='data.length'>
+  <p>Dados Carregados!</p>
+  <svg [attr.width]="width" [attr.height]="height">
+      <g [attr.transform]="center">
+        <path *ngFor="let d of data; index as i" [attr.d]="arc(d)" [attr.fill]="colors[d.data.tipo]"></path>
+      </g>
+  </svg>
+</div>
+<div (click)="update()" class="botao">
+
+</div>
