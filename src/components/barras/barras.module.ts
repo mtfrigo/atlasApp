@@ -3,7 +3,6 @@ import { BarrasComponent } from './barras';
 @NgModule({
 	declarations: [
     BarrasComponent],
-	imports: [],
 	exports: [
     BarrasComponent]
 })
