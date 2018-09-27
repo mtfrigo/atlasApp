@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BarrasComponent } from './barras/barras';
+import { DonutComponent } from './donut/donut';
 @NgModule({
-	declarations: [BarrasComponent],
+	declarations: [BarrasComponent, DonutComponent],
 	imports: [],
-	exports: [BarrasComponent]
+	exports: [BarrasComponent, DonutComponent]
 })
 export class ComponentsModule {}

@@ -9,6 +9,7 @@ import { ComponentsModule } from '../components/components.module';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BarrasProvider } from '../providers/barras/barras';
+import { DonutProvider } from '../providers/donut/donut';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BarrasProvider } from '../providers/barras/barras';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BarrasProvider
+    BarrasProvider,
+    DonutProvider
   ]
 })
 export class AppModule {}
