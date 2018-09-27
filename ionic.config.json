@@ -1,0 +1,8 @@
+{
+  "name": "atlas-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "03f7f187"
+}
