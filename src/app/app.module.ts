@@ -11,6 +11,8 @@ import { HomePage } from '../pages/home/home';
 
 import { BarrasProvider } from '../providers/barras/barras';
 import { DonutProvider } from '../providers/donut/donut';
+import { TreemapProvider } from '../providers/treemap/treemap';
+import { JsonsProvider } from '../providers/jsons/jsons';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { DonutProvider } from '../providers/donut/donut';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarrasProvider,
     DonutProvider,
+    TreemapProvider,
+    JsonsProvider,
   ]
 })
 export class AppModule {}
