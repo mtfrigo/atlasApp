@@ -16,13 +16,12 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 })
 export class TreemapComponent {
 
-  @Input() width  : number = 500;
-  @Input() height : number = 500;
+  @Input() width  : number = 800;
+  @Input() height : number = 400;
   private ready = false;
   private data : Treemap[] = [];
   private colors;
   private treemapData : HierarchyRectangularNode<{}>;
-  private center : string = `translate(${this.width/2}, ${this.height/2})`;
   private fontSizeStd : number = 50;
   private titleSize : number = 10;
   treemap = d3.treemap()
@@ -69,7 +68,7 @@ export class TreemapComponent {
   testCondition(d){
     let marginX = this.width/150;
     let betweenLetters : number = 1; // number of pixels between each letter
-    let textLength : number = 0.5*(this.titleSize)*(d.data.name.length) + betweenLetters*(d.data.name.length-1)
+    let textLength : number = 0.45*(this.titleSize)*(d.data.name.length) + betweenLetters*(d.data.name.length-1)
     if((textLength + marginX)/(d.x1 - d.x0) > 1)
       return false
     else 
