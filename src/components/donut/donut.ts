@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as d3 from 'd3';
 
 import { Donut } from '../../interfaces/donut';
@@ -25,16 +25,16 @@ export class DonutComponent {
   private index : boolean = true;
   private data_end = []
 
-  arc = 
+  arc =
     d3.arc()
       .outerRadius(this.radius - this.radius/18)   //valor raio círculo de fora
       .innerRadius(this.radius - this.radius/2.5);
 
-  pie : d3.Pie<any, Donut> = 
+  pie : d3.Pie<any, Donut> =
     d3.pie<Donut>()
       .sort((a: Donut, b: Donut) => a.index - b.index)
-      .value((d : Donut) => d.valor); 
-  
+      .value((d : Donut) => d.valor);
+
   constructor(private donutProvider : DonutProvider) {
   }
 

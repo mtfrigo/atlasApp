@@ -1,6 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 import * as d3 from 'd3';
 import * as d3Scale from "d3-scale";
@@ -16,16 +24,20 @@ import { BarrasProvider } from '../../providers/barras/barras';
  */
 @Component({
   selector: 'barras',
-  templateUrl: 'barras.html'
+  templateUrl: 'barras.html',
+
 })
 export class BarrasComponent {
+  @Input() width  : number = 900;
+  @Input() height : number = 500;
 
-  text: string;
   view_title: string;
 
-  width: number;
-  height: number;
-  margin = {top: 20, right: 20, bottom: 30, left: 40};
+  yTicks = 5;
+  yTicksArray=[0,1,2,3,4, 5, 6];
+  yTicksScale: any;
+
+  margin = {top: 0, right: 0, bottom: 40, left: 80};
 
   x: any;
   y: any;
@@ -35,20 +47,59 @@ export class BarrasComponent {
   valueTop = this.margin.top + 5;
 
   data: any = [];
+  new_data: any;
 
   minBarHeight = 6;
 
   dados = {key: [], value: [], percentual: [], taxa: [], percentual_setor: []};
 
-  xAxis: any;
-  yAxis: any;
+  keys: any = [];
+  values: any = [];
+
+  barsHeight: any;
+  barsWidth:any;
+
+  index = true;
+
+  uf_index: any = 0;
+  ufs = [0, 31, 50, 51];
+
+  data1 = [
+
+    {"uf":"Todos","ano":2007,"valor":104522,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2008,"valor":91097,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2009,"valor":93585,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2010,"valor":97525,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2011,"valor":102031,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2012,"valor":104544,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2013,"valor":91097,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2014,"valor":108759,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2015,"valor":104544,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2016,"valor":91097,"percentual":1,"taxa":0}]
+
+  data2 = [
+
+    {"uf":"Todos","ano":2007,"valor":88773,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2008,"valor":91097,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2009,"valor":93585,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2010,"valor":97525,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2011,"valor":102031,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2012,"valor":104544,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2013,"valor":107339,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2014,"valor":108759,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2015,"valor":107498,"percentual":1,"taxa":0},
+    {"uf":"Todos","ano":2016,"valor":111000,"percentual":1,"taxa":0}]
 
 
   constructor(public navCtrl: NavController, private barrasProvider: BarrasProvider) {
     this.view_title = 'Histograma'
 
-    this.width = 900 - this.margin.left - this.margin.right ;
-    this.height = 500 - this.margin.top - this.margin.bottom;
+    this.barsHeight = this.height - this.margin.top - this.margin.bottom;
+    this.barsWidth = this.width - this.margin.left - this.margin.right;
+
+    this.uf_index = 0;
+    this.ufs = [31, 50, 51];
+
   }
 
   ngOnInit() {
@@ -60,107 +111,91 @@ export class BarrasComponent {
 
   }
 
-  afterGetData(){
-    this.parseData();
-    this.initSvg();
+  afterGetData(data){
+    this.parseData(data);
     this.initAxis();
-    this.drawAxis();
-    this.drawBars();
+
   }
 
   getData(): void {
 
-    this.barrasProvider.getData()
+    this.barrasProvider.getData(this.ufs[this.uf_index])
       .subscribe(response => (this.data = response),
                  error => 'oioio',
-                 () => this.afterGetData()
+                 () => this.afterGetData(this.data)
                 );
 
   }
 
-  parseData(){
+  updateData() : void {
 
-    var parent_data = this.data;
-    var parent_dados = this.dados;
 
-    Object.keys(this.data).forEach(function (key) {
-      parent_dados.percentual_setor.push(parent_data[key].valor/5)
-      parent_dados.key.push(parent_data[key].ano);
-      parent_dados.value.push(parent_data[key].valor);
-    });
+    if(this.uf_index++ >= this.ufs.length -1) this.uf_index = 0;
 
-    this.dados.key = d3.keys(this.data);
+     this.barrasProvider.getData(this.ufs[this.uf_index])
+       .subscribe(response => (this.new_data = response),
+                  error => 'oioio',
+                  () => this.animateBars()
+                 );
 
   }
 
-  initSvg() {
-    this.svg = d3.select("#barChart")
-        .append("svg")
-        // .attr("width", this.width + this.margin.left + this.margin.right)
-        // .attr("height", this.height + this.margin.top + this.margin.bottom)
-        .attr("width", '100%')
-        .attr("height", this.height)
-        .attr('viewBox','0 0 900 500')
-        .attr("type", "simples");
-
-    this.g = this.svg.append("g")
-        .attr("transform", "translate(" + (this.margin.left+5) + "," + this.valueTop + ")");
-
-    // this.svg.append("g")
-    //   .attr("class", "grid")
-    //   .style("opacity", 0.1)
-    //   .call(
-    //     d3.axisLeft(this.y)
-    //       .scale(this.y)
-    //       .ticks(4)
-    //       .tickSize(-this.width + 10)
-    //       .tickSizeOuter(0));
+  parseData(data){
+    for(var i = 0; i < data.length; i++)
+    {
+      this.keys.push(data[i].ano);
+      this.values.push(data[i].valor);
+    }
 
   }
 
   initAxis() {
 
-    this.x = d3.scaleBand()
-      .domain(this.dados.key)
-      .rangeRound([0, this.width])
-      .padding(0.1);;
-    this.y = d3Scale.scaleLinear().rangeRound([this.height, 0]);
 
-    this.y.domain(d3.extent(this.dados.value, function (d) {
+    this.x = d3.scaleBand()
+      .domain(this.keys)
+      .rangeRound([0, this.barsWidth])
+      .padding(0.1);
+
+    this.y = d3Scale.scaleLinear().rangeRound([this.barsHeight, 0]);
+
+    this.y.domain(d3.extent(this.values, function (d) {
       return d;
     })).nice();
 
+    this.yTicksScale = d3Scale.scaleLinear()
+      .domain(d3.extent(this.yTicksArray, function (d) {
+        return d;
+      }))
+      .rangeRound([this.barsHeight, 0]);
 
   }
 
-  drawAxis() {
-    this.g.append("g")
-        .attr("class", "axis axis--x")
-        .attr("transform", "translate(0," + this.height + ")")
-        .call(d3Axis.axisBottom(this.x));
+  getTickYValue(d,i)
+  {
 
-    this.g.append("g")
-        .attr("class", "axis axis--y")
-        .call(d3Axis.axisLeft(this.y))
-        .append("text")
-        .attr("class", "axis-title")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", "0.71em")
-        .attr("text-anchor", "end")
-        .text("Frequency");
+    return d3Scale.scaleLinear()
+    .domain(d3.extent(this.yTicksArray, function (d) {
+      return d;
+    }))
+    .rangeRound(d3.extent(this.values, function (d) {
+      return d;
+    }))(i);
   }
 
-  drawBars() {
-    this.g.selectAll("rect")
-        .data(this.dados.value)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", (d, i) => this.x(this.dados.key[i]))
-        .attr("y", (d) => this.getBarY(d))
-        .attr("height", (d) => this.getBarHeight(d) )
-        .attr("width", this.x.bandwidth())
-        .attr("data-color", 'red');
+  getTickY(d, i){
+    return 'translate(0, ' +  this.yTicksScale(d) + ')';
+  }
+
+  getTickX(d, i){
+    return 'translate('+ this.x(d.ano) +', '+ this.barsHeight +')';
+  }
+
+
+
+  getBarsTransform()
+  {
+    return "translate(" + (this.margin.left+5) + "," + this.valueTop + ")";
   }
 
   getBarY(d) {
@@ -182,11 +217,11 @@ export class BarrasComponent {
         return this.y(0);
     }
 
-    barHeight = Math.abs(this.height - barHeight);
+    barHeight = Math.abs(this.barsHeight - barHeight);
 
     // BARRA PEQUENA
     if (barHeight <= this.minBarHeight){
-        return this.height - 5;
+        return this.barsHeight - 5;
     }
     return this.y(d);
 
@@ -196,25 +231,51 @@ export class BarrasComponent {
 
     var barHeight = this.y(d);
 
-    console.log(barHeight)
-
     // TEM VALOR NEGATIVO
-    var zeroPosition = d3.min(this.dados.value) < 0 ? this.y(0) : this.height;
+    var zeroPosition = d3.min(this.dados.value) < 0 ? this.y(0) : this.barsHeight;
     var isValueZero = this.y(d) == zeroPosition;
 
     if (isValueZero){
         return this.minBarHeight;
     }
 
-    barHeight = Math.abs(this.height - barHeight);
+    barHeight = Math.abs(this.barsHeight - barHeight);
 
     // BARRA PEQUENA
     if (barHeight <= this.minBarHeight){
         return Math.abs(5);
     }
-
     return  Math.abs(this.y(d) - zeroPosition);
 
   }
 
+  update() : void {
+
+    this.updateData();
+
+  }
+
+  animateBars() : void {
+
+    this.values = [];
+    this.keys = [];
+
+    this.parseData(this.new_data);
+
+    let i = 0;
+
+    let animation = setInterval(d => {
+      this.data = d3.interpolate(this.data, this.new_data)(i);
+      if (i >= 1){
+        clearInterval(animation)
+      }
+    i  = i + 0.1;
+    }, 30)
+
+    this.initAxis();
+
+
+
+
+  }
 }
