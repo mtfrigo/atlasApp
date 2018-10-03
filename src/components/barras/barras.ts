@@ -33,8 +33,8 @@ export class BarrasComponent {
 
   view_title: string;
 
-  yTicks = 5;
-  yTicksArray=[0,1,2,3,4, 5, 6];
+  yTicks: any;
+  yTicksArray: any;
   yTicksScale: any;
 
   margin = {top: 0, right: 0, bottom: 40, left: 80};
@@ -49,12 +49,14 @@ export class BarrasComponent {
   data: any = [];
   new_data: any;
 
-  minBarHeight = 6;
+  minBarHeight = 1;
 
   dados = {key: [], value: [], percentual: [], taxa: [], percentual_setor: []};
 
   keys: any = [];
   values: any = [];
+  minValue: any;
+  maxValue: any;
 
   barsHeight: any;
   barsWidth:any;
@@ -99,6 +101,13 @@ export class BarrasComponent {
 
     this.uf_index = 0;
     this.ufs = [31, 50, 51];
+
+    this.yTicks = 7;
+    this.yTicksArray = [];
+
+    for(var i = 0; i < this.yTicks; i++){
+      this.yTicksArray.push(i);
+    }
 
   }
 
@@ -147,27 +156,36 @@ export class BarrasComponent {
       this.values.push(data[i].valor);
     }
 
+    var edgeValues = d3.extent(this.values, function (d) {
+      return d;
+    })
+
+    this.maxValue = edgeValues[1];
+    this.minValue = edgeValues[0];
+
   }
 
   initAxis() {
-
 
     this.x = d3.scaleBand()
       .domain(this.keys)
       .rangeRound([0, this.barsWidth])
       .padding(0.1);
 
-    this.y = d3Scale.scaleLinear().rangeRound([this.barsHeight, 0]);
+    this.y = d3Scale.scaleLinear()
+      .rangeRound([this.barsHeight, 0])
+      .domain(d3.extent(this.values, function (d) {
+        return d;
+      })).nice();
 
-    this.y.domain(d3.extent(this.values, function (d) {
-      return d;
-    })).nice();
+
+
 
     this.yTicksScale = d3Scale.scaleLinear()
-      .domain(d3.extent(this.yTicksArray, function (d) {
-        return d;
-      }))
-      .rangeRound([this.barsHeight, 0]);
+    .rangeRound([this.y(this.minValue), this.y(this.maxValue)])
+    .domain(d3.extent(this.yTicksArray, function (d) {
+      return d;
+    })).nice();
 
   }
 
@@ -232,7 +250,7 @@ export class BarrasComponent {
     var barHeight = this.y(d);
 
     // TEM VALOR NEGATIVO
-    var zeroPosition = d3.min(this.dados.value) < 0 ? this.y(0) : this.barsHeight;
+    var zeroPosition = d3.min(this.values) < 0 ? this.y(0) : this.barsHeight;
     var isValueZero = this.y(d) == zeroPosition;
 
     if (isValueZero){
@@ -243,8 +261,9 @@ export class BarrasComponent {
 
     // BARRA PEQUENA
     if (barHeight <= this.minBarHeight){
-        return Math.abs(5);
+        return  this.minBarHeight;
     }
+
     return  Math.abs(this.y(d) - zeroPosition);
 
   }
