@@ -23,10 +23,10 @@ import { BarrasProvider } from '../../providers/barras/barras';
  * Components.
  */
 @Component({
-  selector: 'barras',
+  selector: 'app-barras',
   templateUrl: 'barras.html',
-
 })
+
 export class BarrasComponent {
   @Input() width  : number = 900;
   @Input() height : number = 500;

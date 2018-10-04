@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 
 import { BarrasProvider } from '../providers/barras/barras';
 import { DonutProvider } from '../providers/donut/donut';
+import { LinhasProvider } from '../providers/linhas/linhas';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DonutProvider } from '../providers/donut/donut';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarrasProvider,
     DonutProvider,
+    LinhasProvider,
   ]
 })
 export class AppModule {}
