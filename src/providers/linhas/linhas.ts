@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class LinhasProvider {
 
-  configUrl = 'http://143.54.231.10/minc/app/db/json_linhas.php?var=3&chg=0&uf=0&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos';
+  configUrl = 'http://localhost/atlasApp/src/api/json_linhas.php?var=3&chg=0&uf=0&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos';
 
   constructor(public http: HttpClient) {
     console.log('Hello ConfigProvider Provider');

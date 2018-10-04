@@ -41,6 +41,7 @@ export class LinhasComponent {
 
   x: any;
   y: any;
+  linePath: any;
 
   keyLines: any = [];
 
@@ -76,43 +77,27 @@ export class LinhasComponent {
 
   parseData() {
 
-    var aux = [];
-
-    Object.keys(this.data[0]).forEach(function (key) {
-      if(key != "ano") aux.push(key);
-    });
-
-    this.keyLines = aux;
-    var auxKeys = this.keyLines;
-
-    var aux = this.data;
-
+    console.log("ALOU GALERA DE COWBOY")
     console.log(this.data)
 
-    var values = [];
-
-    Object.keys(aux).forEach(function (lol) {
-      Object.keys(auxKeys).forEach(function (key) {
-         values.push(aux[lol][auxKeys[key]])
-      });
-    });
-
-    this.values = values;
-
-    this.minValue = d3.min (values, function(d) {
-      return Math.min(d);
-    });
-
-    this.maxValue = d3.max (values, function(d) {
-      return Math.max(d);
-    });
 
   }
 
   initAxis(){
-    this.x.domain(d3.extent(this.data, function(d) { return d.ano; }));
 
-    this.y.domain([this.minValue, this.maxValue]).domain(d3.extent(this.data, function(d) { return d.ano; }));
+
+    this.x = d3
+      .scaleTime().range([0, this.linesWidth])
+      .domain(d3.extent(this.data, function(d) { return d.ano; }));
+
+    this.y = d3
+      .scaleLinear().range([this.linesHeight, 0])
+      .domain([this.minValue, this.maxValue]).domain(d3.extent(this.data, function(d) { return d.ano; }));
+
+
+    this.linePath = d3.line()
+    .x(function(d) { return this.x(d.ano); })
+    .y(function(d, i) { return this.y(d[this.keyLines[i]]);});
   }
 
   getLinesTransform()
@@ -122,10 +107,8 @@ export class LinhasComponent {
 
   getLinePath(d, i){
 
-    console.log(this.x(d.ano));
-    return d3.line()
-    .x(function(d) { return this.x(d.ano); })
-    .y(function(d) { return this.y(d.valor); });
+
+    return null;
   }
 
 }

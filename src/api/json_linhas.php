@@ -303,9 +303,18 @@ if($eixo == 0 && ($var == 3 || $var == 9)) {
 
     foreach (EixoUm::getter_linhas($var, $uf, $cad, $deg, $uos) as $tupla) {
 
-        $id = $tupla->Ano;
-        $anos[$id]['ano'] = (int)$tupla->Ano;
-        $anos[$id][$tupla->CadeiaNome] = (double)$tupla->Valor;
+        $id = $tupla->CadeiaNome;
+        $ano = (int)$tupla->Ano;
+        $valor = (double)$tupla->Valor;
+
+        $obj['ano'] = $ano;
+        $obj['id'] = $id;
+        $obj['valor'] = $valor;
+
+        $anos['valores'][] = $valor;
+        if(!in_array($id, $anos['valores']))
+          $anos['ids'][] = $id;
+        $anos[$id][] =  $obj;
 
     }
 
