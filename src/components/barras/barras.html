@@ -33,7 +33,7 @@
         </rect>
 
         <g class='axis--x'>
-          <line x1="0" [attr.y1]="barsHeight" [attr.x2]="barsWidth" [attr.y2]="barsHeight" stroke="#000" stroke-width="2"  />
+          <line x1="-10" [attr.y1]="barsHeight" [attr.x2]="barsWidth" [attr.y2]="barsHeight" stroke="#000" stroke-width="2"  />
           <g *ngFor="let d of data; index as i"
             class='tick'
             [attr.transform]='getTickX(d, i)'
@@ -60,7 +60,7 @@
         </g>
 
         <g class='axis--y'>
-          <line x1="0" y1="0" x2="0" [attr.y2]="barsHeight" stroke="#000" stroke-width="2"/>
+          <line x1="0" y1="0" x2="0" [attr.y2]="barsHeight+10" stroke="#000" stroke-width="2"/>
           <g *ngFor="let tick of yTicksArray; index as i"
             class='tick'
             [attr.transform]='getTickY(tick, i)'
