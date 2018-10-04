@@ -7,4 +7,5 @@ import { DonutComponent } from './donut';
 	exports: [
     DonutComponent]
 })
+
 export class DonutComponentModule {}
