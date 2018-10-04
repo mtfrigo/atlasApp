@@ -10,7 +10,7 @@ import {DonutProvider} from '../../providers/donut/donut';
  * Components.
  */
 @Component({
-  selector: 'app-donut',
+  selector: 'view-donut',
   templateUrl: 'donut.html'
 })
 export class DonutComponent {
