@@ -73,13 +73,13 @@ export class LinhasComponent {
   afterGetData() {
     this.parseData();
     this.initAxis();
+
   }
 
   parseData() {
 
     console.log("ALOU GALERA DE COWBOY")
     console.log(this.data)
-
 
   }
 
@@ -95,8 +95,8 @@ export class LinhasComponent {
       .domain([this.minValue, this.maxValue]).domain(d3.extent(this.data, function(d) { return d.ano; }));
 
 
-    this.linePath = d3.line()
-    .x(function(d) { return this.x(d.ano); })
+    this.linePath = d3.line<any>()
+    .x( (d) => this.x(d.ano))
     .y(function(d, i) { return this.y(d[this.keyLines[i]]);});
   }
 

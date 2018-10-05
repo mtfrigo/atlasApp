@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule }  from '@angular/forms'; 
 import { HomePage } from './home';
 
 import { IonicPageModule } from 'ionic-angular';
@@ -10,7 +11,7 @@ import { TreemapComponentModule } from '../../components/treemap/treemap.module'
 
 @NgModule({
 	declarations: [ HomePage],
-  imports: [BarrasComponentModule, DonutComponentModule, TreemapComponentModule, IonicPageModule.forChild(HomePage)],
+  imports: [BarrasComponentModule, DonutComponentModule, TreemapComponentModule, FormsModule, IonicPageModule.forChild(HomePage)],
   exports: [
     HomePage
   ]

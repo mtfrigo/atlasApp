@@ -7,12 +7,22 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item *ngIf="list_uf.length">
+    <ion-label>Estados</ion-label>
+    <ion-select [(ngModel)]="uf">
+        <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+ 
+  <ion-item *ngIf="ready_pt_br">
+    <ion-label>Variável</ion-label>
+    <ion-select [(ngModel)]="vrv">
+        <ion-option *ngFor="let variable of pt_br.var[eixo]" [value]="variable.id">{{variable.title}}</ion-option>
+    </ion-select>
+  </ion-item>
 
-
+  <p>{{uf}}</p>
+  <app-barras></app-barras>
   <hr>
 
 

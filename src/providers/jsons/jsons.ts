@@ -10,13 +10,22 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class JsonsProvider {
   private colorsUrl : string = "assets/json/colors.json";
-
+  private ptbrUrl   : string = "assets/json/pt-br.json";
+  private ufUrl   : string = "assets/json/uf.json";
 
   constructor(public http: HttpClient) {
+  
+  }
+
+  getUfJson(){
+    return this.http.get(this.ufUrl)
   }
 
   getColors(){
     return this.http.get(this.colorsUrl);
   }
 
+  getPTBR(){
+    return this.http.get(this.ptbrUrl);
+  }
 }

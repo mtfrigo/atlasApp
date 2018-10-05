@@ -10,7 +10,7 @@ import {
   // ...
 } from '@angular/animations';
 
-import * as d3 from 'd3';
+import * as d3 from "d3";
 import * as d3Scale from "d3-scale";
 import * as d3Axis from "d3-axis";
 
@@ -34,7 +34,7 @@ export class BarrasComponent {
   view_title: string;
 
   yTicks: any;
-  yTicksArray: any;
+  yTicksArray: number[];
   yTicksScale: any;
 
   margin = {top: 0, right: 0, bottom: 40, left: 80};
@@ -54,7 +54,7 @@ export class BarrasComponent {
   dados = {key: [], value: [], percentual: [], taxa: [], percentual_setor: []};
 
   keys: any = [];
-  values: any = [];
+  values: number[] = [];
   minValue: any;
   maxValue: any;
 
@@ -155,10 +155,7 @@ export class BarrasComponent {
       this.keys.push(data[i].ano);
       this.values.push(data[i].valor);
     }
-
-    var edgeValues = d3.extent(this.values, function (d) {
-      return d;
-    })
+    var edgeValues = d3.extent(this.values);
 
     this.maxValue = edgeValues[1];
     this.minValue = edgeValues[0];
@@ -174,31 +171,23 @@ export class BarrasComponent {
 
     this.y = d3Scale.scaleLinear()
       .rangeRound([this.barsHeight, 0])
-      .domain(d3.extent(this.values, function (d) {
-        return d;
-      })).nice();
+      .domain([this.minValue, this.maxValue]).nice();
 
 
 
 
     this.yTicksScale = d3Scale.scaleLinear()
     .rangeRound([this.y(this.minValue), this.y(this.maxValue)])
-    .domain(d3.extent(this.yTicksArray, function (d) {
-      return d;
-    })).nice();
+    .domain(d3.extent(this.yTicksArray)).nice();
 
   }
 
   getTickYValue(d,i)
   {
-
+    
     return d3Scale.scaleLinear()
-    .domain(d3.extent(this.yTicksArray, function (d) {
-      return d;
-    }))
-    .rangeRound(d3.extent(this.values, function (d) {
-      return d;
-    }))(i);
+    .domain(d3.extent(this.yTicksArray))
+    .rangeRound([this.minValue, this.maxValue])(i);
   }
 
   getTickY(d, i){
