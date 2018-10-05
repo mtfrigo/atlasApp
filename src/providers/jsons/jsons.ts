@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class JsonsProvider {
   private colorsUrl : string = "assets/json/colors.json";
+  private brStatesUrl : string = "assets/json/br-min.json";
 
 
   constructor(public http: HttpClient) {
@@ -17,6 +18,10 @@ export class JsonsProvider {
 
   getColors(){
     return this.http.get(this.colorsUrl);
+  }
+
+  getBrStates(){
+    return this.http.get(this.brStatesUrl);
   }
 
 }

@@ -15,6 +15,7 @@ import { DonutProvider } from '../providers/donut/donut';
 import { LinhasProvider } from '../providers/linhas/linhas';
 import { TreemapProvider } from '../providers/treemap/treemap';
 import { JsonsProvider } from '../providers/jsons/jsons';
+import { MapaProvider } from '../providers/mapa/mapa';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { JsonsProvider } from '../providers/jsons/jsons';
     DonutProvider,
     LinhasProvider,
     TreemapProvider,
-    JsonsProvider
+    JsonsProvider,
+    MapaProvider
   ]
 })
 export class AppModule {}

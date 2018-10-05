@@ -300,7 +300,6 @@ $anos = array();
 if($eixo == 0 && ($var == 3 || $var == 9)) {
     require_once("EixoUm.php");
 
-
     foreach (EixoUm::getter_linhas($var, $uf, $cad, $deg, $uos) as $tupla) {
 
         $id = $tupla->CadeiaNome;
@@ -312,10 +311,26 @@ if($eixo == 0 && ($var == 3 || $var == 9)) {
         $obj['valor'] = $valor;
 
         $anos['valores'][] = $valor;
-        if(!in_array($id, $anos['valores']))
-          $anos['ids'][] = $id;
-        $anos[$id][] =  $obj;
 
+        if(!isset($anos['ids'])){
+          $anos['ids'][] = $id;
+        }
+        else{
+          if(!in_array($id, $anos['ids'])){
+            $anos['ids'][] = $id;
+          }
+        }
+
+        if(!isset($anos['anos'])){
+          $anos['anos'][] = $ano;
+        }
+        else{
+          if(!in_array($ano, $anos['anos'])){
+            $anos['anos'][] = $ano;
+          }
+        }
+
+        $anos[$id][] =  $obj;
     }
 
     foreach ($anos as $ano){

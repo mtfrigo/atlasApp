@@ -16,8 +16,8 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 })
 export class TreemapComponent {
 
-  @Input() width  : number = 800;
-  @Input() height : number = 400;
+  @Input() width  : number = 320;
+  @Input() height : number = 320;
   private ready = false;
   private data : Treemap[] = [];
   private colors;
@@ -71,13 +71,13 @@ export class TreemapComponent {
     let textLength : number = 0.45*(this.titleSize)*(d.data.name.length) + betweenLetters*(d.data.name.length-1)
     if((textLength + marginX)/(d.x1 - d.x0) > 1)
       return false
-    else 
+    else
       return true
-    
+
   }
 
   formatPercent(percentual : string){
-    let value : number  = parseFloat(percentual)*100 
+    let value : number  = parseFloat(percentual)*100
     return value.toFixed(2).toString() + '%'
   }
 

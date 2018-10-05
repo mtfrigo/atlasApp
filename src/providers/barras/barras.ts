@@ -19,7 +19,7 @@ export class BarrasProvider {
   }
 
   getData (uf): Observable<any[]> {
-    return (this.http.get<any[]>('http://localhost/atlasApp/src/api/json_barras.php?var=1&chg=0&uf='+uf+'&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos'));
+    return (this.http.get<any[]>('http://143.54.231.10/atlasApp/src/api/json_barras.php?var=1&chg=0&uf='+uf+'&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos'));
   }
 
 

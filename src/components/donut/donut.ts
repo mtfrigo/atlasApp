@@ -14,8 +14,8 @@ import {DonutProvider} from '../../providers/donut/donut';
   templateUrl: 'donut.html'
 })
 export class DonutComponent {
-  @Input() width  : number = 500;
-  @Input() height : number = 500;
+  @Input() width  : number = 320;
+  @Input() height : number = 200;
 
   private radius : number = Math.min(this.width, this.height)/2;
   private svg;

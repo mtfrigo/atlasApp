@@ -4,18 +4,21 @@ import { IonicModule } from 'ionic-angular';
 import { DonutComponent } from './donut/donut';
 import { LinhasComponent } from './linhas/linhas';
 import { TreemapComponent } from './treemap/treemap';
+import { MapaComponent } from './mapa/mapa';
 
 @NgModule({
 	declarations: [
     BarrasComponent,
     DonutComponent,
     LinhasComponent,
-    TreemapComponent],
+    TreemapComponent,
+    MapaComponent],
 	imports: [IonicModule],
   exports: [
     BarrasComponent,
     DonutComponent,
     LinhasComponent,
-    TreemapComponent]
+    TreemapComponent,
+    MapaComponent]
 })
 export class ComponentsModule {}

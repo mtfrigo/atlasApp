@@ -1,0 +1,17 @@
+<!-- Generated template for the LinhasComponent component -->
+<div *ngIf='states != null'>
+  <p>Dados do Mapa Carregados!</p>
+  <svg id="mapSVG" [attr.width]="width" [attr.height]="height">
+      <g [attr.width]="mapaWidth" [attr.height]="mapHeight" [attr.transform]="getMapTransform()">.
+            <path *ngFor="let d of states.features; index as i"
+            [attr.data-legend]='1'
+            [attr.d]='path(d)'
+            [attr.fill]='getStateColor(d)'
+            >
+            </path>
+      </g>
+  </svg>
+</div>
+
+
+<div (click)="update()" class="botao"></div>
