@@ -39,7 +39,7 @@ export class LinhasComponent {
   text: string;
 
   yTicks: any;
-  yTicksArray: any;
+  yTicksArray: number[];
   yTicksScale: any;
 
   data = [];
@@ -55,7 +55,7 @@ export class LinhasComponent {
   linePath: any;
 
   ids: any = [];
-  values: any = [];
+  values: number[] = [];
   anos: any = [];
 
   edgeValues: any;
@@ -121,6 +121,7 @@ export class LinhasComponent {
 
     this.data = this.parseData(this.data);
     this.initAxis();
+
   }
 
   parseData(data) {
@@ -134,7 +135,7 @@ export class LinhasComponent {
     this.anos = data[0];
     data.shift();
 
-    this.edgeValues = d3.extent(this.values, function (d) { return d; })
+    this.edgeValues = d3.extent(this.values)
 
     this.minValue = this.edgeValues[0];
     this.maxValue = this.edgeValues[1];
@@ -154,13 +155,14 @@ export class LinhasComponent {
 
     this.yTicksScale = d3.scaleLinear()
     .range([this.y(this.minValue), this.y(this.maxValue)])
-    .domain(d3.extent(this.yTicksArray, function (d) {
-      return d;
-    })).nice();
+    .domain(d3.extent(this.yTicksArray)).nice();
 
     var x = this.x;
     var y = this.y;
 
+    this.linePath = d3.line<any>()
+    .x( (d) => this.x(d.ano))
+    .y(function(d, i) { return this.y(d[this.keyLines[i]]);});
     this.linePath = d3.line()
     .x(function(d) { return x(d.ano); })
     .y(function(d) { return y(d.valor);});
