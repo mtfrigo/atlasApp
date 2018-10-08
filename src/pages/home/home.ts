@@ -9,10 +9,16 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 export class HomePage {
   private list_uf : Object = [];
   private pt_br : Object = [];
+  private anos : number[];
   private ready_pt_br : boolean = false;
-  private uf :  number = 0;
-  private vrv:  number = 1;
-  private eixo: number = 0;
+  private parameters = {
+    'uf': 0, 
+    'var': 1, 
+    'eixo': 1,
+    'ano': 0,
+    'slc': 0
+  };
+
   constructor(public navCtrl: NavController, private jsonsProvider : JsonsProvider) {
 
   }
@@ -27,6 +33,12 @@ export class HomePage {
       .subscribe( d => {
         this.pt_br = d;
         this.ready_pt_br = true;
+      })
+
+    this.jsonsProvider.getAnos(this.parameters.eixo)
+      .subscribe(d => {
+        this.anos = d;
+        this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
       })
 
   }

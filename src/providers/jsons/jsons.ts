@@ -13,7 +13,7 @@ export class JsonsProvider {
   private ptbrUrl   : string = "assets/json/pt-br.json";
   private ufUrl   : string = "assets/json/uf.json";
   private brStatesUrl : string = "assets/json/br-min.json";
-
+  private anos_default : string = "http://143.54.230.124/ministerio/atlasOBEC/app/db/json_ano_default.php";
 
   constructor(public http: HttpClient) {
   
@@ -33,6 +33,10 @@ export class JsonsProvider {
   
   getBrStates(){
     return this.http.get(this.brStatesUrl);
+  }
+
+  getAnos(eixo : number){
+    return this.http.get<number[]>(this.anos_default+'?eixo='+eixo);
   }
 
 }

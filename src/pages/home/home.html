@@ -9,19 +9,26 @@
 <ion-content padding>
   <ion-item *ngIf="list_uf.length">
     <ion-label>Estados</ion-label>
-    <ion-select [(ngModel)]="uf">
+    <ion-select [(ngModel)]="parameters.uf">
         <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
     </ion-select>
   </ion-item>
  
   <ion-item *ngIf="ready_pt_br">
     <ion-label>Variável</ion-label>
-    <ion-select [(ngModel)]="vrv">
-        <ion-option *ngFor="let variable of pt_br.var[eixo]" [value]="variable.id">{{variable.title}}</ion-option>
+    <ion-select [(ngModel)]="parameters.var">
+        <ion-option *ngFor="let variable of pt_br.var[parameters.eixo]" [value]="variable.id">{{variable.title}}</ion-option>
     </ion-select>
   </ion-item>
 
-  <p>{{uf}}</p>
+  <ion-item *ngIf="parameters.ano > 0">
+    <ion-label>Ano</ion-label>
+    <ion-select [(ngModel)]="parameters.ano">
+        <ion-option *ngFor="let ano of anos[parameters.var][parameters.slc].reverse()" [value]="ano">{{ano}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <p>{{parameters.uf}}</p>
   <view-barras></view-barras>
   <hr>
   <view-treemap></view-treemap>

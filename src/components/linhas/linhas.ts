@@ -51,7 +51,7 @@ export class LinhasComponent {
 
   ids: any = [];
   values: number[] = [];
-  anos: any = [];
+  anos: number[] = [];
 
   edgeValues: any;
   minValue: any;
@@ -135,7 +135,7 @@ export class LinhasComponent {
 
     this.x = d3
       .scaleTime().range([0, this.linesWidth])
-      .domain(d3.extent(this.anos, function(d) { return d; }));
+      .domain(d3.extent(this.anos));
 
     this.y = d3
       .scaleLinear().range([this.linesHeight, 0])
@@ -148,12 +148,10 @@ export class LinhasComponent {
     var x = this.x;
     var y = this.y;
 
+    
     this.linePath = d3.line<any>()
-    .x( (d) => this.x(d.ano))
-    .y(function(d, i) { return this.y(d[this.keyLines[i]]);});
-    this.linePath = d3.line()
-    .x(function(d) { return x(d.ano); })
-    .y(function(d) { return y(d.valor);});
+    .x( (d)=>  x(d.ano) )
+    .y( (d) => y(d.valor));
   }
 
   getLinesTransform()
