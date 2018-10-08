@@ -28,8 +28,13 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'linhas.html'
 })
 export class LinhasComponent {
-  @Input() width  : number = 900;
-  @Input() height : number = 500;
+  @Input() width  : number = window.innerWidth*0.9;
+  @Input() height : number = window.innerHeight*0.5;
+
+  view_title: any;
+
+  innerWidth: any;
+  innerHeight: any;
 
   text: string;
 
@@ -41,7 +46,7 @@ export class LinhasComponent {
   new_data = [];
   colors: any;
 
-  margin = {top: 0, right: 30, bottom: 40, left: 80};
+  margin = {top: 0, right: 20, bottom: 40, left: 50};
   linesWidth: any;
   linesHeight: any;
 
@@ -61,8 +66,15 @@ export class LinhasComponent {
   ufs = [0, 32];
 
 
+
+
   constructor(public navCtrl: NavController, private linhasProvider: LinhasProvider, private jsonProvider: JsonsProvider) {
     this.text = 'Hello World';
+
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+
+    this.view_title = "Linhas"
 
     this.linesHeight = this.height - this.margin.top - this.margin.bottom;
     this.linesWidth = this.width - this.margin.left - this.margin.right;

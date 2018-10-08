@@ -41,8 +41,10 @@
             <text
               class='axis-title'
               fill="#000"
-              x='20'
+              x='30'
+              font-size='12'
               dy="1.2em"
+              text-anchor='end'
               text='Frequency'
             >
               {{ d.ano }}
@@ -60,7 +62,7 @@
             <text
               class='axis-title'
               fill="#000"
-              x=-20
+              x=-15
               dy=0.35em
               text-anchor='end'
               text='Frequency'
@@ -85,6 +87,6 @@
   </svg>
 </div>
 
-<h5>{{view_title}}</h5>
+<h5 text-center >{{view_title}}</h5>
 
 <div (click)="update()" class="botao"></div>

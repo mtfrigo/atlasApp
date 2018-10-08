@@ -16,8 +16,9 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 })
 export class TreemapComponent {
 
-  @Input() width  : number = 320;
-  @Input() height : number = 320;
+  @Input() width  : number = window.innerWidth*0.9;
+  @Input() height : number = window.innerHeight*0.8;
+  view_title: any;
   private ready = false;
   private data : Treemap[] = [];
   private colors;
@@ -32,7 +33,9 @@ export class TreemapComponent {
 
 
   constructor(private treemapProvider : TreemapProvider,
-              private jsonsProvider: JsonsProvider) {}
+              private jsonsProvider: JsonsProvider) {
+                this.view_title = "Treemap"
+              }
 
   ngOnInit() {
     this.jsonsProvider.getColors()
