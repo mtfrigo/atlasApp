@@ -28,8 +28,8 @@ import { BarrasProvider } from '../../providers/barras/barras';
 })
 
 export class BarrasComponent {
-  @Input() width  : number = 320;
-  @Input() height : number = 200;
+  @Input() width  : number = window.innerWidth*0.9;
+  @Input() height : number = window.innerHeight*0.5;
 
   view_title: string;
 
@@ -37,7 +37,7 @@ export class BarrasComponent {
   yTicksArray: any;
   yTicksScale: any;
 
-  margin = {top: 0, right: 0, bottom: 40, left: 80};
+  margin = {top: 0, right: 5, bottom: 30, left: 50};
 
   x: any;
   y: any;

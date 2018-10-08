@@ -21,8 +21,10 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'mapa.html'
 })
 export class MapaComponent {
-  @Input() width  : number = 320;
-  @Input() height : number = 320;
+  @Input() width  : number = window.innerWidth*0.9;
+  @Input() height : number = this.width;
+
+  view_title: any;
 
   margin = {top: 0, right: 0, bottom: 0, left: 0};
   mapWidth: any;
@@ -51,6 +53,8 @@ export class MapaComponent {
 
     this.mapHeight = this.height - this.margin.top - this.margin.bottom;
     this.mapWidth = this.width - this.margin.left - this.margin.right;
+
+    this.view_title = "Mapa do Brasil"
   }
 
   ngOnInit() {

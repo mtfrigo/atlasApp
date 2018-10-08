@@ -14,8 +14,10 @@ import {DonutProvider} from '../../providers/donut/donut';
   templateUrl: 'donut.html'
 })
 export class DonutComponent {
-  @Input() width  : number = 320;
-  @Input() height : number = 200;
+  @Input() width  : number = window.innerWidth*0.7;
+  @Input() height : number = this.width;
+
+  view_title: any;
 
   private radius : number = Math.min(this.width, this.height)/2;
   private svg;
@@ -36,6 +38,7 @@ export class DonutComponent {
       .value((d : Donut) => d.valor);
 
   constructor(private donutProvider : DonutProvider) {
+    this.view_title = "Donut";
   }
 
   ngOnInit() {
