@@ -16,7 +16,7 @@
  
   <ion-item *ngIf="ready_pt_br">
     <ion-label>Variável</ion-label>
-    <ion-select [(ngModel)]="parameters.var">
+    <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">
         <ion-option *ngFor="let variable of pt_br.var[parameters.eixo]" [value]="variable.id">{{variable.title}}</ion-option>
     </ion-select>
   </ion-item>

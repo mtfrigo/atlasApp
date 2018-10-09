@@ -14,7 +14,7 @@ export class HomePage {
   private parameters = {
     'uf': 0, 
     'var': 1, 
-    'eixo': 1,
+    'eixo': 0,
     'ano': 0,
     'slc': 0
   };
@@ -43,6 +43,9 @@ export class HomePage {
 
   }
 
-
+  update(event){
+    this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
+    this.parameters.uf  = 0;
+  }
 }
 

@@ -13,7 +13,7 @@ export class JsonsProvider {
   private ptbrUrl   : string = "assets/json/pt-br.json";
   private ufUrl   : string = "assets/json/uf.json";
   private brStatesUrl : string = "assets/json/br-min.json";
-  private anos_default : string = "http://143.54.230.124/ministerio/atlasOBEC/app/db/json_ano_default.php";
+  private anos_default : string = "http://143.54.230.124/ministerio/atlasOBEC/app/db/api_anos_default.php";
 
   constructor(public http: HttpClient) {
   
