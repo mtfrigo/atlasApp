@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import {
@@ -27,9 +27,11 @@ import { BarrasProvider } from '../../providers/barras/barras';
   templateUrl: 'barras.html',
 })
 
-export class BarrasComponent {
-  @Input() width  : number = window.innerWidth*0.9;
-  @Input() height : number = window.innerHeight*0.5;
+export class BarrasComponent implements OnChanges{
+  width  : number = window.innerWidth*0.9;
+  height : number = window.innerHeight*0.5;
+
+  @Input() url : string;
 
   view_title: string;
 
@@ -113,7 +115,10 @@ export class BarrasComponent {
 
   ngOnInit() {
     this.getData();
+  }
 
+  ngOnChanges(){
+    this.updateData();
   }
 
   ionViewDidLoad() {
@@ -141,7 +146,7 @@ export class BarrasComponent {
 
     if(this.uf_index++ >= this.ufs.length -1) this.uf_index = 0;
 
-     this.barrasProvider.getData(this.ufs[this.uf_index])
+     this.barrasProvider.getData(this.url)
        .subscribe(response => (this.new_data = response),
                   error => 'oioio',
                   () => this.animateBars()

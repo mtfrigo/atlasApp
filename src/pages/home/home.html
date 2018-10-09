@@ -28,13 +28,10 @@
     </ion-select>
   </ion-item>
 
-  <p>{{parameters.uf}}</p>
-  <view-barras></view-barras>
+  <view-barras *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-barras>
   <hr>
-  <view-treemap></view-treemap>
+  <view-treemap *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-treemap>
   <hr>
-  <view-donut></view-donut>
-
 
 
 

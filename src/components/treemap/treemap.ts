@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import * as d3 from 'd3';
 import { TreemapProvider } from '../../providers/treemap/treemap';
 import { Treemap } from '../../interfaces/treemap';
@@ -14,10 +14,13 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   selector: 'view-treemap',
   templateUrl: 'treemap.html'
 })
-export class TreemapComponent {
+export class TreemapComponent implements OnChanges{
 
-  @Input() width  : number = window.innerWidth*0.9;
-  @Input() height : number = window.innerHeight*0.8;
+  width  : number = window.innerWidth*0.9;
+  height : number = window.innerHeight*0.8;
+
+  @Input() url : string;
+
   view_title: any;
   private ready = false;
   private data : Treemap[] = [];
@@ -43,6 +46,11 @@ export class TreemapComponent {
         this.colors = d;
         this.getData();
     })
+  }
+
+
+  ngOnChanges(){
+    this.getData();
   }
 
   getHierarchy(){
@@ -93,7 +101,7 @@ export class TreemapComponent {
   }
 
   getData(): void {
-    this.treemapProvider.getData()
+    this.treemapProvider.getData(this.url)
         .subscribe(data => {
           this.data = data;
           this.treemapData = this.treemap(this.getHierarchy())
