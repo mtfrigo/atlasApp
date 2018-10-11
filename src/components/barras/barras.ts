@@ -143,9 +143,6 @@ export class BarrasComponent implements OnChanges{
 
   updateData() : void {
 
-
-    if(this.uf_index++ >= this.ufs.length -1) this.uf_index = 0;
-
      this.barrasProvider.getData(this.url)
        .subscribe(response => (this.new_data = response),
                   error => 'oioio',

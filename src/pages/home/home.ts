@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 
@@ -6,9 +6,9 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit, OnChanges{
+export class HomePage implements OnInit{
   private list_uf : Object = [];
-  private pt_br : Object = [];
+  private pt_br : any = [];
   private anos : number[];
   private ready_pt_br : boolean = false;
   private parameters = {
@@ -47,10 +47,6 @@ export class HomePage implements OnInit, OnChanges{
 
   }
 
-  ngOnChanges(changes: SimpleChanges){
-    const parameters = changes.parameters;
-    console.log(parameters)
-  }
 
   update(event){
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
@@ -63,6 +59,33 @@ export class HomePage implements OnInit, OnChanges{
                     return encodeURIComponent(k) + '=' + encodeURIComponent(parameters[k])
                   })
                   .join('&');
+  }
+
+  private getDataVar(){
+    return this.pt_br.var[this.parameters.eixo].filter( obj => {
+        return obj.id == this.parameters.var;
+    })[0];
+  }
+
+  correctView(box: number, view : string) : boolean {
+    let views = this.getDataVar().views;
+    switch(box){
+      case 1:
+        if(views.view_box1[this.parameters.chg].id == view)
+          return true; 
+        else 
+          return false;
+      case 2: 
+        if(views.view_box2[0].id == view)
+          return true; 
+        else 
+          return false;
+      case 3: 
+        if(views.view_box3[0].id == view)
+          return true; 
+        else 
+          return false;
+    }
   }
 }
 

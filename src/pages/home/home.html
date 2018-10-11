@@ -27,12 +27,21 @@
         <ion-option *ngFor="let ano of anos[parameters.var][parameters.slc].reverse()" [value]="ano">{{ano}}</ion-option>
     </ion-select>
   </ion-item>
-
-  <view-barras *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-barras>
+  
+  <ion-item *ngIf="ready_pt_br">
+      <div>
+          <view-barras *ngIf="parameters.ano > 0 && correctView(3, 'barras')" [url]="getQuery(parameters)"></view-barras>
+          <view-treemap *ngIf="parameters.ano > 0 && correctView(3, 'treemap_scc')" [url]="getQuery(parameters)"></view-treemap>
+        </div>
+      
+        <div>
+          <view-barras *ngIf="parameters.ano > 0 && correctView(2, 'barras')" [url]="getQuery(parameters)"></view-barras>
+          <view-treemap *ngIf="parameters.ano > 0 && correctView(2, 'treemap_scc')" [url]="getQuery(parameters)"></view-treemap>
+        </div>
+        
+  </ion-item>
   <hr>
-  <view-treemap *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-treemap>
-  <hr>
-
+  
 
 
 </ion-content>
