@@ -35,6 +35,8 @@
       </ion-select>
   </ion-item>
 
+  <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)"></view-dados>
+  <hr>
   <view-barras *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)"></view-barras>
   <hr>
   <view-treemap *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-treemap>

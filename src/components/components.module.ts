@@ -5,6 +5,7 @@ import { DonutComponent } from './donut/donut';
 import { LinhasComponent } from './linhas/linhas';
 import { TreemapComponent } from './treemap/treemap';
 import { MapaComponent } from './mapa/mapa';
+import { DadosComponent } from './dados/dados';
 
 @NgModule({
 	declarations: [
@@ -12,13 +13,15 @@ import { MapaComponent } from './mapa/mapa';
     DonutComponent,
     LinhasComponent,
     TreemapComponent,
-    MapaComponent],
+    MapaComponent,
+    DadosComponent],
 	imports: [IonicModule],
   exports: [
     BarrasComponent,
     DonutComponent,
     LinhasComponent,
     TreemapComponent,
-    MapaComponent]
+    MapaComponent,
+    DadosComponent]
 })
 export class ComponentsModule {}

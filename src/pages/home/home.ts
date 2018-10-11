@@ -12,6 +12,7 @@ export class HomePage implements OnInit, OnChanges{
   private anos : number[];
   private cads : any[];
   private ready_pt_br : boolean = false;
+  private globalData : Object = [];
   private parameters = {
     'uf': 0,
     'var': 1,
@@ -38,7 +39,6 @@ export class HomePage implements OnInit, OnChanges{
       .subscribe( d => {
         this.pt_br = d;
         this.ready_pt_br = true;
-        console.log(d['select']['cad'])
         this.cads = d['select']['cad'];
       })
 
