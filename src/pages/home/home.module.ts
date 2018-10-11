@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule }  from '@angular/forms'; 
+import { FormsModule }  from '@angular/forms';
 import { HomePage } from './home';
 
 import { IonicPageModule } from 'ionic-angular';

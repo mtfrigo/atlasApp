@@ -1,14 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+
+import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import * as d3 from "d3";
 import * as d3Scale from "d3-scale";
@@ -31,7 +25,11 @@ export class BarrasComponent implements OnChanges{
   width  : number = window.innerWidth*0.9;
   height : number = window.innerHeight*0.5;
 
+  @Input() parameters : any[];
   @Input() url : string;
+
+
+  private colors;
 
   view_title: string;
 
@@ -39,7 +37,7 @@ export class BarrasComponent implements OnChanges{
   yTicksArray: number[];
   yTicksScale: any;
 
-  margin = {top: 0, right: 5, bottom: 30, left: 50};
+  margin = {top: 0, right: 5, bottom: 30, left: window.innerWidth*0.05};
 
   x: any;
   y: any;
@@ -65,44 +63,11 @@ export class BarrasComponent implements OnChanges{
 
   index = true;
 
-  uf_index: any = 0;
-  ufs = [0, 31, 50, 51];
-
-  data1 = [
-
-    {"uf":"Todos","ano":2007,"valor":104522,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2008,"valor":91097,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2009,"valor":93585,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2010,"valor":97525,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2011,"valor":102031,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2012,"valor":104544,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2013,"valor":91097,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2014,"valor":108759,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2015,"valor":104544,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2016,"valor":91097,"percentual":1,"taxa":0}]
-
-  data2 = [
-
-    {"uf":"Todos","ano":2007,"valor":88773,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2008,"valor":91097,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2009,"valor":93585,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2010,"valor":97525,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2011,"valor":102031,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2012,"valor":104544,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2013,"valor":107339,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2014,"valor":108759,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2015,"valor":107498,"percentual":1,"taxa":0},
-    {"uf":"Todos","ano":2016,"valor":111000,"percentual":1,"taxa":0}]
-
-
-  constructor(public navCtrl: NavController, private barrasProvider: BarrasProvider) {
+  constructor(public navCtrl: NavController, private barrasProvider: BarrasProvider, private jsonsProvider: JsonsProvider) {
     this.view_title = 'Histograma'
 
     this.barsHeight = this.height - this.margin.top - this.margin.bottom;
     this.barsWidth = this.width - this.margin.left - this.margin.right;
-
-    this.uf_index = 0;
-    this.ufs = [31, 50, 51];
 
     this.yTicks = 7;
     this.yTicksArray = [];
@@ -114,10 +79,16 @@ export class BarrasComponent implements OnChanges{
   }
 
   ngOnInit() {
-    this.getData();
+
+    this.jsonsProvider.getColors()
+      .subscribe(d=>{
+        this.colors = d;
+        this.getData();
+    })
   }
 
   ngOnChanges(){
+
     this.updateData();
   }
 
@@ -132,26 +103,20 @@ export class BarrasComponent implements OnChanges{
   }
 
   getData(): void {
-
-    this.barrasProvider.getData(this.ufs[this.uf_index])
+    this.barrasProvider.getData(this.parameters)
       .subscribe(response => (this.data = response),
                  error => 'oioio',
                  () => this.afterGetData(this.data)
                 );
-
   }
 
   updateData() : void {
 
-
-    if(this.uf_index++ >= this.ufs.length -1) this.uf_index = 0;
-
-     this.barrasProvider.getData(this.url)
+       this.barrasProvider.getData(this.parameters)
        .subscribe(response => (this.new_data = response),
                   error => 'oioio',
                   () => this.animateBars()
                  );
-
   }
 
   parseData(data){
@@ -189,7 +154,7 @@ export class BarrasComponent implements OnChanges{
 
   getTickYValue(d,i)
   {
-    
+
     return d3Scale.scaleLinear()
     .domain(d3.extent(this.yTicksArray))
     .rangeRound([this.minValue, this.maxValue])(i);
@@ -287,8 +252,9 @@ export class BarrasComponent implements OnChanges{
 
     this.initAxis();
 
+  }
 
-
-
+  getBarColor(){
+    return (this.colors['cadeias'][this.parameters.cad]['color'])
   }
 }

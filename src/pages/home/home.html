@@ -13,7 +13,7 @@
         <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
     </ion-select>
   </ion-item>
- 
+
   <ion-item *ngIf="ready_pt_br">
     <ion-label>Variável</ion-label>
     <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">
@@ -28,7 +28,14 @@
     </ion-select>
   </ion-item>
 
-  <view-barras *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-barras>
+  <ion-item *ngIf="parameters.cad != null">
+      <ion-label>Cadeia</ion-label>
+      <ion-select [(ngModel)]="parameters.cad">
+          <ion-option *ngFor="let cad of cads" [value]="cad.value">{{cad.name}}</ion-option>
+      </ion-select>
+  </ion-item>
+
+  <view-barras *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)"></view-barras>
   <hr>
   <view-treemap *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-treemap>
   <hr>

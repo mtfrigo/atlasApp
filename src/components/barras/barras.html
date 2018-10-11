@@ -1,5 +1,6 @@
 <div *ngIf='data.length && x && y '>
-  <p>Dados Carregados!</p>
+<h5 text-center >{{view_title}}</h5>
+
   <svg [attr.width]="width" [attr.height]="height">
       <g [attr.width]="barsWidth" [attr.height]="barsHeight" [attr.transform]="getBarsTransform()">
 
@@ -28,7 +29,7 @@
           [attr.height]='getBarHeight(d.valor)'
           [attr.width]='x.bandwidth()'
           [attr.data]=d.valor
-          fill = 'red'
+          [attr.fill] = 'getBarColor()'
         >
         </rect>
 
@@ -41,10 +42,10 @@
             <text
               class='axis-title'
               fill="#000"
-              x='30'
+              x='55'
               font-size='12'
               dy="1.2em"
-              text-anchor='end'
+              text-anchor='center'
               text='Frequency'
             >
               {{ d.ano }}
@@ -87,6 +88,3 @@
   </svg>
 </div>
 
-<h5 text-center >{{view_title}}</h5>
-
-<div (click)="update()" class="botao"></div>

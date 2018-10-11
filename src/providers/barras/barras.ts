@@ -15,11 +15,19 @@ export class BarrasProvider {
   configUrl = 'http://143.54.231.10/atlasApp/src/api/json_barras.php?var=1&chg=0&uf=0&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos';
 
   constructor(public http: HttpClient) {
-    console.log('Hello ConfigProvider Provider');
+
   }
 
   getData (parameters): Observable<any[]> {
-    return (this.http.get<any[]>('http://143.54.231.10/atlasApp/src/api/json_barras.php?'+parameters));
+    return (this.http.get<any[]>('http://143.54.231.10/atlasApp/src/api/json_barras.php?'+this.getQuery(parameters)));
+  }
+
+  getQuery(parameters : Object){
+    return Object.keys(parameters)
+                 .map(function(k) {
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(parameters[k])
+                  })
+                  .join('&');
   }
 
 

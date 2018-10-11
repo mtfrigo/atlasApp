@@ -10,10 +10,11 @@ export class HomePage implements OnInit, OnChanges{
   private list_uf : Object = [];
   private pt_br : Object = [];
   private anos : number[];
+  private cads : any[];
   private ready_pt_br : boolean = false;
   private parameters = {
-    'uf': 0, 
-    'var': 1, 
+    'uf': 0,
+    'var': 1,
     'eixo': 0,
     'ano': 0,
     'cad': 0,
@@ -37,6 +38,8 @@ export class HomePage implements OnInit, OnChanges{
       .subscribe( d => {
         this.pt_br = d;
         this.ready_pt_br = true;
+        console.log(d['select']['cad'])
+        this.cads = d['select']['cad'];
       })
 
     this.jsonsProvider.getAnos(this.parameters.eixo)

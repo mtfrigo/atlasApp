@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { FormsModule }  from '@angular/forms'; 
+import { FormsModule }  from '@angular/forms';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,11 +17,13 @@ import { LinhasProvider } from '../providers/linhas/linhas';
 import { TreemapProvider } from '../providers/treemap/treemap';
 import { JsonsProvider } from '../providers/jsons/jsons';
 import { MapaProvider } from '../providers/mapa/mapa';
+import { IndexPage } from '../pages/index';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    IndexPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { MapaProvider } from '../providers/mapa/mapa';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    IndexPage
   ],
   providers: [
     StatusBar,
