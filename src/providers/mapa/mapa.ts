@@ -14,7 +14,6 @@ export class MapaProvider {
   configUrl = 'http://localhost/atlasApp/src/api/json_mapa.php?var=1&chg=0&uf=0&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos';
 
   constructor(public http: HttpClient) {
-    console.log('Hello MapaProvider Provider');
   }
 
   getData (cad): Observable<any[]> {

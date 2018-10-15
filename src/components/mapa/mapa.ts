@@ -93,7 +93,6 @@ export class MapaComponent {
 
   updateData(): void {
 
-    console.log("AQUI ENTRO")
 
     this.mapaProvider.getData(this.parameters['cad'])
       .subscribe(response => (this.data = response),
@@ -127,7 +126,6 @@ export class MapaComponent {
   parseData()
   {
 
-    console.log("Oioioioio")
     this.values = this.data.pop();
 
     var edgeValues = d3.extent(this.values);
@@ -152,8 +150,5 @@ export class MapaComponent {
     return this.colorScale(this.info[d.id].valor);
   }
 
-  update(){
-    this.updateData()
-  }
 
 }
