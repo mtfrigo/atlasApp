@@ -7,12 +7,22 @@ import { BarrasComponentModule } from '../../components/barras/barras.module';
 import { DonutComponentModule } from '../../components/donut/donut.module';
 import { TreemapComponentModule } from '../../components/treemap/treemap.module';
 import { MapaComponentModule } from '../../components/mapa/mapa.module';
+import { DadosComponentModule } from '../../components/dados/dados.module';
+import { DadosProvider } from '../../providers/dados/dados';
 
 
 
 @NgModule({
 	declarations: [ HomePage],
-  imports: [BarrasComponentModule, DonutComponentModule, TreemapComponentModule, FormsModule, MapaComponentModule, IonicPageModule.forChild(HomePage)],
+  imports: [
+    BarrasComponentModule,
+    DonutComponentModule,
+    DadosComponentModule,
+    TreemapComponentModule,
+    FormsModule,
+    MapaComponentModule,
+    IonicPageModule.forChild(HomePage)
+  ],
   exports: [
     HomePage
   ]

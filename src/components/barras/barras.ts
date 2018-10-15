@@ -9,6 +9,7 @@ import * as d3Scale from "d3-scale";
 import * as d3Axis from "d3-axis";
 
 import { BarrasProvider } from '../../providers/barras/barras';
+import { DadosProvider } from '../../providers/dados/dados';
 
 /**
  * Generated class for the BarrasComponent component.
@@ -63,7 +64,7 @@ export class BarrasComponent implements OnChanges{
 
   index = true;
 
-  constructor(public navCtrl: NavController, private barrasProvider: BarrasProvider, private jsonsProvider: JsonsProvider) {
+  constructor(public navCtrl: NavController, private barrasProvider: BarrasProvider, private dadosProvider: DadosProvider,private jsonsProvider: JsonsProvider) {
     this.view_title = 'Histograma'
 
     this.barsHeight = this.height - this.margin.top - this.margin.bottom;
@@ -75,6 +76,7 @@ export class BarrasComponent implements OnChanges{
     for(var i = 0; i < this.yTicks; i++){
       this.yTicksArray.push(i);
     }
+
 
   }
 
@@ -111,6 +113,7 @@ export class BarrasComponent implements OnChanges{
   }
 
   updateData() : void {
+
 
        this.barrasProvider.getData(this.parameters)
        .subscribe(response => (this.new_data = response),
@@ -239,6 +242,9 @@ export class BarrasComponent implements OnChanges{
     this.keys = [];
 
     this.parseData(this.new_data);
+
+    //ARRUMAR
+    this.dadosProvider.setGlobalData('barras', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);
 
     let i = 0;
 

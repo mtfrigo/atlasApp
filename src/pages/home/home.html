@@ -48,6 +48,14 @@
       <ion-option *ngFor="let desag of select_desags" [value]="desag.value" [disabled]="desag.group_name">{{desag.name}}</ion-option>
     </ion-select>
   </ion-item>
+
+  <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)"></view-dados>
+  <hr>
+  <view-barras *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)"></view-barras>
+  <hr>
+  <view-treemap *ngIf="parameters.ano > 0" [url]="getQuery(parameters)"></view-treemap>
+  <hr>
+
   
   <ion-item *ngIf="parameters.ano > 0 && ready_pt_br">
       <div>

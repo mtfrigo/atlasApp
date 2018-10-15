@@ -1,0 +1,38 @@
+dados {
+
+}
+
+#dados-container{
+
+  display: flex;
+  flex-flow: column;
+  padding: 30px;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+
+}
+
+#dados-container .dado{
+  display:flex;
+  justify-items: space-between;
+  margin: 20px 0;
+  flex-flow: column;
+  align-content: center;
+
+}
+
+#dados-container .dado-valor{
+  text-align: center;
+  font-size: 3em;
+  white-space: nowrap
+}
+
+#dados-container .dado-desc{
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bold;
+  font-family: Lato Regular;
+  letter-spacing: 1px;
+}

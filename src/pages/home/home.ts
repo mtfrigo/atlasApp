@@ -14,7 +14,7 @@ export class HomePage implements OnInit{
   private select_desags : any = [];
   private cads : any[];
   private ready_pt_br : boolean = false;
-  private 
+  private globalData : Object = [];
   private parameters = {
     'uf': 0,
     'var': 1,
@@ -49,7 +49,6 @@ export class HomePage implements OnInit{
       .subscribe( d => {
         this.pt_br = d;
         this.ready_pt_br = true;
-        console.log(d['select']['cad'])
         this.cads = d['select']['cad'];
       })
 
