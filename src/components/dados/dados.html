@@ -2,11 +2,20 @@
 <div>
   <div  id="dados-container">
 
-      <div *ngFor="let desc of desc_array; index as i" class="dado">
-        <div class="dado-valor">{{valor}}</div>
-        <div class="dado-desc">{{desc}}</div>
-      </div>
+    <div *ngIf="desc_array[0] != undefined" class="dado">
+      <div class="dado-valor">{{desc_array[0].valor}}</div>
+      <div class="dado-desc">{{desc_array[0].desc}}</div>
+    </div>
+
+    <div *ngIf="desc_array[1] != undefined" class="dado">
+      <div class="dado-valor">{{desc_array[1].valor | percent:'0.3-5'}}</div>
+      <div class="dado-desc">{{desc_array[1].desc}}</div>
+    </div>
+
+    <div *ngIf="desc_array[2] != undefined" class="dado">
+      <div class="dado-valor">{{desc_array[2].valor}}</div>
+      <div class="dado-desc">{{desc_array[2].desc}}</div>
+    </div>
 
   </div>
-
 </div>
