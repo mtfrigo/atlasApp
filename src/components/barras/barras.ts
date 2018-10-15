@@ -26,7 +26,7 @@ export class BarrasComponent implements OnChanges{
   width  : number = window.innerWidth*0.9;
   height : number = window.innerHeight*0.5;
 
-  @Input() parameters : any[];
+  @Input() parameters : any;
   @Input() url : string;
 
 

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DadosProvider {
 
-  globalData: Object;
+  globalData: any;
 
   constructor(public http: HttpClient) {
 
