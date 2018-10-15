@@ -13,7 +13,7 @@
         <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
     </ion-select>
   </ion-item>
- 
+
   <ion-item *ngIf="ready_pt_br">
     <ion-label>Variável</ion-label>
     <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">
@@ -27,17 +27,38 @@
         <ion-option *ngFor="let ano of anos[parameters.var][parameters.slc].reverse()" [value]="ano">{{ano}}</ion-option>
     </ion-select>
   </ion-item>
+
+  <ion-item *ngIf="parameters.cad != null">
+    <ion-label>Cadeia</ion-label>
+    <ion-select [(ngModel)]="parameters.cad">
+        <ion-option *ngFor="let cad of cads" [value]="cad.value">{{cad.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="parameters.eixo == 0 && vrvPorte()">
+    <ion-label>Desagregação</ion-label>
+    <ion-select [(ngModel)]="parameters.deg">
+      <ion-option *ngFor="let porte of portes" [value]="porte.value">{{porte.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="parameters.eixo == 1">
+    <ion-label>Desagregação</ion-label>
+    <ion-select [(ngModel)]="pre_desags" (ngModelChange)="updateDesag($event)">
+      <ion-option *ngFor="let desag of select_desags" [value]="desag.value" [disabled]="desag.group_name">{{desag.name}}</ion-option>
+    </ion-select>
+  </ion-item>
   
-  <ion-item *ngIf="ready_pt_br">
+  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br">
       <div>
-          <view-barras *ngIf="parameters.ano > 0 && correctView(3, 'barras')" [url]="getQuery(parameters)"></view-barras>
-          <view-treemap *ngIf="parameters.ano > 0 && correctView(3, 'treemap_scc')" [url]="getQuery(parameters)"></view-treemap>
-        </div>
+        <view-barras *ngIf="correctView(3, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters"></view-barras>
+        <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)"></view-treemap>
+      </div>
       
-        <div>
-          <view-barras *ngIf="parameters.ano > 0 && correctView(2, 'barras')" [url]="getQuery(parameters)"></view-barras>
-          <view-treemap *ngIf="parameters.ano > 0 && correctView(2, 'treemap_scc')" [url]="getQuery(parameters)"></view-treemap>
-        </div>
+      <div>
+        <view-barras *ngIf="correctView(2, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters"></view-barras>
+        <view-treemap *ngIf="correctView(2, 'treemap_scc')" [url]="getQuery(parameters)"></view-treemap>
+      </div>
         
   </ion-item>
   <hr>

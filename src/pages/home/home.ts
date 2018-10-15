@@ -10,11 +10,15 @@ export class HomePage implements OnInit{
   private list_uf : Object = [];
   private pt_br : any = [];
   private anos : number[];
+  private pre_desags : number = 0;
+  private select_desags : any = [];
+  private cads : any[];
   private ready_pt_br : boolean = false;
+  private 
   private parameters = {
-    'uf': 0, 
-    'var': 1, 
-    'eixo': 0,
+    'uf': 0,
+    'var': 1,
+    'eixo': 1,
     'ano': 0,
     'cad': 0,
     'deg': 0,
@@ -22,6 +26,14 @@ export class HomePage implements OnInit{
     'chg': 0,
     'slc': 0
   };
+
+  portes = [
+    {"name": "Escolher", "value": 0},
+    {"name": "Porte Micro", "value": 9}, 
+    {"name": "Porte Pequeno", "value": 10}, 
+    {"name": "Porte Médio", "value": 11}, 
+    {"name": "Porte Grande", "value": 12}
+  ]
 
   constructor(public navCtrl: NavController, private jsonsProvider : JsonsProvider) {
 
@@ -37,13 +49,21 @@ export class HomePage implements OnInit{
       .subscribe( d => {
         this.pt_br = d;
         this.ready_pt_br = true;
+        console.log(d['select']['cad'])
+        this.cads = d['select']['cad'];
       })
 
+    this.jsonsProvider.getSelectDesags()
+      .subscribe( d => {
+        this.select_desags = d;
+      })
+    
     this.jsonsProvider.getAnos(this.parameters.eixo)
       .subscribe(d => {
         this.anos = d;
         this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
       })
+
 
   }
 
@@ -51,6 +71,11 @@ export class HomePage implements OnInit{
   update(event){
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     this.parameters.uf  = 0;
+  }
+
+  updateDesag(event){
+    this.parameters.deg = Math.floor(this.pre_desags/10);
+    this.parameters.subdeg = this.pre_desags % 10;
   }
 
   getQuery(parameters : Object){
@@ -86,6 +111,14 @@ export class HomePage implements OnInit{
         else 
           return false;
     }
+  }
+
+  vrvPorte(){
+    let vrvPorte = [1, 2, 3];
+    if(vrvPorte.indexOf(this.parameters.var) != -1)
+      return true;
+    else 
+      return false;
   }
 }
 
