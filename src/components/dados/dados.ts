@@ -3,10 +3,6 @@ import { NavController } from 'ionic-angular';
 
 import { JsonsProvider } from '../../providers/jsons/jsons';
 
-import * as d3 from "d3";
-import * as d3Scale from "d3-scale";
-import * as d3Axis from "d3-axis";
-
 import { DadosProvider } from '../../providers/dados/dados';
 
 /**
@@ -24,7 +20,7 @@ export class DadosComponent {
   width  : number = window.innerWidth*0.9;
   height : number = window.innerHeight*0.5;
 
-  @Input() parameters : any[];
+  @Input() parameters : any;
   @Input() url : string;
 
   @Input() globalData : Object = [];
@@ -42,8 +38,10 @@ export class DadosComponent {
 
   desc_array: any = [];
 
-  constructor(public navCtrl: NavController, private dadosProvider: DadosProvider, private jsonsProvider: JsonsProvider) {
-    this.text = 'Hello World';
+  constructor(public navCtrl: NavController,
+              private dadosProvider: DadosProvider,
+              private jsonsProvider: JsonsProvider) {
+
   }
 
   ngOnInit() {
@@ -51,7 +49,6 @@ export class DadosComponent {
     this.jsonsProvider.getDescricoes()
       .subscribe(d=>{
         this.descricoes = d;
-
         this.getData();
     })
   }
@@ -59,11 +56,8 @@ export class DadosComponent {
   ngOnChanges(){
 
     if(this.descricoes != undefined){
-
       this.getData();
-
     }
-
   }
 
   getData(){
@@ -72,17 +66,40 @@ export class DadosComponent {
 
     this.desc_array = [];
 
-    this.valor = this.dadosProvider.getGlobalData().barras.valor;
-    this.percentual = this.dadosProvider.getGlobalData().barras.percentual;
+    var that = this;
+
+    //TODO
+    //PRECISA ATUALIZAR OS DADOS DEPOIS DAS VIEWS ATUALIZAREM A VARIÁVEL GLOBAL!
+    setTimeout(function(){
+
+      that.valor = that.dadosProvider.getGlobalData()['barras'].valor;
+      that.percentual = that.dadosProvider.getGlobalData()['treemap'].percentual;
+
+      for(var i = 0; i < that.descricoes[that.parameters.eixo][that.parameters.var].length; i++){
+
+        if(that.descricoes[that.parameters.eixo][that.parameters.var][i][that.desc_key] != ""){
+
+          var desc = that.dadosProvider.getFinalDesc(i, that.descricoes[that.parameters.eixo][that.parameters.var][i][that.desc_key], that.parameters);
+
+          switch(i){
+            case 0: that.desc_array.push({desc: desc, valor: that.valor});
+              break;
+            case 1: that.desc_array.push({desc: desc, valor: that.percentual});
+              break;
+            case 2: that.desc_array.push({desc: desc, valor: that.percentual});
+              break;
+          }
+
+        }
+
+      }
+    }, 500);
 
 
-    for(var i = 0; i < this.descricoes[this.parameters.eixo][this.parameters.var].length; i++){
-      if(this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key] != "")
-        this.desc_array.push(this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key])
-    }
 
-    console.log(this.globalData);
 
   }
+
+
 
 }

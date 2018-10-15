@@ -4,6 +4,7 @@ import { TreemapProvider } from '../../providers/treemap/treemap';
 import { Treemap } from '../../interfaces/treemap';
 import { HierarchyRectangularNode } from 'd3';
 import { JsonsProvider } from '../../providers/jsons/jsons';
+import { DadosProvider } from '../../providers/dados/dados';
 /**
  * Generated class for the TreemapComponent component.
  *
@@ -20,6 +21,7 @@ export class TreemapComponent implements OnChanges{
   height : number = window.innerHeight*0.8;
 
   @Input() url : string;
+  @Input() parameters : any[];
 
   view_title: any;
   private ready = false;
@@ -36,7 +38,8 @@ export class TreemapComponent implements OnChanges{
 
 
   constructor(private treemapProvider : TreemapProvider,
-              private jsonsProvider: JsonsProvider) {
+              private jsonsProvider: JsonsProvider,
+              private dadosProvider: DadosProvider) {
                 this.view_title = "Treemap"
               }
 
@@ -101,12 +104,29 @@ export class TreemapComponent implements OnChanges{
   }
 
   getData(): void {
+
     this.treemapProvider.getData(this.url)
         .subscribe(data => {
           this.data = data;
-          this.treemapData = this.treemap(this.getHierarchy())
+          this.updateGlobalData();
+          this.treemapData = this.treemap(this.getHierarchy());
           this.ready = true;
         });
+  }
+
+  updateGlobalData(): void {
+
+    var that = this;
+    var filtered = this.data['children'].filter(function (obj) {
+      return obj['colorId'] == that.parameters['cad'];
+    });
+
+    if(this.parameters['cad'] != 0){
+      this.dadosProvider.setGlobalData('treemap', filtered[0]['children'][0]['children'][0].size, filtered[0]['children'][0]['children'][0].percentual);
+    }
+
+    //this.dadosProvider.setGlobalData('treemap', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);
+
   }
 
 }

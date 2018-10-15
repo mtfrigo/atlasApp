@@ -21,8 +21,13 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'mapa.html'
 })
 export class MapaComponent {
-  @Input() width  : number = window.innerWidth*0.9;
-  @Input() height : number = this.width;
+  // @Input() width  : number = window.innerWidth*0.9;
+  @Input() width  : number = 320;
+  // @Input() height : number = this.width;
+  @Input() height : number = 320;
+
+  @Input() parameters : any[];
+  @Input() url : string;
 
   view_title: any;
 
@@ -46,8 +51,6 @@ export class MapaComponent {
 
   colorScale: any;
 
-  cads_index: any = 0;
-  cads = [0, 5,6,8];
 
   constructor(public navCtrl: NavController, private mapaProvider: MapaProvider, private jsonProvider: JsonsProvider) {
 
@@ -73,11 +76,15 @@ export class MapaComponent {
 
   }
 
+  ngOnChanges(){
+    this.updateData();
+  }
+
 
   getData(): void {
 
 
-    this.mapaProvider.getData(this.cads[this.cads_index])
+    this.mapaProvider.getData(this.parameters['cad'])
       .subscribe(response => (this.data = response),
                  error => '[MAPA] ERRO!',
                  () => this.afterGetData()
@@ -86,19 +93,18 @@ export class MapaComponent {
 
   updateData(): void {
 
-    if(this.cads_index++ >= this.cads.length -1) this.cads_index = 0;
+    console.log("AQUI ENTRO")
 
-    this.mapaProvider.getData(this.cads[this.cads_index])
+    this.mapaProvider.getData(this.parameters['cad'])
       .subscribe(response => (this.data = response),
                  error => '[MAPA] ERRO!',
-                 () => this.afterGetData()
+                 () => this.parseData()
                 );
   }
 
 
 
-  getMapTransform()
-  {
+  getMapTransform(){
     return "translate(" + (this.margin.left+5) + "," + (this.margin.top+5) + ")";
   }
 
@@ -120,6 +126,8 @@ export class MapaComponent {
 
   parseData()
   {
+
+    console.log("Oioioioio")
     this.values = this.data.pop();
 
     var edgeValues = d3.extent(this.values);
@@ -136,7 +144,7 @@ export class MapaComponent {
 
     this.colorScale = d3.scaleLinear()
       .domain([this.minValue, this.maxValue])
-      .range([this.colors.cadeias[0].gradient['2'], this.colors.cadeias[0].gradient['6']])
+      .range([this.colors.cadeias[this.parameters['cad']].gradient['2'], this.colors.cadeias[this.parameters['cad']].gradient['6']])
 
   }
 

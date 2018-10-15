@@ -115,14 +115,20 @@ export class BarrasComponent implements OnChanges{
   updateData() : void {
 
 
+      console.log("Barras update!!");
        this.barrasProvider.getData(this.parameters)
        .subscribe(response => (this.new_data = response),
                   error => 'oioio',
-                  () => this.animateBars()
+                  () => {
+
+                    this.animateBars()
+
+                  }
                  );
   }
 
   parseData(data){
+
     for(var i = 0; i < data.length; i++)
     {
       this.keys.push(data[i].ano);
@@ -132,6 +138,8 @@ export class BarrasComponent implements OnChanges{
 
     this.maxValue = edgeValues[1];
     this.minValue = edgeValues[0];
+
+    ;
 
   }
 
@@ -242,9 +250,9 @@ export class BarrasComponent implements OnChanges{
     this.keys = [];
 
     this.parseData(this.new_data);
-
-    //ARRUMAR
+    console.log("Barras atualizando global data!!");
     this.dadosProvider.setGlobalData('barras', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);
+
 
     let i = 0;
 
