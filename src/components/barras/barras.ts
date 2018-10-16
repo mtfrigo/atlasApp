@@ -116,7 +116,6 @@ export class BarrasComponent implements OnChanges{
 
 
       console.log("Barras update!!");
-      console.log(this.data)
        this.barrasProvider.getData(this.parameters)
        .subscribe(response => (this.new_data = response),
                   error => 'oioio',
