@@ -70,7 +70,6 @@ export class DonutComponent implements OnChanges{
       }, 20)
     });
 
-    console.log("oioi")
   }
 
   getColor(tipo : string) {
