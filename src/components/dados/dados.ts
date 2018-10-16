@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import { DadosProvider } from '../../providers/dados/dados';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the DadosComponent component.
@@ -21,11 +22,14 @@ export class DadosComponent {
   height : number = window.innerHeight*0.5;
 
   @Input() parameters : any;
+  @Input() globalData : Observable<any>;
   @Input() url : string;
 
-  @Input() globalData : Object = [];
+  _data;
 
   text: string;
+
+  counter = 0;
 
   descricoes: any = undefined;
   desc_key: string;
@@ -40,16 +44,23 @@ export class DadosComponent {
 
   constructor(public navCtrl: NavController,
               private dadosProvider: DadosProvider,
-              private jsonsProvider: JsonsProvider) {
+              private jsonsProvider: JsonsProvider,
+              private cd: ChangeDetectorRef) {
 
   }
 
   ngOnInit() {
 
-    this.jsonsProvider.getDescricoes()
+    this.globalData.subscribe(data => {
+      this._data = data;
+      this.cd.markForCheck();
+      this.dadosProvider.globalData = data;
+
+      this.jsonsProvider.getDescricoes()
       .subscribe(d=>{
         this.descricoes = d;
         this.getData();
+      })
     })
   }
 
@@ -66,40 +77,26 @@ export class DadosComponent {
 
     this.desc_array = [];
 
-    var that = this;
+    this.valor = this.dadosProvider.globalData['barras'].valor;
+    this.percentual = this.dadosProvider.globalData['treemap'].percentual;
 
-    //TODO
-    //PRECISA ATUALIZAR OS DADOS DEPOIS DAS VIEWS ATUALIZAREM A VARIÁVEL GLOBAL!
-    setTimeout(function(){
+    for(var i = 0; i < this.descricoes[this.parameters.eixo][this.parameters.var].length; i++){
 
-      that.valor = that.dadosProvider.getGlobalData()['barras'].valor;
-      that.percentual = that.dadosProvider.getGlobalData()['treemap'].percentual;
+      if(this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key] != ""){
 
-      for(var i = 0; i < that.descricoes[that.parameters.eixo][that.parameters.var].length; i++){
+        var desc = this.dadosProvider.getFinalDesc(i, this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key], this.parameters);
 
-        if(that.descricoes[that.parameters.eixo][that.parameters.var][i][that.desc_key] != ""){
-
-          var desc = that.dadosProvider.getFinalDesc(i, that.descricoes[that.parameters.eixo][that.parameters.var][i][that.desc_key], that.parameters);
-
-          switch(i){
-            case 0: that.desc_array.push({desc: desc, valor: that.valor});
-              break;
-            case 1: that.desc_array.push({desc: desc, valor: that.percentual});
-              break;
-            case 2: that.desc_array.push({desc: desc, valor: that.percentual});
-              break;
-          }
-
+        switch(i){
+          case 0: this.desc_array.push({desc: desc, valor: this.valor});
+            break;
+          case 1: this.desc_array.push({desc: desc, valor: this.percentual});
+            break;
+          case 2: this.desc_array.push({desc: desc, valor: this.percentual});
+            break;
         }
 
       }
-    }, 500);
 
-
-
-
+    }
   }
-
-
-
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import * as d3 from 'd3';
 import { TreemapProvider } from '../../providers/treemap/treemap';
 import { Treemap } from '../../interfaces/treemap';
@@ -22,6 +22,9 @@ export class TreemapComponent implements OnChanges{
 
   @Input() url : string;
   @Input() parameters : any[];
+
+
+  @Output() dadoGlobal = new EventEmitter();
 
   view_title: any;
   private ready = false;
@@ -54,6 +57,10 @@ export class TreemapComponent implements OnChanges{
 
   ngOnChanges(){
     this.getData();
+  }
+
+  sendTreemapData(valor, percent) {
+    this.dadoGlobal.emit({view: 'treemap', valor: valor, percentual: percent});
   }
 
   getHierarchy(){
@@ -122,7 +129,10 @@ export class TreemapComponent implements OnChanges{
     });
 
     if(this.parameters['cad'] != 0){
-      this.dadosProvider.setGlobalData('treemap', filtered[0]['children'][0]['children'][0].size, filtered[0]['children'][0]['children'][0].percentual);
+      this.sendTreemapData(filtered[0]['children'][0]['children'][0].size, filtered[0]['children'][0]['children'][0].percentual)
+    }
+    else {
+      this.sendTreemapData(0, 1)
     }
 
     //this.dadosProvider.setGlobalData('treemap', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);

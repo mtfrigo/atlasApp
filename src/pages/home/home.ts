@@ -1,6 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { JsonsProvider } from '../../providers/jsons/jsons';
+import { DadosProvider } from '../../providers/dados/dados';
+import { ObserveOnMessage } from 'rxjs/operators/observeOn';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'page-home',
@@ -14,11 +17,13 @@ export class HomePage implements OnInit{
   private select_desags : any = [];
   private cads : any[];
   private ready_pt_br : boolean = false;
-  private globalData : Object = [];
+
+  data: any;
+
   private parameters = {
     'uf': 0,
     'var': 1,
-    'eixo': 1,
+    'eixo': 0,
     'ano': 0,
     'cad': 0,
     'deg': 0,
@@ -29,17 +34,24 @@ export class HomePage implements OnInit{
 
   portes = [
     {"name": "Escolher", "value": 0},
-    {"name": "Porte Micro", "value": 9}, 
-    {"name": "Porte Pequeno", "value": 10}, 
-    {"name": "Porte Médio", "value": 11}, 
+    {"name": "Porte Micro", "value": 9},
+    {"name": "Porte Pequeno", "value": 10},
+    {"name": "Porte Médio", "value": 11},
     {"name": "Porte Grande", "value": 12}
   ]
 
-  constructor(public navCtrl: NavController, private jsonsProvider : JsonsProvider) {
+  constructor(public navCtrl: NavController,
+     private jsonsProvider : JsonsProvider,
+     private dadosProvider: DadosProvider) {
+
+
 
   }
 
   ngOnInit(){
+
+    this.data = new BehaviorSubject(this.getGlobalData());
+
     this.jsonsProvider.getUfJson()
         .subscribe( d => {
           this.list_uf = d;
@@ -56,7 +68,7 @@ export class HomePage implements OnInit{
       .subscribe( d => {
         this.select_desags = d;
       })
-    
+
     this.jsonsProvider.getAnos(this.parameters.eixo)
       .subscribe(d => {
         this.anos = d;
@@ -64,6 +76,15 @@ export class HomePage implements OnInit{
       })
 
 
+  }
+
+  getGlobalData(){
+    return this.dadosProvider.getGlobalData();
+  }
+
+  reciverData(dadoGlobal) {
+    this.dadosProvider.setGlobalData(dadoGlobal.view, dadoGlobal.valor, dadoGlobal.percentual);
+    this.data.next(this.getGlobalData());
   }
 
 
@@ -78,6 +99,7 @@ export class HomePage implements OnInit{
   }
 
   getQuery(parameters : Object){
+
     return Object.keys(parameters)
                  .map(function(k) {
                     return encodeURIComponent(k) + '=' + encodeURIComponent(parameters[k])
@@ -96,18 +118,18 @@ export class HomePage implements OnInit{
     switch(box){
       case 1:
         if(views.view_box1[this.parameters.chg].id == view)
-          return true; 
-        else 
+          return true;
+        else
           return false;
-      case 2: 
+      case 2:
         if(views.view_box2[0].id == view)
-          return true; 
-        else 
+          return true;
+        else
           return false;
-      case 3: 
+      case 3:
         if(views.view_box3[0].id == view)
-          return true; 
-        else 
+          return true;
+        else
           return false;
     }
   }
@@ -116,7 +138,7 @@ export class HomePage implements OnInit{
     let vrvPorte = [1, 2, 3];
     if(vrvPorte.indexOf(this.parameters.var) != -1)
       return true;
-    else 
+    else
       return false;
   }
 }

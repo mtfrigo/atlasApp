@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
@@ -28,6 +28,8 @@ export class BarrasComponent implements OnChanges{
 
   @Input() parameters : any;
   @Input() url : string;
+
+  @Output() dadoGlobal = new EventEmitter();
 
 
   private colors;
@@ -92,6 +94,10 @@ export class BarrasComponent implements OnChanges{
   ngOnChanges(){
 
     this.updateData();
+  }
+
+  sendBarData(valor, percent) {
+    this.dadoGlobal.emit({view: 'barras', valor: valor, percentual: percent});
   }
 
   ionViewDidLoad() {
@@ -249,7 +255,9 @@ export class BarrasComponent implements OnChanges{
     this.keys = [];
 
     this.parseData(this.new_data);
-    this.dadosProvider.setGlobalData('barras', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);
+    this.sendBarData(this.new_data[this.parameters.ano - 2007].valor, this.new_data[this.parameters.ano - 2007].percentual);
+
+    //this.dadosProvider.setGlobalData('barras', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);
 
 
     let i = 0;
