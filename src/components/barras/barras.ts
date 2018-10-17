@@ -35,7 +35,7 @@ export class BarrasComponent implements OnChanges{
   private colors;
 
   view_title: string;
-
+  interval_animation : number = 20;
   yTicks: any;
   yTicksArray: number[];
   yTicksScale: any;
@@ -50,12 +50,13 @@ export class BarrasComponent implements OnChanges{
   valueTop = this.margin.top + 5;
 
   data: any = [];
-  new_data: any;
 
   minBarHeight = 1;
 
   dados = {key: [], value: [], percentual: [], taxa: [], percentual_setor: []};
-
+  
+  heights : number[] = []; // lista que guarda as informações de altura de cada barras ( acesso pelo índice das barras )
+  y_list : number[] = [];
   keys: any = [];
   values: number[] = [];
   minValue: any;
@@ -106,8 +107,10 @@ export class BarrasComponent implements OnChanges{
   }
 
   afterGetData(data){
-    this.parseData(data);
-    this.initAxis();
+    this.initAxis();  
+    this.parseData();
+    this.heights = this.getHeightList(data);
+    this.y_list = this.getYList(data);
 
   }
 
@@ -123,7 +126,7 @@ export class BarrasComponent implements OnChanges{
 
 
        this.barrasProvider.getData(this.parameters)
-       .subscribe(response => (this.new_data = response),
+       .subscribe(response => (this.data = response),
                   error => 'oioio',
                   () => {
                     this.animateBars()
@@ -131,16 +134,10 @@ export class BarrasComponent implements OnChanges{
                  );
   }
 
-  parseData(data){
+  parseData(){
 
-    this.keys = [];
-    this.values = [];
-
-    for(var i = 0; i < data.length; i++)
-    {
-      this.keys.push(data[i].ano);
-      this.values.push(data[i].valor);
-    }
+    this.keys = this.data.map( d => d.ano);      
+    this.values = this.data.map( d => d.valor);
 
     this.first_year = this.keys[0];
 
@@ -152,10 +149,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   initAxis() {
-
-    console.log("oioioio")
-
-    console.log(this.data)
 
     this.x = d3.scaleBand()
       .domain(this.keys)
@@ -173,6 +166,15 @@ export class BarrasComponent implements OnChanges{
     .rangeRound([this.y(this.minValue), this.y(this.maxValue)])
     .domain(d3.extent(this.yTicksArray)).nice();
 
+  }
+
+
+  getHeightList(data){
+    return data.map(d => this.getBarHeight(d.valor));
+  }
+
+  getYList(data){
+    return data.map(d => this.getBarY(d.valor));
   }
 
   getTickYValue(d,i)
@@ -259,21 +261,29 @@ export class BarrasComponent implements OnChanges{
 
   animateBars() : void {
 
-    this.parseData(this.new_data);
-    this.sendBarData(this.new_data[this.parameters.ano - this.first_year].valor, this.new_data[this.parameters.ano - this.first_year].percentual);
-
+    this.parseData();
+    let index_ano = this.keys.indexOf(this.parameters.ano);
+    this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
+    
     let i = 0;
+    let n_iteracoes = 50; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)
+    
+    this.initAxis();
 
     let animation = setInterval(d => {
-      this.data = d3.interpolate(this.data, this.new_data)(i);
+
+      let new_height_list = this.getHeightList(this.data);
+      let new_y_list = this.getYList(this.data);
+
+      this.heights = d3.interpolate(this.heights, new_height_list)(i);
+      this.y_list = d3.interpolate(this.y_list, new_y_list)(i);
+
       if (i >= 1){
         clearInterval(animation)
       }
-    i  = i + 0.1;
-    }, 30)
-
-    this.initAxis();
-
+      
+      i  = i + 1/n_iteracoes ;
+    }, this.interval_animation)
   }
 
   getBarColor(){
