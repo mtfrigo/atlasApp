@@ -31,7 +31,7 @@ export class HomePage implements OnInit{
     'chg': 0,
     'slc': 0,
     'prc': 0,
-    'typ': 0
+    'typ': 1
   };
 
   portes = [
@@ -42,11 +42,16 @@ export class HomePage implements OnInit{
     {"name": "Porte Grande", "value": 12}
   ]
 
-  constructor(public navCtrl: NavController,
-     private jsonsProvider : JsonsProvider,
-     private dadosProvider: DadosProvider) {
+  parceiros = [
+    {"name": "Mundo", "value": 0},
+    {"name": "África", "value": 1},
+    {"name": "América do Norte", "value": 2},
+    {"name": "América do Sul", "value": 3},
+    {"name": "Europa", "value": 4},
+    {"name": "Oceania", "value": 5}
+  ]
 
-
+  constructor(public navCtrl: NavController, private jsonsProvider : JsonsProvider, private dadosProvider : DadosProvider) {
 
   }
 
@@ -138,12 +143,64 @@ export class HomePage implements OnInit{
     }
   }
 
+
   vrvPorte(){
     let vrvPorte = [1, 2, 3];
     if(vrvPorte.indexOf(this.parameters.var) != -1)
       return true;
     else
       return false;
+  }
+
+  selectTipos(){
+    let selects = [
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2},
+        {"name": "Saldo Comercial", "value": 3},
+        {"name": "Corrente de Comércio", "value": 4}
+      ],
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2}
+      ],
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2},
+        {"name": "Corrente de Comércio", "value": 4}
+      ],
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2},
+        {"name": "Saldo Comercial", "value": 3},
+        {"name": "Corrente de Comércio", "value": 4}
+      ],
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2},
+        {"name": "Saldo Comercial", "value": 3},
+        {"name": "Corrente de Comércio", "value": 4}
+      ],
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2}
+      ],
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2}
+      ],
+      [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2},
+        {"name": "Saldo Comercial", "value": 3},
+        {"name": "Corrente de Comércio", "value": 4}
+      ],
+      [
+        {"name": "Exportação", "value": 1}
+      ]
+    ]
+
+    return selects[this.parameters.var - 1];
   }
 }
 

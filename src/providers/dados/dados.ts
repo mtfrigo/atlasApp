@@ -156,14 +156,30 @@ export class DadosProvider {
     }
   }
 
+  getPorteName(idPorte){
+
+    idPorte = parseInt(idPorte);
+
+    switch(idPorte){
+        case 9: return "PORTE MICRO";
+        case 10: return "PORTE PEQUENO";
+        case 11: return "PORTE MÉDIO";
+        case 12: return "PORTE GRANDE";
+    }
+  }
+
   getFinalDesc(i, text, parameters){
+
+    var deg_text = "";
 
     var cad_text = this.getCadName(parameters.cad).toUpperCase();
 
     var uf_text = this.getUFName(parameters.uf).toUpperCase();
     var nomeestado = this.getPrepos(uf_text)+' '+uf_text;
+    if(parameters.eixo == 0)
+      deg_text = "DE"+' '+ this.getPorteName(parameters.deg);
 
-    return text.replace('[uf]', nomeestado).replace('[cad]', cad_text);
+    return text.replace('[uf]', nomeestado).replace('[cad]', cad_text).replace('[deg]', deg_text);
   }
 
 }

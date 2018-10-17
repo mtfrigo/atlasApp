@@ -19,7 +19,7 @@ export class BarrasProvider {
   }
 
   getData (parameters): Observable<any[]> {
-    console.log(this.getQuery(parameters))
+    // console.log(this.getQuery(parameters))
     return (this.http.get<any[]>('http://143.54.231.10/atlasApp/src/api/json_barras.php?'+this.getQuery(parameters)));
   }
 

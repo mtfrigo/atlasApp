@@ -73,9 +73,11 @@ export class DadosComponent {
 
   getData(){
 
+
     this.desc_key = this.dadosProvider.getDescriptionKey(this.parameters);
 
     this.desc_array = [];
+
 
     this.valor = this.dadosProvider.globalData['barras'].valor;
     this.percentual = this.dadosProvider.globalData['treemap'].percentual;

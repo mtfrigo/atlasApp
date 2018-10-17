@@ -24,7 +24,6 @@ export class IndexPage {
   }
 
   goToOtherPage(){
-    console.log("Oioioio")
     this.navCtrl.push(HomePage);
   }
 }

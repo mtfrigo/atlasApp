@@ -49,14 +49,29 @@
     </ion-select>
   </ion-item>
 
+  <ion-item *ngIf="parameters.eixo == 3">
+    <ion-label>Parceiro</ion-label>
+    <ion-select [(ngModel)]="parameters.prc">
+      <ion-option *ngFor="let prc of parceiros" [value]="prc.value">{{prc.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="parameters.eixo == 3">
+    <ion-label>Tipo</ion-label>
+    <ion-select [(ngModel)]="parameters.typ">
+      <ion-option *ngFor="let typ of selectTipos()" [value]="typ.value">{{typ.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
   <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
+  <hr>
+
 
   <ion-item *ngIf="parameters.ano > 0 && ready_pt_br">
-
       <div>
           <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters"></view-mapa>
           <view-barras *ngIf="correctView(1, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-      </div>
+        </div>
       <div>
         <view-barras *ngIf="correctView(2, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
         <view-treemap *ngIf="correctView(2, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
@@ -64,8 +79,8 @@
       </div>
 
       <div>
-        <view-barras *ngIf="correctView(2, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-        <view-treemap *ngIf="correctView(2, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
+        <view-barras *ngIf="correctView(3, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+        <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
       </div>
 
   </ion-item>
