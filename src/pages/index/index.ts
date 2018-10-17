@@ -20,7 +20,7 @@ export class IndexPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IndexPage');
+    // console.log('ionViewDidLoad IndexPage');
   }
 
   goToOtherPage(){

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 
 import { NavController, Alert } from 'ionic-angular';
 import {
@@ -100,6 +100,15 @@ export class LinhasComponent {
 
   }
 
+  ngOnChanges(){
+
+    this.linhasProvider.getData(this.parameters)
+      .subscribe(response => (this.new_data = response),
+                 error => '[LINHAS] ERRO!',
+                 () => this.animateLines()
+                );
+  }
+
   getData(): void {
 
     this.linhasProvider.getData(this.parameters)
@@ -109,14 +118,6 @@ export class LinhasComponent {
                 );
   }
 
-  updateData(): void {
-
-    this.linhasProvider.getData(this.parameters)
-      .subscribe(response => (this.new_data = response),
-                 error => '[LINHAS] ERRO!',
-                 () => this.animateLines()
-                );
-  }
 
   afterGetData() {
 
@@ -195,12 +196,6 @@ export class LinhasComponent {
     return 'translate('+ this.x(d) +', '+ this.linesHeight +')';
   }
 
-  update() : void {
-
-    this.updateData();
-
-
-  }
 
   animateLines() : void {
 

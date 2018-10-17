@@ -181,8 +181,8 @@ export class BarrasComponent implements OnChanges{
   {
 
     return d3Scale.scaleLinear()
-    .domain(d3.extent(this.yTicksArray))
-    .rangeRound([this.minValue, this.maxValue])(i);
+      .domain(d3.extent(this.yTicksArray))
+      .rangeRound([this.minValue, this.maxValue])(i);
   }
 
   getTickY(d, i){
@@ -190,8 +190,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   getTickX(d, i){
-
-    // console.log(this.x(2007))
 
     return 'translate('+ this.x(d.ano) +', '+ this.barsHeight +')';
   }
