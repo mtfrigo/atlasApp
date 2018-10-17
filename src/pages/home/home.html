@@ -54,8 +54,13 @@
   <ion-item *ngIf="parameters.ano > 0 && ready_pt_br">
 
       <div>
-        <view-barras *ngIf="correctView(3, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-        <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
+          <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters"></view-mapa>
+          <view-barras *ngIf="correctView(1, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+      </div>
+      <div>
+        <view-barras *ngIf="correctView(2, 'barras')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+        <view-treemap *ngIf="correctView(2, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
+        <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
       </div>
 
       <div>

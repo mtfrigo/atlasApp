@@ -29,7 +29,9 @@ export class HomePage implements OnInit{
     'deg': 0,
     'subdeg': 0,
     'chg': 0,
-    'slc': 0
+    'slc': 0,
+    'prc': 0,
+    'typ': 0
   };
 
   portes = [
@@ -114,7 +116,9 @@ export class HomePage implements OnInit{
   }
 
   correctView(box: number, view : string) : boolean {
+
     let views = this.getDataVar().views;
+
     switch(box){
       case 1:
         if(views.view_box1[this.parameters.chg].id == view)
