@@ -31,6 +31,9 @@ export class LinhasComponent {
   @Input() width  : number = window.innerWidth*0.9;
   @Input() height : number = window.innerHeight*0.5;
 
+  @Input() url: string;
+  @Input() parameters: Object;
+
   view_title: any;
 
   innerWidth: any;
@@ -99,7 +102,7 @@ export class LinhasComponent {
 
   getData(): void {
 
-    this.linhasProvider.getData(this.ufs[this.uf_index])
+    this.linhasProvider.getData(this.parameters)
       .subscribe(response => (this.data = response),
                  error => '[LINHAS] ERRO!',
                  () => this.afterGetData()
@@ -108,9 +111,7 @@ export class LinhasComponent {
 
   updateData(): void {
 
-    if(this.uf_index++ >= this.ufs.length -1) this.uf_index = 0;
-
-    this.linhasProvider.getData(this.ufs[this.uf_index])
+    this.linhasProvider.getData(this.parameters)
       .subscribe(response => (this.new_data = response),
                  error => '[LINHAS] ERRO!',
                  () => this.animateLines()
@@ -160,7 +161,7 @@ export class LinhasComponent {
     var x = this.x;
     var y = this.y;
 
-    
+
     this.linePath = d3.line<any>()
     .x( (d)=>  x(d.ano) )
     .y( (d) => y(d.valor));
@@ -172,9 +173,7 @@ export class LinhasComponent {
   }
 
   getLineColor(d){
-
     return this.colors.cadeias[d[0].id].color;
-
   }
 
   getTickY(d, i){

@@ -65,6 +65,7 @@ export class BarrasComponent implements OnChanges{
   barsWidth:any;
 
   index = true;
+  first_year: any;
 
   constructor(public navCtrl: NavController, private barrasProvider: BarrasProvider, private dadosProvider: DadosProvider,private jsonsProvider: JsonsProvider) {
     this.view_title = 'Histograma'
@@ -125,30 +126,36 @@ export class BarrasComponent implements OnChanges{
        .subscribe(response => (this.new_data = response),
                   error => 'oioio',
                   () => {
-
                     this.animateBars()
-
                   }
                  );
   }
 
   parseData(data){
 
+    this.keys = [];
+    this.values = [];
+
     for(var i = 0; i < data.length; i++)
     {
       this.keys.push(data[i].ano);
       this.values.push(data[i].valor);
     }
+
+    this.first_year = this.keys[0];
+
     var edgeValues = d3.extent(this.values);
 
     this.maxValue = edgeValues[1];
     this.minValue = edgeValues[0];
 
-    ;
-
   }
 
   initAxis() {
+
+    console.log("oioioio")
+
+    console.log(this.data)
 
     this.x = d3.scaleBand()
       .domain(this.keys)
@@ -181,6 +188,9 @@ export class BarrasComponent implements OnChanges{
   }
 
   getTickX(d, i){
+
+    // console.log(this.x(2007))
+
     return 'translate('+ this.x(d.ano) +', '+ this.barsHeight +')';
   }
 
@@ -194,7 +204,7 @@ export class BarrasComponent implements OnChanges{
   getBarY(d) {
 
     var barHeight = this.y(d);
-    var zeroPosition = d3.min(this.dados.value) < 0 ? this.y(0) : false;
+    var zeroPosition = this.minValue < 0 ? this.y(0) : false;
     var isValueNegative = d < 0;
 
     // TEM VALOR NEGATIVO
@@ -244,21 +254,13 @@ export class BarrasComponent implements OnChanges{
   }
 
   update() : void {
-
     this.updateData();
-
   }
 
   animateBars() : void {
 
-    this.values = [];
-    this.keys = [];
-
     this.parseData(this.new_data);
-    this.sendBarData(this.new_data[this.parameters.ano - 2007].valor, this.new_data[this.parameters.ano - 2007].percentual);
-
-    //this.dadosProvider.setGlobalData('barras', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);
-
+    this.sendBarData(this.new_data[this.parameters.ano - this.first_year].valor, this.new_data[this.parameters.ano - this.first_year].percentual);
 
     let i = 0;
 
