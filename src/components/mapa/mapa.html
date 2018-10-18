@@ -5,7 +5,7 @@
       <g [attr.width]="mapaWidth" [attr.height]="mapHeight" [attr.transform]="getMapTransform()">.
             <path *ngFor="let d of states.features; index as i"
             [attr.data-legend]='1'
-            [attr.d]='path(d)'
+            [attr.d]='paths[i]'
             [attr.fill]='getStateColor(d)'
             >
             </path>

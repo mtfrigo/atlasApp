@@ -12,15 +12,14 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class BarrasProvider {
 
-  configUrl = 'http://143.54.231.10/atlasApp/src/api/json_barras.php?var=1&chg=0&uf=0&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos';
-
+  configUrl = 'http://143.54.231.10/atlasApp/src/api/json_barras.php?';
+  //configUrl = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api_json_barras.php?';
   constructor(public http: HttpClient) {
 
   }
 
-  getData (parameters): Observable<any[]> {
-    // console.log(this.getQuery(parameters))
-    return (this.http.get<any[]>('http://143.54.231.10/atlasApp/src/api/json_barras.php?'+this.getQuery(parameters)));
+  getData (parameters, uos : number): Observable<any[]> {
+    return (this.http.get<any[]>(this.configUrl+this.getQuery(parameters)+'&uos='+uos));
   }
 
   getQuery(parameters : Object){

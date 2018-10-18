@@ -23,19 +23,19 @@ import { DadosProvider } from '../../providers/dados/dados';
 })
 
 export class BarrasComponent implements OnChanges{
-  width  : number = window.innerWidth*0.9;
-  height : number = window.innerHeight*0.5;
+  width  : number = window.innerWidth*0.8;
+  height : number = window.innerHeight*0.4;
 
   @Input() parameters : any;
   @Input() url : string;
-
+  @Input() uos : number = 0;
   @Output() dadoGlobal = new EventEmitter();
 
 
   private colors;
 
   view_title: string;
-  interval_animation : number = 20;
+  interval_animation : number = 10;
   yTicks: any;
   yTicksArray: number[];
   yTicksScale: any;
@@ -115,7 +115,7 @@ export class BarrasComponent implements OnChanges{
   }
 
   getData(): void {
-    this.barrasProvider.getData(this.parameters)
+    this.barrasProvider.getData(this.parameters, this.uos)
       .subscribe(response => (this.data = response),
                  error => 'oioio',
                  () => this.afterGetData(this.data)
@@ -125,7 +125,7 @@ export class BarrasComponent implements OnChanges{
   updateData() : void {
 
 
-       this.barrasProvider.getData(this.parameters)
+       this.barrasProvider.getData(this.parameters, this.uos)
        .subscribe(response => (this.data = response),
                   error => 'oioio',
                   () => {
@@ -264,17 +264,21 @@ export class BarrasComponent implements OnChanges{
     this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
     
     let i = 0;
-    let n_iteracoes = 50; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)
+    let n_iteracoes = 25; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)
     
     this.initAxis();
 
+    let new_height_list = this.getHeightList(this.data);
+    let new_y_list = this.getYList(this.data)
+
+    const interp_h = d3.interpolate(this.heights, new_height_list);
+    const interp_y = d3.interpolate(this.y_list, new_y_list);
+
     let animation = setInterval(d => {
 
-      let new_height_list = this.getHeightList(this.data);
-      let new_y_list = this.getYList(this.data);
 
-      this.heights = d3.interpolate(this.heights, new_height_list)(i);
-      this.y_list = d3.interpolate(this.y_list, new_y_list)(i);
+      this.heights = interp_h(i);
+      this.y_list = interp_y(i);
 
       if (i >= 1){
         clearInterval(animation)
@@ -282,8 +286,8 @@ export class BarrasComponent implements OnChanges{
       
       i  = i + 1/n_iteracoes ;
     }, this.interval_animation)
+    
   }
-
   getBarColor(){
     return (this.colors['cadeias'][this.parameters.cad]['color'])
   }

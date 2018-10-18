@@ -40,9 +40,15 @@ export class MapaComponent {
   colors: any;
   brStates: any;
 
-  projection: any;
-  path: any;
+  projection = d3.geoMercator()
+                  .rotate([4.4, 0])
+                  .scale(100);
 
+  path = d3.geoPath()
+            .projection(this.projection);
+  
+  paths : string[];
+  
   states: any;
 
   values: number[] = [];
@@ -61,18 +67,17 @@ export class MapaComponent {
   }
 
   ngOnInit() {
-
     this.jsonProvider.getColors()
       .subscribe(d=>{
         this.colors = d;
-    })
-
+        
     this.jsonProvider.getBrStates()
-      .subscribe(d=>{
+    .subscribe(d=>{
         this.brStates = d;
         this.getData();
-
+      })
     })
+
 
   }
 
@@ -83,8 +88,7 @@ export class MapaComponent {
 
   getData(): void {
 
-
-    this.mapaProvider.getData(this.parameters['cad'])
+    this.mapaProvider.getData(this.url)
       .subscribe(response => (this.data = response),
                  error => '[MAPA] ERRO!',
                  () => this.afterGetData()
@@ -94,7 +98,7 @@ export class MapaComponent {
   updateData(): void {
 
 
-    this.mapaProvider.getData(this.parameters['cad'])
+    this.mapaProvider.getData(this.url)
       .subscribe(response => (this.data = response),
                  error => '[MAPA] ERRO!',
                  () => this.parseData()
@@ -109,17 +113,11 @@ export class MapaComponent {
 
   afterGetData(){
 
-    this.projection = d3.geoMercator()
-                        .rotate([4.4, 0])
-                        .scale(100)
-
-    this.path = d3.geoPath()
-                .projection(this.projection);
-
     this.states = t.feature(this.brStates, this.brStates.objects.states);
 
     this.projection.fitExtent([[0,0],[this.mapWidth, this.mapHeight]], this.states);
-
+    this.paths = this.states.features.map(d => this.path(d));
+    
     this.parseData();
   }
 

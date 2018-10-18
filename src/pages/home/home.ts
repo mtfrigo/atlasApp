@@ -31,8 +31,10 @@ export class HomePage implements OnInit{
     'chg': 0,
     'slc': 0,
     'prc': 0,
-    'typ': 1
+    'typ': 1,
+    'mundo': 1
   };
+
 
   portes = [
     {"name": "Escolher", "value": 0},
@@ -150,6 +152,42 @@ export class HomePage implements OnInit{
       return true;
     else
       return false;
+  }
+
+  getUos(box: number){
+    switch(this.parameters.eixo){
+      case 0:
+        if(this.parameters.var >= 10){
+          if(box == 2) return 1;
+        }
+        return 0;
+      case 1:
+        
+        if(this.parameters.var > 11){
+          if(box == 2) return 1;
+        } else if(this.parameters.var == 6){
+          if(box == 3) return 1;
+        }
+        
+        return 0;
+        
+      case 2:
+        if(this.parameters.var == 15 || this.parameters.var == 16){
+          if(box == 2) return 1;  
+        } else if(this.parameters.var == 10){
+          if(box == 1) return 0;
+        } 
+        return 0;
+
+      case 3:
+        if(this.parameters.var == 5 || this.parameters.var == 8){
+          if(box == 1) return 1;
+          if(box == 2) return 0;
+          if(box == 3) return 2;
+        }
+
+        return 0;
+    }
   }
 
   selectTipos(){
