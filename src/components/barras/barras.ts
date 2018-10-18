@@ -54,7 +54,7 @@ export class BarrasComponent implements OnChanges{
   minBarHeight = 1;
 
   dados = {key: [], value: [], percentual: [], taxa: [], percentual_setor: []};
-  
+
   heights : number[] = []; // lista que guarda as informações de altura de cada barras ( acesso pelo índice das barras )
   y_list : number[] = [];
   keys: any = [];
@@ -107,7 +107,7 @@ export class BarrasComponent implements OnChanges{
   }
 
   afterGetData(data){
-    this.initAxis();  
+    this.initAxis();
     this.parseData();
     this.heights = this.getHeightList(data);
     this.y_list = this.getYList(data);
@@ -136,7 +136,7 @@ export class BarrasComponent implements OnChanges{
 
   parseData(){
 
-    this.keys = this.data.map( d => d.ano);      
+    this.keys = this.data.map( d => d.ano);
     this.values = this.data.map( d => d.valor);
 
     this.first_year = this.keys[0];
@@ -262,10 +262,10 @@ export class BarrasComponent implements OnChanges{
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
     this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
-    
+
     let i = 0;
-    let n_iteracoes = 50; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)
-    
+    let n_iteracoes = 20; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)
+
     this.initAxis();
 
     let animation = setInterval(d => {
@@ -279,7 +279,7 @@ export class BarrasComponent implements OnChanges{
       if (i >= 1){
         clearInterval(animation)
       }
-      
+
       i  = i + 1/n_iteracoes ;
     }, this.interval_animation)
   }

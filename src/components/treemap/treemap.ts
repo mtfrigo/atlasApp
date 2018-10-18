@@ -79,7 +79,7 @@ export class TreemapComponent implements OnChanges{
   }
 
   getColorCadeia(d){
-    return this.colors.cadeias[d.parent.data.colorId].color
+    return this.colors != undefined ? this.colors.cadeias[d.parent.data.colorId].color : 'black'
   }
 
   getFontSize(d){

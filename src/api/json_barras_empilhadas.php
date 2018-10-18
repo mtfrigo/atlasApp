@@ -313,113 +313,9 @@ switch($pfj) {
 
 $barras = array();
 if($eixo == 0) {
-    require_once("EixoUm.php");
-    foreach (EixoUm::getter_barras($var, $uf, $cad, $deg, $uos) as $tupla) {
 
-        $values = (object) array(
-            'uf' => $tupla->UFNome,
-            'ano' => (int) $tupla->Ano,
-            'valor' => (double) $tupla->Valor,
-            'percentual' => (double) $tupla->Percentual,
-            'taxa' => (double) $tupla->Taxa
-        );
-
-        $year = (object) array(
-            (int) $tupla->Ano => $values
-        );
-
-        array_push ( $barras , $values );
-    }
 }
 else if($eixo == 1 && $var > 11) {
-    require_once("EixoDois.php");
-
-    foreach (EixoDois::getter_barras($var, $uf, $cad, $ocp, $uos, $slc, $deg, $subdeg, $ano) as $tupla) {
-        // $barras[$tupla->Ano] = $tupla->Valor;
-
-
-        if($deg == 0 ) {
-          $values = (object) array(
-              'uf' => getNameUF($tupla->idUF),
-              'ano' => (int) $tupla->Ano,
-              'valor' => (double) $tupla->Valor,
-              'percentual' => (double) $tupla->Percentual,
-              'taxa' => (double) $tupla->Taxa
-          );
-        }
-        else if($ocp == 3 && $deg != 0) {
-
-            $id = $tupla->Ano;
-            if($slc == 1) {
-                if($id == 2011) {
-                    $id = 2010;
-                }
-                if($id == 2012) {
-                    $id = 2011;
-                }
-                if($id == 2013) {
-                    $id = 2012;
-                }
-                if($id == 2014) {
-                    $id = 2013;
-                }
-                if($id == 2015) {
-                    $id = 2014;
-                }
-            }
-
-            $nomeDesag = getNameDesag($deg, $tupla);
-
-            $barras[intval($id-2007)]['year'] = (string)$tupla->Ano;
-            if(!isset($barras[intval($id-2007)][$nomeDesag]))
-                $barras[intval($id-2007)][$nomeDesag] = 0;
-
-            $barras[intval($id-2007)][$nomeDesag] += (double)$tupla->Valor;
-        }
-        else{
-
-            $id = $tupla->Ano;
-            if($slc == 1) {
-                if($id == 2011) {
-                    $id = 2010;
-                }
-                if($id == 2012) {
-                    $id = 2011;
-                }
-                if($id == 2013) {
-                    $id = 2012;
-                }
-                if($id == 2014) {
-                    $id = 2013;
-                }
-                if($id == 2015) {
-                    $id = 2014;
-                }
-            }
-
-            if($cad == 0 && $ocp == 0){
-                $nomeDesag = getNameDesag($deg, $tupla);
-
-                $barras[intval($id-2007)]['year'] = (string)$tupla->Ano;
-                if(!isset($barras[intval($id-2007)][$nomeDesag])) {
-                    $barras[intval($id - 2007)][$nomeDesag] = 0;
-                }
-                else{
-                    $barras[intval($id-2007)][$nomeDesag] += (double)$tupla->Valor;
-                }
-            }
-            else{
-                $nomeDesag = getNameDesag($deg, $tupla);
-
-                $barras[intval($id-2007)]['year'] = (string)$tupla->Ano;
-                $barras[intval($id - 2007)][$nomeDesag] = 0;
-                $barras[intval($id-2007)][$nomeDesag] = (double)$tupla->Valor;
-            }
-
-
-        }
-    }
-
 
 }
 else if($eixo == 1) {
@@ -429,51 +325,9 @@ else if($eixo == 1) {
     foreach (EixoDois::getter_barras($var, $uf, $cad, $ocp, $uos, $slc, $deg, $subdeg, $ano) as $tupla) {
         // $barras[$tupla->Ano] = $tupla->Valor;
 
+        if($deg != 0 & $var != 4 && $var != 5 && $var != 6) {
 
-        if($deg == 0 || $var == 4 || $var == 5 || $var == 6) {
-          if($var == 6 && $uos == 1 && $deg == 0){
-
-            $ocp == 0 ? $id = sigla_cadeia(getNameCadeia($tupla->idCadeia)) :  $id = getNameOCP($tupla->idOcupacao);
-
-            $values = (object) array(
-                'id' => $id,
-                'uf' => getNameUF($tupla->idUF),
-                'ano' => (int) $tupla->Ano,
-                'valor' => (double) $tupla->Valor,
-                'percentual' => (double) $tupla->Percentual,
-                'taxa' => (double) $tupla->Taxa
-            );
-          }
-          else if($var == 6 && $uos == 1 && $deg != 0){
-
-              $values = (object) array(
-                'id' => getNameDesag($deg, $tupla),
-                'uf' => getNameUF($tupla->idUF),
-                'ano' => (int) $tupla->Ano,
-                'valor' => (double) $tupla->Valor,
-                'percentual' => (double) $tupla->Percentual,
-                'taxa' => (double) $tupla->Taxa
-            );
-          }
-          else{
-
-            $values = (object) array(
-                'uf' => getNameUF($tupla->idUF),
-                'ano' => (int) $tupla->Ano,
-                'valor' => (double) $tupla->Valor,
-                'percentual' => (double) $tupla->Percentual,
-                'taxa' => (double) $tupla->Taxa
-            );
-          }
-
-          $year = (object) array(
-              (int) $tupla->Ano => $values
-          );
-
-          array_push ( $barras , $values );
-
-        }
-        else if($ocp == 3 && $deg != 0) {
+          if($ocp == 3 && $deg != 0) {
 
             $id = $tupla->Ano;
 
@@ -490,90 +344,41 @@ else if($eixo == 1) {
 
             $barras[intval($id-2007)]['valores'][$nomeDesag] += (double)$tupla->Valor;
 
-        }
-        else{
+          }
+          else{
 
-            $id = $tupla->Ano;
+              $id = $tupla->Ano;
 
-            if($slc == 1 && $id >= 2011 && $id <= 2015) {
-              $id = $id - 1;
-            }
+              if($slc == 1 && $id >= 2011 && $id <= 2015) {
+                $id = $id - 1;
+              }
 
-            $nomeDesag = getNameDesag($deg, $tupla);
+              $nomeDesag = getNameDesag($deg, $tupla);
 
-            if($cad == 0 && $ocp == 0){
-
-              $aux[intval($id-2007)]['ano'] = (string)$tupla->Ano;
-
-
-              if(!isset($aux[intval($id-2007)]['valores'][$nomeDesag]))
-                  $aux[intval($id-2007)]['valores'][$nomeDesag] = 0;
-
-              $aux[intval($id-2007)]['valores'][$nomeDesag] += (double)$tupla->Valor;
-
-            }
-            else{
+              if($cad == 0 && $ocp == 0){
 
                 $aux[intval($id-2007)]['ano'] = (string)$tupla->Ano;
-                $aux[intval($id - 2007)]['valores'][$nomeDesag] = 0;
-                $aux[intval($id-2007)]['valores'][$nomeDesag] = (double)$tupla->Valor;
-            }
 
+
+                if(!isset($aux[intval($id-2007)]['valores'][$nomeDesag]))
+                    $aux[intval($id-2007)]['valores'][$nomeDesag] = 0;
+
+                $aux[intval($id-2007)]['valores'][$nomeDesag] += (double)$tupla->Valor;
+
+              }
+              else{
+
+                  $aux[intval($id-2007)]['ano'] = (string)$tupla->Ano;
+                  $aux[intval($id - 2007)]['valores'][$nomeDesag] = 0;
+                  $aux[intval($id-2007)]['valores'][$nomeDesag] = (double)$tupla->Valor;
+              }
+            }
 
         }
     }
 
     foreach($aux as $valor){
       array_push($barras, $valor);
-    }
-
-
-}
-else if($eixo == 2) {
-    require_once("EixoTres.php");
-        foreach (EixoTres::getter_barras($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
-
-            if ($var < 15 && $var != 10) {
-
-              $values = (object) array(
-                'uf' => $tupla->UFNome,
-                'ano' => (int) $tupla->Ano,
-                'valor' => (double)$tupla->Valor,
-                'percentual' => (double)$tupla->Percentual,
-                'taxa' => (double)$tupla->Taxa
-              );
-
-            }
-            else {
-
-              $values = (object) array(
-                'ano' => (int) $tupla->Ano,
-                'valor' => (double)$tupla->Valor,
-                'percentual' => (double)$tupla->Percentual,
-                'taxa' => (double)$tupla->Taxa,
-                'uos' => (int) $uos
-              );
-
-            }
-
-            array_push($barras, $values);
-        }
-}
-else if($eixo == 3) {
-    require_once("EixoQuatro.php");
-    foreach (EixoQuatro::getter_barras($var, $prc, $cad, $typ, $uf, $mundo, $slc, $uos) as $tupla) {
-
-
-        $values = (object) array(
-          'ano' => (int) $tupla->Ano,
-          'uf' => $tupla->UFNome,
-          'prc' => $tupla->ParceiroNome,
-          'valor' => (double)$tupla->Valor,
-          'percentual' => (double)$tupla->Percentual,
-          'taxa' => (double)$tupla->Taxa
-        );
-
-        array_push($barras, $values);
     }
 
 }
