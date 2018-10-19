@@ -23,7 +23,7 @@ export class HomePage implements OnInit{
   private parameters = {
     'uf': 0,
     'var': 1,
-    'eixo': 0,
+    'eixo': 1,
     'ano': 0,
     'cad': 0,
     'deg': 0,

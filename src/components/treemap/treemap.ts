@@ -17,8 +17,8 @@ import { DadosProvider } from '../../providers/dados/dados';
 })
 export class TreemapComponent implements OnChanges{
 
-  width  : number = window.innerWidth*0.9;
-  height : number = window.innerHeight*0.8;
+  width  : number = window.innerWidth*0.8;
+  height : number = window.innerHeight*0.5;
 
   @Input() url : string;
   @Input() parameters : any[];
@@ -29,6 +29,8 @@ export class TreemapComponent implements OnChanges{
   view_title: any;
   private ready = false;
   private data : Treemap[] = [];
+  private subtitles_1 : Treemap[] = [];
+  private subtitles_2 : Treemap[] = [];
   private colors;
   private treemapData : HierarchyRectangularNode<{}>;
   private fontSizeStd : number = 50;
@@ -118,7 +120,25 @@ export class TreemapComponent implements OnChanges{
           this.updateGlobalData();
           this.treemapData = this.treemap(this.getHierarchy());
           this.ready = true;
+
+          this.subtitles_1 = this.data['children']
+                                  .filter((d, i) => { 
+                                    if(i < Math.floor(this.data['children'].length / 2)) return d;
+                                  });
+          this.subtitles_2 = this.data['children']
+                                  .filter((d, i) => { 
+                                    if(i >= Math.floor(this.data['children'].length / 2)) return d;
+                                  });
         });
+  }
+
+  getSubtitleStyle(d){
+    return {
+      'background-color': this.colors.cadeias[d.colorId].color,
+      'width': '10px',
+      'height': '10px',
+      'margin-top': '3px'
+    }
   }
 
   updateGlobalData(): void {
