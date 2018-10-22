@@ -17,10 +17,10 @@ import { HomePage } from '../home/home';
 export class IndexPage {
   private eixos = [
     {'name': "Atlas", 'value': -1, 'color': "#ccc"},
-    {'name': "EMPREENDIMENTOS CULTURAIS", 'value': 0, 'color': '#d6d940'},
-    {'name': "MERCADO DE TRABALHO", 'value': 1, 'color': '#89c445'},
-    {'name': "POLÍTICAS PÚBLICAS", 'value': 2, 'color': '#299c76'},
-    {'name': "COMÉRCIO INTERNACIONAL", 'value': 3, 'color': '#0e3b30'}
+    {'name': "EMPREENDIMENTOS \n CULTURAIS", 'value': 0, 'color': '#D2D831'},
+    {'name': "MERCADO DE \n TRABALHO", 'value': 1, 'color': '#8CC03D'},
+    {'name': "POLÍTICAS \n PÚBLICAS", 'value': 2, 'color': '#139474'},
+    {'name': "COMÉRCIO \n INTERNACIONAL", 'value': 3, 'color': '#043A2D'}
   ]
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -33,5 +33,15 @@ export class IndexPage {
     this.navCtrl.push(HomePage, {
       data: d
     });
+  }
+
+  getBackgroundImage(d){
+    if(d.name == "Atlas"){
+      return 'linear-gradient(to bottom right, #0A7482, #1C2E58)'
+    }
+
+
+
+    return null
   }
 }

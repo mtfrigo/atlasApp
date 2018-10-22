@@ -53,8 +53,8 @@ export class HomePage implements OnInit{
     {"name": "Oceania", "value": 5}
   ]
 
-  constructor(public navCtrl: NavController, 
-    private jsonsProvider : JsonsProvider, 
+  constructor(public navCtrl: NavController,
+    private jsonsProvider : JsonsProvider,
     private dadosProvider : DadosProvider,
     public navParams : NavParams) {
       this.info_eixo = navParams.get('data');
