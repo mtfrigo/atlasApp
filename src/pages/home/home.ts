@@ -17,7 +17,7 @@ export class HomePage implements OnInit{
   private select_desags : any = [];
   private cads : any[];
   private ready_pt_br : boolean = false;
-
+  private info_eixo = {'value': 0, 'name': ''};
   data: any;
 
   private parameters = {
@@ -57,7 +57,8 @@ export class HomePage implements OnInit{
     private jsonsProvider : JsonsProvider, 
     private dadosProvider : DadosProvider,
     public navParams : NavParams) {
-      this.parameters.eixo = navParams.get('data');
+      this.info_eixo = navParams.get('data');
+      this.parameters.eixo = this.info_eixo.value;
   }
 
   ngOnInit(){

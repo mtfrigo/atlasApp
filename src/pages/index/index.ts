@@ -29,9 +29,9 @@ export class IndexPage {
     console.log('ionViewDidLoad IndexPage');
   }
 
-  goToOtherPage(eixo: number){
+  goToOtherPage(d: number){
     this.navCtrl.push(HomePage, {
-      data: eixo
+      data: d
     });
   }
 }
