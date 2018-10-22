@@ -17,10 +17,10 @@ import { HomePage } from '../home/home';
 export class IndexPage {
   private eixos = [
     {'name': "Atlas", 'value': -1, 'color': "#ccc"},
-    {'name': "EMPREENDIMENTOS \n CULTURAIS", 'value': 0, 'color': '#D2D831'},
-    {'name': "MERCADO DE \n TRABALHO", 'value': 1, 'color': '#8CC03D'},
-    {'name': "POLÍTICAS \n PÚBLICAS", 'value': 2, 'color': '#139474'},
-    {'name': "COMÉRCIO \n INTERNACIONAL", 'value': 3, 'color': '#043A2D'}
+    {'name': "EMPREENDIMENTOS \n CULTURAIS", 'value': 0, 'color': '#d6d940', 'ioncolor': 'eixo1'},
+    {'name': "MERCADO DE \n TRABALHO", 'value': 1, 'color': '#89c445', 'ioncolor': 'eixo2'},
+    {'name': "POLÍTICAS \n PÚBLICAS", 'value': 2, 'color': '#299c76', 'ioncolor': 'eixo3'},
+    {'name': "COMÉRCIO \n INTERNACIONAL", 'value': 3, 'color': '#0e3b30', 'ioncolor': 'eixo4'}
   ]
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
