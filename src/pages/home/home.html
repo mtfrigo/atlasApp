@@ -80,7 +80,6 @@
       <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
       <view-linhas *ngIf="correctView(2, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
     </div>
-         
       
     <div>
       <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
