@@ -14,86 +14,13 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content [style.display]="flex" [style.flex-direction]="column" >
 
 
-    <div class="section" id="section0">
-        <!-- logo -->
-      <div>
-          <p>Bem-vindo ao</p>
-
-          <div class='logo_container'>
-            <img class="img_atlas" src="../../assets/imgs/Atlas.png">
-          </div>
-      </div>
-    </div>
-
-    <div class="section " id="section1">
-				<!-- logo -->
-        <div class="desc-title">
-						<p>O Atlas é uma ferramenta de pesquisa, disponibilização e visualização de dados da <br/>cultura na economia brasileira.  Ela permite que você:</p>
-        </div>
-
-        <div id="separator"></div>
-
-        <div class="icons-list">
-            <img (click)="goToOtherPage()" class="icone" src="../../assets/imgs/Icone_01.png">
-            <img (click)="goToOtherPage()" class="icone" src="../../assets/imgs/Icone_02.png">
-            <img (click)="goToOtherPage()" class="icone" src="../../assets/imgs/Icone_03.png">
-            <img (click)="goToOtherPage()" class="icone" src="../../assets/imgs/Icone_04.png">
-        </div>
-
-        <div class="text-atlas" id="background_2">
-            <div class="title-question">
-              <p>Por que construir um Atlas da Economia da Cultura no Brasil?</p>
-            </div>
-            <div class="separator2"></div>
-            <div class="question">
-              <p>Para mapear e sistematizar um vasto conjunto de informações relacionadas ao panorama econômico e produtivo da cultura no Brasil. Combinando acessibilidade e fundamentação acadêmica, o Atlas Econômico da Cultura Brasileira apresenta e discute dados, indicadores e estatísticas culturais, impulsionando o debate sobre o papel da cultura na economia brasileira.</p>
-            </div>
-            <div class="title-question">
-              <p>Por que dividir o Atlas em quatro eixos?</p>
-            </div>
-            <div class="separator2"></div>
-            <div class="question">
-              <p>Porque o processo da economia criativa e da cultura no território brasileiro deve ser estudado a partir de diversas dimensões e eixos de indicadores. A organização em torno de eixos busca facilitar a identificação de gargalos e potenciais tendo em vista a formulação de políticas públicas mais consistentes e adequadas às necessidades do país.</p>
-            </div>
-          </div>
-
-          <img class="img_logofim" src="../../assets/imgs/atlas_dark.png">
-
-          <div id="footer-brasil-custom-index">
-              <div id="wrapper-footer-brasil" class="container">
-
-                <div>
-                  <a target="_blank" href="http://ufrgs.br/obec/neccult">
-                    <span class="logo-neccult-footer logo-footer"></span>
-                  </a>
-               </div>
-
-               <div>
-                  <a target="_blank" href="http://ufrgs.br/">
-                    <span class="logo-ufrgs-footer logo-footer"></span>
-                  </a>
-                </div>
-
-                <div>
-                  <a target="_blank" href="http://www.cultura.gov.br/secretaria-da-economia-da-cultura">
-                    <span class="logo-ecocultura-footer logo-footer"></span>
-                  </a>
-                </div>
-
-                <div>
-                  <a target="_blank" href="http://www.cultura.gov.br/">
-                    <span class="logo-minc-footer logo-footer"></span>
-                  </a>
-                </div>
-
-              </div>
-            </div>
-
-    </div>
-
+  <div *ngFor="let d of eixos" class="item-menu" [style.background-color]="d.color">
+    <span class="text-item" (click)="goToOtherPage(d)">{{d.name}}</span>
+  </div>
+    
 
 
 

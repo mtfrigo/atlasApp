@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import { DadosProvider } from '../../providers/dados/dados';
 import { ObserveOnMessage } from 'rxjs/operators/observeOn';
@@ -17,7 +17,7 @@ export class HomePage implements OnInit{
   private select_desags : any = [];
   private cads : any[];
   private ready_pt_br : boolean = false;
-
+  private info_eixo = {'value': 0, 'name': ''};
   data: any;
 
   private parameters = {
@@ -53,8 +53,12 @@ export class HomePage implements OnInit{
     {"name": "Oceania", "value": 5}
   ]
 
-  constructor(public navCtrl: NavController, private jsonsProvider : JsonsProvider, private dadosProvider : DadosProvider) {
-
+  constructor(public navCtrl: NavController, 
+    private jsonsProvider : JsonsProvider, 
+    private dadosProvider : DadosProvider,
+    public navParams : NavParams) {
+      this.info_eixo = navParams.get('data');
+      this.parameters.eixo = this.info_eixo.value;
   }
 
   ngOnInit(){

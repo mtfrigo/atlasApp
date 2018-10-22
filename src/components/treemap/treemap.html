@@ -12,6 +12,20 @@
       </g>
     </g>
   </svg>
-</div>
 
-<h5 text-center>{{view_title}}</h5>
+  <div id="container-subtitle">
+      <div class="row-subtitle">
+        <div *ngFor="let d of subtitles_1" class='subtitle'>
+          <div [ngStyle]="getSubtitleStyle(d)"></div>
+          <p class="subtitle-text">{{d.name}}</p>
+        </div>    
+      </div>
+      <div class="row-subtitle">
+        <div *ngFor="let d of subtitles_2" class='subtitle'>
+          <div [ngStyle]="getSubtitleStyle(d)"></div>
+          <p class="subtitle-text">{{d.name}}</p>
+        </div>    
+      </div>
+        
+  </div>
+</div>
