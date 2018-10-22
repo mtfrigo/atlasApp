@@ -20,6 +20,8 @@ export class HomePage implements OnInit{
   private info_eixo = {'value': 0, 'name': '', 'color': '#fff', 'ioncolor': 'eixo1'};
   data: any;
 
+  view: number = 1;
+
   private parameters = {
     'uf': 0,
     'var': 1,
@@ -58,11 +60,16 @@ export class HomePage implements OnInit{
     private dadosProvider : DadosProvider,
     public navParams : NavParams) {
       this.info_eixo = navParams.get('data');
-      console.log(this.info_eixo)
       this.parameters.eixo = this.info_eixo.value;
   }
 
+  segmentChanged(){
+    console.log(this.view);
+  }
+
   ngOnInit(){
+
+
 
     this.data = new BehaviorSubject(this.getGlobalData());
 
@@ -173,7 +180,6 @@ export class HomePage implements OnInit{
   }
 
   getDescVar(){
-    console.log(this.getDataVar())
     return this.getDataVar().desc;
   }
 

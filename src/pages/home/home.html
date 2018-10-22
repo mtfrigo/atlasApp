@@ -65,22 +65,22 @@
 
   <ion-item *ngIf="parameters.ano > 0 && ready_pt_br">
 
-    <!--
-    <div>
+
+    <div *ngIf="view == 1">
         <p>{{getTitleView(1)}}</p>
       <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
       <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
     </div>
 
 
-    <div>
+    <div *ngIf="view == 2">
         <p>{{getTitleView(2)}}</p>
         <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
         <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
         <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-    </div>-->
+    </div>
 
-    <div>
+    <div *ngIf="view == 3">
         <p>{{getTitleView(3)}}</p>
       <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
       <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
@@ -89,11 +89,28 @@
 
   </ion-item>
   <ion-item text-wrap>
-      <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>  
+      <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
       <p *ngIf="ready_pt_br" id="desc">
         {{getDescVar()}}
       </p>
-    
+
   </ion-item>
-  
+
+  <div padding>
+
+    <ion-segment [(ngModel)]="view" color="primary" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="1">
+            View 1
+          </ion-segment-button>
+
+          <ion-segment-button value="2">
+            View 2
+          </ion-segment-button>
+
+          <ion-segment-button value="3">
+            View 3
+          </ion-segment-button>
+      </ion-segment>
+  </div>
+
 </ion-content>

@@ -103,7 +103,6 @@ export class EmpilhadasComponent {
   }
 
   afterGetData(data){
-    console.log(data)
     this.parseData();
     this.initAxis();
     //this.heights = this.getHeightList(data);
@@ -157,8 +156,6 @@ export class EmpilhadasComponent {
 
     this.maxValue = edgeValues[1];
     this.minValue = 0;
-
-    console.log(this.maxValue)
 
   }
 

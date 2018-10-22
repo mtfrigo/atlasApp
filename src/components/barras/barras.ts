@@ -256,10 +256,8 @@ export class BarrasComponent implements OnChanges{
 
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
-    console.log(this.keys)
 
     if(this.parameters.eixo == 1 && this.parameters.deg != 0){
-      console.log(this.data)
       this.sendBarData(this.data[index_ano].valores['Micro'], 0);
 
     }
