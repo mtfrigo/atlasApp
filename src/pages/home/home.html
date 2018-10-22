@@ -88,8 +88,12 @@
     </div>
 
   </ion-item>
-  <ion-item>
-      <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>      
+  <ion-item text-wrap>
+      <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>  
+      <p *ngIf="ready_pt_br" id="desc">
+        {{getDescVar()}}
+      </p>
+    
   </ion-item>
   
 </ion-content>
