@@ -333,6 +333,15 @@
 		"Outros": {
 			"name": "Outros",
 			"color": "#B2510F"
+		},
+		"UF": {
+			"name": "UF",
+			"color": "#B2510F"
+    }
+    ,
+		"Setor": {
+			"name": "Setor",
+			"color": "#6342"
 		}
 
 	},

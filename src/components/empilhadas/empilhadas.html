@@ -1,0 +1,92 @@
+<!-- Generated template for the EmpilhadasComponent component -->
+<div *ngIf='data.length && dataset && x && y '>
+<h5 text-center >{{view_title}}</h5>
+<svg [attr.width]="width" [attr.height]="height">
+    <g [attr.width]="barsWidth" [attr.height]="barsHeight" [attr.transform]="getBarsTransform()">
+
+        <g class='grid'>
+          <g *ngFor="let tick of yTicksArray; index as i"
+              class='tick'
+              [attr.transform]='getTickY(tick, i)'
+          >
+            <line
+              stroke-width='1'
+              stroke="#000"
+              opacity=0.5
+              x1='0'
+              [attr.x2]="barsWidth"
+            >
+            </line>
+          </g>
+        </g>
+
+        <g class='cost' *ngFor="let deg of dataset; index as i" [attr.subdeg]='deg.key'>
+          <rect *ngFor="let d of deg; index as k"
+            [attr.data-legend]='d.data.ano'
+            [attr.data-value]='getRectDataValue(d)'
+            opacity='0.8'
+            [attr.x]='x(d.data.ano)'
+            [attr.y]='y(d[1])'
+            [attr.height]='getRectHeight(d)'
+            [attr.width]='x.bandwidth()'
+            [attr.data]=d.valor
+            [attr.fill]='getRectColor(deg.key, i)'
+          >
+          </rect>
+
+        </g>
+
+        <g class='axis--x'>
+          <line x1="-10" [attr.y1]="barsHeight" [attr.x2]="barsWidth" [attr.y2]="barsHeight" stroke="#000" stroke-width="2"  />
+          <g *ngFor="let d of data; index as i"
+            class='tick'
+            [attr.transform]='getTickX(d, i)'
+          >
+            <text
+              class='axis-title'
+              fill="#000"
+              x='55'
+              font-size='12'
+              dy="1.2em"
+              text-anchor='center'
+              text='Frequency'
+            >
+              {{ d.ano }}
+            </text>
+          </g>
+        </g>
+
+        <g class='axis--y'>
+          <line x1="0" y1="0" x2="0" [attr.y2]="barsHeight+10" stroke="#000" stroke-width="2"/>
+          <g *ngFor="let tick of yTicksArray; index as i"
+            class='tick'
+            [attr.transform]='getTickY(tick, i)'
+            [attr.data]=y(tick)
+          >
+            <text
+              class='axis-title'
+              fill="#000"
+              x=-15
+              dy=0.35em
+              text-anchor='end'
+              text='Frequency'
+            >
+              {{ getTickYValue(d,i) }}
+            </text>
+
+            <line
+                stroke-width='1'
+                stroke="#000"
+                opacity=1
+                x1='-10'
+                x2="0"
+              >
+              </line>
+
+          </g>
+        </g>
+
+    </g>
+</svg>
+</div>
+

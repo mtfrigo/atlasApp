@@ -8,7 +8,7 @@ import { DonutComponentModule } from '../../components/donut/donut.module';
 import { TreemapComponentModule } from '../../components/treemap/treemap.module';
 import { MapaComponentModule } from '../../components/mapa/mapa.module';
 import { DadosComponentModule } from '../../components/dados/dados.module';
-import { DadosProvider } from '../../providers/dados/dados';
+import { EmpilhadasComponentModule } from '../../components/empilhadas/empilhadas.module';
 
 
 
@@ -21,6 +21,7 @@ import { DadosProvider } from '../../providers/dados/dados';
     TreemapComponentModule,
     FormsModule,
     MapaComponentModule,
+    EmpilhadasComponentModule,
     IonicPageModule.forChild(HomePage)
   ],
   exports: [

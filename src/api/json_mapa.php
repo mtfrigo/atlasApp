@@ -15,34 +15,34 @@ if (!empty($_GET["var"])) {
 	$var = $_GET["var"];
 	$cad = isset($_GET["cad"])  ? $_GET["cad"]  :   0;
 	$deg = isset($_GET["deg"])  ? $_GET["deg"]  :   0;
-    $ocp = isset($_GET["ocp"])  ? $_GET["ocp"]  :   0;
-    $mod = isset($_GET['mod'])  ?   $_GET['mod']  :   0;
-    $mec = isset($_GET["mec"])  ?   $_GET["mec"]    : 0;
-    $pfj =   isset($_GET["pfj"])   ?   $_GET["pfj"]  :   0;	   /*== pessoa fisica/juridica ==*/
-    $prc =   isset($_GET["prc"])   ?   $_GET["prc"]  :   0;	   /*== Parceiro ==*/
-    $uf  =   isset($_GET["uf"])   ?   $_GET["uf"]  :   0;	   /*== Parceiro ==*/
-    $typ =   isset($_GET["typ"])   ?   $_GET["typ"]  :   1;	   /*== Tipo de atividade ==*/
-    $subdeg    =   isset($_GET["subdeg"])   ?   $_GET["subdeg"]  :   1;	   /*== Subdesagregação ==*/
+  $ocp = isset($_GET["ocp"])  ? $_GET["ocp"]  :   0;
+  $mod = isset($_GET['mod'])  ?   $_GET['mod']  :   0;
+  $mec = isset($_GET["mec"])  ?   $_GET["mec"]    : 0;
+  $pfj =   isset($_GET["pfj"])   ?   $_GET["pfj"]  :   0;	   /*== pessoa fisica/juridica ==*/
+  $prc =   isset($_GET["prc"])   ?   $_GET["prc"]  :   0;	   /*== Parceiro ==*/
+  $uf  =   isset($_GET["uf"])   ?   $_GET["uf"]  :   0;	   /*== Parceiro ==*/
+  $typ =   isset($_GET["typ"])   ?   $_GET["typ"]  :   1;	   /*== Tipo de atividade ==*/
+  $subdeg    =   isset($_GET["subdeg"])   ?   $_GET["subdeg"]  :   1;	   /*== Subdesagregação ==*/
 	$ano = $_GET["ano"];
-    $eixo = $_GET['eixo'];
-    $mundo =    isset($_GET['mundo']) ?   $_GET['mundo']:   0;
-    $slc = isset($_GET['slc']) ?   $_GET['slc']:   0;
+  $eixo = $_GET['eixo'];
+  $mundo =    isset($_GET['mundo']) ?   $_GET['mundo']:   0;
+  $slc = isset($_GET['slc']) ?   $_GET['slc']:   0;
 }
 else{
 	$var = 1;
 	$cad = 0;
 	$pfj = 0;
 	$ocp = 0;
-    $mec = 0;
-    $typ = 1;
-    $prc = 0;
+  $mec = 0;
+  $typ = 1;
+  $prc = 0;
 	$ano = 2014;
-    $eixo = 0;
-    $slc = 0;
-    $mod = 0;
-    $deg = 0;
-    $subdeg = 0;
-    $mundo = 0;
+  $eixo = 0;
+  $slc = 0;
+  $mod = 0;
+  $deg = 0;
+  $subdeg = 0;
+  $mundo = 0;
 }
 
 
@@ -84,100 +84,114 @@ if($eixo == 0) {
 
         $id = $tupla->idUF;
 
-        $estado['id'] = (int) $tupla->idUF;
-        $estado['uf'] = $tupla->UFNome;
-        $estado['valor'] = (double) $tupla->Valor;
-        $estado['ano'] = (double) $tupla->Ano;
-        $estado['percentual'] = (double) $tupla->Percentual;
-        $estado['taxa'] = (double) $tupla->Taxa;
+
+        $values = (object) array(
+          'id' => (int) $tupla->idUF,
+          'ano' => (int) $tupla->Ano,
+          'uf' => $tupla->UFNome,
+          'valor' => (double)$tupla->Valor,
+          'percentual' => (double)$tupla->Percentual,
+          'taxa' => (double)$tupla->Taxa
+        );
 
         $valores[] = (double) $tupla->Valor;
-        $mapa[] = $estado;
+
+        array_push($mapa, $values);
+
     }
 
-  $mapa[] = $valores;
+    $mapa[] = $valores;
 }
 else if($eixo == 1) {
     require_once("EixoDois.php");
     foreach (EixoDois::getter_mapa($var, $cad, $ocp, $ano) as $tupla) {
 
-        $id = $tupla->idUF;
-        $mapa[$id]['id'] = (int) $tupla->idUF;
-        $mapa[$id]['uf'] = $tupla->UFNome;
-        $mapa[$id]['ano'] = (double) $tupla->Ano;
-        $mapa[$id]['valor'] = (double) $tupla->Valor;
-        $mapa[$id]['percentual'] = (double) $tupla->Percentual;
-        $mapa[$id]['taxa'] = (double) $tupla->Taxa;
 
+      $values = (object) array(
+        'id' => (int) $tupla->idUF,
+        'ano' => (int) $tupla->Ano,
+        'uf' => $tupla->UFNome,
+        'valor' => (double)$tupla->Valor,
+        'percentual' => (double)$tupla->Percentual,
+        'taxa' => (double)$tupla->Taxa
+      );
+
+      $valores[] = (double) $tupla->Valor;
+
+      array_push($mapa, $values);
     }
+    $mapa[] = $valores;
+
 }
 else if($eixo == 2) {
     require_once("EixoTres.php");
     foreach (EixoTres::getter_mapa($var, $cad, $mec, $mod, $pfj, $ano) as $tupla) {
 
         if($var == 17){
-            $id = $tupla->idUF;
-            $mapa[$id]['id'] = (int)$tupla->idUF;
-            $mapa[$id]['uf'] = $tupla->UFNome;
-            $mapa[$id]['ano'] = (double)$tupla->Ano;
-            $mapa[$id]['SouN'] = (int)$tupla->idCadeia;
-            $mapa[$id]['valor'] = (double)$tupla->Valor;
-            $mapa[$id]['percentual'] = (double)$tupla->Percentual;
-            $mapa[$id]['taxa'] = (double)$tupla->Taxa;
+            $values = (object) array(
+              'id' => (int) $tupla->idUF,
+              'ano' => (int) $tupla->Ano,
+              'uf' => $tupla->UFNome,
+              'valor' => (double)$tupla->Valor,
+              'percentual' => (double)$tupla->Percentual,
+              'taxa' => (double)$tupla->Taxa,
+              'SouN' => (int)$tupla->idCadeia
+            );
         }
         else{
-            $id = $tupla->idUF;
-            $mapa[$id]['id'] = (int)$tupla->idUF;
-            $mapa[$id]['uf'] = $tupla->UFNome;
-            $mapa[$id]['ano'] = (double)$tupla->Ano;
-            $mapa[$id]['valor'] = (double)$tupla->Valor;
-            $mapa[$id]['percentual'] = (double)$tupla->Percentual;
-            $mapa[$id]['taxa'] = (double)$tupla->Taxa;
+            $values = (object) array(
+              'id' => (int) $tupla->idUF,
+              'ano' => (int) $tupla->Ano,
+              'uf' => $tupla->UFNome,
+              'valor' => (double)$tupla->Valor,
+              'percentual' => (double)$tupla->Percentual,
+              'taxa' => (double)$tupla->Taxa
+            );
         }
-
-
-
+        array_push($mapa, $values);
+        $valores[] = (double) $tupla->Valor;
     }
+    $mapa[] = $valores;
 }
 else if($eixo == 3) {
     require_once("EixoQuatro.php");
 
-    $mapa = new stdClass();
-
     foreach (EixoQuatro::getter_mapa($var, $cad, $typ, $ano, $prc, $uf, $mundo, $slc) as $tupla) {
 
         if($mundo == 0){
-            $id = $tupla->idParceiro;
-            $mapa->$id = [];
 
-            $mapa->$id['id'] = (int) $tupla->idParceiro;
-            $mapa->$id['prc'] = $tupla->ParceiroNome;
-            $mapa->$id['uf'] = $tupla->UFNome;
+            $values = (object) array(
+              'id' => (int) $tupla->idParceiro,
+              'prc' => $tupla->ParceiroNome,
+              'uf' => $tupla->UFNome,
+              'valor' => (double)$tupla->Valor,
+              'percentual' => (double)$tupla->Percentual,
+              'taxa' => (double)$tupla->Taxa
+            );
 
-            $mapa->$id['valor'] = (double) $tupla->Valor;
-            $mapa->$id['percentual'] = (double) $tupla->Percentual;
-            $mapa->$id['taxa'] = (double) $tupla->Taxa;
+            array_push($mapa, $values);
+            $valores[] = (double) $tupla->Valor;
+
         }
         else{
             if($tupla->idUF != 99){
-                $id = $tupla->idUF;
-                $mapa->$id = [];
 
-                $mapa->$id['id'] = (int) $tupla->idUF;
-                $mapa->$id['uf'] = $tupla->UFNome;
-                $mapa->$id['prc'] = $tupla->ParceiroNome;
-                $mapa->$id['ano'] = (double) $tupla->Ano;
+              $values = (object) array(
+                'id' => (int) $tupla->idUF,
+                'prc' => $tupla->ParceiroNome,
+                'uf' => $tupla->UFNome,
+                'valor' => (double)$tupla->Valor,
+                'percentual' => (double)$tupla->Percentual,
+                'taxa' => (double)$tupla->Taxa
+              );
 
-                $mapa->$id['valor'] = (double) $tupla->Valor;
-                $mapa->$id['percentual'] = (double) $tupla->Percentual;
-                $mapa->$id['taxa'] = (double) $tupla->Taxa;
+              array_push($mapa, $values);
+              $valores[] = (double) $tupla->Valor;
 
             }
-
         }
     }
-
-
+    $mapa[] = $valores;
 }
 
 echo json_encode($mapa);

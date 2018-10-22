@@ -19,6 +19,7 @@ import { JsonsProvider } from '../providers/jsons/jsons';
 import { MapaProvider } from '../providers/mapa/mapa';
 import { IndexPage } from '../pages/index';
 import { DadosProvider } from '../providers/dados/dados';
+import { EmpilhadasProvider } from '../providers/empilhadas/empilhadas';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DadosProvider } from '../providers/dados/dados';
     TreemapProvider,
     JsonsProvider,
     MapaProvider,
-    DadosProvider
+    DadosProvider,
+    EmpilhadasProvider
   ]
 })
 export class AppModule {}

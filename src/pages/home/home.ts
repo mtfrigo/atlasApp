@@ -23,7 +23,7 @@ export class HomePage implements OnInit{
   private parameters = {
     'uf': 0,
     'var': 1,
-    'eixo': 0,
+    'eixo': 1,
     'ano': 0,
     'cad': 0,
     'deg': 0,
@@ -133,10 +133,19 @@ export class HomePage implements OnInit{
         else
           return false;
       case 2:
+
+        if(this.parameters.eixo == 1 && this.parameters.var != 4 && this.parameters.var != 5 && this.parameters.var != 6 && this.parameters.deg != 0){
+          if(view == 'empilhadas')
+            return true;
+          else
+            return false;
+        }
+
         if(views.view_box2[0].id == view)
           return true;
         else
           return false;
+
       case 3:
         if(views.view_box3[0].id == view)
           return true;
@@ -162,21 +171,21 @@ export class HomePage implements OnInit{
         }
         return 0;
       case 1:
-        
+
         if(this.parameters.var > 11){
           if(box == 2) return 1;
         } else if(this.parameters.var == 6){
           if(box == 3) return 1;
         }
-        
+
         return 0;
-        
+
       case 2:
         if(this.parameters.var == 15 || this.parameters.var == 16){
-          if(box == 2) return 1;  
+          if(box == 2) return 1;
         } else if(this.parameters.var == 10){
           if(box == 1) return 0;
-        } 
+        }
         return 0;
 
       case 3:

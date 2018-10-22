@@ -1,5 +1,5 @@
 <!-- Generated template for the LinhasComponent component -->
-<div *ngIf='data.length && x && y'>
+<div *ngIf='teste'>
   <p>Dados do Lines Carregados!</p>
   <svg [attr.width]="width" [attr.height]="height">
       <g [attr.width]="linesWidth" [attr.height]="linesHeight" [attr.transform]="getLinesTransform()">
@@ -9,7 +9,7 @@
         [attr.d]='linePath(d)'
         fill = 'none'
         stroke-width= '2'
-        [attr.stroke]='getLineColor(d)'>
+        [attr.stroke]='getLineColor(d, i)'>
         </path>
 
         <g class='axis--x'>

@@ -297,37 +297,33 @@ function getNameSindical($id) {
 
 $linhas = array();
 $anos = array();
+$ids = (object) array();
 if($eixo == 0 && ($var == 3 || $var == 9)) {
     require_once("EixoUm.php");
 
+
     foreach (EixoUm::getter_linhas($var, $uf, $cad, $deg, $uos) as $tupla) {
+
+      //array_push($barras, $values);
 
         $id = $tupla->CadeiaNome;
         $ano = (int)$tupla->Ano;
         $valor = (double)$tupla->Valor;
 
-        $obj['ano'] = $ano;
-        $obj['id'] = $id;
-        $obj['valor'] = $valor;
+        $obj = (object) array(
+          'id' => $id,
+          'valor' => $valor,
+          'ano' => $ano
+        );
 
         $anos['valores'][] = $valor;
 
-        if(!isset($anos['ids'])){
+        if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
           $anos['ids'][] = $id;
         }
-        else{
-          if(!in_array($id, $anos['ids'])){
-            $anos['ids'][] = $id;
-          }
-        }
 
-        if(!isset($anos['anos'])){
+        if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
           $anos['anos'][] = $ano;
-        }
-        else{
-          if(!in_array($ano, $anos['anos'])){
-            $anos['anos'][] = $ano;
-          }
         }
 
         $anos[$id][] =  $obj;
@@ -343,9 +339,27 @@ else if($eixo == 0 && $var > 9 ) {
 
         foreach (EixoUm::getter_linhas($var, $uf, $cad, $deg, $uos) as $tupla) {
 
-            $id = $tupla->Ano;
-            $anos[$id]['ano'] = (int)$tupla->Ano;
-            $anos[$id][getName($uos)] = (double)$tupla->Valor;
+            $ano = (int)$tupla->Ano;
+            $valor = (double)$tupla->Valor;
+            $id  = getName($uos);
+
+            $obj = (object) array(
+              'id' => $id,
+              'valor' => $valor,
+              'ano' => $ano
+            );
+
+            $anos['valores'][] = $valor;
+
+            if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+              $anos['ids'][] = $id;
+            }
+
+            if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+              $anos['anos'][] = $ano;
+            }
+
+            $anos[$id][] =  $obj;
 
         }
     }
@@ -363,10 +377,38 @@ else if($eixo == 1 && ($var > 11)) {
 
             foreach (EixoDois::getter_linhas($var, $uf, $uos, $ocp, $uos, $slc, $desag, $subdeg) as $tupla) {
                 if($subdeg == 0 || $subdeg == NULL) {
-                    $id = $tupla->Ano;
 
-                    $anos[$id]['ano'] = (int)$tupla->Ano;
-                    $anos[$id][getName($uos)] = (double)$tupla->Valor;
+                  $ano = (int)$tupla->Ano;
+                  $valor = (double)$tupla->Valor;
+                  $id  = getName($uos);
+
+                  $obj = (object) array(
+                    'id' => $id,
+                    'valor' => $valor,
+                    'ano' => $ano
+                  );
+
+                  $anos['valores'][] = $valor;
+
+                  if(!isset($anos['ids'])){
+                    $anos['ids'][] = $id;
+                  }
+                  else{
+                    if(!in_array($id, $anos['ids'])){
+                      $anos['ids'][] = $id;
+                    }
+                  }
+
+                  if(!isset($anos['anos'])){
+                    $anos['anos'][] = $ano;
+                  }
+                  else{
+                    if(!in_array($ano, $anos['anos'])){
+                      $anos['anos'][] = $ano;
+                    }
+                  }
+
+                  $anos[$id][] =  $obj;
 
                 }
             }
@@ -379,29 +421,35 @@ else if($eixo == 1 && ($var > 11)) {
 
             foreach (EixoDois::getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg) as $tupla) {
 
-                $id = $tupla->Ano;
-                if($slc == 1) {
-                    if($id == 2011) {
-                        $id = 2010;
-                    }
-                    if($id == 2012) {
-                        $id = 2011;
-                    }
-                    if($id == 2013) {
-                        $id = 2012;
-                    }
-                    if($id == 2014) {
-                        $id = 2013;
-                    }
-                    if($id == 2015) {
-                        $id = 2014;
-                    }
+
+                $ano = (int)$tupla->Ano;
+
+                if($slc == 1 && $ano >= 2011 && $ano <= 2015)
+                  $ano = $ano - 1;
+
+                $valor = (double)$tupla->Valor;
+                $id  = getNameSLC($ocp-1);
+
+                $obj = (object) array(
+                  'id' => $id,
+                  'valor' => $valor,
+                  'ano' => $ano
+                );
+
+                $anos['valores'][] = $valor;
+
+                if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+                  $anos['ids'][] = $id;
                 }
 
-                $anos[$id]['ano'] = (int)$tupla->Ano;
-                $anos[$id][getNameSLC($ocp-1)] = (double)$tupla->Valor;
+                if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+                  $anos['anos'][] = $ano;
+                }
+
+                $anos[$id][] =  $obj;
 
             }
+
         }
     }
 
@@ -414,59 +462,164 @@ else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag != 0) {
     require_once("EixoDois.php");
     foreach(EixoDois::getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg) as $tupla){
 
-            $id = $tupla->Ano;
-            $anos[$id]['ano'] = (int)$tupla->Ano;
-            switch ($desag){
-                case 1: $anos[$id][getNamePorte($tupla->idPorte)] = (double)$tupla->Valor;
-                         break;
-                case 2: $anos[$id][getNameSexo($tupla->Sexo)] = (double)$tupla->Valor;
-                    break;
-                case 3: $anos[$id][getNameIdade($tupla->idIdade)] = (double)$tupla->Valor;
-                    break;
-                case 4: $anos[$id][getNameEscolaridade($tupla->idEscolaridade)] = (double)$tupla->Valor;
-                    break;
-                case 5: $anos[$id][getNameEtinia($tupla->idEtinia)] = (double)$tupla->Valor;
-                    break;
-                case 6: $anos[$id][getNameFormalidade($tupla->Formalidade)] = (double)$tupla->Valor;
-                    break;
-                case 7: $anos[$id][getNamePrev($tupla->Previdencia)] = (double)$tupla->Valor;
-                    break;
-                case 8: $anos[$id][getNameSindical($tupla->Sindical)] = (double)$tupla->Valor;
-                    break;
-            }
+          $ano = $tupla->Ano;
+          $valor = (double)$tupla->Valor;
 
+          switch ($desag){
+              case 1: $id = getNamePorte($tupla->idPorte);
+                  break;
+              case 2: $id = getNameSexo($tupla->Sexo);
+                  break;
+              case 3: $id = getNameIdade($tupla->idIdade);
+                  break;
+              case 4: $id = getNameEscolaridade($tupla->idEscolaridade);
+                  break;
+              case 5: $id = getNameEtinia($tupla->idEtinia);
+                  break;
+              case 6: $id = getNameFormalidade($tupla->Formalidade);
+                  break;
+              case 7: $id = getNamePrev($tupla->Previdencia);
+                  break;
+              case 8: $id = getNameSindical($tupla->Sindical);
+                  break;
+          }
+
+          $anos['valores'][] = $valor;
+
+          $obj = (object) array(
+            'id' => $id,
+            'valor' => $valor,
+            'ano' => $ano
+          );
+
+          if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+            $anos['ids'][] = $id;
+          }
+
+          if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+            $anos['anos'][] = $ano;
+          }
+
+          if(!isset($aux[$id][$id][$ano])){
+            $aux[$id][$id][$ano]['id'] = $id;
+            $aux[$id][$id][$ano]['valor'] = $valor;
+            $aux[$id][$id][$ano]['ano'] = $ano;
+          }
+          else
+            $aux[$id][$id][$ano]['valor'] = $aux[$id][$id][$ano]['valor'] + $valor;
     }
 
     foreach ($anos as $ano){
         $linhas[] = $ano;
+    }
+
+    foreach ($aux as $id){
+      $child = [];
+      foreach ($id as $ano){
+        foreach ($ano as $obj){
+          $child[] = $obj;
+        }
+      }
+      $linhas[] = $child;
     }
 }
 else if($eixo == 1 && ($var == 4 || $var == 5) && $desag == 0 && $ocp == 0)  {
     require_once("EixoDois.php");
 
     foreach (EixoDois::getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg) as $tupla) {
-        $id = $tupla->Ano;
-        $anos[$id]['ano'] = (int)$tupla->Ano;
-        $anos[$id][getNameCadeia($tupla->idCadeia)] = (double)$tupla->Valor;
-    }
 
-    foreach ($anos as $ano){
-        $linhas[] = $ano;
+      $ano = (int)$tupla->Ano;
+      $valor = (double)$tupla->Valor;
+      $id = getNameCadeia($tupla->idCadeia);
+
+      $anos['valores'][] = $valor;
+
+      $obj = (object) array(
+        'id' => $id,
+        'valor' => $valor,
+        'ano' => $ano
+      );
+
+      if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+        $anos['ids'][] = $id;
+      }
+
+      if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+        $anos['anos'][] = $ano;
+      }
+
+      if(!isset($aux[$id][$id][$ano])){
+        $aux[$id][$id][$ano]['id'] = $id;
+        $aux[$id][$id][$ano]['valor'] = $valor;
+        $aux[$id][$id][$ano]['ano'] = $ano;
+      }
+      else
+        $aux[$id][$id][$ano]['valor'] = $aux[$id][$id][$ano]['valor'] + $valor;
+  }
+
+  foreach ($anos as $ano){
+      $linhas[] = $ano;
+  }
+
+  foreach ($aux as $id){
+    $child = [];
+    foreach ($id as $ano){
+      foreach ($ano as $obj){
+        $child[] = $obj;
+      }
     }
+    $linhas[] = $child;
+  }
 }
 else if($eixo == 1 && ($var == 11 || $var == 10 || $var == 9 || $var == 8 || ($var == 6 && $desag == 0 && $ocp == 0))) {
     require_once("EixoDois.php");
     for ($cad = 1; $cad <= 10; $cad++) {
 
         foreach (EixoDois::getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg) as $tupla) {
-            $id = $tupla->Ano;
-            $anos[$id]['ano'] = (int)$tupla->Ano;
-            $anos[$id][getNameCadeia($tupla->idCadeia)] = (double)$tupla->Valor;
+
+            $ano = (int)$tupla->Ano;
+            $id = getNameCadeia($tupla->idCadeia);
+            $valor = (double)$tupla->Valor;
+
+            $anos['valores'][] = $valor;
+
+            $obj = (object) array(
+              'id' => $id,
+              'valor' => $valor,
+              'ano' => $ano
+            );
+
+            if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+              $anos['ids'][] = $id;
+            }
+
+            if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+              $anos['anos'][] = $ano;
+            }
+
+            if(!isset($aux[$id][$id][$ano])){
+              $aux[$id][$id][$ano]['id'] = $id;
+              $aux[$id][$id][$ano]['valor'] = $valor;
+              $aux[$id][$id][$ano]['ano'] = $ano;
+            }
+            else
+              $aux[$id][$id][$ano]['valor'] = $aux[$id][$id][$ano]['valor'] + $valor;
+
         }
     }
 
     foreach ($anos as $ano){
         $linhas[] = $ano;
+    }
+
+    foreach ($aux as $id){
+      $child = [];
+      foreach ($id as $ano){
+        foreach ($ano as $obj){
+          $child[] = $obj;
+        }
+      }
+      $linhas[] = $child;
     }
 
 }
@@ -475,27 +628,77 @@ else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag == 0 && $o
 
     foreach (EixoDois::getter_linhas($var, $uf, $cad, 3, $uos, $slc, $desag, $subdeg) as $tupla) {
 
-        $id = $tupla->Ano;
-        $anos[$id]['ano'] = (int)$tupla->Ano;
-        $anos[$id][getNameOCP($tupla->idOcupacao)] = (double)$tupla->Valor;
+        $ano = (int)$tupla->Ano;
+        $id = getNameOCP($tupla->idOcupacao);
+        $valor = (double)$tupla->Valor;
+
+        $anos['valores'][] = $valor;
+
+        $obj = (object) array(
+          'id' => $id,
+          'valor' => $valor,
+          'ano' => $ano
+        );
+
+        if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+          $anos['ids'][] = $id;
+        }
+
+        if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+          $anos['anos'][] = $ano;
+        }
+
+        if(!isset($aux[$id][$id][$ano])){
+          $aux[$id][$id][$ano]['id'] = $id;
+          $aux[$id][$id][$ano]['valor'] = $valor;
+          $aux[$id][$id][$ano]['ano'] = $ano;
+        }
+        else
+          $aux[$id][$id][$ano]['valor'] = $aux[$id][$id][$ano]['valor'] + $valor;
     }
 
     foreach ($anos as $ano){
         $linhas[] = $ano;
     }
+
+    foreach ($aux as $id){
+      $child = [];
+      foreach ($id as $ano){
+        foreach ($ano as $obj){
+          $child[] = $obj;
+        }
+      }
+      $linhas[] = $child;
+    }
+
 }
 else if($eixo == 2 && $var > 14) {
     require_once("EixoTres.php");
     for ($uos = 0; $uos <= 1; $uos++) {
 
         foreach (EixoTres::getter_barras($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
-            $id = $tupla->Ano;
-            // $linhas[$tupla->Ano] = $tupla->Valor;
-            $anos[$id]['ano'] = (int)$tupla->Ano;
-            $anos[$id][getName($uos)] = (double)$tupla->Valor;
+            $ano = (int)$tupla->Ano;
+            $valor = (double)$tupla->Valor;
+            $id = getName($uos);
 
+            $obj = (object) array(
+              'id' => $id,
+              'valor' => $valor,
+              'ano' => $ano
+            );
 
-            //$linhas[$id]['uf'] = $tupla->UFNome;
+            $anos['valores'][] = $valor;
+
+            if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+              $anos['ids'][] = $id;
+            }
+
+            if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+              $anos['anos'][] = $ano;
+            }
+
+            $anos[$id][] =  $obj;
+
 
         }
     }
@@ -510,12 +713,28 @@ else if($eixo == 2 && $var == 10) {
     for ($mec = 0; $mec <= 1; $mec++) {
 
         foreach (EixoTres::getter_linhas($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
-            $id = $tupla->Ano;
-            // $linhas[$tupla->Ano] = $tupla->Valor;
-            $anos[$id]['ano'] = (int)$tupla->Ano;
-            $anos[$id][getName2($mec)] = (double)$tupla->Valor;
+            $id = getName2($mec);
+            $ano = (int)$tupla->Ano;
+            $valor = (double)$tupla->Valor;
 
-            //$linhas[$id]['uf'] = $tupla->UFNome;
+            $obj = (object) array(
+              'id' => $id,
+              'valor' => $valor,
+              'ano' => $ano
+            );
+
+            $anos['valores'][] = $valor;
+
+            if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+              $anos['ids'][] = $id;
+            }
+
+            if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+              $anos['anos'][] = $ano;
+            }
+
+            $anos[$id][] =  $obj;
+
         }
     }
 
@@ -532,13 +751,28 @@ else if($eixo == 2 && $var < 15){
 
         foreach (EixoTres::getter_barras($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
 
-            $id = $tupla->Ano;
-            // $linhas[$tupla->Ano] = $tupla->Valor;
-            $anos[$id]['ano'] = (int)$tupla->Ano;
-            $anos[$id][getNameCadeia($tupla->idCadeia)] = (double)$tupla->Valor;
+            $ano = (int)$tupla->Ano;
+            $id = getNameCadeia($tupla->idCadeia);
+            $valor = (double)$tupla->Valor;
 
 
-            //$linhas[$id]['uf'] = $tupla->UFNome;
+            $obj = (object) array(
+              'id' => $id,
+              'valor' => $valor,
+              'ano' => $ano
+            );
+
+            $anos['valores'][] = $valor;
+
+            if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+              $anos['ids'][] = $id;
+            }
+
+            if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+              $anos['anos'][] = $ano;
+            }
+
+            $anos[$id][] =  $obj;
 
         }
     }
@@ -552,9 +786,27 @@ else if($eixo == 3 && ($var >= 5 && $var <= 10)){
     require_once("EixoQuatro.php");
     for($i = 1; $i <= 4 ; $i++){
         foreach (EixoQuatro::getter_barras($var, 0, 0, $i, 0, 0, $slc) as $tupla) {
-            $id = $tupla->Ano;
-            $linhas[$id]['ano'] = (int)$tupla->Ano;
-            $linhas[$id][getTyp($i)] = (double)$tupla->Valor;
+            $ano = (int)$tupla->Ano;
+            $id = getTyp($i);
+            $valor = (double)$tupla->Valor;
+
+            $obj = (object) array(
+              'id' => $id,
+              'valor' => $valor,
+              'ano' => $ano
+            );
+
+            $anos['valores'][] = $valor;
+
+            if(isset($anos['ids']) && !in_array($id, $anos['ids']) || !isset($anos['ids'])){
+              $anos['ids'][] = $id;
+            }
+
+            if(isset($anos['anos']) && !in_array($ano, $anos['anos']) || !isset($anos['anos'])){
+              $anos['anos'][] = $ano;
+            }
+
+            $anos[$id][] =  $obj;
 
         }
     }
