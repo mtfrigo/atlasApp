@@ -63,37 +63,33 @@
     </ion-select>
   </ion-item>
 
-  <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
-  <hr>
-
-
   <ion-item *ngIf="parameters.ano > 0 && ready_pt_br">
 
+    <!--
     <div>
-      <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
-
-      <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-    </div>
-
-    <div>
+        <p>{{getTitleView(1)}}</p>
       <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
-
       <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-      <view-treemap *ngIf="correctView(2, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
-      <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
-      <view-linhas *ngIf="correctView(2, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
     </div>
 
 
     <div>
+        <p>{{getTitleView(2)}}</p>
+        <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
+        <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
+        <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+    </div>-->
+
+    <div>
+        <p>{{getTitleView(3)}}</p>
       <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
       <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
       <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
     </div>
 
   </ion-item>
-  <hr>
-
-
-
+  <ion-item>
+      <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>      
+  </ion-item>
+  
 </ion-content>

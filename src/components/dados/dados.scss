@@ -5,8 +5,7 @@ dados {
 #dados-container{
 
   display: flex;
-  flex-flow: column;
-  padding: 30px;
+  flex-direction: column;
   justify-content: space-around;
   width: 100%;
   height: auto;
@@ -16,7 +15,6 @@ dados {
 
 #dados-container .dado{
   display:flex;
-  justify-items: space-between;
   margin: 20px 0;
   flex-flow: column;
   align-content: center;
@@ -25,14 +23,15 @@ dados {
 
 #dados-container .dado-valor{
   text-align: center;
-  font-size: 3em;
+  font-size: 2em;
+  color: #6DBFC9;
   white-space: nowrap
 }
 
 #dados-container .dado-desc{
-  font-size: 3rem;
+  font-size: 1em;
   text-align: center;
-  font-weight: bold;
+  color: #bbb;
   font-family: Lato Regular;
   letter-spacing: 1px;
 }

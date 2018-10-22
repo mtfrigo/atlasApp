@@ -159,6 +159,24 @@ export class HomePage implements OnInit{
     }
   }
 
+  getTitleView(box: number){
+    let views = this.getDataVar().views;
+
+    switch(box){
+      case 1:
+        return views.view_box1[this.parameters.chg].title;
+      case 2:
+        return views.view_box2[0].title;
+      case 3:
+        return views.view_box3[0].title;
+    }
+  }
+
+  getDescVar(){
+    console.log(this.getDataVar())
+    return this.getDataVar().desc;
+  }
+
 
   vrvPorte(){
     let vrvPorte = [1, 2, 3];
