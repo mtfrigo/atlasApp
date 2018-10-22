@@ -6,6 +6,7 @@ import { LinhasComponent } from './linhas/linhas';
 import { TreemapComponent } from './treemap/treemap';
 import { MapaComponent } from './mapa/mapa';
 import { DadosComponent } from './dados/dados';
+import { EmpilhadasComponent } from './empilhadas/empilhadas';
 
 @NgModule({
 	declarations: [
@@ -14,7 +15,8 @@ import { DadosComponent } from './dados/dados';
     LinhasComponent,
     TreemapComponent,
     MapaComponent,
-    DadosComponent],
+    DadosComponent,
+    EmpilhadasComponent],
 	imports: [IonicModule],
   exports: [
     BarrasComponent,
@@ -22,6 +24,7 @@ import { DadosComponent } from './dados/dados';
     LinhasComponent,
     TreemapComponent,
     MapaComponent,
-    DadosComponent]
+    DadosComponent,
+    EmpilhadasComponent]
 })
 export class ComponentsModule {}

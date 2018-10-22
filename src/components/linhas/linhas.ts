@@ -68,6 +68,8 @@ export class LinhasComponent {
   uf_index: any = 0;
   ufs = [0, 32];
 
+  count = 0;
+  teste = false;
 
 
 
@@ -96,6 +98,7 @@ export class LinhasComponent {
       .subscribe(d=>{
         this.colors = d;
         this.getData();
+
     })
 
   }
@@ -123,7 +126,7 @@ export class LinhasComponent {
 
     this.data = this.parseData(this.data);
     this.initAxis();
-
+    this.teste = true;
   }
 
   parseData(data) {
@@ -146,6 +149,7 @@ export class LinhasComponent {
   }
 
   initAxis(){
+
 
     this.x = d3
       .scaleTime().range([0, this.linesWidth])
@@ -173,7 +177,8 @@ export class LinhasComponent {
     return "translate(" + (this.margin.left+5) + "," + (this.margin.top+5) + ")";
   }
 
-  getLineColor(d){
+  getLineColor(d, i){
+    this.count++;
     return this.colors.cadeias[d[0].id].color;
   }
 
@@ -192,24 +197,23 @@ export class LinhasComponent {
   }
 
   getTickX(d){
-
     return 'translate('+ this.x(d) +', '+ this.linesHeight +')';
   }
 
 
   animateLines() : void {
 
-    this.new_data = this.parseData(this.new_data);
+    this.data = this.parseData(this.new_data);
 
     let i = 0;
-
+/*
     let animation = setInterval(d => {
       this.data = d3.interpolate(this.data, this.new_data)(i);
       if (i >= 1){
         clearInterval(animation)
       }
     i  = i + 0.1;
-    }, 30)
+    }, 30)*/
 
     this.initAxis();
 

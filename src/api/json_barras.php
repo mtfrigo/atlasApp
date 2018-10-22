@@ -335,8 +335,6 @@ else if($eixo == 1 && $var > 11) {
     require_once("EixoDois.php");
 
     foreach (EixoDois::getter_barras($var, $uf, $cad, $ocp, $uos, $slc, $deg, $subdeg, $ano) as $tupla) {
-        // $barras[$tupla->Ano] = $tupla->Valor;
-
 
         if($deg == 0 ) {
           $values = (object) array(
@@ -370,7 +368,7 @@ else if($eixo == 1 && $var > 11) {
 
             $nomeDesag = getNameDesag($deg, $tupla);
 
-            $barras[intval($id-2007)]['year'] = (string)$tupla->Ano;
+            $barras[intval($id-2007)]['year'] = (int)$tupla->Ano;
             if(!isset($barras[intval($id-2007)][$nomeDesag]))
                 $barras[intval($id-2007)][$nomeDesag] = 0;
 
@@ -400,7 +398,7 @@ else if($eixo == 1 && $var > 11) {
             if($cad == 0 && $ocp == 0){
                 $nomeDesag = getNameDesag($deg, $tupla);
 
-                $barras[intval($id-2007)]['year'] = (string)$tupla->Ano;
+                $barras[intval($id-2007)]['year'] = (int)$tupla->Ano;
                 if(!isset($barras[intval($id-2007)][$nomeDesag])) {
                     $barras[intval($id - 2007)][$nomeDesag] = 0;
                 }
@@ -411,7 +409,7 @@ else if($eixo == 1 && $var > 11) {
             else{
                 $nomeDesag = getNameDesag($deg, $tupla);
 
-                $barras[intval($id-2007)]['year'] = (string)$tupla->Ano;
+                $barras[intval($id-2007)]['year'] = (int)$tupla->Ano;
                 $barras[intval($id - 2007)][$nomeDesag] = 0;
                 $barras[intval($id-2007)][$nomeDesag] = (double)$tupla->Valor;
             }
@@ -483,7 +481,7 @@ else if($eixo == 1) {
 
             $nomeDesag = getNameDesag($deg, $tupla);
 
-            $barras[intval($id-2007)]['ano'] = (string)$tupla->Ano;
+            $barras[intval($id-2007)]['ano'] = (int)$tupla->Ano;
 
             if(!isset($barras[intval($id-2007)]['valores'][$nomeDesag]))
                 $barras[intval($id-2007)]['valores'][$nomeDesag] = 0;
@@ -503,7 +501,7 @@ else if($eixo == 1) {
 
             if($cad == 0 && $ocp == 0){
 
-              $aux[intval($id-2007)]['ano'] = (string)$tupla->Ano;
+              $aux[intval($id-2007)]['ano'] = (int)$tupla->Ano;
 
 
               if(!isset($aux[intval($id-2007)]['valores'][$nomeDesag]))
@@ -514,7 +512,7 @@ else if($eixo == 1) {
             }
             else{
 
-                $aux[intval($id-2007)]['ano'] = (string)$tupla->Ano;
+                $aux[intval($id-2007)]['ano'] = (int)$tupla->Ano;
                 $aux[intval($id - 2007)]['valores'][$nomeDesag] = 0;
                 $aux[intval($id-2007)]['valores'][$nomeDesag] = (double)$tupla->Valor;
             }

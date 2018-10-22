@@ -94,7 +94,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   ngOnChanges(){
-
     this.updateData();
   }
 
@@ -160,11 +159,9 @@ export class BarrasComponent implements OnChanges{
       .domain([this.minValue, this.maxValue]).nice();
 
 
-
-
     this.yTicksScale = d3Scale.scaleLinear()
-    .rangeRound([this.y(this.minValue), this.y(this.maxValue)])
-    .domain(d3.extent(this.yTicksArray)).nice();
+      .rangeRound([this.y(this.minValue), this.y(this.maxValue)])
+      .domain(d3.extent(this.yTicksArray)).nice();
 
   }
 
@@ -179,7 +176,6 @@ export class BarrasComponent implements OnChanges{
 
   getTickYValue(d,i)
   {
-
     return d3Scale.scaleLinear()
       .domain(d3.extent(this.yTicksArray))
       .rangeRound([this.minValue, this.maxValue])(i);
@@ -190,7 +186,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   getTickX(d, i){
-
     return 'translate('+ this.x(d.ano) +', '+ this.barsHeight +')';
   }
 
@@ -261,11 +256,19 @@ export class BarrasComponent implements OnChanges{
 
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
-    this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
+    console.log(this.keys)
+
+    if(this.parameters.eixo == 1 && this.parameters.deg != 0){
+      console.log(this.data)
+      this.sendBarData(this.data[index_ano].valores['Micro'], 0);
+
+    }
+    else
+      this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
 
     let i = 0;
     let n_iteracoes = 25; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)
-    
+
     this.initAxis();
 
     let new_height_list = this.getHeightList(this.data);
@@ -286,7 +289,7 @@ export class BarrasComponent implements OnChanges{
 
       i  = i + 1/n_iteracoes ;
     }, this.interval_animation)
-    
+
   }
   getBarColor(){
     return (this.colors['cadeias'][this.parameters.cad]['color'])
