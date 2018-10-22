@@ -17,7 +17,7 @@ export class HomePage implements OnInit{
   private select_desags : any = [];
   private cads : any[];
   private ready_pt_br : boolean = false;
-  private info_eixo = {'value': 0, 'name': ''};
+  private info_eixo = {'value': 0, 'name': '', 'color': '#fff', 'ioncolor': 'eixo1'};
   data: any;
 
   private parameters = {
@@ -58,6 +58,7 @@ export class HomePage implements OnInit{
     private dadosProvider : DadosProvider,
     public navParams : NavParams) {
       this.info_eixo = navParams.get('data');
+      console.log(this.info_eixo)
       this.parameters.eixo = this.info_eixo.value;
   }
 
