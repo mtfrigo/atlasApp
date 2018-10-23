@@ -17,7 +17,7 @@ page-home {
 
 .segment-md .segment-button{
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 50%;
   width: 25px;
   height: 25px;
   margin:0 10px;
@@ -44,6 +44,7 @@ page-home {
   border-radius: 10px;
   background-color: #DDDEDE;
   padding: 4px 3px 5px 3px;
+
 
 }
 
@@ -139,4 +140,8 @@ page-home {
   letter-spacing: 2px;
   font-weight: 300;
 
+}
+
+.toolbar-background-md{
+  background-color: inherit;
 }

@@ -1366,7 +1366,7 @@
 	"select":
 	{
 		"eixo":[
-			{"name": "asdasd Culturais", "value": "empreendimentos"},
+			{"name": "Empreendimentos Culturais", "value": "empreendimentos"},
 			{"name": "Mercado de Trabalho", "value": "mercado"},
 			{"name": "Fomento Público", "value": "politicas"},
 			{"name": "Comércio Internacional", "value": "comercio"}
