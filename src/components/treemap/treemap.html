@@ -1,4 +1,4 @@
-<div *ngIf='ready' class="view">
+<div *ngIf='ready && colors' class="view">
   <svg [attr.width]="width" [attr.height]="height">
     <g>
       <g *ngFor="let d of treemapData.leaves()" [attr.transform]="getTranslate(d)">
@@ -18,14 +18,14 @@
         <div *ngFor="let d of subtitles_1" class='subtitle'>
           <div [ngStyle]="getSubtitleStyle(d)"></div>
           <p class="subtitle-text">{{d.name}}</p>
-        </div>    
+        </div>
       </div>
       <div class="row-subtitle">
         <div *ngFor="let d of subtitles_2" class='subtitle'>
           <div [ngStyle]="getSubtitleStyle(d)"></div>
           <p class="subtitle-text">{{d.name}}</p>
-        </div>    
+        </div>
       </div>
-        
+
   </div>
 </div>

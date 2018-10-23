@@ -1,5 +1,5 @@
 <!-- Generated template for the LinhasComponent component -->
-<div *ngIf='states != null'>
+<div *ngIf='states != null && colors'>
   <svg id="mapSVG" [attr.width]="width" [attr.height]="height">
       <g [attr.width]="mapaWidth" [attr.height]="mapHeight" [attr.transform]="getMapTransform()">.
             <path *ngFor="let d of states.features; index as i"

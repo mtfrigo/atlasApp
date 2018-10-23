@@ -7,3 +7,136 @@ page-home {
     color: #bbb;
     margin-top: 10px;
 }
+
+.segment-md .segment-button.segment-activated {
+  color: red;
+  background-color: black;
+  opacity: 0.7;
+  border-color: black;
+}
+
+.segment-md .segment-button{
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 25px;
+  height: 25px;
+  margin:0 10px;
+  opacity: 1;
+}
+
+#segment-container{
+  margin: auto;
+  width: 50%;
+}
+
+#segment-container div div{
+  margin: 0 10px;
+
+}
+
+#segment-container .segment{
+  justify-content: space-between;
+  width: 100%;
+}
+
+#menu-container{
+  border: 1px solid rgba(187, 187, 187, 0.384);
+  border-radius: 10px;
+  background-color: #DDDEDE;
+  padding: 4px 3px 5px 3px;
+
+}
+
+#menu-container .label-md{
+  margin: 8px 0;
+}
+
+#menu-options .input-wrapper{
+  display: flex;
+  flex-flow: column;
+  background-color: #DDDEDE;
+}
+#menu-options .select{
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.356);
+  border-radius: 10px;
+  padding: 5px 20px;
+  max-width: 100%;
+  background-color: #fff;
+}
+
+#menu-options .select-text{
+  width: 100%;
+}
+
+#menu-options .select-icon{
+  width: 8px;
+}
+
+#menu-options .label{
+  text-align: left;
+  padding: 0 15px;
+  width: 100%;
+  margin: 8px 0 2px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+
+}
+
+#menu-container .item-inner{
+  margin: 0 10%;
+  padding: 0 8px;
+
+}
+
+.item{
+  padding-left: 0;
+}
+
+#menu-options{
+  background-color: #DDDEDE;
+  padding-bottom: 20px;
+}
+
+#menu-options .item-md.item-block .item-inner{
+  border-bottom: none;
+}
+
+#menu-container .item-md{
+  padding: 0;
+
+  background-color: inherit;
+}
+
+#menu-container .menu-plus{
+  width: 50%;
+  padding: 2px;
+  text-align: left;
+  color: #8dcdd5;
+}
+
+#menu-container .menu-label{
+  width: 50%;
+  padding: 2px;
+  text-align: right;
+  color: #a2a2a2;
+}
+
+#menu-container .menu-bread{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 16px;
+}
+
+.title_view{
+
+  white-space: normal;
+  color: #a2a2a2;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 300;
+
+}

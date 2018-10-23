@@ -20,7 +20,10 @@ export class HomePage implements OnInit{
   private info_eixo = {'value': 0, 'name': '', 'color': '#fff', 'ioncolor': 'eixo1'};
   data: any;
 
-  view: number = 1;
+  view: string = '1';
+  menu_plus: string = '+';
+  menu_color: string = "#E9F2ED";
+  expand: boolean = false;
 
   private parameters = {
     'uf': 0,
@@ -64,7 +67,7 @@ export class HomePage implements OnInit{
   }
 
   segmentChanged(){
-    console.log(this.view);
+    //console.log(this.view);
   }
 
   ngOnInit(){
@@ -277,6 +280,21 @@ export class HomePage implements OnInit{
     ]
 
     return selects[this.parameters.var - 1];
+  }
+
+  menuClick(){
+    if(this.expand == true)
+    {
+      this.menu_color = "#E9F2ED";
+      this.expand = false;
+      this.menu_plus = '+';
+    }
+    else
+    {
+      this.menu_color = "#DDDEDE";
+      this.expand = true;
+      this.menu_plus = '-';
+    }
   }
 }
 

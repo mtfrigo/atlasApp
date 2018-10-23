@@ -6,7 +6,6 @@ dados {
 
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   width: 100%;
   height: auto;
 
@@ -14,6 +13,7 @@ dados {
 
 #dados-container .dado{
   display:flex;
+  width: 50%;
   margin: 20px 0;
   flex-flow: column;
   align-content: center;
@@ -27,10 +27,20 @@ dados {
   white-space: nowrap
 }
 
+#dados-container .dado:nth-child(even) {
+  padding: 0 0 0 2px;
+}
+
+#dados-container .dado:nth-child(odd) {
+  padding: 0 2px 0 0;
+}
+
 #dados-container .dado-desc{
-  font-size: 1em;
+  font-size: 9px;
+  padding: 2px 1px;
   text-align: center;
+  font-weight: 500;
   color: #bbb;
-  font-family: Lato Regular;
   letter-spacing: 1px;
+
 }

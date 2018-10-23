@@ -46,9 +46,9 @@ export class MapaComponent {
 
   path = d3.geoPath()
             .projection(this.projection);
-  
+
   paths : string[];
-  
+
   states: any;
 
   values: number[] = [];
@@ -70,7 +70,7 @@ export class MapaComponent {
     this.jsonProvider.getColors()
       .subscribe(d=>{
         this.colors = d;
-        
+
     this.jsonProvider.getBrStates()
     .subscribe(d=>{
         this.brStates = d;
@@ -117,7 +117,7 @@ export class MapaComponent {
 
     this.projection.fitExtent([[0,0],[this.mapWidth, this.mapHeight]], this.states);
     this.paths = this.states.features.map(d => this.path(d));
-    
+
     this.parseData();
   }
 
@@ -137,10 +137,10 @@ export class MapaComponent {
     this.info = info;
 
 
-
     this.colorScale = d3.scaleLinear()
       .domain([this.minValue, this.maxValue])
       .range([this.colors.cadeias[this.parameters['cad']].gradient['2'], this.colors.cadeias[this.parameters['cad']].gradient['6']])
+
 
   }
 

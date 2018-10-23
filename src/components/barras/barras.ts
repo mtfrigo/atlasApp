@@ -290,6 +290,7 @@ export class BarrasComponent implements OnChanges{
 
   }
   getBarColor(){
-    return (this.colors['cadeias'][this.parameters.cad]['color'])
+
+    return (this.colors['cadeias'][this.parameters.cad]['color']);
   }
 }

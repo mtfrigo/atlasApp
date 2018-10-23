@@ -586,7 +586,7 @@
 				"botoes":[
 					{"name": "Mapa", "id": "mapa"},
 					{"name": "Treemap", "id": "treemap_region"}
-				],	
+				],
 				"prefixo_valor":"R$ ",
 				"fontes":"RAIS E IBGE (PNAD Anual).",
 				"desc":"Esse indicador demonstra o ganho auferido ao longo das operações comerciais ou no exercício das atividades econômicas. Diante da subtração do total de receitas auferidas sobre o custo total das empresas, é possível, para cada estratificação proposta, delimitar as atividades culturais que geram maior retorno. Um aumento do lucro pode indicar um aumento da entrada e consecutiva geração de renda por parte das atividades culturias. O aumento da proporção de receitas em relação aos custos possibita aos setores culturais a obtenção de maiores ganhos reais.",
@@ -1366,7 +1366,7 @@
 	"select":
 	{
 		"eixo":[
-			{"name": "Empreendimentos Culturais", "value": "empreendimentos"},
+			{"name": "asdasd Culturais", "value": "empreendimentos"},
 			{"name": "Mercado de Trabalho", "value": "mercado"},
 			{"name": "Fomento Público", "value": "politicas"},
 			{"name": "Comércio Internacional", "value": "comercio"}
@@ -1553,5 +1553,5 @@
 
 		]
 	}
-	
+
 }
