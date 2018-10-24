@@ -18,7 +18,7 @@ import { DadosProvider } from '../../providers/dados/dados';
 export class TreemapComponent implements OnChanges{
 
   width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.5;
+  height : number = window.innerHeight*0.25;
 
   @Input() url : string;
   @Input() parameters : any[];

@@ -76,32 +76,34 @@
 
   </div>
 
-  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED">
+  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED; max-height: 60%;">
 
-
-    <div *ngIf="view == 1">
-        <p class='title_view'>{{getTitleView(1)}}</p>
-      <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
-      <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-    </div>
-
-
-    <div *ngIf="view == 2">
+    <ion-slides pager>
+      <ion-slide>
+          <p class='title_view'>{{getTitleView(1)}}</p>
+          <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
+          <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+      </ion-slide>
+      
+      <ion-slide>
         <p class='title_view'>{{getTitleView(2)}}</p>
         <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
         <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
         <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-    </div>
+      </ion-slide>
 
-    <div *ngIf="view == 3">
+      <ion-slide>
         <p class='title_view'>{{getTitleView(3)}}</p>
-      <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-      <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
-      <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
-    </div>
-
+        <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+        <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
+        <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
+      </ion-slide>
+      
+    </ion-slides>
+    
   </ion-item>
-  <ion-item text-wrap  style="background-color: #E9F2ED">
+  
+  <ion-item text-wrap  style="background-color: #E9F2ED; max-height: 35%" >
       <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
       <p *ngIf="ready_pt_br" id="desc">
         {{getDescVar()}}
@@ -114,21 +116,3 @@
 
 
 </ion-content>
-
-<ion-footer>
-    <ion-toolbar>
-        <div id="segment-container" padding>
-
-            <ion-segment [(ngModel)]="view" (ionChange)="segmentChanged($event)">
-              <ion-segment-button value="1">
-              </ion-segment-button>
-
-              <ion-segment-button value="2">
-              </ion-segment-button>
-
-              <ion-segment-button value="3">
-              </ion-segment-button>
-            </ion-segment>
-          </div>
-    </ion-toolbar>
-  </ion-footer>

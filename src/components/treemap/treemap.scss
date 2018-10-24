@@ -1,23 +1,21 @@
 treemap {
 
 }
-.row-subtitle{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-}
 .subtitle{
     display: flex;
     flex-direction: row;
-    margin: 3px;
+    margin: 3px 0px;
 }
 
 .subtitle-text{
-    padding-left: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 90%;
+    text-align: left;
 }
 
-#container-subtitle{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.subtitle-text p {
+    margin: 1px 3px;
+    font-size: 12px;
 }
+

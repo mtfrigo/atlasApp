@@ -22,9 +22,9 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 })
 export class MapaComponent {
   // @Input() width  : number = window.innerWidth*0.9;
-  @Input() width  : number = 320;
+  @Input() width  : number = window.innerWidth*0.8;
   // @Input() height : number = this.width;
-  @Input() height : number = 320;
+  @Input() height : number = window.innerHeight*0.4;;
 
   @Input() parameters : any[];
   @Input() url : string;
