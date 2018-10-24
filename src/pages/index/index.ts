@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { SobrePage } from '../sobre/sobre';
 
 /**
  * Generated class for the IndexPage page.
@@ -29,10 +30,19 @@ export class IndexPage {
     console.log('ionViewDidLoad IndexPage');
   }
 
-  goToOtherPage(d: number){
-    this.navCtrl.push(HomePage, {
-      data: d
-    });
+  goToOtherPage(d){
+    if(d.name == 'Atlas')
+    {
+      this.navCtrl.push(SobrePage, {
+        data: d
+      });
+    }
+    else
+    {
+      this.navCtrl.push(HomePage, {
+        data: d
+      });
+    }
   }
 
   getBackgroundImage(d){

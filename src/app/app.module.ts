@@ -20,12 +20,14 @@ import { MapaProvider } from '../providers/mapa/mapa';
 import { IndexPage } from '../pages/index';
 import { DadosProvider } from '../providers/dados/dados';
 import { EmpilhadasProvider } from '../providers/empilhadas/empilhadas';
+import { SobrePage } from '../pages/sobre/sobre';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    IndexPage
+    IndexPage,
+    SobrePage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { EmpilhadasProvider } from '../providers/empilhadas/empilhadas';
   entryComponents: [
     MyApp,
     HomePage,
-    IndexPage
+    IndexPage,
+    SobrePage
   ],
   providers: [
     StatusBar,

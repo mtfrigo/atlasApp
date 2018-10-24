@@ -17,9 +17,9 @@
 <ion-content [style.display]="flex" [style.flex-direction]="column" >
 
 
-  <div *ngFor="let d of eixos" class="item-menu" [style.background-color]="d.color" [style.background-image]='getBackgroundImage(d)'>
+  <div *ngFor="let d of eixos" class="item-menu" [style.background-color]="d.color" [style.background-image]='getBackgroundImage(d)' (click)="goToOtherPage(d)">
     <img *ngIf="d.name == 'Atlas' " src='../../assets/imgs/atlas_logo.png'>
-    <span *ngIf="d.value >= 0" class="text-item" (click)="goToOtherPage(d)">{{d.name}}</span>
+    <span *ngIf="d.value >= 0" class="text-item" >{{d.name}}</span>
   </div>
 
 
