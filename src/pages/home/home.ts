@@ -26,7 +26,7 @@ export class HomePage implements OnInit{
 
   view: string = '0';
   menu_plus: string = '+';
-  menu_color: string = "#E9F2ED";
+  menu_color: string = "rgba(233, 242, 236, 0.315)";
   expand: boolean = false;
 
   private parameters = {

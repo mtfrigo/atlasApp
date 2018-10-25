@@ -1,4 +1,5 @@
 page-home {
+  height: 100%;
 }
 #desc{
     width: 100%;
@@ -21,6 +22,10 @@ page-home {
   width: 100%;
 }
 
+.swiper-wrapper{
+  height: auto;
+}
+
 .segment-btn{
   width: 8px;
 
@@ -28,6 +33,7 @@ page-home {
 
 .segment-md .segment-button{
   border-radius: 100%;
+  border: 1px;
   background-color: #000;
   width: 8px;
   height: 12px;
