@@ -76,7 +76,7 @@
 
   </div>
 
-  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED; max-height: 60%;">
+  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br" [style.display]="getDisplay()" style="background-color: #E9F2ED; max-height: 60%;">
 
     <ion-slides pager>
       <ion-slide>

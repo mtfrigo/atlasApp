@@ -282,6 +282,13 @@ export class HomePage implements OnInit{
     return selects[this.parameters.var - 1];
   }
 
+  getDisplay(){
+    if(this.expand){
+      return 'none'
+    }
+    else return 'flex';
+  }
+
   menuClick(){
     if(this.expand == true)
     {
