@@ -76,9 +76,9 @@
 
   </div>
 
-  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED; max-height: 60%;">
+  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED; max-height: 60%; margin-top: 60px;">
 
-    <ion-slides pager #slides (ionSlideDidChange)="slideChanged()">
+    <ion-slides #slides (ionSlideDidChange)="slideChanged()">
       <ion-slide>
           <p class='title_view'>{{getTitleView(1)}}</p>
           <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
