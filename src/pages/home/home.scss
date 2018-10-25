@@ -50,6 +50,10 @@ page-home {
   border-radius: 10px;
   background-color: #DDDEDE;
   padding: 4px 3px 5px 3px;
+  position: absolute;
+  z-index: 2;
+  width: 90%;
+
 }
 
 #menu-container .label-md{
