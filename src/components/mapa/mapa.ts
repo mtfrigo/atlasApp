@@ -52,6 +52,15 @@ export class MapaComponent {
   states: any;
 
   values: number[] = [];
+  legend_data : string[] = [];
+
+  legend_config = {
+    'width':  this.width*0.4,
+    'height': this.height*0.03,
+    'x':      this.width*0.3,
+    'y':      this.height*0.85
+  }
+  
   minValue: number;
   maxValue: number;
 
@@ -136,6 +145,7 @@ export class MapaComponent {
     })
     this.info = info;
 
+    this.legend_data = [String(this.minValue), String(0.5*(this.maxValue+this.minValue)), String(this.maxValue)];
 
     this.colorScale = d3.scaleLinear()
       .domain([this.minValue, this.maxValue])
