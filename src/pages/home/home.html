@@ -76,15 +76,15 @@
 
   </div>
 
-  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED; max-height: 60%;">
+  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED; max-height: 60%; margin-top: 60px;">
 
-    <ion-slides pager>
+    <ion-slides #slides (ionSlideDidChange)="slideChanged()">
       <ion-slide>
           <p class='title_view'>{{getTitleView(1)}}</p>
           <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
           <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
       </ion-slide>
-      
+
       <ion-slide>
         <p class='title_view'>{{getTitleView(2)}}</p>
         <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
@@ -98,11 +98,11 @@
         <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
         <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
       </ion-slide>
-      
+
     </ion-slides>
-    
+
   </ion-item>
-  
+
   <ion-item text-wrap  style="background-color: #E9F2ED; max-height: 35%" >
       <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
       <p *ngIf="ready_pt_br" id="desc">
@@ -116,3 +116,22 @@
 
 
 </ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar>
+    <div id='segment-container'>
+      <ion-segment [(ngModel)]="view" color="primary">
+
+        <div class='seg-btn-ctn'>
+          <ion-segment-button value="0" class='segment-btn' (ionSelect)="segmentChanged(slides, 0)"></ion-segment-button>
+        </div>
+        <div class='seg-btn-ctn'>
+          <ion-segment-button value="1" class='segment-btn' (ionSelect)="segmentChanged(slides, 1)"></ion-segment-button>
+        </div>
+        <div class='seg-btn-ctn'>
+          <ion-segment-button value="2" class='segment-btn' (ionSelect)="segmentChanged(slides, 2)"></ion-segment-button>
+        </div>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-footer>

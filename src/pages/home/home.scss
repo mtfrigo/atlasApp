@@ -10,8 +10,8 @@ page-home {
 
 .segment-md .segment-button.segment-activated {
   color: red;
-  background-color: #1b5270;
-  opacity: 0.7;
+  background-color: #007aff;
+  opacity: 1;
   border-color: #bec7c7;
 }
 
@@ -21,13 +21,18 @@ page-home {
   width: 100%;
 }
 
+.segment-btn{
+  width: 8px;
+
+}
+
 .segment-md .segment-button{
-  border: 2px solid #bec7c7;
-  border-radius: 25px;
-  width: 25px;
-  height: 25px;
+  border-radius: 100%;
+  background-color: #000;
+  width: 8px;
+  height: 12px;
   margin: 0 10px;
-  opacity: 1;
+  opacity: 0.2;
 }
 
 #segment-container{
@@ -36,13 +41,11 @@ page-home {
 }
 
 #segment-container div div{
-  margin: 0 10px;
-
+  width: 8px;
 }
 
 #segment-container .segment{
-  justify-content: space-between;
-  width: 100%;
+  width: 2px;
 }
 
 #menu-container{
@@ -148,6 +151,9 @@ page-home {
   letter-spacing: 2px;
   font-weight: 300;
 
+}
+
+page-home .footer{
 }
 
 .toolbar-background-md{

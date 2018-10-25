@@ -1,15 +1,19 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import { DadosProvider } from '../../providers/dados/dados';
 import { ObserveOnMessage } from 'rxjs/operators/observeOn';
 import { BehaviorSubject } from 'rxjs';
+import { Slides } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit{
+
+  @ViewChild(Slides) slides: Slides;
+
   private list_uf : Object = [];
   private pt_br : any = [];
   private anos : number[];
@@ -20,7 +24,7 @@ export class HomePage implements OnInit{
   private info_eixo = {'value': 0, 'name': '', 'color': '#fff', 'ioncolor': 'eixo1'};
   data: any;
 
-  view: string = '1';
+  view: string = '0';
   menu_plus: string = '+';
   menu_color: string = "#E9F2ED";
   expand: boolean = false;
@@ -66,8 +70,16 @@ export class HomePage implements OnInit{
       this.parameters.eixo = this.info_eixo.value;
   }
 
-  segmentChanged(){
-    //console.log(this.view);
+  segmentChanged(slide, index){
+    this.slides.slideTo(index, 500);
+  }
+
+  slideChanged() {
+    var slideIndex = this.slides.getActiveIndex();
+
+    if(slideIndex >= 0 && slideIndex <= 2)  this.view = slideIndex.toString();
+
+    console.log(slideIndex);
   }
 
   ngOnInit(){
