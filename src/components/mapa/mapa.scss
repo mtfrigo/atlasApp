@@ -6,3 +6,13 @@ mapa {
   stroke: rgba(255, 255, 255, 0.47);
   stroke-linecap:  "round";
 }
+
+.legend-line{
+  stroke-width: 1;
+  stroke: rgb(170, 170, 170);
+}
+
+.legend-text{
+  font-size: 9px;
+  fill: rgb(170, 170, 170);
+}

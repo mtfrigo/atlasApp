@@ -12,8 +12,8 @@
       
       <defs>
         <linearGradient id="grad" x1="0%" y1="100%" x2="90%" y2="100%">
-          <stop class="begin" offset="0%" style="stop-color: rgb(217, 213, 222); stop-opacity: 1;"></stop>
-          <stop class="end" offset="90%" style="stop-color: rgb(104, 93, 120); stop-opacity: 1;"></stop>
+          <stop class="begin" offset="0%" [style.stop-color]="colorScale(minValue)" [style.stop-opacity]="1"></stop>
+          <stop class="end" offset="90%" [style.stop-color]="colorScale(maxValue)" [style.stop-opacity]="1"></stop>
         </linearGradient>
       </defs>
       
@@ -27,12 +27,15 @@
 
       <g>
         <line *ngFor="let d of legend_data; index as i" 
+              class="legend-line"
               [attr.x1]="legend_config.x + i*legend_config.width/2"
               [attr.x2]="legend_config.x + i*legend_config.width/2"
               [attr.y1]="legend_config.y - 2"
-              [attr.y2]="legend_config.y + legend_config.height + 2">
+              [attr.y2]="legend_config.y + legend_config.height + 2"
+        >
         </line>
         <text *ngFor="let d of legend_data; index as i"
+              class = "legend-text"
               [attr.x]="legend_config.x + i*legend_config.width/2"
               [attr.y]="legend_config.y + legend_config.height + 12"
         >

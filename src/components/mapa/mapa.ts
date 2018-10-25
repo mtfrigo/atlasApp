@@ -58,9 +58,9 @@ export class MapaComponent {
     'width':  this.width*0.4,
     'height': this.height*0.03,
     'x':      this.width*0.3,
-    'y':      this.height*0.85
+    'y':      this.height*0.92
   }
-  
+
   minValue: number;
   maxValue: number;
 
@@ -69,7 +69,7 @@ export class MapaComponent {
 
   constructor(public navCtrl: NavController, private mapaProvider: MapaProvider, private jsonProvider: JsonsProvider) {
 
-    this.mapHeight = this.height - this.margin.top - this.margin.bottom;
+    this.mapHeight = this.height*0.85 - this.margin.top - this.margin.bottom;
     this.mapWidth = this.width - this.margin.left - this.margin.right;
 
     this.view_title = "Mapa do Brasil"
