@@ -9,24 +9,24 @@
 <ion-content padding  style="background-color: #E9F2ED">
 
   <div id='menu-container' [style.background-color]="menu_color">
-
     <ion-item>
       <button ion-button full clear (click)="menuClick()" ><div class='menu-bread' ><div class='menu-plus' >{{menu_plus}}</div><div class='menu-label' >Menu</div></div></button>
     </ion-item>
 
     <div id='menu-options' *ngIf=expand [style.background-color]="menu_color">
 
-      <ion-item *ngIf="list_uf.length" >
-        <ion-label>Estados</ion-label>
-        <ion-select [(ngModel)]="parameters.uf">
-            <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
-        </ion-select>
-      </ion-item>
 
       <ion-item *ngIf="ready_pt_br">
         <ion-label>Variável</ion-label>
         <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">
             <ion-option *ngFor="let variable of pt_br.var[parameters.eixo]" [value]="variable.id">{{variable.title}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="list_uf.length" >
+        <ion-label>Estados</ion-label>
+        <ion-select [(ngModel)]="parameters.uf">
+            <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
         </ion-select>
       </ion-item>
 
@@ -103,7 +103,7 @@
 
   </ion-item>
 
-  <ion-item text-wrap  style="background-color: #E9F2ED; max-height: 35%" >
+  <ion-item text-wrap  style="background-color: #E9F2ED; max-height: 40%" >
       <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
       <p *ngIf="ready_pt_br" id="desc">
         {{getDescVar()}}

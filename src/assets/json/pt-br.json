@@ -32,7 +32,7 @@
 	"var":[
 		[
 			{
-				"id":"1",
+				"id": 1,
 				"title":"Número Total de Empresas",
 				"desc_int": "Empresas [cad] [prt] [uf]",
 				"desc_percent": "DO TOTAL DE EMPRESAS DOS SETORES CULTURAIS E CRIATIVOS [uf]",
@@ -65,7 +65,7 @@
 				"barras_valores": "Valores em milhares."
 			},
 			{
-				"id":"2",
+				"id": 2,
 				"title":"Participação das empresas culturais e criativas no total de empresas",
 				"desc_int": "do total de empresas [uf]",
 				"desc_percent": "",
@@ -96,7 +96,7 @@
 				"barras_valores": "Valores em pecentual."
 			},
 			{
-				"id":"3",
+				"id": 3,
 				"title":"Variação no Total de Empresas",
 				"desc_int": "de variação no total de empresas [cad] [prt] [uf] [ano]",
 				"desc_percent": "",
@@ -127,7 +127,7 @@
 				"barras_valores": "Valores em pecentual."
 			},
 			{
-				"id":"4",
+				"id": 4,
 				"title":"Receita Total Bruta",
 				"desc_int": "de receita total bruta das empresas [cad] [prt] [uf]",
 				"desc_percent": "do total de receita bruta das empresas culturais e criativas [uf]",
@@ -160,7 +160,7 @@
 				"barras_valores": "Valores em milhares de reais."
 			},
 			{
-				"id":"5",
+				"id": 5,
 				"title":"Receita Operacional Liquida",
 				"desc_int": "de receita operacional líquida das empresas [cad] [prt] [uf] ",
 				"desc_percent": "do total de receita operacional líquida das empresas culturais e criativas [uf]",
@@ -193,7 +193,7 @@
 				"barras_valores": "Valores em milhares de reais."
 			},
 			{
-				"id":"6",
+				"id": 6,
 				"title":"Custo",
 				"desc_int": "de custo das Empresas [cad] [prt] [uf]",
 				"desc_percent": "do total de custo das empresas culturais e criativas [uf]",
@@ -226,7 +226,7 @@
 				"barras_valores": "Valores em milhares de reais."
 			},
 			{
-				"id":"7",
+				"id": 7,
 				"title":"Lucro",
 				"desc_int": "de lucro das Empresas [cad] [prt] [uf]",
 				"desc_percent": "DO TOTAL DE LUCRO DAS EMPRESAS culturais e criativas [uf]",
@@ -259,7 +259,7 @@
 				"barras_valores": "Valores em milhares de reais."
 			},
 			{
-				"id":"8",
+				"id": 8,
 				"title":"Valor Adicionado",
 				"desc_int": "valor adicionado pelas Empresas [cad] [prt] [uf]",
 				"desc_percent": "do total de valor adicionado das empresas culturais e criativas [uf]",
@@ -292,7 +292,7 @@
 				"barras_valores": "Valores em milhares de reais."
 			},
 			{
-				"id":"9",
+				"id": 9,
 				"title":"Valor Adicionado / Produto Interno Bruto (PIB)",
 				"desc_int": "de valor adicionado/PIB {uf} pelas empresas [cad] [uf]",
 				"desc_percent": "",
@@ -319,7 +319,7 @@
 				"fontes": " Elaboração do NECCULT com base no IBGE (PAS, PIA e PAC)."
 			},
 			{
-				"id":"10",
+				"id": 10,
 				"title":"Índice de Concentração de Herfindahl-Hirschman (IHH - Empresas)",
 				"desc_int": "IHH DO TOTAL DE EMPRESAS POR UF",
 				"desc_percent": "IHH DO TOTAL DE EMPRESAS POR SETOR",
@@ -345,7 +345,7 @@
 				"fontes": "Elaboração própria a partir da RAIS."
 			},
 			{
-				"id":"11",
+				"id": 11,
 				"title":"Índice de Concentração de Herfindahl-Hirschman (IHH - Valor Adicionado)",
 				"desc_int": "IHH DO VALOR ADICIONADO POR UF",
 				"desc_percent": "IHH DO VALOR ADICIONADO POR SETOR",
@@ -371,7 +371,7 @@
 				"fontes": "Elaboração própria a partir da RAIS."
 			},
 			{
-				"id":"12",
+				"id": 12,
 				"title":"Razão de Concentração – C4 Empresas",
 				"desc_int": "C4 DE CONCENTRAÇÃO DO TOTAL DE EMPRESAS POR UF",
 				"desc_percent": "C4 DE CONCENTRAÇÃO DO TOTAL DE EMPRESAS POR SETOR",
@@ -397,7 +397,7 @@
 				"fontes": "Elaboração própria com base na RAIS."
 			},
 			{
-				"id":"13",
+				"id": 13,
 				"title":"Razão de Concentração – C4 Valor Adicionado",
 				"desc_int": "C4 DE CONCENTRAÇÃO DO VALOR ADICIONADO POR UF",
 				"desc_percent": "C4 DE CONCENTRAÇÃO DO VALOR ADICIONADO POR SETOR",
@@ -425,7 +425,7 @@
 		],
 		[
 			{
-				"id":"1",
+				"id": 1,
 				"desc_int":"[ocp] [cad] [deg] [uf]",
 				"desc_percent": "Do total de [ocp] [cad] [uf]",
 				"desc_setorial": "do total de [ocp] dos Setores Culturais e criativos do Brasil",
@@ -449,7 +449,7 @@
 				"botoes": []
 			},
 			{
-				"id":"2",
+				"id": 2,
 				"desc_int":"de participação do emprego [cad] no emprego total",
 				"title":"Participação no Emprego Total",
 				"desc_percent": "",
@@ -475,7 +475,7 @@
 				]
 			},
 			{
-				"id":"3",
+				"id": 3,
 				"title":"Horas trabalhadas",
 				"desc_int":"",
 				"desc_percent": "",
@@ -501,7 +501,7 @@
 				]
 			},
 			{
-				"id":"4",
+				"id": 4,
 				"desc_int":"DE REMUNERAÇÃO MÉDIA DOS [ocp] [cad] [deg] [uf]",
 				"title":"Remuneração Média",
 				"desc_percent": "",
@@ -525,7 +525,7 @@
 				]
 			},
 			{
-				"id":"5",
+				"id": 5,
 				"desc_int":"POR HORA TRABALHADA [cad] [deg] [uf]",
 				"title":"Remuneração por Hora Trabalhada",
 				"desc_percent": "",
@@ -549,7 +549,7 @@
 				]
 			},
 			{
-				"id":"6",
+				"id": 6,
 				"desc_int":"horas semanais médias de trabalho [deg] [cad] [uf]",
 				"title":"Jornada de Trabalho Média",
 				"desc_percent": "",
@@ -573,7 +573,7 @@
 				]
 			},
 			{
-				"id":"7",
+				"id": 7,
 				"title":"Massa de Rendimentos do Trabalho",
 				"desc_int":"",
 				"desc_percent": "da soma de remunerações pagas aos [ocp] [cad] [uf]",
@@ -599,7 +599,7 @@
 				]
 			},
 			{
-				"id":"9",
+				"id": 9,
 				"desc_int":"DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO [cad] [uf]",
 				"title":"Razão entre a Massa de Rendimentos do Trabalho e o Valor Adicionado",
 				"desc_percent": "",
@@ -623,7 +623,7 @@
 				]
 			},
 			{
-				"id":"11",
+				"id": 11,
 				"desc_int":" DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS [cad] [uf]",
 				"title":"Razão entre os Salários Pagos e o Custo Total",
 				"desc_percent": "",
@@ -647,7 +647,7 @@
 				}
 			},
 			{
-				"id":"12",
+				"id": 12,
 				"title":"Razão de Concentração do emprego cultural e criativo (C4)",
 				"desc_int":"Concentração do Emprego por UF",
 				"desc_percent":"Concentração do Emprego por Setor",
@@ -670,7 +670,7 @@
 				}
 			},
 			{
-				"id":"13",
+				"id": 13,
 				"title":"Razão de Concentração da Massa Rendimentos do Trabalho (C4)",
 				"desc_int":"Concentração de Massa Salarial por UF",
 				"desc_percent": "Concentração de Massa Salarial por Setor",
@@ -693,7 +693,7 @@
 				}
 			},
 			{
-				"id":"14",
+				"id": 14,
 				"title":"IHH (Índice Herfindahl-Hirschman de concentração) de Número de Trabalhadore(a)s",
 				"desc_int": "IHH DE NÚMERO DO TRABALHADORES POR UF",
 				"desc_percent": "IHH DE NÚMERO DO TRABALHADORES POR SETOR",
@@ -716,7 +716,7 @@
 				}
 			},
 			{
-				"id":"15",
+				"id": 15,
 				"title":"IHH (Índice Herfindahl-Hirschman de concentração) da Massa de Rendimentos do Trabalho",
 				"desc_int": "IHH DA MASSA DE RENDIMENTOS POR UF",
 				"desc_percent": "IHH DA MASSA DE RENDIMENTOS POR SETOR",
@@ -741,7 +741,7 @@
 		],
 		[
 			{
-				"id":"1",
+				"id": 1,
 				"title":"Financiamento público total",
 				"sufixo_valor":"",
 				"desc_int":"FINANCIAMENTO À CULTURA  [] [cad] [uf]",
@@ -765,7 +765,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"18",
+				"id": 18,
 				"title":"<span>CONSUMO VIA VALE-CULTURA<span>",
 				"desc_int":"consumidos com cartão Vale-Cultura [cad] [uf] ",
 				"desc_percent": "Total consumido [cad] [uf] ",
@@ -786,7 +786,7 @@
                "mapa_valores": "Valor total se refere à soma de todos os registros, inclusive aqueles em que a UF da recebedora não estava identificada. Assim, a soma dos valores das UFs pode não se igualar ao valor total aqui indicado."
 			},
 			{
-				"id":"19",
+				"id": 19,
 				"title":"<span>AGENTES DO VALE-CULTURA<span>",
 				"desc_int":"[cad] [uf]",
 				"desc_percent": "[cad] [uf]",
@@ -811,7 +811,7 @@
                 "mapa_valores": "Valor total se refere à soma de todos os registros, inclusive aqueles em que a UF da recebedora não estava identificada. Assim, a soma dos valores das UFs pode não se igualar ao valor total aqui indicado."
 			},
 			{
-				"id":"3",
+				"id": 3,
 				"sufixo_valor":"",
 				"prefixo_valor":"R$ ",
 				"desc_int":"FINANCIAMENTO À CULTURA VIA [] BNDES () [uf]",
@@ -835,7 +835,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"4",
+				"id": 4,
 				"title":"Valor total dos incentivos privados",
 				"desc_int":"FINANCIAMENTO À CULTURA VIA MECENATO ADVINDO pfj DA ESFERA PRIVADA [cad] [uf] ",
 				"desc_percent": "DO TOTAL DO FINANCIAMENTO À CULTURA VIA MECENATO ADVINDO pfj DA ESFERA PRIVADA [uf]",
@@ -858,7 +858,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"5",
+				"id": 5,
 				"title":"Valor total dos incentivos das empresas estatais",
 				"desc_int":"FINANCIAMENTO À CULTURA VIA MECENATO ADVINDO PARA EMPRESA ESTATAL [cad] [uf]",
 				"desc_percent": "DO TOTAL DO FINANCIAMENTO À CULTURA VIA MECENATO ADVINDO PARA EMPRESA ESTATAL [uf]",
@@ -881,7 +881,7 @@
                "mapa_valores": ""
 			},
 			{
-				"id":"7",
+				"id": 7,
 				"title":"PERCENTUAL DE RECURSOS PRIVADOS NO TOTAL FINANCIADO VIA MECENATO",
 				"desc":"Retrata o percentual dos recursos privados em cultura e despesas em fomento da cultura nos estratos referidos.",
 				"desc_int":"PERCENTUAL DO APOIO PRIVADO NO TOTAL APOIADO VIA MECENATO [uf].",
@@ -904,7 +904,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"8",
+				"id": 8,
 				"title":"Participação do financiamento público total no valor adicionado pelas atividades culturais",
 				"desc_int":"RAZÃO ENTRE TOTAL FINANCIADO [uf] [CAD] E VALOR ADICIONADO [cad] {uf}",
 				"desc_percent": "",
@@ -928,7 +928,7 @@
                "mapa_valores": ""
 			},
 			{
-				"id":"9",
+				"id": 9,
 				"title":"Participação do financiamento público total na massa salarial das atividades culturais",
 				"desc":"Retrata a razão entre a despesa total em cultura e a arrecadação total nos estratos referidos.",
 				"desc_int":"RAZÃO ENTRE TOTAL FINANCIADO [uf] [CAD] E MASSA SALARIAL DOS TRABALHADORES CULTURAIS [cad] {uf}",
@@ -952,7 +952,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"10",
+				"id": 10,
 				"title":"Participação da despesa com cultura nas contas públicas federais",
 				"desc":"Retrata a razão entre a despesa total em cultura e a massa salarial nos estratos referidos.",
 				"desc_int":"DE DESPESA DO MINISTÉRIO DA CULTURA EM RELAÇÃO AO TOTAL DE ARRECADAÇÃO FEDERAL",
@@ -973,7 +973,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"11",
+				"id": 11,
 				"title":"Total das propostas de projetos de financiamento cultural",
 				"desc":"Retrata a soma de todas propostas para LIC nos estratos referidos.",
 				"desc_int":"PROJETOS PROPOSTOS PARA CAPTAÇÃO VIA MECENATO [cad] [uf] ",
@@ -997,7 +997,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"12",
+				"id": 12,
 				"title":"Total dos projetos de financiamento cultural efetivamente fomentados",
 				"desc":"Retrata todos os projetos propostos que foram fomentados pela LIC nos estratos referidos.",
 				"desc_int":"PROJETOS APROVADOS PARA CAPTAÇÃO VIA MECENATO [cad] [uf]",
@@ -1021,7 +1021,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"13",
+				"id": 13,
 				"title":"Tempo médio de aprovação dos projetos de financiamento cultural",
 				"desc":"Retrata o tempo médio entre a proposta de projeto e a efetiva aprovação do fomento.",
 				"desc_int":"DIAS PARA APROVAÇÃO DE PROJETOS VIA MECENATO [cad] [uf]",
@@ -1045,7 +1045,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"14",
+				"id": 14,
 				"title":"Razão entre total solicitado pelos projetos e o valor efetivo aprovado",
 				"desc":"Retrata o percentual relativo que relaciona o valor solicitados pelos projetos e o total efetivo do fomento.",
 				"sufixo_valor":"",
@@ -1066,7 +1066,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"15",
+				"id": 15,
 				"title":"Índice Razão para Concentração dos Incentivos Fiscais (C4) ",
 				"desc":"Retrata sobre o quão concentrado é os recursos apoiados nos estratos referidos.",
 				"desc_int":"Concentração do financiamento [] por UF",
@@ -1087,7 +1087,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"16",
+				"id": 16,
 				"title":"Índice Herfindahl-Hirschman para Concentração dos Projetos Fomentados",
 				"desc":"Retrata sobre o quão concentrado é o gasto em cultura pelos estratos referidos.",
 				"desc_int":"Concentração do financiamento [] por UF",
@@ -1108,7 +1108,7 @@
                 "mapa_valores": ""
 			},
 			{
-				"id":"17",
+				"id": 17,
 				"title":"<span>Fomento Público Estadual à Cultura<span>",
 				"desc_int":"FINANCIADOS POR MEIO DE MECANISMOS DE MECENATO ESTADUAL [uf]",
 				"desc_percent": "",
@@ -1132,7 +1132,7 @@
 		],
 		[
 			{
-				"id":"1",
+				"id": 1,
 				"title":"Comércio Externo",
 				"desc":"Demonstra o valor de absoluto dos setores culturais por estratificação proposta.",
 				"desc_var_mapa": "A variável mostra o valor transacionado com o resto do mundo, caracterizando quanto, em termos monetários, os setores culturais e criativos contribuíram para o comércio internacional do Brasil. Desagregação para bens e serviços.",
@@ -1158,7 +1158,7 @@
 				]
 			},
 			{
-				"id":"2",
+				"id": 2,
 				"title":"Participação no comércio exterior total",
 				"desc":"Demonstra a relação do comércio exterior nacional cultural com o comércio exterior brasileiro por estratificação proposta.",
 				"desc_var_mapa": "A variável calcula a participação das trocas comerciais dos setores culturais e criativos no comércio internacional total do Brasil. Desagregação para bens e serviços. ",
@@ -1184,7 +1184,7 @@
 				]
 			},
 			{
-				"id":"3",
+				"id": 3,
 				"title":"Relação com o valor adicionado pela cultura",
 				"desc":"Demonstra a relação do comércio exterior nacional cultural com o valor adicionado pela cultura por estratificação proposta.",
 				"desc_var_mapa": "A variável mede a relação entre o comércio exterior dos setores culturais e criativos e o valor adicionado pelas empresas culturais e criativas formais. Desagregação para bens e serviços.",
@@ -1210,7 +1210,7 @@
 				]
 			},
 			{
-				"id":"5",
+				"id": 5,
 				"title":"Razões de concentração (C2/C4) do comércio externo",
 				"desc":"Demonstra a relação do comércio exterior nacional cultural com o comércio global por estratificação proposta.",
 				"desc_var_mapa": "A variável C4 – Comércio Externo mede o grau de concentração na distribuição do comércio externo de bens e serviços culturais e criativos no Brasil, ano a ano.<br><br>A razão de concentração nada mais é que a divisão da soma do valor do comércio de bens e serviços culturais e criativo nos quatro maiores setores, nos dois maiores parceiros externos, ou nas quatro maiores Unidades da Federação, sobre o valor total do comércio de bens e serviços culturais e criativos no País em cada ano.<br><br>Por exemplo, em 2017 o C4 – Comércio Externo setorial, para exportações de bens culturais e criativos, foi igual a 0,991 ou 99%, porque:<br><br><li>O maior setor, Arquitetura e Design, era responsável por 0,48 ou 48 % das exportações de bens culturais e criativos;<li>O segundo maior, Educação e Criação em Artes, respondia por 0,465 ou 46,5%;<li>O terceiro maior, Entretenimento, representava 0,036 ou 3,6%; e<li>O quarto maior, Música, representava 0,01 ou 1,0%.<br><br>Em 2017, portanto, houve forte concentração setorial da exportação de bens culturais e criativos no Brasil.<br><br>O C2 – Comércio Externo mundial de 2016, para importações de serviços, foi de 0,973 ou 97%, com a seguinte composição:<br><br><li>O maior parceiro, América do Norte, respondia por 77,8%%;<li>O segundo maior, Europa, era responsável por 19,5%;<br><br>Assim, a importação de serviços culturais e criativos estava fortemente concentrada em termos de parceiros externos do Brasil no ano de 2016.<br><br>O C4 – Comércio Externo regional de 2017, para importações de bens, foi de 0,89 ou 89%, com a seguinte composição:<br><br><li>A maior UF, SP, representava 64,7 % das importações de bens culturais e criativos em 2017;<li>A segunda maior, SC, era responsável por 14,9%;<li>A terceira maior, AM, respondia por 6,2%; e<li>A quarta maior, ES, representava 3,2%.<br><br>Assim, as importações de bens culturais e criativos estavam fortemente concentradas em termos regionais no Brasil no ano de 2017.",
@@ -1233,7 +1233,7 @@
 				}
 			},
 			{
-				"id":"8",
+				"id": 8,
 				"title":"IHH (Índice Herfindahl-Hirschman) de concentração do comércio externo",
 				"desc":"Demonstra a relação do comércio exterior nacional cultural com o produto interno bruto por estratificação proposta.",
 				"desc_var_mapa": "A variável IHH – Comércio Externo mede o grau de concentração na distribuição do comércio internacional dos bens e serviços culturais e criativos do Brasil, ano a ano.<br><br>Isto é, o índice permite averiguar se o comércio externo de bens e serviços culturais e criativos está ou não concentrado em poucos setores, em poucos parceiros externos ou em poucas Unidades da Federação.<br><br>Como o índice deve ser lido? O índice varia entre 0 e 1 e, quanto mais próximo de 1, mais concentrado é o setor, a ocupação ou a região em termos da distribuição do comércio externo de bens e serviços culturais e criativos.<br><br>Em geral, um índice acima de 0,25 mostra concentração setorial (poucos SCCs concentrando uma grande parcela do comércio externo), concentração mundial (poucos parceiros externos concentrando elevada proporção do comércio internacional do Brasil) ou regional (poucas UFs concentrando uma grande proporção comércio externo).",
@@ -1256,7 +1256,7 @@
 				}
 			},
 			{
-				"id":"11",
+				"id": 11,
 				"title":"Índice de quantum do comércio externo",
 				"desc_int": "Índice de quantum do valor absoluto <>",
 				"desc_percent":"",
@@ -1276,7 +1276,7 @@
 				]
 			},
 			{
-				"id":"12",
+				"id": 12,
 				"title":"Índice de preços do comércio externo",
 				"desc_int": "índice de preços do valor absoluto das <>",
 				"desc_percent":"",
@@ -1296,7 +1296,7 @@
 				]
 			},
 			{
-				"id":"13",
+				"id": 13,
 				"title":"Quantidade física transacionada",
 				"desc_int": "<> [uf] [] ()",
 				"desc_percent":"dos kg <> [uf] []",
@@ -1319,7 +1319,7 @@
 				]
 			},
 			{
-				"id":"14",
+				"id": 14,
 				"title":"Índice de rentabilidade das exportações",
 				"desc":"A variável mostra a relação entre o índice de preços das exportações, corrigido pela taxa de câmbio, e uma aproximação do índice de custos das exportações setoriais estimado pela FUNCEX. Variável apresentada apenas para bens, sendo 2009 o ano base (índice = 100).",
 				"desc_int": "DE RENTABILIDADE <> ()",
