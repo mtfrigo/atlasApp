@@ -8,6 +8,7 @@ import * as t from "topojson-client";
 
 import { MapaProvider } from '../../providers/mapa/mapa';
 import { JsonsProvider } from '../../providers/jsons/jsons';
+import { color } from 'd3';
 
 
 /*
@@ -26,7 +27,7 @@ export class MapaComponent {
   // @Input() height : number = this.width;
   @Input() height : number = window.innerHeight*0.4;;
 
-  @Input() parameters : any[];
+  @Input() parameters : any;
   @Input() url : string;
 
   view_title: any;
@@ -155,7 +156,10 @@ export class MapaComponent {
   }
 
   getStateColor(d){
-    return this.colorScale(this.info[d.id].valor);
+    
+    if(this.parameters.uf == d.id){
+      return this.colors.eixo[this.parameters.eixo].color['1'];
+    } else return this.colorScale(this.info[d.id].valor);
   }
 
 

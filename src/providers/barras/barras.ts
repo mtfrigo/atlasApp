@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 /*
@@ -9,11 +9,20 @@ import { Observable } from 'rxjs';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+const options = {
+  'headers': new HttpHeaders({
+    'Access-Control-Allow-Origin': '*'
+  })
+}
+
+
 @Injectable()
 export class BarrasProvider {
 
   //configUrl = 'http://143.54.231.10/atlasApp/src/api/json_barras.php?';
   configUrl = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_barras.php?';
+  //configUrl = 'http://ufrgs.br/obec/atlas/api/json_barras.php?';
+  
   constructor(public http: HttpClient) {
 
   }

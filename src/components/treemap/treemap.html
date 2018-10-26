@@ -6,7 +6,7 @@
         <text *ngIf='d.data.percentual*100 > 2' text-anchor="end" [attr.y]="textY(d.y1, d.y0)" [attr.x]="textX(d.x1, d.x0)" [attr.font-size]="getFontSize(d)">
             {{formatPercent(d.data.percentual)}}
         </text>
-        <text *ngIf="testCondition(d)" text-anchor="start" [attr.font-size]="titleSize" y=20 [attr.x]="width/150">
+        <text *ngIf="testCondition(d)" text-anchor="start" [attr.font-size]="titleSize" y=10 [attr.x]="width/150">
             {{d.data.name}}
         </text>
       </g>

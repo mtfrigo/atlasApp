@@ -287,8 +287,9 @@ export class BarrasComponent implements OnChanges{
     }, this.interval_animation)
 
   }
-  getBarColor(){
-
-    return (this.colors['cadeias'][this.parameters.cad]['color']);
+  getBarColor(d){
+    if(this.parameters.ano == d.ano){
+      return this.colors.eixo[this.parameters.eixo].color['1'];
+    } else  return (this.colors['cadeias'][this.parameters.cad]['color']);
   }
 }

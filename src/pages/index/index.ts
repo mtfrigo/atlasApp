@@ -18,10 +18,10 @@ import { SobrePage } from '../sobre/sobre';
 export class IndexPage {
   private eixos = [
     {'name': "Atlas", 'value': -1, 'color': "#ccc"},
-    {'name': "EMPREENDIMENTOS \n CULTURAIS", 'value': 0, 'color': '#d6d940', 'ioncolor': 'eixo1'},
-    {'name': "MERCADO DE \n TRABALHO", 'value': 1, 'color': '#89c445', 'ioncolor': 'eixo2'},
-    {'name': "POLÍTICAS \n PÚBLICAS", 'value': 2, 'color': '#299c76', 'ioncolor': 'eixo3'},
-    {'name': "COMÉRCIO \n INTERNACIONAL", 'value': 3, 'color': '#0e3b30', 'ioncolor': 'eixo4'}
+    {'name': "EMPREENDIMENTOS \n CULTURAIS", 'value': 0, 'color': '#efc851', 'ioncolor': 'eixo1'},
+    {'name': "MERCADO DE \n TRABALHO", 'value': 1, 'color': '#97BE13', 'ioncolor': 'eixo2'},
+    {'name': "POLÍTICAS \n PÚBLICAS", 'value': 2, 'color': '#00916D', 'ioncolor': 'eixo3'},
+    {'name': "COMÉRCIO \n INTERNACIONAL", 'value': 3, 'color': '#003F33', 'ioncolor': 'eixo4'}
   ]
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

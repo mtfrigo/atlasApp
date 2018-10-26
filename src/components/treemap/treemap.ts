@@ -33,8 +33,8 @@ export class TreemapComponent implements OnChanges{
   private subtitles_2 : Treemap[] = [];
   private colors;
   private treemapData : HierarchyRectangularNode<{}>;
-  private fontSizeStd : number = 50;
-  private titleSize : number = 10;
+  private fontSizeStd : number = 20;
+  private titleSize : number = 8;
   treemap = d3.treemap()
         .tile(d3.treemapResquarify)
         .size([this.width, this.height])
@@ -85,7 +85,7 @@ export class TreemapComponent implements OnChanges{
   }
 
   getFontSize(d){
-    return this.fontSizeStd*d.data.percentual + 10;
+    return this.fontSizeStd*d.data.percentual + 8;
   }
 
   testCondition(d){
@@ -120,7 +120,6 @@ export class TreemapComponent implements OnChanges{
           this.updateGlobalData();
           this.treemapData = this.treemap(this.getHierarchy());
           this.ready = true;
-
           this.subtitles_1 = this.data['children']
                                   .filter((d, i) => { 
                                     if(i < Math.floor(this.data['children'].length / 2)) return d;
