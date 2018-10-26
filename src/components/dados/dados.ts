@@ -131,12 +131,8 @@ export class DadosComponent {
   formatDecimal(valor, casas)
   {
 
-    console.log(valor)
-
     valor = valor * 100;
     valor = valor.toFixed(casas);
-
-    console.log(valor)
 
     let inteiro = valor.split('.')[0];
     let decimal = valor.split('.')[1];
@@ -147,10 +143,12 @@ export class DadosComponent {
       else break;
     }
 
-    if(decimal)
+    if(decimal.length > 0)
       valor = inteiro+"."+decimal;
-    else;
+    else
       valor = inteiro;
+
+
 
     return valor;
   }
