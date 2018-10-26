@@ -24,7 +24,7 @@ import { DadosProvider } from '../../providers/dados/dados';
 
 export class BarrasComponent implements OnChanges{
   width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.4;
+  height : number = window.innerHeight*0.3;
 
   @Input() parameters : any;
   @Input() url : string;
@@ -61,7 +61,6 @@ export class BarrasComponent implements OnChanges{
   values: number[] = [];
   minValue: any;
   maxValue: any;
-
   barsHeight: any;
   barsWidth:any;
 
@@ -157,7 +156,6 @@ export class BarrasComponent implements OnChanges{
     this.y = d3Scale.scaleLinear()
       .rangeRound([this.barsHeight, 0])
       .domain([this.minValue, this.maxValue]).nice();
-
 
     this.yTicksScale = d3Scale.scaleLinear()
       .rangeRound([this.y(this.minValue), this.y(this.maxValue)])

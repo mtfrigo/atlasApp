@@ -31,38 +31,34 @@
         >
         </rect>
 
-        <g class='axis--x'>
-          <line x1="-10" [attr.y1]="barsHeight" [attr.x2]="barsWidth" [attr.y2]="barsHeight" stroke="#000" stroke-width="2"  />
-          <g *ngFor="let d of data; index as i"
-            class='tick'
-            [attr.transform]='getTickX(d, i)'
-          >
-            <text
+        <g class='axis--x' [attr.transform] = "'translate(0, '+barsHeight+')'">
+          <line x1="-10" y1="0" [attr.x2]="barsWidth" y2="0" stroke="#000" stroke-width="2"  />
+          
+            <text *ngFor="let d of data"
               class='axis-title'
               fill="#000"
-              x='55'
-              font-size='12'
+              [attr.x]='x(d.ano)'
+              font-size='10'
               dy="1.2em"
               text-anchor='center'
               text='Frequency'
             >
               {{ d.ano }}
             </text>
-          </g>
+          
         </g>
 
         <g class='axis--y'>
           <line x1="0" y1="0" x2="0" [attr.y2]="barsHeight+10" stroke="#000" stroke-width="2"/>
           <g *ngFor="let tick of yTicksArray; index as i"
-            class='tick'
-            [attr.transform]='getTickY(tick, i)'
-            [attr.data]=y(tick)
           >
             <text
               class='axis-title'
               fill="#000"
-              x=-15
+              x=-2
+              [attr.y]="yTicksScale(tick)"
               dy=0.35em
+              font-size="8"
               text-anchor='end'
               text='Frequency'
             >
@@ -73,8 +69,10 @@
                 stroke-width='1'
                 stroke="#000"
                 opacity=1
-                x1='-10'
-                x2="0"
+                [attr.y1]="yTicksScale(tick)"
+                [attr.y2]="yTicksScale(tick)"
+                x1='-3'
+                x2="3"
               >
               </line>
 
