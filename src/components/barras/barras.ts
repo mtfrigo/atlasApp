@@ -24,7 +24,7 @@ import { DadosProvider } from '../../providers/dados/dados';
 
 export class BarrasComponent implements OnChanges{
   width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.3;
+  height : number = window.innerHeight*0.35;
 
   @Input() parameters : any;
   @Input() url : string;
@@ -40,7 +40,7 @@ export class BarrasComponent implements OnChanges{
   yTicksArray: number[];
   yTicksScale: any;
 
-  margin = {top: 0, right: 5, bottom: 30, left: window.innerWidth*0.05};
+  margin = {top: 0, right: 5, bottom: 30, left: window.innerWidth*0.075};
 
   x: any;
   y: any;

@@ -11,7 +11,7 @@ page-home {
 
 .segment-md .segment-button.segment-activated {
   color: red;
-  background-color: #007aff;
+  background-color: #6DBFC9;
   opacity: 1;
   border-color: #bec7c7;
 }
@@ -186,11 +186,15 @@ page-home .scroll-content{
 
 
 #views{
-  min-height: 60%;
+  min-height: 65%;
   flex-grow: 1;
 }
 
 #dados{
   flex-grow: 2;
-  overflow: auto;
+  overflow-y: scroll;
+}
+
+page-home .slide-zoom{
+  height: 100%;
 }

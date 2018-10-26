@@ -80,8 +80,6 @@ export class HomePage implements OnInit{
     var slideIndex = this.slides.getActiveIndex();
 
     if(slideIndex >= 0 && slideIndex <= 2)  this.view = slideIndex.toString();
-
-    console.log(slideIndex);
   }
 
   ngOnInit(){
@@ -201,7 +199,7 @@ export class HomePage implements OnInit{
 
     cad = this.pt_br.select.cad[this.parameters.cad].name.toUpperCase();
     prep_cad = 'NO SETOR';
-    
+
     if(this.parameters.uf == 0){
       uf = "BRASIL"
     }
@@ -213,7 +211,7 @@ export class HomePage implements OnInit{
 
     title = title.replace('[uf]', prep_uf+' '+uf);
     title = title.replace('[cad]', prep_cad+' '+cad)
-    
+
     return title
   }
 
