@@ -133,9 +133,8 @@ export class MapaComponent {
 
   parseData()
   {
-
     this.values = this.data.pop();
-
+    this.values.splice(this.values.length -1, 1)
     var edgeValues = d3.extent(this.values);
     this.maxValue = edgeValues[1];
     this.minValue = edgeValues[0];
@@ -153,6 +152,10 @@ export class MapaComponent {
       .range([this.colors.cadeias[this.parameters['cad']].gradient['2'], this.colors.cadeias[this.parameters['cad']].gradient['6']])
 
 
+  }
+
+  selectUF(uf){
+    this.parameters.uf = uf;
   }
 
   getStateColor(d){

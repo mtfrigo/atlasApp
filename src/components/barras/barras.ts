@@ -287,6 +287,11 @@ export class BarrasComponent implements OnChanges{
     }, this.interval_animation)
 
   }
+
+  selectBar(ano){
+    this.parameters.ano = ano;
+  }
+
   getBarColor(d){
     if(this.parameters.ano == d.ano){
       return this.colors.eixo[this.parameters.eixo].color['1'];

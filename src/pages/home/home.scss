@@ -16,6 +16,17 @@ page-home {
   border-color: #bec7c7;
 }
 
+.toolbar-md-eixo1 .bar-button-clear-md, .toolbar-md-eixo1 .bar-button-default-md, .toolbar-md-eixo1 .bar-button-outline-md, .toolbar-md-eixo1 .toolbar-title-md{
+  color: #ffffff;
+}
+
+.toolbar-title-md {
+  padding: 0 12px;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
 .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
   left: 0;
   bottom: 0px;

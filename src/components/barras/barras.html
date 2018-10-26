@@ -28,6 +28,7 @@
           [attr.width]='x.bandwidth()'
           [attr.data]=d.valor
           [attr.fill] = 'getBarColor(d)'
+          (click)="selectBar(d.ano)"
         >
         </rect>
 
