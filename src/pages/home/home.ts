@@ -14,7 +14,7 @@ export class HomePage implements OnInit{
 
   @ViewChild(Slides) slides: Slides;
 
-  private list_uf : Object = [];
+  private list_uf : any = [];
   private pt_br : any = [];
   private anos : number[];
   private pre_desags : number = 0;
@@ -23,6 +23,7 @@ export class HomePage implements OnInit{
   private ready_pt_br : boolean = false;
   private info_eixo = {'value': 0, 'name': '', 'color': '#fff', 'ioncolor': 'eixo1'};
   data: any;
+  i = 0;
 
   view: string = '0';
   menu_plus: string = '+';
@@ -85,8 +86,6 @@ export class HomePage implements OnInit{
 
   ngOnInit(){
 
-
-
     this.data = new BehaviorSubject(this.getGlobalData());
 
     this.jsonsProvider.getUfJson()
@@ -111,7 +110,6 @@ export class HomePage implements OnInit{
         this.anos = d;
         this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
       })
-
 
   }
 
@@ -184,21 +182,44 @@ export class HomePage implements OnInit{
 
   getTitleView(box: number){
     let views = this.getDataVar().views;
+    let title : string = '';
+    let uf : string = '';
+    let cad: string = '';
+    let prep_uf : string = '';
+    let prep_cad: string = '';
 
     switch(box){
       case 1:
-        return views.view_box1[this.parameters.chg].title;
+        title = views.view_box1[this.parameters.chg].title; break;
       case 2:
-        return views.view_box2[0].title;
+        title = views.view_box2[0].title; break;
       case 3:
-        return views.view_box3[0].title;
+        title = views.view_box3[0].title;
     }
+    uf = this.list_uf.filter( d => d.id == this.parameters.uf)[0].name.toUpperCase();
+    prep_uf = this.list_uf.filter( d => d.id == this.parameters.uf)[0].prep.toUpperCase();
+
+    cad = this.pt_br.select.cad[this.parameters.cad].name.toUpperCase();
+    prep_cad = 'NO SETOR';
+    
+    if(this.parameters.uf == 0){
+      uf = "BRASIL"
+    }
+
+    if(this.parameters.cad == 0){
+      cad = "SETORES CULTURAIS E CRIATIVOS"
+      prep_cad = "NOS"
+    }
+
+    title = title.replace('[uf]', prep_uf+' '+uf);
+    title = title.replace('[cad]', prep_cad+' '+cad)
+    
+    return title
   }
 
   getDescVar(){
     return this.getDataVar().desc;
   }
-
 
   vrvPorte(){
     let vrvPorte = [1, 2, 3];
