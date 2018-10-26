@@ -2,7 +2,7 @@
 <div *ngIf='states != null && colors'>
   <svg id="mapSVG" [attr.width]="width" [attr.height]="height">
       <g [attr.width]="mapaWidth" [attr.height]="mapHeight" [attr.transform]="getMapTransform()">.
-            <path *ngFor="let d of states.features; index as i"
+            <path *ngFor="let d of states.features; index as i" (click)="selectUF(d.id)"
             [attr.data-legend]='1'
             [attr.d]='paths[i]'
             [attr.fill]='getStateColor(d)'
