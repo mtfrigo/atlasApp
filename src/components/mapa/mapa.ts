@@ -156,7 +156,7 @@ export class MapaComponent {
   }
 
   getStateColor(d){
-    
+
     if(this.parameters.uf == d.id){
       return this.colors.eixo[this.parameters.eixo].color['1'];
     } else return this.colorScale(this.info[d.id].valor);

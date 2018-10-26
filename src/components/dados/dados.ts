@@ -88,17 +88,72 @@ export class DadosComponent {
 
         var desc = this.dadosProvider.getFinalDesc(i, this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key], this.parameters);
 
+        var formattedData;
+
         switch(i){
-          case 0: this.desc_array.push({desc: desc, valor: this.valor});
+          case 0: formattedData = this.formatDescValue(i, this.valor);
             break;
-          case 1: this.desc_array.push({desc: desc, valor: this.percentual});
+          case 1: formattedData = this.formatDescValue(i, this.percentual);
             break;
-          case 2: this.desc_array.push({desc: desc, valor: this.percentual});
+          case 2: formattedData = this.formatDescValue(i, this.percentual);
             break;
         }
+
+        this.desc_array.push({desc: desc, valor: formattedData});
 
       }
 
     }
   }
+
+  formatDescValue(i, valor)
+  {
+    if(this.parameters.eixo == 0)
+    {
+      if(i == 0) return valor;
+      else return this.formatDecimal(valor, 3)+"%";
+    }
+    else if(this.parameters.eixo == 1)
+    {
+
+    }
+    else if(this.parameters.eixo == 2)
+    {
+
+    }
+    else if(this.parameters.eixo == 3)
+    {
+
+    }
+
+  }
+
+  formatDecimal(valor, casas)
+  {
+
+    console.log(valor)
+
+    valor = valor * 100;
+    valor = valor.toFixed(casas);
+
+    console.log(valor)
+
+    let inteiro = valor.split('.')[0];
+    let decimal = valor.split('.')[1];
+
+
+    for (var i = decimal.length-1; i >= 0; i--) {
+      if(decimal.charAt(i) == "0") decimal = decimal.slice(0, - 1)
+      else break;
+    }
+
+    if(decimal)
+      valor = inteiro+"."+decimal;
+    else;
+      valor = inteiro;
+
+    return valor;
+  }
+
+
 }

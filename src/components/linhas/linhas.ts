@@ -28,8 +28,8 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'linhas.html'
 })
 export class LinhasComponent {
-  @Input() width  : number = window.innerWidth*0.9;
-  @Input() height : number = window.innerHeight*0.5;
+  width  : number = window.innerWidth*0.8;
+  height : number = window.innerHeight*0.35;
 
   @Input() url: string;
   @Input() parameters: Object;
@@ -49,7 +49,7 @@ export class LinhasComponent {
   new_data = [];
   colors: any;
 
-  margin = {top: 0, right: 20, bottom: 40, left: 50};
+  margin = {top: 0, right: 20, bottom: 30, left: window.innerWidth*0.075};
   linesWidth: any;
   linesHeight: any;
 
