@@ -34,7 +34,7 @@
         <g class='axis--x' [attr.transform] = "'translate(0, '+barsHeight+')'">
           <line x1="-10" y1="0" [attr.x2]="barsWidth" y2="0" stroke="#000" stroke-width="2"  />
             <g *ngFor="let d of data">
-                <text 
+                <text
                 class='axis-title'
                 fill="#000"
                 [attr.x]='x(d.ano)'
@@ -58,8 +58,8 @@
               </line>
 
             </g>
-            
-          
+
+
         </g>
 
         <g class='axis--y'>
@@ -69,7 +69,7 @@
             <text
               class='axis-title'
               fill="#000"
-              x=-2
+              x=-5
               [attr.y]="yTicksScale(tick)"
               dy=0.35em
               font-size="8"

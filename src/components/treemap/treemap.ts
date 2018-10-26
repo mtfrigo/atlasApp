@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, ElementRef } from '@angular/core';
 import * as d3 from 'd3';
 import { TreemapProvider } from '../../providers/treemap/treemap';
 import { Treemap } from '../../interfaces/treemap';
@@ -49,6 +49,8 @@ export class TreemapComponent implements OnChanges{
               }
 
   ngOnInit() {
+
+
     this.jsonsProvider.getColors()
       .subscribe(d=>{
         this.colors = d;
@@ -122,11 +124,11 @@ export class TreemapComponent implements OnChanges{
           this.ready = true;
 
           this.subtitles_1 = this.data['children']
-                                  .filter((d, i) => { 
+                                  .filter((d, i) => {
                                     if(i < Math.floor(this.data['children'].length / 2)) return d;
                                   });
           this.subtitles_2 = this.data['children']
-                                  .filter((d, i) => { 
+                                  .filter((d, i) => {
                                     if(i >= Math.floor(this.data['children'].length / 2)) return d;
                                   });
         });

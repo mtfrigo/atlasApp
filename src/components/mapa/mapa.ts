@@ -55,10 +55,10 @@ export class MapaComponent {
   legend_data : string[] = [];
 
   legend_config = {
-    'width':  this.width*0.4,
+    'width':  this.width*0.3,
     'height': this.height*0.03,
-    'x':      this.width*0.3,
-    'y':      this.height*0.92
+    'x':      this.width*0.05,
+    'y':      this.height*0.8
   }
 
   minValue: number;

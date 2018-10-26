@@ -78,46 +78,50 @@
 
 <ion-content  style="background-color: #E9F2ED;">
 
-  <div id='content-container'>
-    <div id='views'>
-      <ion-item *ngIf="parameters.ano > 0 && ready_pt_br" style="background-color: #E9F2ED;" >
-        <ion-slides #slides (ionSlideDidChange)="slideChanged()">
+  <ion-grid id='content-container'>
 
-          <ion-slide>
-              <p class='title_view'>{{getTitleView(1)}}</p>
-              <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
-              <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-          </ion-slide>
+      <ion-row id='views'>
+        <ion-col col-12 >
+            <ion-item *ngIf="parameters.ano > 0 && ready_pt_br" style="background-color: #E9F2ED; height: 100%" >
+              <ion-slides #slides (ionSlideDidChange)="slideChanged()" style="height: 100%">
+                <ion-slide>
+                    <p class='title_view'>{{getTitleView(1)}}</p>
+                    <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
+                    <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+                </ion-slide>
 
-          <ion-slide>
-            <p class='title_view'>{{getTitleView(2)}}</p>
-            <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
-            <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
-            <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-          </ion-slide>
+                <ion-slide>
+                  <p class='title_view'>{{getTitleView(2)}}</p>
+                  <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
+                  <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
+                  <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+                </ion-slide>
 
-          <ion-slide>
-            <p class='title_view'>{{getTitleView(3)}}</p>
-            <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-            <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
-            <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
-          </ion-slide>
+                <ion-slide>
+                  <p class='title_view'>{{getTitleView(3)}}</p>
+                  <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+                  <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
+                  <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
+                </ion-slide>
+              </ion-slides>
+            </ion-item>
+        </ion-col>
+      </ion-row>
 
-        </ion-slides>
-      </ion-item>
-    </div>
 
-    <div id='dados'>
-      <ion-item text-wrap  style="background-color: #E9F2ED; " >
-        <div>
-          <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
-          <p *ngIf="ready_pt_br" id="desc">
-            {{getDescVar()}}
-          </p>
-        </div>
-      </ion-item>
-    </div>
-  </div>
+      <ion-row id='dados'>
+        <ion-col col-12>
+            <ion-item text-wrap  style="background-color: #E9F2ED; " >
+                <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
+                <p *ngIf="ready_pt_br" id="desc">
+                  {{getDescVar()}}
+                </p>
+            </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+  </ion-grid>
 
 </ion-content>
 
