@@ -6,116 +6,125 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding  style="background-color: #E9F2ED">
+<div id='menu-container' >
 
-  <div id='menu-container' [style.background-color]="menu_color">
+  <div id='menu' [style.background-color]="menu_color" [style.opacity]="menu_opacity">
+  <ion-item>
+    <button ion-button full clear (click)="menuClick()" ><div class='menu-bread' ><div class='menu-plus' >{{menu_plus}}</div><div class='menu-label' >Menu</div></div></button>
+  </ion-item>
 
-    <ion-item>
-      <button ion-button full clear (click)="menuClick()" ><div class='menu-bread' ><div class='menu-plus' >{{menu_plus}}</div><div class='menu-label' >Menu</div></div></button>
+  <div id='menu-options' *ngIf=expand [style.background-color]="menu_color">
+
+    <ion-item *ngIf="list_uf.length" >
+      <ion-label>Estados</ion-label>
+      <ion-select [(ngModel)]="parameters.uf">
+          <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
+      </ion-select>
     </ion-item>
 
-    <div id='menu-options' *ngIf=expand [style.background-color]="menu_color">
+    <ion-item *ngIf="ready_pt_br">
+      <ion-label>Variável</ion-label>
+      <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">
+          <ion-option *ngFor="let variable of pt_br.var[parameters.eixo]" [value]="variable.id">{{variable.title}}</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-item *ngIf="list_uf.length" >
-        <ion-label>Estados</ion-label>
-        <ion-select [(ngModel)]="parameters.uf">
-            <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
-        </ion-select>
-      </ion-item>
+    <ion-item *ngIf="parameters.ano > 0">
+      <ion-label>Ano</ion-label>
+      <ion-select [(ngModel)]="parameters.ano">
+          <ion-option *ngFor="let ano of anos[parameters.var][parameters.slc].reverse()" [value]="ano">{{ano}}</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-item *ngIf="ready_pt_br">
-        <ion-label>Variável</ion-label>
-        <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">
-            <ion-option *ngFor="let variable of pt_br.var[parameters.eixo]" [value]="variable.id">{{variable.title}}</ion-option>
-        </ion-select>
-      </ion-item>
+    <ion-item *ngIf="parameters.cad != null">
+      <ion-label>Cadeia</ion-label>
+      <ion-select [(ngModel)]="parameters.cad">
+          <ion-option *ngFor="let cad of cads" [value]="cad.value">{{cad.name}}</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-item *ngIf="parameters.ano > 0">
-        <ion-label>Ano</ion-label>
-        <ion-select [(ngModel)]="parameters.ano">
-            <ion-option *ngFor="let ano of anos[parameters.var][parameters.slc].reverse()" [value]="ano">{{ano}}</ion-option>
-        </ion-select>
-      </ion-item>
+    <ion-item *ngIf="parameters.eixo == 0 && vrvPorte()">
+      <ion-label>Desagregação</ion-label>
+      <ion-select [(ngModel)]="parameters.deg">
+        <ion-option *ngFor="let porte of portes" [value]="porte.value">{{porte.name}}</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-item *ngIf="parameters.cad != null">
-        <ion-label>Cadeia</ion-label>
-        <ion-select [(ngModel)]="parameters.cad">
-            <ion-option *ngFor="let cad of cads" [value]="cad.value">{{cad.name}}</ion-option>
-        </ion-select>
-      </ion-item>
+    <ion-item *ngIf="parameters.eixo == 1">
+      <ion-label>Desagregação</ion-label>
+      <ion-select [(ngModel)]="pre_desags" (ngModelChange)="updateDesag($event)">
+        <ion-option *ngFor="let desag of select_desags" [value]="desag.value" [disabled]="desag.group_name">{{desag.name}}</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-item *ngIf="parameters.eixo == 0 && vrvPorte()">
-        <ion-label>Desagregação</ion-label>
-        <ion-select [(ngModel)]="parameters.deg">
-          <ion-option *ngFor="let porte of portes" [value]="porte.value">{{porte.name}}</ion-option>
-        </ion-select>
-      </ion-item>
+    <ion-item *ngIf="parameters.eixo == 3">
+      <ion-label>Parceiro</ion-label>
+      <ion-select [(ngModel)]="parameters.prc">
+        <ion-option *ngFor="let prc of parceiros" [value]="prc.value">{{prc.name}}</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-item *ngIf="parameters.eixo == 1">
-        <ion-label>Desagregação</ion-label>
-        <ion-select [(ngModel)]="pre_desags" (ngModelChange)="updateDesag($event)">
-          <ion-option *ngFor="let desag of select_desags" [value]="desag.value" [disabled]="desag.group_name">{{desag.name}}</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item *ngIf="parameters.eixo == 3">
-        <ion-label>Parceiro</ion-label>
-        <ion-select [(ngModel)]="parameters.prc">
-          <ion-option *ngFor="let prc of parceiros" [value]="prc.value">{{prc.name}}</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item *ngIf="parameters.eixo == 3">
-        <ion-label>Tipo</ion-label>
-        <ion-select [(ngModel)]="parameters.typ">
-          <ion-option *ngFor="let typ of selectTipos()" [value]="typ.value">{{typ.name}}</ion-option>
-        </ion-select>
-      </ion-item>
-
-    </div>
+    <ion-item *ngIf="parameters.eixo == 3">
+      <ion-label>Tipo</ion-label>
+      <ion-select [(ngModel)]="parameters.typ">
+        <ion-option *ngFor="let typ of selectTipos()" [value]="typ.value">{{typ.name}}</ion-option>
+      </ion-select>
+    </ion-item>
 
   </div>
+</div>
 
-  <ion-item *ngIf="parameters.ano > 0 && ready_pt_br"  style="background-color: #E9F2ED; max-height: 60%; margin-top: 60px;">
+</div>
 
-    <ion-slides #slides (ionSlideDidChange)="slideChanged()">
-      <ion-slide>
-          <p class='title_view'>{{getTitleView(1)}}</p>
-          <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
-          <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-      </ion-slide>
+<ion-content  style="background-color: #E9F2ED;">
 
-      <ion-slide>
-        <p class='title_view'>{{getTitleView(2)}}</p>
-        <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
-        <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
-        <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-      </ion-slide>
+  <div id='content-container'>
+    <div id='views'>
+      <ion-item *ngIf="parameters.ano > 0 && ready_pt_br" style="background-color: #E9F2ED;" >
+        <ion-slides #slides (ionSlideDidChange)="slideChanged()">
 
-      <ion-slide>
-        <p class='title_view'>{{getTitleView(3)}}</p>
-        <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-        <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
-        <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
-      </ion-slide>
+          <ion-slide>
+              <p class='title_view'>{{getTitleView(1)}}</p>
+              <view-mapa *ngIf="correctView(1, 'mapa')" [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
+              <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+          </ion-slide>
 
-    </ion-slides>
+          <ion-slide>
+            <p class='title_view'>{{getTitleView(2)}}</p>
+            <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
+            <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-empilhadas>
+            <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+          </ion-slide>
 
-  </ion-item>
+          <ion-slide>
+            <p class='title_view'>{{getTitleView(3)}}</p>
+            <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
+            <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-treemap>
+            <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
+          </ion-slide>
 
-  <ion-item text-wrap  style="background-color: #E9F2ED; max-height: 35%" >
-      <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
-      <p *ngIf="ready_pt_br" id="desc">
-        {{getDescVar()}}
-      </p>
+        </ion-slides>
+      </ion-item>
+    </div>
 
-  </ion-item>
+    <div id='dados'>
+      <ion-item text-wrap  style="background-color: #E9F2ED; " >
+        <div>
+          <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
+          <p *ngIf="ready_pt_br" id="desc">
+            {{getDescVar()}}
+          </p>
+        </div>
+      </ion-item>
+    </div>
+  </div>
 
 
 
 
 
 </ion-content>
+
 
 <ion-footer no-border style='height: 30px; margin-top: 0; padding-top: 0'>
   <ion-toolbar style='height: 30px; margin-top: 0; padding-top: 0'>

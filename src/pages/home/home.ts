@@ -26,6 +26,7 @@ export class HomePage implements OnInit{
 
   view: string = '0';
   menu_plus: string = '+';
+  menu_opacity = 0.8;
   menu_color: string = "rgba(233, 242, 236, 0.315)";
   expand: boolean = false;
 
@@ -307,12 +308,14 @@ export class HomePage implements OnInit{
       this.menu_color = "#E9F2ED";
       this.expand = false;
       this.menu_plus = '+';
+      this.menu_opacity = 0.8;
     }
     else
     {
       this.menu_color = "#DDDEDE";
       this.expand = true;
       this.menu_plus = '-';
+      this.menu_opacity = 1;
     }
   }
 }

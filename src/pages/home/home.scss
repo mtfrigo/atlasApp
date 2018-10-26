@@ -23,7 +23,6 @@ page-home {
 }
 
 .swiper-wrapper{
-  height: auto;
 }
 
 .segment-btn{
@@ -55,13 +54,21 @@ page-home {
 }
 
 #menu-container{
-  border: 1px solid rgba(187, 187, 187, 0.384);
-  border-radius: 10px;
-  background-color: #DDDEDE;
+
   padding: 4px 3px 5px 3px;
   position: absolute;
   z-index: 2;
-  width: 90%;
+  width: 100%;
+  margin: 70px auto 0 auto;
+}
+
+#menu-container #menu{
+  background-color: #DDDEDE;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid rgba(187, 187, 187, 0.384);
+  border-radius: 10px;
+  opacity: 0.7;
 }
 
 #menu-container .label-md{
@@ -81,6 +88,11 @@ page-home {
   max-width: 100%;
   background-color: #fff;
 }
+
+#menu-options .item{
+  margin-bottom: 2px;
+}
+
 
 #menu-options .select-text{
   width: 100%;
@@ -123,7 +135,6 @@ page-home {
 
 #menu-container .item-md{
   padding: 0;
-
   background-color: inherit;
 }
 
@@ -158,9 +169,28 @@ page-home {
 
 }
 
-page-home .footer{
+page-home .scroll-content{
+  padding: 16px 0 16px 16px;
 }
 
 .toolbar-background-md{
   background-color: inherit;
+}
+
+#content-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+}
+
+
+#views{
+  min-height: 60%;
+  flex-grow: 1;
+}
+
+#dados{
+  flex-grow: 2;
+  overflow: auto;
 }
