@@ -33,18 +33,32 @@
 
         <g class='axis--x' [attr.transform] = "'translate(0, '+barsHeight+')'">
           <line x1="-10" y1="0" [attr.x2]="barsWidth" y2="0" stroke="#000" stroke-width="2"  />
-          
-            <text *ngFor="let d of data"
-              class='axis-title'
-              fill="#000"
-              [attr.x]='x(d.ano)'
-              font-size='10'
-              dy="1.2em"
-              text-anchor='center'
-              text='Frequency'
-            >
-              {{ d.ano }}
-            </text>
+            <g *ngFor="let d of data">
+                <text 
+                class='axis-title'
+                fill="#000"
+                [attr.x]='x(d.ano)'
+                font-size='10'
+                dy="1.2em"
+                text-anchor='center'
+                text='Frequency'
+              >
+                {{ d.ano }}
+              </text>
+
+              <line
+                stroke-width='1'
+                stroke="#000"
+                opacity=1
+                [attr.y1]="3"
+                [attr.y2]="0"
+                [attr.x1]='x(d.ano)+x.bandwidth()/2'
+                [attr.x2]='x(d.ano)+x.bandwidth()/2'
+              >
+              </line>
+
+            </g>
+            
           
         </g>
 
