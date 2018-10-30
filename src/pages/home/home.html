@@ -116,7 +116,7 @@
       <ion-row id='dados'>
         <ion-col col-12>
             <ion-item text-wrap  style="background-color: #E9F2ED; " >
-                <view-dados *ngIf="parameters.ano > 0" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
+                <view-dados *ngIf="parameters.ano > 0" [pt_br]="pt_br" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
                 <p *ngIf="ready_pt_br" id="desc">
                   {{getDescVar()}}
                 </p>

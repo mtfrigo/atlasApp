@@ -17,6 +17,7 @@ export class JsonsProvider {
   private selectDesags : string = "assets/json/select-deg.json";
   private anos_default : string = "http://143.54.230.124/ministerio/atlasOBEC/app/db/api_anos_default.php";
 
+
   constructor(public http: HttpClient) {
 
   }

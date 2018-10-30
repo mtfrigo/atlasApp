@@ -79,8 +79,6 @@ export class BarrasComponent implements OnChanges{
     for(var i = 0; i < this.yTicks; i++){
       this.yTicksArray.push(i);
     }
-
-
   }
 
   ngOnInit() {
@@ -97,7 +95,18 @@ export class BarrasComponent implements OnChanges{
   }
 
   sendBarData(valor, percent) {
-    this.dadoGlobal.emit({view: 'barras', valor: valor, percentual: percent});
+
+    if(this.dadosProvider.isIHHorC4(this.parameters)){
+      if(this.uos)
+        this.dadoGlobal.emit({view: 'barras', uos2: valor, percentual: percent});
+      else
+        this.dadoGlobal.emit({view: 'barras', uos1: valor, percentual: percent});
+
+    }
+    else{
+      this.dadoGlobal.emit({view: 'barras', valor: valor, percentual: percent});
+    }
+
   }
 
   ionViewDidLoad() {
