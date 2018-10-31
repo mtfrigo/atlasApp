@@ -22,10 +22,8 @@ import { color } from 'd3';
   templateUrl: 'mapa.html'
 })
 export class MapaComponent {
-  // @Input() width  : number = window.innerWidth*0.9;
   @Input() width  : number = window.innerWidth*0.8;
-  // @Input() height : number = this.width;
-  @Input() height : number = window.innerHeight*0.4;;
+  @Input() height : number = window.innerHeight*0.4;
 
   @Input() parameters : any;
   @Input() url : string;
@@ -150,7 +148,6 @@ export class MapaComponent {
     this.colorScale = d3.scaleLinear()
       .domain([this.minValue, this.maxValue])
       .range([this.colors.cadeias[this.parameters['cad']].gradient['2'], this.colors.cadeias[this.parameters['cad']].gradient['6']])
-
 
   }
 

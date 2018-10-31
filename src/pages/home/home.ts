@@ -43,7 +43,7 @@ export class HomePage implements OnInit{
     'slc': 0,
     'prc': 0,
     'typ': 1,
-    'mundo': 1
+    'mundo': 0
   };
 
 
