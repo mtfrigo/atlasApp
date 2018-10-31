@@ -14,6 +14,9 @@ export class DadosProvider {
 
   globalData: any;
 
+  private totalSetorUrl : string = "http://143.54.231.10/atlasApp/src/api/total_setor.php?";
+  private totalDegUrl : string = "http://143.54.231.10/atlasApp/src/api/total_desag.php?";
+
   constructor(public http: HttpClient) {
 
     this.globalData = {};
@@ -25,6 +28,7 @@ export class DadosProvider {
     this.globalData['treemap'] = {};
     this.globalData['treemap']['valor'] = 0;
     this.globalData['treemap']['percentual'] = 1;
+    this.globalData['treemap']['total'] = 0;
 
     this.globalData['linhas'] = {};
     this.globalData['linhas']['valor'] = 0;
@@ -34,7 +38,22 @@ export class DadosProvider {
     this.globalData['mapa']['valor'] = 0;
     this.globalData['mapa']['percentual'] = 0;
 
+  }
 
+  getTotalSetor (parameters): Observable<any[]> {
+    return (this.http.get<any[]>(this.totalSetorUrl+this.getQuery(parameters)));
+  }
+
+  getTotalDeg (parameters): Observable<any[]> {
+    return (this.http.get<any[]>(this.totalDegUrl+this.getQuery(parameters)));
+  }
+
+  getQuery(parameters : Object){
+    return Object.keys(parameters)
+                 .map(function(k) {
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(parameters[k])
+                  })
+                  .join('&');
   }
 
   getDescriptionKey(parameters){
@@ -49,9 +68,15 @@ export class DadosProvider {
 
   }
 
-  setGlobalData(view, valor, percentual){
-    this.globalData[view]['valor'] = valor;
-    this.globalData[view]['percentual'] = percentual;
+  setGlobalData(valores){
+    this.globalData[valores.view]['valor'] = valores.valor;
+    this.globalData[valores.view]['percentual'] = valores.percentual;
+    this.globalData[valores.view]['total'] = valores.total;
+
+    if('uos1' in valores)
+      this.globalData[valores.view]['uos1'] = valores.uos1;
+    if('uos2' in valores)
+      this.globalData[valores.view]['uos2'] = valores.uos2;
   }
 
   getGlobalData(){
@@ -174,12 +199,36 @@ export class DadosProvider {
 
     var cad_text = this.getCadName(parameters.cad).toUpperCase();
 
+    var nomeano = parameters.ano;
+    var anoanterior = parseInt(nomeano)-1;
+
     var uf_text = this.getUFName(parameters.uf).toUpperCase();
     var nomeestado = this.getPrepos(uf_text)+' '+uf_text;
     if(parameters.eixo == 0)
       deg_text = "DE"+' '+ this.getPorteName(parameters.deg);
 
-    return text.replace('[uf]', nomeestado).replace('[cad]', cad_text).replace('[deg]', deg_text);
+    return text.replace('[uf]', nomeestado).replace('[cad]', cad_text).replace('[deg]', deg_text).replace('[ano]', "DO ANO "+anoanterior+' AO '+nomeano);
+  }
+
+  isIHHorC4(parameters){
+    if(parameters.eixo == 0)
+    {
+      if(parameters.var == 10 || parameters.var == 11 || parameters.var == 12 || parameters.var == 13)
+        return true;
+    }
+    else if(parameters.eixo == 1)
+    {
+
+    }
+    else if(parameters.eixo == 2)
+    {
+
+    }
+    else if(parameters.eixo == 3)
+    {
+
+    }
+    return false;
   }
 
 }

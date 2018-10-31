@@ -23,7 +23,6 @@ export class TreemapComponent implements OnChanges{
   @Input() url : string;
   @Input() parameters : any[];
 
-
   @Output() dadoGlobal = new EventEmitter();
 
   view_title: any;
@@ -35,12 +34,12 @@ export class TreemapComponent implements OnChanges{
   private treemapData : HierarchyRectangularNode<{}>;
   private fontSizeStd : number = 20;
   private titleSize : number = 8;
+
   treemap = d3.treemap()
         .tile(d3.treemapResquarify)
         .size([this.width, this.height])
         .round(true)
         .paddingInner(1);
-
 
   constructor(private treemapProvider : TreemapProvider,
               private jsonsProvider: JsonsProvider,
@@ -49,8 +48,6 @@ export class TreemapComponent implements OnChanges{
               }
 
   ngOnInit() {
-
-
     this.jsonsProvider.getColors()
       .subscribe(d=>{
         this.colors = d;
@@ -63,8 +60,8 @@ export class TreemapComponent implements OnChanges{
     this.getData();
   }
 
-  sendTreemapData(valor, percent) {
-    this.dadoGlobal.emit({view: 'treemap', valor: valor, percentual: percent});
+  sendTreemapData(valor, percent, total) {
+    this.dadoGlobal.emit({view: 'treemap', valor: valor, percentual: percent , total: total});
   }
 
   getHierarchy(){
@@ -149,11 +146,19 @@ export class TreemapComponent implements OnChanges{
       return obj['colorId'] == that.parameters['cad'];
     });
 
+    var total = 0;
+
+    this.data['children'].forEach(element => {
+      if(element.colorId != 0){
+        total += parseInt(element['children'][0]['children'][0].size);
+      }
+    });
+
     if(this.parameters['cad'] != 0){
-      this.sendTreemapData(filtered[0]['children'][0]['children'][0].size, filtered[0]['children'][0]['children'][0].percentual)
+      this.sendTreemapData(filtered[0]['children'][0]['children'][0].size, filtered[0]['children'][0]['children'][0].percentual, total)
     }
     else {
-      this.sendTreemapData(0, 1)
+      this.sendTreemapData(0, 1, 0)
     }
 
     //this.dadosProvider.setGlobalData('treemap', this.new_data[this.parameters.ano - 2007].valor, this.new_data[0].percentual);

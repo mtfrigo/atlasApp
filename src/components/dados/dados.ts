@@ -5,6 +5,7 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import { DadosProvider } from '../../providers/dados/dados';
 import { Observable } from 'rxjs';
+import { count } from 'rxjs/operators';
 
 /**
  * Generated class for the DadosComponent component.
@@ -24,6 +25,7 @@ export class DadosComponent {
   @Input() parameters : any;
   @Input() globalData : Observable<any>;
   @Input() url : string;
+  @Input() pt_br :  any;
 
   _data;
 
@@ -42,6 +44,9 @@ export class DadosComponent {
 
   desc_array: any = [];
 
+  total_setor: any;
+  total_deg: any;
+
   constructor(public navCtrl: NavController,
               private dadosProvider: DadosProvider,
               private jsonsProvider: JsonsProvider,
@@ -52,14 +57,28 @@ export class DadosComponent {
   ngOnInit() {
 
     this.globalData.subscribe(data => {
+
       this._data = data;
       this.cd.markForCheck();
       this.dadosProvider.globalData = data;
 
       this.jsonsProvider.getDescricoes()
       .subscribe(d=>{
+
         this.descricoes = d;
-        this.getData();
+
+        this.dadosProvider.getTotalSetor(this.parameters)
+          .subscribe(d=>{
+
+            this.total_setor = d;
+            this.dadosProvider.getTotalDeg(this.parameters)
+              .subscribe(d=>{
+
+                this.total_deg = d;
+                this.getData();
+
+            })
+        })
       })
     })
   }
@@ -78,9 +97,14 @@ export class DadosComponent {
 
     this.desc_array = [];
 
+    var valor = this.dadosProvider.globalData['barras'].valor;
+    var percentual = this.parameters.cad == '0' ? this.dadosProvider.globalData['barras'].percentual : this.dadosProvider.globalData['treemap'].percentual;
+    var total = this.dadosProvider.globalData['treemap'].total;
+    var uos1 = this.dadosProvider.globalData['barras'].uos1;
+    var uos2 = this.dadosProvider.globalData['barras'].uos2;
 
-    this.valor = this.dadosProvider.globalData['barras'].valor;
-    this.percentual = this.dadosProvider.globalData['treemap'].percentual;
+
+    let valores = {valor: valor, percentual: percentual, total: total, uos1: uos1, uos2: uos2}
 
     for(var i = 0; i < this.descricoes[this.parameters.eixo][this.parameters.var].length; i++){
 
@@ -88,17 +112,121 @@ export class DadosComponent {
 
         var desc = this.dadosProvider.getFinalDesc(i, this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key], this.parameters);
 
+        var formattedData;
+
         switch(i){
-          case 0: this.desc_array.push({desc: desc, valor: this.valor});
+          case 0: formattedData = this.formatDescValue(i, valores);
             break;
-          case 1: this.desc_array.push({desc: desc, valor: this.percentual});
+          case 1: formattedData = this.formatDescValue(i, valores);
             break;
-          case 2: this.desc_array.push({desc: desc, valor: this.percentual});
+          case 2: formattedData = this.formatDescValue(i, valores);
             break;
         }
+
+        this.desc_array.push({desc: desc, valor: formattedData});
 
       }
 
     }
   }
+
+  formatDescValue(box, valores)
+  {
+    var prefix = this.pt_br.var[this.parameters.eixo][this.parameters.var-1]['prefixo_valor'];
+    var suffix = this.pt_br.var[this.parameters.eixo][this.parameters.var-1]['sufixo_valor']
+
+    if(this.parameters.eixo == 0)
+    {
+
+      switch(box){
+        case 0:
+              if(this.parameters.var == 2 || this.parameters.var == 3 || this.parameters.var == 9)
+                return this.formatDecimal(valores.valor, 2)+"%";
+              else if(this.dadosProvider.isIHHorC4(this.parameters))
+                return this.formatNumber(valores.uos1);
+              else
+                return prefix+this.formatNumber(valores.valor)+suffix;
+        case 1:
+
+          if(this.treemapRelativeValue() && valores.total)
+                return this.formatDecimal(valores.valor/valores.total, 2)+"%";
+          else if(this.dadosProvider.isIHHorC4(this.parameters))
+            return this.formatNumber(valores.uos2);
+          else
+            if(this.parameters.deg != 0)
+              return this.formatDecimal(valores.valor/this.total_deg[this.parameters.ano], 2)+"%"
+            else
+              return this.formatDecimal(valores.percentual, 2)+"%";
+
+
+        case 2:
+
+          return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
+
+      }
+    }
+    else if(this.parameters.eixo == 1)
+    {
+
+    }
+    else if(this.parameters.eixo == 2)
+    {
+
+    }
+    else if(this.parameters.eixo == 3)
+    {
+
+    }
+
+  }
+
+  treemapRelativeValue(){
+    if(this.parameters.eixo == 0){
+      if(this.parameters.var == 1 || this.parameters.var == 4 || this.parameters.var == 6 || this.parameters.var == 7 || this.parameters.var == 8){
+        if(this.parameters.cad != 0 && this.parameters.uf != 0){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  formatNumber(valor){
+
+    if(valor == undefined) return 1;
+
+    if(valor.toString().includes(".")){
+      valor = valor.toFixed(2).toString().replace(".",",");
+    }
+
+    return valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  }
+
+  formatDecimal(valor, casas)
+  {
+
+    valor = valor * 100;
+    valor = valor.toFixed(casas);
+
+    let inteiro = this.formatNumber(valor.split('.')[0]);
+    let decimal = valor.split('.')[1];
+
+    for (var i = decimal.length-1; i >= 0; i--) {
+      if(decimal.charAt(i) == "0") decimal = decimal.slice(0, - 1)
+      else break;
+    }
+
+    if(decimal.length > 0){
+      valor = inteiro+","+decimal;
+    }
+    else
+    {
+      valor = inteiro;
+    }
+
+    return valor;
+  }
+
+
 }

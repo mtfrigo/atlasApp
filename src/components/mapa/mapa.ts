@@ -145,6 +145,7 @@ export class MapaComponent {
 
     this.legend_data = [String(this.minValue), String(0.5*(this.maxValue+this.minValue)), String(this.maxValue)];
 
+    if(this.colors)
     this.colorScale = d3.scaleLinear()
       .domain([this.minValue, this.maxValue])
       .range([this.colors.cadeias[this.parameters['cad']].gradient['2'], this.colors.cadeias[this.parameters['cad']].gradient['6']])
@@ -156,7 +157,7 @@ export class MapaComponent {
   }
 
   getStateColor(d){
-    
+
     if(this.parameters.uf == d.id){
       return this.colors.eixo[this.parameters.eixo].color['1'];
     } else return this.colorScale(this.info[d.id].valor);

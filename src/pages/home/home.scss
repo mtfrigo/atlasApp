@@ -75,7 +75,7 @@ page-home {
 
 #menu-container #menu{
   background-color: #DDDEDE;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   border: 1px solid rgba(187, 187, 187, 0.384);
   border-radius: 10px;
@@ -84,6 +84,10 @@ page-home {
 
 #menu-container .label-md{
   margin: 8px 0;
+}
+
+.label-md{
+  margin: 0;
 }
 
 #menu-options .input-wrapper{
@@ -127,8 +131,12 @@ page-home {
 
 #menu-container .item-inner{
   margin: 0 10%;
-  padding: 0 8px;
+  padding: 0px;
 
+}
+
+.item-md.item-block .item-inner{
+  padding-right: 0px;
 }
 
 .item{
@@ -181,7 +189,8 @@ page-home {
 }
 
 page-home .scroll-content{
-  padding: 16px 0 16px 16px;
+  padding: 16px 0 16px 0px;
+  margin-bottom: 5px;
 }
 
 .toolbar-background-md{

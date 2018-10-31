@@ -15,7 +15,7 @@ export class HomePage implements OnInit{
   @ViewChild(Slides) slides: Slides;
 
   private list_uf : any = [];
-  private pt_br : any = [];
+  public pt_br : any = [];
   private anos : number[];
   private pre_desags : number = 0;
   private select_desags : any = [];
@@ -116,7 +116,7 @@ export class HomePage implements OnInit{
   }
 
   reciverData(dadoGlobal) {
-    this.dadosProvider.setGlobalData(dadoGlobal.view, dadoGlobal.valor, dadoGlobal.percentual);
+    this.dadosProvider.setGlobalData(dadoGlobal);
     this.data.next(this.getGlobalData());
   }
 
