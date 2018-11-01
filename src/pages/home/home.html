@@ -15,6 +15,14 @@
 
   <div id='menu-options' *ngIf=expand [style.background-color]="menu_color">
 
+    <ion-item *ngIf="parameters.eixo == 1">
+      <ion-label>Classificação</ion-label>
+      <ion-select [(ngModel)]="parameters.slc" (ngModelChange)="update($event)">
+          <ion-option [value]="0">Setor</ion-option>
+          <ion-option [value]="1">Ocupação</ion-option>
+      </ion-select>
+    </ion-item>
+
     <ion-item *ngIf="ready_pt_br">
       <ion-label>Variável</ion-label>
       <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">
@@ -36,10 +44,18 @@
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="parameters.cad != null">
+    <ion-item *ngIf="parameters.cad != null && !(parameters.slc == 1 && parameters.eixo == 1)">
       <ion-label>Cadeia</ion-label>
       <ion-select [(ngModel)]="parameters.cad">
           <ion-option *ngFor="let cad of cads" [value]="cad.value">{{cad.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item *ngIf="(parameters.slc == 1 && parameters.eixo == 1)">
+      <ion-label>Ocupação</ion-label>
+      <ion-select [(ngModel)]="parameters.ocp">
+          <ion-option *ngFor="let ocp of getOcpSelect()" [value]="ocp.value">{{ocp.name}}</ion-option>
       </ion-select>
     </ion-item>
 
