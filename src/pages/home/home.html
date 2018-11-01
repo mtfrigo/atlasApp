@@ -15,7 +15,7 @@
 
   <div id='menu-options' *ngIf=expand [style.background-color]="menu_color">
 
-    <ion-item *ngIf="parameters.eixo == 1">
+    <ion-item *ngIf="parameters.eixo == 1 && hasOcp()">
       <ion-label>Classificação</ion-label>
       <ion-select [(ngModel)]="parameters.slc" (ngModelChange)="update($event)">
           <ion-option [value]="0">Setor</ion-option>

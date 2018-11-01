@@ -124,14 +124,31 @@ export class HomePage implements OnInit{
 
   update(event){
     let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
+    
+    if(this.parameters.eixo == 1){
+      if(ocp_default[this.parameters.var] == 0){
+        this.parameters.slc = 0;
+      } 
+      if(this.parameters.slc == 1){
+        this.parameters.ocp = ocp_default[this.parameters.var];  
+      } else {
+        this.parameters.ocp = 0; 
+      }
+    }
+
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     this.parameters.uf  = 0;
+  }
 
-    if(this.parameters.eixo == 1 && this.parameters.slc == 1){
-      this.parameters.ocp = ocp_default[this.parameters.var];
-    } else {
-      this.parameters.ocp = 0;
+  hasOcp(){
+
+    let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
+
+    if(this.parameters.eixo == 1 && ocp_default[this.parameters.var] == 0){
+      this.parameters.slc = 0;
+      return false; 
     }
+    return true;
 
   }
 
