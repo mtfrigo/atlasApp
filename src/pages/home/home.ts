@@ -39,6 +39,7 @@ export class HomePage implements OnInit{
     'cad': 0,
     'deg': 0,
     'subdeg': 0,
+    'ocp': 0,
     'chg': 0,
     'slc': 0,
     'prc': 0,
@@ -122,8 +123,33 @@ export class HomePage implements OnInit{
 
 
   update(event){
+    let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
+    
+    if(this.parameters.eixo == 1){
+      if(ocp_default[this.parameters.var] == 0){
+        this.parameters.slc = 0;
+      } 
+      if(this.parameters.slc == 1){
+        this.parameters.ocp = ocp_default[this.parameters.var];  
+      } else {
+        this.parameters.ocp = 0; 
+      }
+    }
+
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     this.parameters.uf  = 0;
+  }
+
+  hasOcp(){
+
+    let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
+
+    if(this.parameters.eixo == 1 && ocp_default[this.parameters.var] == 0){
+      this.parameters.slc = 0;
+      return false; 
+    }
+    return true;
+
   }
 
   updateDesag(event){
@@ -213,6 +239,24 @@ export class HomePage implements OnInit{
     title = title.replace('[cad]', prep_cad+' '+cad)
 
     return title
+  }
+
+  getOcpSelect(){
+    let ocp_data = [
+      {'name': 'Todos', 'value': 3},
+      {'name': 'Atividades Relacionadas', 'value': 1},
+      {'name': 'Cultura', 'value': 2}
+    ]
+
+    let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
+
+
+    return ocp_data.filter(d => {
+      if(ocp_default[this.parameters.var] == 3)
+        return d;
+      else if(d.value != 3) return d;
+    });   
+
   }
 
   getDescVar(){

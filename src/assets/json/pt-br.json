@@ -475,32 +475,6 @@
 				]
 			},
 			{
-				"id": 3,
-				"title":"Horas trabalhadas",
-				"desc_int":"",
-				"desc_percent": "",
-				"sufixo_valor":"h",
-				"fontes":"RAIS e IBGE (PNAD Anual).",
-				"prefixo_valor":"",
-				"views": {
-					"view_box1": [{"id": "mapa", "title": "MAPA DO BRASIL"}],
-					"view_box2": [{"id": "barras", "title": "SÉRIE HISTÓRICA [uf] [cad]"}],
-					"view_box3": [{"id": "treemap_scc", "title": "TREEMAP - SETORES CULTURAIS CRIATIVOS [uf]"}]
-				},
-				"desc":"Esse indicador demonstra a taxa de natalidade e mortalidade de empresas, isto é, o número de empresas que nascem e fecham num ano. Um aumento de taxa de natalidade pode indicar um aumento da demanda por bens e serviços culturais, ou um indicador de descentralização. Da mesma forma, um aumento da taxa de mortalidade indica que as empresas culturais estão com dificuldades estruturais e/ou de caráter institucional de manterem-se ativas.",
-				"desc_var_mapa": "A variável mostra o volume total de horas semanais trabalhadas nas atividades ligadas aos Setores e às Ocupações Culturais e Criativos.",
-				"type":[
-					{"name":"Mapa", "id":"mapa"},
-					{"name":"Treemap", "id":"treemap_region"},
-					{"name":"Treemap SCC", "id":"treemap_scc"},
-					{"name":"Ano a Ano", "id":"barras"}
-				],
-				"botoes":[
-					{"name": "Mapa", "id": "mapa"},
-					{"name": "Treemap", "id": "treemap_region"}
-				]
-			},
-			{
 				"id": 4,
 				"desc_int":"DE REMUNERAÇÃO MÉDIA DOS [ocp] [cad] [deg] [uf]",
 				"title":"Remuneração Média",
