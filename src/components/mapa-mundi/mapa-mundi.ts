@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import $ from 'jquery';
-import jvm from 'jqvmap';
 import { MapaMundiProvider } from '../../providers/mapa-mundi/mapa-mundi';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import * as d3  from 'd3';
