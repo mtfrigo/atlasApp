@@ -264,12 +264,7 @@ export class BarrasComponent implements OnChanges{
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
 
-    if(this.parameters.eixo == 1 && this.parameters.deg != 0){
-      this.sendBarData(this.data[index_ano].valores['Micro'], 0);
-
-    }
-    else
-      this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
+    this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
 
     let i = 0;
     let n_iteracoes = 25; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)

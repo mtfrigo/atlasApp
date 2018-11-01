@@ -69,6 +69,7 @@ export class DadosProvider {
   }
 
   setGlobalData(valores){
+
     this.globalData[valores.view]['valor'] = valores.valor;
     this.globalData[valores.view]['percentual'] = valores.percentual;
     this.globalData[valores.view]['total'] = valores.total;
@@ -190,6 +191,35 @@ export class DadosProvider {
         case 10: return "PORTE PEQUENO";
         case 11: return "PORTE MÉDIO";
         case 12: return "PORTE GRANDE";
+    }
+  }
+
+  getDegName(subdeg, deg)
+  {
+    if(deg == 0)
+    {
+
+    }
+    else if(deg == 1)
+    {
+      switch(subdeg)
+      {
+        case 1: return "Micro";
+        case 2: return "Pequena";
+        case 3: return "Média";
+        case 4: return "Grande"
+      }
+    }
+  }
+
+  getDegId(subdeg, deg)
+  {
+    switch(deg.toUpperCase())
+    {
+      case "MICRO": return 1;
+      case "PEQUENA" : return 2;
+      case "MÉDIA": return 3;
+      case "GRANDE" : return 4;
     }
   }
 

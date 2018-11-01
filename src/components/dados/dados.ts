@@ -95,6 +95,7 @@ export class DadosComponent {
 
     this.desc_key = this.dadosProvider.getDescriptionKey(this.parameters);
 
+
     this.desc_array = [];
 
     var valor = this.dadosProvider.globalData['barras'].valor;
@@ -106,11 +107,20 @@ export class DadosComponent {
 
     let valores = {valor: valor, percentual: percentual, total: total, uos1: uos1, uos2: uos2}
 
-    for(var i = 0; i < this.descricoes[this.parameters.eixo][this.parameters.var].length; i++){
 
-      if(this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key] != ""){
+    var descByEixo;
 
-        var desc = this.dadosProvider.getFinalDesc(i, this.descricoes[this.parameters.eixo][this.parameters.var][i][this.desc_key], this.parameters);
+    switch(this.parameters.eixo){
+      case 0: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var]; break;
+      case 1: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
+    }
+
+
+    for(var i = 0; i < descByEixo.length; i++){
+
+      if(descByEixo[i][this.desc_key] != ""){
+
+        var desc = this.dadosProvider.getFinalDesc(i, descByEixo[i][this.desc_key], this.parameters);
 
         var formattedData;
 
@@ -137,7 +147,6 @@ export class DadosComponent {
 
     if(this.parameters.eixo == 0)
     {
-
       switch(box){
         case 0:
               if(this.parameters.var == 2 || this.parameters.var == 3 || this.parameters.var == 9)
@@ -149,7 +158,7 @@ export class DadosComponent {
         case 1:
 
           if(this.treemapRelativeValue() && valores.total)
-                return this.formatDecimal(valores.valor/valores.total, 2)+"%";
+            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
           else if(this.dadosProvider.isIHHorC4(this.parameters))
             return this.formatNumber(valores.uos2);
           else
@@ -162,11 +171,29 @@ export class DadosComponent {
         case 2:
 
           return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
-
       }
     }
     else if(this.parameters.eixo == 1)
     {
+      switch(box){
+        case 0:
+          return prefix+this.formatNumber(valores.valor)+suffix;
+        case 1:
+          if(this.treemapRelativeValue() && valores.total)
+            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
+          else if(this.parameters.uf == 0 && this.parameters.cad != 0 && this.parameters.deg != 0 && valores.total)
+          {
+            console.log("aqui")
+            console.log(valores)
+            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
+
+          }
+
+          else
+            return this.formatDecimal(valores.percentual, 2)+"%";
+        case 2:
+          return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
+      }
 
     }
     else if(this.parameters.eixo == 2)
@@ -183,6 +210,13 @@ export class DadosComponent {
   treemapRelativeValue(){
     if(this.parameters.eixo == 0){
       if(this.parameters.var == 1 || this.parameters.var == 4 || this.parameters.var == 6 || this.parameters.var == 7 || this.parameters.var == 8){
+        if(this.parameters.cad != 0 && this.parameters.uf != 0){
+          return true;
+        }
+      }
+    }
+    else if(this.parameters.eixo == 1){
+      if(this.parameters.var == 1){
         if(this.parameters.cad != 0 && this.parameters.uf != 0){
           return true;
         }
@@ -220,8 +254,7 @@ export class DadosComponent {
     if(decimal.length > 0){
       valor = inteiro+","+decimal;
     }
-    else
-    {
+    else{
       valor = inteiro;
     }
 

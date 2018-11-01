@@ -101,15 +101,15 @@ class EixoDois {
         self::connect();
 
         $query = "SELECT DISTINCT Ano, Numero, idOcupacao FROM `Eixo_2` WHERE `idUF` = 0 and (idOcupacao = 0 OR idOcupacao = 1)";
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
-        mysqli_stmt_prepare($stmt, $query);        
+        mysqli_stmt_prepare($stmt, $query);
         $stmt->execute();
-        
+
         $allObjects = array();
         $allObjects = self::fetch_results($stmt);
 		self::disconnect();
-        
+
         return $allObjects;
     }
 
@@ -134,7 +134,7 @@ class EixoDois {
 
 		return $ano;
 	}
-    
+
     /**
      * fetch_results - para funcionar com prepared statements
      * @param mixed $stmt
@@ -144,20 +144,20 @@ class EixoDois {
         $result_array = [];
         $result_object = $stmt->get_result();
         $keys = $result_object->fetch_fields();
-        
+
         while ($row = $result_object->fetch_object()) {
             $result_array[] = $row;
         }
         return $result_array;
     }
-    
+
 	/*-----------------------------------------------------------------------------
 	Função: All
 	    função para buscar todas tupla no banco de dados
-	Entrada: 
+	Entrada:
 	    void
 	Saída:
-	    Todas instancia da Classe EixoDois com seus devidos atributos 
+	    Todas instancia da Classe EixoDois com seus devidos atributos
 	-----------------------------------------------------------------------------*/
 	public static function all(){
 		self::connect();
@@ -180,7 +180,7 @@ class EixoDois {
 			}
 
 		self::disconnect();
-		
+
 		return $allObjects;
 	}
 
@@ -213,7 +213,7 @@ class EixoDois {
 
         $params[] = $var;
         $params[] = $uf;
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
 
         if($ocp == 0){
@@ -239,7 +239,7 @@ class EixoDois {
             $query .= " AND Ano = ?";
             $params[] = $anos;
         }
-        
+
         if($ocp == 0) {
             $query .= " ORDER BY `Eixo_2`.`idCadeia` ASC";
         } else {
@@ -251,17 +251,17 @@ class EixoDois {
             $paramsStr .= 's';
         }
         $allObjects = [];
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
         if (mysqli_stmt_prepare($stmt, $query)) {
             $stmt->bind_param($paramsStr, ...$params);
-            
+
             $stmt->execute();
             $allObjects = self::fetch_results($stmt);
         }
 
         self::disconnect();
-        
+
         return $allObjects;
     }
 
@@ -281,7 +281,7 @@ class EixoDois {
         self::connect();
         $stmt = mysqli_stmt_init(self::$conn);
         $params = [];
-        
+
         if($ocp == 3){
             $query = "SELECT * FROM ".self::$table." AS ex"
                 ." JOIN UF AS uf ON uf.idUF = ex.idUF"
@@ -300,7 +300,7 @@ class EixoDois {
             $params[] = $cad;
             $params[] = $var;
 
-            
+
         } else {
             $query = "SELECT * FROM ".self::$table." AS ex"
                 ." JOIN UF AS uf ON uf.idUF = ex.idUF"
@@ -311,7 +311,7 @@ class EixoDois {
                 ." JOIN Etinia AS etn ON etn.idEtinia = ex.idEtinia AND etn.idEtinia = 0"
                 ." JOIN Idade AS idd ON idd.idIdade = ex.idIdade AND idd.idIdade = 0"
 
-                   
+
                 ." WHERE ex.Numero = ?"
                 ." AND Sindical = 0"
                 ." AND Previdencia = 0"
@@ -329,21 +329,21 @@ class EixoDois {
             $query .= " AND ex.Ano = ?";
             $params[] = $anos;
         }
-            
+
         $paramsStr = '';
         foreach ($params as $param) {
             $paramsStr .= 's';
         }
         $allObjects = [];
-        
+
         $stmt2 = mysqli_stmt_init(self::$conn);
         if (mysqli_stmt_prepare($stmt2, $query)) {
             $stmt2->bind_param($paramsStr, ...$params);
-            
+
             $stmt2->execute();
             $allObjects = self::fetch_results($stmt2);
         }
-        
+
         if($ocp == 3){
             $params = [];
             $query_max_ocp1 = "SELECT MAX(Valor) as Valor FROM ".self::$table
@@ -352,7 +352,7 @@ class EixoDois {
                             ." AND Ano=?"
                             ." AND idUF = 0"
                             ." GROUP BY Ano";
-           
+
             $params[] = $var;
             $params[] = $anos;
 
@@ -360,15 +360,15 @@ class EixoDois {
             foreach ($params as $param) {
                 $paramsStr .= 's';
             }
-            
+
             $stmt3 = mysqli_stmt_init(self::$conn);
             if (mysqli_stmt_prepare($stmt3, $query_max_ocp1)) {
                 $stmt3->bind_param($paramsStr, ...$params);
-                
+
                 $stmt3->execute();
                 $obj1 = self::fetch_results($stmt3)[0];
             }
-            
+
             $query_max_ocp2 = "SELECT MAX(Valor) as Valor FROM ".self::$table
                             ." WHERE idOcupacao=2"
                             ." AND Numero =?"
@@ -379,12 +379,12 @@ class EixoDois {
             $stmt4 = mysqli_stmt_init(self::$conn);
             if (mysqli_stmt_prepare($stmt4, $query_max_ocp2)) {
                 $stmt4->bind_param($paramsStr, ...$params);
-                
+
                 $stmt4->execute();
                 $obj2 = self::fetch_results($stmt4)[0];
-            }            
+            }
             $brasil_total = $obj1->Valor + $obj2->Valor;
-            
+
             $result_aux = array();
             $value_aux = array();
             $percent_aux = array();
@@ -432,7 +432,7 @@ class EixoDois {
         $params = [];
         $params[] = $var;
         $params[] = $uf;
-        
+
         if($ocp == 0){
             if($var > 11) {
                 $query .= " AND idCadeia = ?";
@@ -463,14 +463,14 @@ class EixoDois {
                 } else {
                     $query .= " AND idOcupacao = 2";
                 }
-                
+
             } else {
                 $query .= " AND (idOcupacao = 1 OR idOcupacao = 2)";
-            }            
+            }
         }
-        
+
         $var_single_deg = array(4, 5);
-        
+
         if(in_array($var, $var_single_deg) || ($var == 6 && $uos == 0)){
             if($desag == 2 && $subdeg >= 0) {
                 $query .= " AND Sexo = ?";
@@ -486,7 +486,7 @@ class EixoDois {
             $query .= " AND Formalidade = ?";
             $query .= " AND Previdencia = ?";
             $query .= " AND Sindical = ?";
-            
+
             $params[] = self::concatValueDeg($desag, 1, $subdeg);
             $params[] = self::concatValueDeg($desag, 3, $subdeg);
             $params[] = self::concatValueDeg($desag, 4, $subdeg);
@@ -502,7 +502,7 @@ class EixoDois {
             } else {
                 $query .= " AND Sexo IS NULL";
             }
-            
+
             $query .= self::concatDeg($desag, 1, "idPorte");
             $query .= self::concatDeg($desag, 3, "idIdade");
             $query .= self::concatDeg($desag, 4, "idEscolaridade");
@@ -511,7 +511,7 @@ class EixoDois {
             $query .= self::concatDeg($desag, 7, "Previdencia");
             $query .= self::concatDeg($desag, 8, "Sindical");
         }
-        
+
         if($uos == 1 && $var == 6){
             $query .= " AND Ano = ?";
             $params[] = $ano;
@@ -521,15 +521,15 @@ class EixoDois {
         foreach ($params as $param) {
             $paramsStr .= 's';
         }
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
         if (mysqli_stmt_prepare($stmt, $query)) {
             $stmt->bind_param($paramsStr, ...$params);
-            
+
             $stmt->execute();
             $allObjects = self::fetch_results($stmt);
         }
-        
+
         if($ocp == 3 && $desag == 0 && !(($var == 4 || $var == 5) && $uos == 1)
             || ($ocp == 0 && $desag == 0 && $cad == 0 && $uos != 1)
             || (($var == 4 || $var == 5) && $ocp == 3 && $desag != 0)){
@@ -592,7 +592,7 @@ class EixoDois {
                     ." AND ex.Previdencia = ?"
                     ." AND ex.Sindical = ?"
                     ." AND ex.Sexo IS NULL";
-                
+
                 $params[] = $regiao;
                 $params[] = self::concatValueDeg($deg, 1, $subdeg);
                 $params[] = $ocp;
@@ -603,7 +603,7 @@ class EixoDois {
                 $params[] = self::concatValueDeg($deg, 6, $subdeg);
                 $params[] = self::concatValueDeg($deg, 7, $subdeg);
                 $params[] = self::concatValueDeg($deg, 8, $subdeg);
-                
+
             }
             else {
                 $query = "SELECT * FROM ".self::$table." AS ex"
@@ -712,15 +712,15 @@ class EixoDois {
         foreach ($params as $param) {
             $paramsStr .= 's';
         }
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
         if (mysqli_stmt_prepare($stmt, $query)) {
             $stmt->bind_param($paramsStr, ...$params);
-            
+
             $stmt->execute();
             $allObjects = self::fetch_results($stmt);
         }
-        
+
         self::disconnect();
 
         return $allObjects;
@@ -733,7 +733,7 @@ class EixoDois {
 
     public static function getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg){
         $params = [];
-        
+
         self::connect();
 
         $query = "SELECT * FROM ".self::$table." WHERE Numero = ? AND idUF = ?";
@@ -768,7 +768,7 @@ class EixoDois {
         else if($ocp == 3){
             $query .= " AND (idOcupacao = 1 OR idOcupacao = 2)";
         }
-                    
+
         $query .= self::concatDeg($desag, 1, "idPorte");
         $query .= self::concatDeg($desag, 3, "idIdade");
         $query .= self::concatDeg($desag, 4, "idEscolaridade");
@@ -781,15 +781,15 @@ class EixoDois {
         foreach ($params as $param) {
             $paramsStr .= 's';
         }
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
         if (mysqli_stmt_prepare($stmt, $query)) {
             $stmt->bind_param($paramsStr, ...$params);
-            
+
             $stmt->execute();
             $allObjects = self::fetch_results($stmt);
         }
-        
+
         self::disconnect();
 
         return $allObjects;
@@ -820,6 +820,41 @@ class EixoDois {
         }
     }
 
+    public static function getMaxValueSetor($var, $cad, $deg){
+      self::connect();
+          $params = [];
+
+      $query = "SELECT MAX(Valor) as Valor, Ano FROM ".self::$table
+              ." WHERE Numero = ?"
+              ." AND idCadeia = ?"
+              ." AND idPorte = ?"
+              ." AND idUF = 0 GROUP BY Ano";
+
+          $params[] = $var;
+          $params[] = $cad;
+          $params[] = $deg;
+
+          $paramsStr = '';
+          foreach ($params as $param) {
+              $paramsStr .= 's';
+          }
+          $allObjects = [];
+
+          $stmt = mysqli_stmt_init(self::$conn);
+          if (mysqli_stmt_prepare($stmt, $query)) {
+
+              $stmt->bind_param($paramsStr, ...$params);
+              $stmt->execute();
+              $allObjects = self::fetch_results($stmt);
+          }
+
+      self::disconnect();
+
+      return $allObjects;
+      }
+
 
 }
+
+
 

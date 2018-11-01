@@ -94,6 +94,11 @@ export class EmpilhadasComponent {
     this.getData();
   }
 
+  sendBarData(valor, percent,total) {
+    this.dadoGlobal.emit({view: 'barras', valor: valor, percentual: percent, total: total});
+  }
+
+
   getData(): void {
     this.empilhadasProvider.getData(this.parameters, this.uos)
       .subscribe(response => (this.data = response),
@@ -117,6 +122,9 @@ export class EmpilhadasComponent {
     this.values = [];
     var valuesByDeg = {};
     var dados = []
+    var actualSubdeg = this.dadosProvider.getDegName(this.parameters.subdeg, this.parameters.deg);
+    var somaDeg = 0;
+    var actualDado = 0;
 
     this.data.forEach(element => {
       var soma = 0;
@@ -130,6 +138,12 @@ export class EmpilhadasComponent {
         if(valuesByDeg[val] == undefined) valuesByDeg[val] = {};
 
         valuesByDeg[val][element.ano] = element.valores[val];
+
+        if(this.parameters.ano ==  element.ano && actualSubdeg == val)
+          actualDado = element.valores[val];
+
+        if(this.parameters.ano)
+          somaDeg += element.valores[val];
 
         soma += element.valores[val];
 
@@ -156,6 +170,10 @@ export class EmpilhadasComponent {
 
     this.maxValue = edgeValues[1];
     this.minValue = 0;
+
+    //AQUI
+    this.sendBarData(actualDado, 1, somaDeg);
+
 
   }
 

@@ -28,7 +28,7 @@ export class HomePage implements OnInit{
   view: string = '0';
   menu_plus: string = '+';
   menu_opacity = 0.8;
-  menu_color: string = "rgba(233, 242, 236, 0.315)";
+  menu_color: string = "#ffffff";
   expand: boolean = false;
 
   private parameters = {
@@ -324,7 +324,7 @@ export class HomePage implements OnInit{
   menuClick(){
     if(this.expand == true)
     {
-      this.menu_color = "#E9F2ED";
+      this.menu_color = "#ffffff";
       this.expand = false;
       this.menu_plus = '+';
       this.menu_opacity = 0.8;

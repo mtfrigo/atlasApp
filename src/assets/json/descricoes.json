@@ -361,572 +361,583 @@
         }
       ]
     },
-		[
-			{
-				"id":"1",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"u": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"s": "TRABALHADORES NO SETOR [cad] NO BRASIL"},
-							{"d": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS [deg] DO BRASIL"},
-							{"us": "TRABALHADORES NO SETOR [cad] [uf]"},
-							{"ud": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS [deg] [uf]"},
-							{"sd": "TRABALHADORES NO SETOR [cad] [deg] NO BRASIL"},
-							{"usd": "TRABALHADORES NO SETOR [cad] [deg] [uf]"}
-						],
-						"segunda":[
-							{"": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"u": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"s": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS NO BRASIL"},
-							{"d": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"us": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"ud": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"sd": "DO TOTAL DE TRABALHADORES DO SETOR [cad] DO BRASIL"},
-							{"usd": "DO TOTAL DE TRABALHADORES DO SETOR [cad] [uf]"}
-						],
-						"terceira":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"ud": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"sd": ""},
-							{"usd": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"}
-						]
-					},
-					{
-						"primeira":[
-							{"": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"u": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [uf]"},
-							{"s": "OCUPADOS [cad] NO BRASIL"},
-							{"d": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [deg] DO BRASIL"},
-							{"us": "OCUPADOS [cad] [uf]"},
-							{"ud": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [deg] DO BRASIL"},
-							{"sd": "OCUPADOS [cad] [deg] NO BRASIL"},
-							{"usd": "OCUPADOS [cad] [deg] [uf]"}
-						],
-						"segunda":[
-							{"": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"u": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"s": "DO TOTAL DE OCUPADOS [cad] NO BRASIL"},
-							{"d": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"us": "DO TOTAL DE OCUPADOS [cad] NO BRASIL"},
-							{"ud": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"sd": "DO TOTAL DE OCUPADOS [cad] NO BRASIL"},
-							{"usd": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [uf]"}
-						],
-						"terceira":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"}
-						]
-					}
+    {
+      "1" : [
+        [
+          {
+            "": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "u": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "s": "TRABALHADORES NO SETOR [cad] NO BRASIL",
+            "d": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS [deg] DO BRASIL",
+            "us": "TRABALHADORES NO SETOR [cad] [uf]",
+            "ud": "TRABALHADORES NOS SETORES CULTURAIS E CRIATIVOS [deg] [uf]",
+            "sd": "TRABALHADORES NO SETOR [cad] [deg] NO BRASIL",
+            "usd": "TRABALHADORES NO SETOR [cad] [deg] [uf]"
+          }
+          ,
+          {
+            "": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "u": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "s": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS NO BRASIL",
+            "d": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "us": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "ud": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "sd": "DO TOTAL DE TRABALHADORES DO SETOR [cad] DO BRASIL",
+            "usd": "DO TOTAL DE TRABALHADORES DO SETOR [cad] [uf]"
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "ud": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "sd": "",
+            "usd": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"
+          }
+        ]
+        ,
+        [
+          {
+            "": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "u": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [uf]",
+            "s": "OCUPADOS [cad] NO BRASIL",
+            "d": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [deg] DO BRASIL",
+            "us": "OCUPADOS [cad] [uf]",
+            "ud": "OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [deg] DO BRASIL",
+            "sd": "OCUPADOS [cad] [deg] NO BRASIL",
+            "usd": "OCUPADOS [cad] [deg] [uf]"
+          }
+          ,
+          {
+            "": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "u": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "s": "DO TOTAL DE OCUPADOS [cad] NO BRASIL",
+            "d": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "us": "DO TOTAL DE OCUPADOS [cad] NO BRASIL",
+            "ud": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "sd": "DO TOTAL DE OCUPADOS [cad] NO BRASIL",
+            "usd": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [uf]"
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "ud": "",
+            "sd": "",
+            "usd": "DO TOTAL DE OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"
+          }
+        ]
+      ]
+      ,
+      "2": [
+        [
+          {
+            "": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL",
+            "u": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL",
+            "s": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL",
+            "d": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL",
+            "us": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL",
+            "ud": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL",
+            "sd": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL",
+            "usd": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL"
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+        ]
+        ,
+        [
+          {
+            "": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL",
+            "u": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL",
+            "s": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL",
+            "d": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL",
+            "us": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL",
+            "ud": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL",
+            "sd": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL",
+            "usd": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL"
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
 
-				]
-			},
-			{
-				"id":"2",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL"},
-							{"u": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL"},
-							{"s": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL"},
-							{"d": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL"},
-							{"us": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL"},
-							{"ud": "DE PARTICIPAÇÃO DO EMPREGO NOS SETORES CULTURAIS E CRIATIVOS NO EMPREGO TOTAL"},
-							{"sd": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL"},
-							{"usd": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL"}
-						],
-						"segunda":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"terceira":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					},
-					{
-						"primeira":[
-							{"": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL"},
-							{"u": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL"},
-							{"s": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL"},
-							{"d": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL"},
-							{"us": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL"},
-							{"ud": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL"},
-							{"sd": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL"},
-							{"usd": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL"}
-						],
-						"segunda":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
+          }
+        ]
+      ]
+      ,
+      "4" : [
+        [
+          {
+            "": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "u": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "s": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETOR ARTES CÊNICAS E ESPETÁCULOS NO BRASIL",
+            "d": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "us": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETOR [cad] [uf]",
+            "ud": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DOS SETORES CULTURAIS E CRIATIVOS DE EMPRESAS [uf]",
+            "sd": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DO SETOR [cad] NO BRASIL",
+            "usd": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DO SETOR [cad] [uf]"
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
 
-				]
-			},
-			{
-				"id":"4",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"u": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"s": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETOR ARTES CÊNICAS E ESPETÁCULOS NO BRASIL"},
-							{"d": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"us": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES DOS SETOR [cad] [uf]"},
-							{"ud": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DOS SETORES CULTURAIS E CRIATIVOS DE EMPRESAS [uf]"},
-							{"sd": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DO SETOR [cad] NO BRASIL"},
-							{"usd": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DO SETOR [cad] [uf]"}
-						],
-						"segunda":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					},
-					{
-						"primeira":[
-							{"": ""},
-							{"u": ""},
-							{"s": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [cad] NO BRASIL"},
-							{"d": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad]  NO BRASIL"},
-							{"us": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [cad] [uf]"},
-							{"ud": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] NO BRASIL"},
-							{"sd": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] NO BRASIL"},
-							{"usd": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] [uf]"}
-						],
-						"segunda":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"terceira":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
+        ]
+        ,
+        [
+          {
+            "": "",
+            "u": "",
+            "s": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [cad] NO BRASIL",
+            "d": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad]  NO BRASIL",
+            "us": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [cad] [uf]",
+            "ud": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] NO BRASIL",
+            "sd": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] NO BRASIL",
+            "usd": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] [uf]"
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+        ]
+      ]
+      ,
+      "5": [
+        [
+          {
+            "": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "u": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "s": "POR HORA TRABALHADA NO SETOR [cad] NO BRASIL",
+            "d": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS [deg] DO BRASIL",
+            "us": "POR HORA TRABALHADA NO SETOR [cad] [uf]",
+            "ud": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS [deg] [uf]",
+            "sd": "POR HORA TRABALHADA NO SETOR [cad] [deg] NO BRASIL",
+            "usd": "POR HORA TRABALHADA NO SETOR [cad] [deg] [uf]"
+          }
+        ]
+        ,
+        [
+          {
+            "": "",
+            "u": "",
+            "s": "POR HORA TRABALHADA [cad] NO BRASIL",
+            "d": "",
+            "us": "POR HORA TRABALHADA [cad] [uf]",
+            "ud": "POR HORA TRABALHADA [cad] [deg] NO BRASIL",
+            "sd": "POR HORA TRABALHADA [cad] [deg] NO BRASIL",
+            "usd": "POR HORA TRABALHADA [cad] [deg] [uf]"
+          }
+        ]
+      ]
+      ,
+      "6" : [
+        [
+          {
+            "": "HORAS SEMANAIS MÉDIAS DE TRABALHO NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "u": "HORAS SEMANAIS MÉDIAS DE TRABALHO NOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "s": "HORAS SEMANAIS MÉDIAS DE TRABALHO NO SETOR [cad] NO BRASIL",
+            "d": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "us": "HORAS SEMANAIS MÉDIAS DE TRABALHO NO SETOR [cad] [uf]",
+            "ud": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] NOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "sd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] no setor [cad] NO BRASIL",
+            "usd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] no setor [cad] [uf]"
+          }
+        ]
+        ,
+        [
+          {
+            "": "",
+            "u": "",
+            "s": "HORAS SEMANAIS MÉDIAS DE TRABALHO [cad] NO BRASIL",
+            "d": "",
+            "us": "HORAS SEMANAIS MÉDIAS DE TRABALHO [cad] [uf]",
+            "ud": "",
+            "sd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] [cad] NO BRASIL",
+            "usd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] [cad] [uf]"
+          }
+        ]
+      ]
+      ,
+      "7" : [
+        [
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "u": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "s": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "d": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "us": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "ud": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "sd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "usd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DO SETOR [cad] [uf]"
+          }
+        ]
+        ,
+        [
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "u": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "s": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] DO BRASIL",
+            "d": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL",
+            "us": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] [uf]",
+            "ud": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [uf]",
+            "sd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] DO BRASIL",
+            "usd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] [uf]"
+          }
+        ]
+      ]
+      ,
+      "9" : [
+        [
+          {
+            "": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO EM SETORES CULTURAIS E CRIATIVOS",
+            "u": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO EM SETORES CULTURAIS E CRIATIVOS [uf]",
+            "s": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO NO SETOR [cad]",
+            "d": "",
+            "us": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO NO SETOR [cad] [uf]",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+        ]
+        ,
+        [
+          {
 
-				]
+          }
+        ]
+      ]
+      ,
+      "11" : [
+        [
+          {
+            "": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
+            "u": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NOS SETORES CULTURAIS E CRIATIVOS [uf]",
+            "s": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NO SETOR [cad] NO BRASIL",
+            "d": "",
+            "us": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NO SETOR [cad] [uf]",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+        ]
+        ,
+        [
+          {
 
-			},
-			{
-				"id":"5",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"u": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"s": "POR HORA TRABALHADA NO SETOR [cad] NO BRASIL"},
-							{"d": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS [deg] DO BRASIL"},
-							{"us": "POR HORA TRABALHADA NO SETOR [cad] [uf]"},
-							{"ud": "POR HORA TRABALHADA NOS SETORES CULTURAIS E CRIATIVOS [deg] [uf]"},
-							{"sd": "POR HORA TRABALHADA NO SETOR [cad] [deg] NO BRASIL"},
-							{"usd": "POR HORA TRABALHADA NO SETOR [cad] [deg] [uf]"}
-						]
-					},
-					{
-						"primeira":[
-							{"": ""},
-							{"u": ""},
-							{"s": "POR HORA TRABALHADA [cad] NO BRASIL"},
-							{"d": ""},
-							{"us": "POR HORA TRABALHADA [cad] [uf]"},
-							{"ud": "POR HORA TRABALHADA [cad] [deg] NO BRASIL"},
-							{"sd": "POR HORA TRABALHADA [cad] [deg] NO BRASIL"},
-							{"usd": "POR HORA TRABALHADA [cad] [deg] [uf]"}
-						]
-					}
+          }
+        ]
+      ]
+      ,
+      "12" : [
+        [
+          {
+            "": "CONCENTRAÇÃO DO EMPREGO POR UF",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "CONCENTRAÇÃO DO EMPREGO POR SETOR",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
 
-				]
+        ]
+        ,
+        [
+          {
+            "": "CONCENTRAÇÃO DO EMPREGO POR ATIVIDADES RELACIONADAS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "CONCENTRAÇÃO DO EMPREGO POR ATIVIDADES CULTURAIS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+        ]
+      ]
+      ,
+      "13" : [
+        [
+          {
+            "": "CONCENTRAÇÃO DE MASSA SALARIAL POR UF",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "CONCENTRAÇÃO DE MASSA SALARIAL POR SETOR",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+        ]
+        ,
+        [
+          {
+            "": "CONCENTRAÇÃO DE MASSA SALARIAL POR ATIVIDADES RELACIONADAS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "CONCENTRAÇÃO DE MASSA SALARIAL POR ATIVIDADES CULTURAIS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
 
-			},
-			{
-				"id":"6",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "HORAS SEMANAIS MÉDIAS DE TRABALHO NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"u": "HORAS SEMANAIS MÉDIAS DE TRABALHO NOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"s": "HORAS SEMANAIS MÉDIAS DE TRABALHO NO SETOR [cad] NO BRASIL"},
-							{"d": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"us": "HORAS SEMANAIS MÉDIAS DE TRABALHO NO SETOR [cad] [uf]"},
-							{"ud": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] NOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"sd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] no setor [cad] NO BRASIL"},
-							{"usd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] no setor [cad] [uf]"}
-						]
-					},
-					{
-						"primeira":[
-							{"": ""},
-							{"u": ""},
-							{"s": "HORAS SEMANAIS MÉDIAS DE TRABALHO [cad] NO BRASIL"},
-							{"d": ""},
-							{"us": "HORAS SEMANAIS MÉDIAS DE TRABALHO [cad] [uf]"},
-							{"ud": ""},
-							{"sd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] [cad] NO BRASIL"},
-							{"usd": "HORAS SEMANAIS MÉDIAS DE TRABALHADORES [deg] [cad] [uf]"}
-						]
-					}
+        ]
+      ]
+      ,
+      "14" : [
+        [
+          {
+            "": "IHH DE NÚMERO DOS TRABALHADORES POR UF",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "IHH DE NÚMERO DOS TRABALHADORES POR SETOR",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
 
-				]
+        ]
+        ,
+        [
+          {
+            "": "IHH DE NÚMERO DOS TRABALHADORES POR ATIVIDADES RELACIONADAS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "IHH DE NÚMERO DOS TRABALHADORES POR ATIVIDADES CULTURAIS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+        ]
+      ]
+      ,
+      "15" : [
+        [
+          {
+            "": "IHH DA MASSA DE RENDIMENTOS POR UF",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "IHH DA MASSA DE RENDIMENTOS POR SETOR",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
 
-			},
-			{
-				"id":"7",
-				"ocp": [
-					{
-						"primeira":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"u": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"s": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"d": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"us": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"ud": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"sd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"usd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS TRABALHADORES DO SETOR [cad] [uf]"}
-						]
-					},
-					{
-						"primeira":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"u": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"s": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] DO BRASIL"},
-							{"d": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS DO BRASIL"},
-							{"us": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] [uf]"},
-							{"ud": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS [uf]"},
-							{"sd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] DO BRASIL"},
-							{"usd": "DA SOMA DE REMUNERAÇÕES PAGAS AOS OCUPADOS [cad] [uf]"}
-						]
-					}
+        ]
+        ,
+        [
+          {
+            "": "IHH DA MASSA DE RENDIMENTOS POR ATIVIDADES RELACIONADAS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
+          ,
+          {
+            "": "IHH DA MASSA DE RENDIMENTOS POR ATIVIDADES CULTURAIS",
+            "u": "",
+            "s": "",
+            "d": "",
+            "us": "",
+            "ud": "",
+            "sd": "",
+            "usd": ""
+          }
 
-				]
+        ]
+      ]
+    }
+    ,
 
-			},
-			{
-				"id":"9",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO EM SETORES CULTURAIS E CRIATIVOS"},
-							{"u": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO EM SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"s": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO NO SETOR [cad]"},
-							{"d": ""},
-							{"us": "DE RAZÃO ENTRE MASSA SALARIAL E VALOR ADICIONADO NO SETOR [cad] [uf]"},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
-				]
-
-			},
-			{
-				"id":"11",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"},
-							{"u": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NOS SETORES CULTURAIS E CRIATIVOS [uf]"},
-							{"s": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NO SETOR [cad] NO BRASIL"},
-							{"d": ""},
-							{"us": "DE INCIDÊNCIA DOS SALÁRIOS SOBRE OS CUSTOS DOS EMPREENDIMENTOS NO SETOR [cad] [uf]"},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"terceira":[
-							{"": ""},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
-				]
-
-			},
-			{
-				"id":"12",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "CONCENTRAÇÃO DO EMPREGO POR UF"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "CONCENTRAÇÃO DO EMPREGO POR SETOR"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					},
-					{
-						"primeira":[
-							{"": "CONCENTRAÇÃO DO EMPREGO POR ATIVIDADES RELACIONADAS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "CONCENTRAÇÃO DO EMPREGO POR ATIVIDADES CULTURAIS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
-
-				]
-
-			},
-			{
-				"id":"13",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "CONCENTRAÇÃO DE MASSA SALARIAL POR UF"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "CONCENTRAÇÃO DE MASSA SALARIAL POR SETOR"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					},
-					{
-						"primeira":[
-							{"": "CONCENTRAÇÃO DE MASSA SALARIAL POR ATIVIDADES RELACIONADAS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "CONCENTRAÇÃO DE MASSA SALARIAL POR ATIVIDADES CULTURAIS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
-
-				]
-
-			},
-			{
-				"id":"14",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "IHH DE NÚMERO DOS TRABALHADORES POR UF"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "IHH DE NÚMERO DOS TRABALHADORES POR SETOR"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					},
-					{
-						"primeira":[
-							{"": "IHH DE NÚMERO DOS TRABALHADORES POR ATIVIDADES RELACIONADAS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "IHH DE NÚMERO DOS TRABALHADORES POR ATIVIDADES CULTURAIS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
-
-				]
-
-			},
-			{
-				"id":"15",
-				"ocp": [
-					{
-						"primeira":[
-							{"": "IHH DA MASSA DE RENDIMENTOS POR UF"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "IHH DA MASSA DE RENDIMENTOS POR SETOR"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					},
-					{
-						"primeira":[
-							{"": "IHH DA MASSA DE RENDIMENTOS POR ATIVIDADES RELACIONADAS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						],
-						"segunda":[
-							{"": "IHH DA MASSA DE RENDIMENTOS POR ATIVIDADES CULTURAIS"},
-							{"u": ""},
-							{"s": ""},
-							{"d": ""},
-							{"us": ""},
-							{"ud": ""},
-							{"sd": ""},
-							{"usd": ""}
-						]
-					}
-
-				]
-
-			}
-		],
 		[
 			{
 				"id":"1",

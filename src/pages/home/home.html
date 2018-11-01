@@ -76,13 +76,13 @@
 
 </div>
 
-<ion-content  style="background-color: #E9F2ED;">
+<ion-content  style="background-color: ffffff;">
 
   <ion-grid id='content-container'>
 
       <ion-row id='views' #views>
         <ion-col col-12 >
-            <ion-item *ngIf="parameters.ano > 0 && ready_pt_br" style="background-color: #E9F2ED; height: 100%; width: 100%;" >
+            <ion-item *ngIf="parameters.ano > 0 && ready_pt_br" style="background-color: ffffff; height: 100%; width: 100%;" >
               <ion-slides #slides (ionSlideDidChange)="slideChanged()" style="height: 100%">
                 <ion-slide>
                     <hr>
@@ -115,7 +115,7 @@
 
       <ion-row id='dados'>
         <ion-col col-12>
-            <ion-item text-wrap  style="background-color: #E9F2ED; " >
+            <ion-item text-wrap  style="background-color: #ffffff; " >
                 <view-dados *ngIf="parameters.ano > 0" [pt_br]="pt_br" [parameters]="parameters" [url]="getQuery(parameters)" [globalData]="data"></view-dados>
                 <p *ngIf="ready_pt_br" id="desc">
                   {{getDescVar()}}
