@@ -553,6 +553,36 @@ class EixoDois {
         return $allObjects;
     }
 
+    public static function getTotalSumPrt($var, $uf, $cad){
+      self::connect();
+      $params = [];
+
+      $query = "SELECT Valor, Ano FROM `Eixo_2` WHERE Numero = ? and idUF = ? and idPorte = 0 and idCadeia = ?";
+
+      $params[] = $var;
+      $params[] = $uf;
+      $params[] = $cad;
+
+      $paramsStr = '';
+      foreach ($params as $param) {
+          $paramsStr .= 's';
+      }
+      $allObjects = [];
+
+      $stmt = mysqli_stmt_init(self::$conn);
+      if (mysqli_stmt_prepare($stmt, $query)) {
+
+          $stmt->bind_param($paramsStr, ...$params);
+          $stmt->execute();
+          $allObjects = self::fetch_results($stmt);
+      }
+
+  self::disconnect();
+
+  return $allObjects;
+
+  }
+
 
     /*-----------------------------------------------------------------------------
     Função: Getter Region
@@ -820,19 +850,47 @@ class EixoDois {
         }
     }
 
-    public static function getMaxValueSetor($var, $cad, $deg){
+    public static function getMaxValueSetor($var, $cad){
       self::connect();
           $params = [];
 
       $query = "SELECT MAX(Valor) as Valor, Ano FROM ".self::$table
               ." WHERE Numero = ?"
               ." AND idCadeia = ?"
-              ." AND idPorte = ?"
               ." AND idUF = 0 GROUP BY Ano";
 
           $params[] = $var;
           $params[] = $cad;
-          $params[] = $deg;
+
+          $paramsStr = '';
+          foreach ($params as $param) {
+              $paramsStr .= 's';
+          }
+          $allObjects = [];
+
+          $stmt = mysqli_stmt_init(self::$conn);
+          if (mysqli_stmt_prepare($stmt, $query)) {
+
+              $stmt->bind_param($paramsStr, ...$params);
+              $stmt->execute();
+              $allObjects = self::fetch_results($stmt);
+          }
+
+      self::disconnect();
+
+      return $allObjects;
+      }
+
+    public static function getTotalBrasil($var){
+      self::connect();
+          $params = [];
+
+      $query = "SELECT MAX(Valor) as Valor, Ano FROM ".self::$table
+              ." WHERE Numero = ?"
+              ." AND idCadeia = 0"
+              ." AND idUF = 0 GROUP BY Ano";
+
+          $params[] = $var;
 
           $paramsStr = '';
           foreach ($params as $param) {

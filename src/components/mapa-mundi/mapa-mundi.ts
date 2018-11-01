@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import $ from 'jquery';
-import jvm from 'jqvmap';
 import { MapaMundiProvider } from '../../providers/mapa-mundi/mapa-mundi';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import * as d3  from 'd3';
@@ -35,7 +33,7 @@ export class MapaMundiComponent implements OnInit, OnChanges{
   ngOnInit(){
     this.jsonProvider.getColors()
     .subscribe( d => {
-      
+
         this.colors = d;
 
       this.getData()
@@ -49,7 +47,7 @@ export class MapaMundiComponent implements OnInit, OnChanges{
   getData(){
     this.provider.getData(this.url)
     .subscribe(response => {
-      
+
       for(let data in response){
         if(response[data].id != 0) this.gdpAux[this.unconvertCode(response[data].id)] = response[data].valor;
       }

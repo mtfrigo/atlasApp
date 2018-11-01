@@ -46,6 +46,7 @@ export class DadosComponent {
 
   total_setor: any;
   total_deg: any;
+  total_brasil: any;
 
   constructor(public navCtrl: NavController,
               private dadosProvider: DadosProvider,
@@ -75,10 +76,17 @@ export class DadosComponent {
               .subscribe(d=>{
 
                 this.total_deg = d;
-                this.getData();
 
-            })
-        })
+                this.total_setor = d;
+                this.dadosProvider.getTotalBrasil(this.parameters)
+                  .subscribe(d=>{
+
+                    this.total_brasil = d;
+                    this.getData();
+
+                  })
+              })
+          })
       })
     })
   }
@@ -177,22 +185,28 @@ export class DadosComponent {
     {
       switch(box){
         case 0:
-          return prefix+this.formatNumber(valores.valor)+suffix;
+          if(this.parameters.var == 2)
+          {
+            console.log(valores)
+            return this.formatDecimal(valores.valor, 5)+"%";
+
+          }
+          else
+            return prefix+this.formatNumber(valores.valor)+suffix;
         case 1:
           if(this.treemapRelativeValue() && valores.total)
-            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
-          else if(this.parameters.uf == 0 && this.parameters.cad != 0 && this.parameters.deg != 0 && valores.total)
           {
-            console.log("aqui")
-            console.log(valores)
+            console.log("treemap relative")
             return this.formatDecimal(valores.valor/valores.total, 2)+"%";
 
           }
-
+          else if(this.parameters.cad != 0 && this.parameters.deg != 0 && valores.total)
+            return this.formatDecimal(valores.valor/this.total_deg[this.parameters.ano], 2)+"%";
           else
             return this.formatDecimal(valores.percentual, 2)+"%";
         case 2:
-          return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
+          return this.formatDecimal(valores.valor/this.total_brasil[this.parameters.ano], 2)+"%";
+
       }
 
     }
@@ -217,7 +231,7 @@ export class DadosComponent {
     }
     else if(this.parameters.eixo == 1){
       if(this.parameters.var == 1){
-        if(this.parameters.cad != 0 && this.parameters.uf != 0){
+        if(this.parameters.cad && this.parameters.uf != 0 && this.parameters.deg == 0){
           return true;
         }
       }

@@ -13,16 +13,28 @@
     $json = array();
 
     if($eixo == 0){
-        require_once("EixoUm.php");
-        $vars = array(1);
+      require_once("EixoUm.php");
+      $vars = array(1);
 
-        if(in_array($var, $vars)){
-            foreach(EixoUm::getTotalSumPrt($var, $uf) as $result){
-                $json[$result->Ano] = $result->Valor;
-            }
+      if(in_array($var, $vars)){
+          foreach(EixoUm::getTotalSumPrt($var, $uf) as $result){
+              $json[$result->Ano] = $result->Valor;
+          }
+      }
+
+  }
+
+  if($eixo == 1){
+    require_once("EixoDois.php");
+    $vars = array(1);
+
+    if(in_array($var, $vars)){
+        foreach(EixoDois::getTotalSumPrt($var, $uf, $cad) as $result){
+            $json[$result->Ano] = $result->Valor;
         }
-
     }
+
+}
 
     echo json_encode($json);
 

@@ -125,6 +125,7 @@ export class EmpilhadasComponent {
     var actualSubdeg = this.dadosProvider.getDegName(this.parameters.subdeg, this.parameters.deg);
     var somaDeg = 0;
     var actualDado = 0;
+    var actualDadoSoma = 0;
 
     this.data.forEach(element => {
       var soma = 0;
@@ -139,8 +140,13 @@ export class EmpilhadasComponent {
 
         valuesByDeg[val][element.ano] = element.valores[val];
 
-        if(this.parameters.ano ==  element.ano && actualSubdeg == val)
-          actualDado = element.valores[val];
+        if(this.parameters.ano ==  element.ano)
+        {
+          actualDadoSoma += element.valores[val];
+
+          if(actualSubdeg == val)
+            actualDado = element.valores[val];
+        }
 
         if(this.parameters.ano)
           somaDeg += element.valores[val];
@@ -172,7 +178,7 @@ export class EmpilhadasComponent {
     this.minValue = 0;
 
     //AQUI
-    this.sendBarData(actualDado, 1, somaDeg);
+    this.sendBarData(actualDado, actualDado/actualDadoSoma, somaDeg);
 
 
   }

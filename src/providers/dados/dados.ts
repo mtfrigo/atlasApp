@@ -16,6 +16,7 @@ export class DadosProvider {
 
   private totalSetorUrl : string = "http://143.54.231.10/atlasApp/src/api/total_setor.php?";
   private totalDegUrl : string = "http://143.54.231.10/atlasApp/src/api/total_desag.php?";
+  private totalBrasilUrl : string = "http://143.54.231.10/atlasApp/src/api/total_brasil.php?";
 
   constructor(public http: HttpClient) {
 
@@ -38,6 +39,10 @@ export class DadosProvider {
     this.globalData['mapa']['valor'] = 0;
     this.globalData['mapa']['percentual'] = 0;
 
+  }
+
+  getTotalBrasil (parameters): Observable<any[]> {
+    return (this.http.get<any[]>(this.totalBrasilUrl+this.getQuery(parameters)));
   }
 
   getTotalSetor (parameters): Observable<any[]> {

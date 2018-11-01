@@ -30,7 +30,7 @@
     $vars = array(1);
 
     if(in_array($var, $vars)){
-        foreach(EixoDois::getMaxValueSetor($var, $cad, $deg) as $result){
+        foreach(EixoDois::getMaxValueSetor($var, $cad) as $result){
             $json[$result->Ano] = $result->Valor;
         }
     }
