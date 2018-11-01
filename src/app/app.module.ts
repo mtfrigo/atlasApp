@@ -21,6 +21,7 @@ import { IndexPage } from '../pages/index';
 import { DadosProvider } from '../providers/dados/dados';
 import { EmpilhadasProvider } from '../providers/empilhadas/empilhadas';
 import { SobrePage } from '../pages/sobre/sobre';
+import { MapaMundiProvider } from '../providers/mapa-mundi/mapa-mundi';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { SobrePage } from '../pages/sobre/sobre';
     JsonsProvider,
     MapaProvider,
     DadosProvider,
-    EmpilhadasProvider
+    EmpilhadasProvider,
+    MapaMundiProvider
   ]
 })
 export class AppModule {}

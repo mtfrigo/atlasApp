@@ -89,7 +89,7 @@
                     <p class='title_view'>{{getTitleView(1)}}</p>
                     <view-mapa *ngIf="correctView(1, 'mapa')"  [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
                     <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
-
+                    <view-mapa-mundi *ngIf="correctView(1, 'mapa-mundi')" [parameters]="parameters" [url]="getQuery(parameters)"></view-mapa-mundi>
                 </ion-slide>
 
                 <ion-slide>
