@@ -9,12 +9,13 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class DonutProvider {
-  donutUrl : string = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/json_donut.php'
+  donutUrl : string = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_donut.php'
 
    constructor(public http: HttpClient) {
   }
 
   getData(parameters){
+    console.log(this.donutUrl+'?'+parameters)
     return this.http.get<any[]>(this.donutUrl+'?'+parameters);
   }
 

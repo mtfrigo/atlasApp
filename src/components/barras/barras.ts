@@ -131,7 +131,6 @@ export class BarrasComponent implements OnChanges{
 
   updateData() : void {
 
-
        this.barrasProvider.getData(this.parameters, this.uos)
        .subscribe(response => (this.data = response),
                   error => 'oioio',
@@ -263,7 +262,6 @@ export class BarrasComponent implements OnChanges{
 
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
-
     this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
 
     let i = 0;

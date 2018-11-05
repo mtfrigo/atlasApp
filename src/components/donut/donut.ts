@@ -30,7 +30,6 @@ export class DonutComponent implements OnChanges{
   private data : any[] = [];
   private colors : any ;
   private center : string = `translate(${this.width/2}, ${this.height/2})`;
-  private index : boolean = true;
   private data_end = []
 
   arc =
@@ -56,7 +55,6 @@ export class DonutComponent implements OnChanges{
   }
 
   ngOnChanges() : void {
-    this.index = !this.index;
     this.donutProvider.getData(this.url)
     .subscribe(data => {
       this.data_end = this.pie(data);

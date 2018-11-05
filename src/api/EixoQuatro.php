@@ -257,9 +257,9 @@ class EixoQuatro {
             }
             
             if ($slc == 0) {
-                $query .= " AND ex.Consumo = 1";
-            } else {
                 $query .= " AND ex.Consumo = 0";
+            } else {
+                $query .= " AND ex.Consumo = 1";
             }
             
             $paramsStr = '';
@@ -295,9 +295,9 @@ class EixoQuatro {
             }
 
             if ($slc == 0) {
-                $query .= " AND ex.Consumo = 1";
-            } else {
                 $query .= " AND ex.Consumo = 0";
+            } else {
+                $query .= " AND ex.Consumo = 1";
             }
 
 
@@ -360,9 +360,9 @@ class EixoQuatro {
         $params[] = $var;
         
         if($slc == 0) {
-			$query .= " AND ex.Consumo = 1";
-        } else {
 			$query .= " AND ex.Consumo = 0";
+        } else {
+			$query .= " AND ex.Consumo = 1";
         }
         
         $paramsStr = '';
@@ -439,7 +439,6 @@ class EixoQuatro {
 	}
 
 	public static function getter_donut($var, $cad, $ano, $cons, $uf, $parc){
-		$cons = $cons == 0 ? 1: 0;
 		self::connect();
         $stmt = mysqli_stmt_init(self::$conn);
         

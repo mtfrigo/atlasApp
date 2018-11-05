@@ -123,7 +123,7 @@ export class DadosComponent {
       case 1: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
     }
 
-
+    if(this.parameters.eixo != 3)
     for(var i = 0; i < descByEixo.length; i++){
 
       if(descByEixo[i][this.desc_key] != ""){
