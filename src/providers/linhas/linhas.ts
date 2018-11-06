@@ -18,6 +18,7 @@ export class LinhasProvider {
   }
 
   getData (parameters): Observable<any[]> {
+    // console.log('http://143.54.231.10/atlasApp/src/api/json_linhas.php?'+this.getQuery(parameters))
     return (this.http.get<any[]>('http://143.54.231.10/atlasApp/src/api/json_linhas.php?'+this.getQuery(parameters)));
   }
 

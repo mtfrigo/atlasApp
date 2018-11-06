@@ -19,8 +19,8 @@ const options = {
 @Injectable()
 export class BarrasProvider {
 
-  //configUrl = 'http://143.54.231.10/atlasApp/src/api/json_barras.php?';
-  configUrl = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_barras.php?';
+  configUrl = 'http://143.54.231.10/atlasApp/src/api/json_barras.php?';
+  // configUrl = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_barras.php?';
   //configUrl = 'http://ufrgs.br/obec/atlas/api/json_barras.php?';
 
   constructor(public http: HttpClient) {

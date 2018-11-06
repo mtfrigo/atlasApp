@@ -253,7 +253,8 @@ export class DadosProvider {
     }
     else if(parameters.eixo == 1)
     {
-
+      if(parameters.var == 12 || parameters.var == 13 || parameters.var == 14 || parameters.var == 15)
+        return true;
     }
     else if(parameters.eixo == 2)
     {

@@ -6,6 +6,8 @@
     $deg    =   isset($_GET["deg"])   ?   $_GET["deg"]  :   0;
     $cad    =   isset($_GET["cad"])   ?   $_GET["cad"]  :   0;
 
+    $ocp    =   isset($_GET["ocp"])   ?   $_GET["ocp"]  :   0;
+
     if($deg != 0){
         $deg = $deg - 8;
     }
@@ -26,10 +28,10 @@
 
   if($eixo == 1){
     require_once("EixoDois.php");
-    $vars = array(1);
+    $vars = array(1, 7);
 
     if(in_array($var, $vars)){
-        foreach(EixoDois::getTotalSumPrt($var, $uf, $cad) as $result){
+        foreach(EixoDois::getTotalSumPrt($var, $uf, $cad, $ocp) as $result){
             $json[$result->Ano] = $result->Valor;
         }
     }

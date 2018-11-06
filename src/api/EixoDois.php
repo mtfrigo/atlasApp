@@ -553,15 +553,17 @@ class EixoDois {
         return $allObjects;
     }
 
-    public static function getTotalSumPrt($var, $uf, $cad){
+    public static function getTotalSumPrt($var, $uf, $cad, $ocp){
       self::connect();
       $params = [];
 
-      $query = "SELECT Valor, Ano FROM `Eixo_2` WHERE Numero = ? and idUF = ? and idPorte = 0 and idCadeia = ?";
+      $query = "SELECT Valor, Ano FROM `Eixo_2` WHERE Numero = ? and idUF = ? and idPorte = 0 and idCadeia = ? and idOcupacao = ? and idEscolaridade = 0 and idEtinia = 0 and   idIdade = 0 and  `Sexo` IS NULL ";
+
 
       $params[] = $var;
       $params[] = $uf;
       $params[] = $cad;
+      $params[] = $ocp;
 
       $paramsStr = '';
       foreach ($params as $param) {

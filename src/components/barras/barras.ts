@@ -264,6 +264,7 @@ export class BarrasComponent implements OnChanges{
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
 
+    console.log(this.data)
     this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
 
     let i = 0;

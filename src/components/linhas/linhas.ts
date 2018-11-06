@@ -1,18 +1,10 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { NavController, Alert } from 'ionic-angular';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+import { NavController } from 'ionic-angular';
+
 
 import * as d3 from 'd3';
 import * as d3Scale from "d3-scale";
-import * as d3Axis from "d3-axis";
 
 import { LinhasProvider } from '../../providers/linhas/linhas';
 import { JsonsProvider } from '../../providers/jsons/jsons';
@@ -36,9 +28,6 @@ export class LinhasComponent {
 
   view_title: any;
 
-  innerWidth: any;
-  innerHeight: any;
-
   text: string;
 
   yTicks: any;
@@ -49,6 +38,7 @@ export class LinhasComponent {
   new_data = [];
   colors: any;
 
+  // margin = {top: 100, right: 20, bottom: 30, left: window.innerWidth*0.075};
   margin = {top: 0, right: 20, bottom: 30, left: window.innerWidth*0.075};
   linesWidth: any;
   linesHeight: any;
@@ -75,9 +65,6 @@ export class LinhasComponent {
 
   constructor(public navCtrl: NavController, private linhasProvider: LinhasProvider, private jsonProvider: JsonsProvider) {
     this.text = 'Hello World';
-
-    this.innerWidth = window.innerWidth;
-    this.innerHeight = window.innerHeight;
 
     this.view_title = "Linhas"
 
@@ -169,7 +156,8 @@ export class LinhasComponent {
 
     this.linePath = d3.line<any>()
     .x( (d)=>  x(d.ano) )
-    .y( (d) => y(d.valor));
+    .y( (d) => y(d.valor)
+    );
   }
 
   getLinesTransform()
@@ -179,7 +167,15 @@ export class LinhasComponent {
 
   getLineColor(d, i){
     this.count++;
-    return this.colors.cadeias[d[0].id].color;
+
+    if(this.colors)
+    {
+      if(this.parameters['eixo'] == 1 && this.parameters['deg'] != 0)
+        return this.colors['deg'][this.parameters['deg']]['subdeg'][d[0].id];
+      else
+        return this.colors.cadeias[d[0].id].color;
+    }
+
   }
 
   getTickY(d, i){
