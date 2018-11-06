@@ -68,6 +68,9 @@ export class DadosProvider {
     if(parameters.uf != 0) key = key + "u";
     if(parameters.cad != 0) key = key + "s";
     if(parameters.deg != 0) key = key + "d";
+    if(parameters.mec != 0) key = key + "m";
+    if(parameters.mod != 0) key = key + "n";
+    if(parameters.pfj != 0) key = key + "p";
 
     return key;
 
@@ -258,7 +261,8 @@ export class DadosProvider {
     }
     else if(parameters.eixo == 2)
     {
-
+      if(parameters.var == 10 || parameters.var == 15 || parameters.var == 16)
+        return true;
     }
     else if(parameters.eixo == 3)
     {

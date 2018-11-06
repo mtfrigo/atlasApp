@@ -115,13 +115,15 @@ export class DadosComponent {
 
     let valores = {valor: valor, percentual: percentual, total: total, uos1: uos1, uos2: uos2}
 
-
     var descByEixo;
 
     switch(this.parameters.eixo){
       case 0: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var]; break;
       case 1: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
+      case 2: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
+      case 3: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
     }
+
 
     if(this.parameters.eixo != 3)
     for(var i = 0; i < descByEixo.length; i++){
@@ -213,6 +215,29 @@ export class DadosComponent {
     }
     else if(this.parameters.eixo == 2)
     {
+      console.log(valores)
+      switch(box){
+        case 0:
+              if(this.parameters.var == 7)
+                return this.formatDecimal(valores.valor/100, 2)+"%";
+              else if(this.parameters.var == 8 || this.parameters.var == 9)
+                return this.formatDecimal(valores.valor/100, 5);
+              else if(this.dadosProvider.isIHHorC4(this.parameters))
+                return this.formatNumber(valores.uos1);
+              else
+                return prefix+this.formatNumber(valores.valor)+suffix;
+        case 1:
+
+          if(this.treemapRelativeValue() && valores.total)
+            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
+          else if(this.dadosProvider.isIHHorC4(this.parameters))
+            return this.formatNumber(valores.uos2);
+          else
+            return this.formatDecimal(valores.percentual, 2)+"%";
+
+        case 2:
+          return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
+      }
 
     }
     else if(this.parameters.eixo == 3)
@@ -236,6 +261,9 @@ export class DadosComponent {
           return true;
         }
       }
+    }
+    else if(this.parameters.eixo == 2){
+          return true;
     }
     return false;
   }

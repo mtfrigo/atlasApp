@@ -168,10 +168,24 @@ export class LinhasComponent {
   getLineColor(d, i){
     this.count++;
 
+
     if(this.colors)
     {
       if(this.parameters['eixo'] == 1 && this.parameters['deg'] != 0)
         return this.colors['deg'][this.parameters['deg']]['subdeg'][d[0].id];
+      else if(this.parameters['eixo'] == 2)
+      {
+        if(this.parameters['var'] == 10)
+        {
+          if(d[0].id == "Despesa Minc / Receita executivo")
+            return "red"
+          else
+            return "green"
+
+        }
+        else
+          return this.colors.cadeias[d[0].id].color;
+      }
       else
         return this.colors.cadeias[d[0].id].color;
     }
