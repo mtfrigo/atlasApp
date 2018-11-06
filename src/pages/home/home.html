@@ -23,6 +23,14 @@
       </ion-select>
     </ion-item>
 
+    <ion-item *ngIf="hasConsumo()">
+      <ion-label>Consumo</ion-label>
+      <ion-select [(ngModel)]="parameters.slc" (ngModelChange)="update($event)">
+          <ion-option [value]="1">Bens</ion-option>
+          <ion-option [value]="0">Serviços</ion-option>
+      </ion-select>
+    </ion-item>
+
     <ion-item *ngIf="ready_pt_br">
       <ion-label>Variável</ion-label>
       <ion-select [(ngModel)]="parameters.var" (ngModelChange)="update($event)">

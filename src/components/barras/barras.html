@@ -38,10 +38,10 @@
                 <text
                 class='axis-title'
                 fill="#000"
-                [attr.x]='x(d.ano)'
+                [attr.x]='x(d.ano)+x.bandwidth()/2'
                 font-size='10'
                 dy="1.2em"
-                text-anchor='center'
+                text-anchor='middle'
                 text='Frequency'
               >
                 {{ d.ano }}

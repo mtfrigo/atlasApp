@@ -134,6 +134,8 @@ export class HomePage implements OnInit{
       } else {
         this.parameters.ocp = 0; 
       }
+    } else {
+      if(!this.hasConsumo()) this.parameters.slc = 1
     }
 
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
@@ -149,6 +151,21 @@ export class HomePage implements OnInit{
       return false; 
     }
     return true;
+
+  }
+
+  hasConsumo(){
+    if(this.parameters.eixo == 3){
+      switch(this.parameters.var){
+        case 1: ;
+        case 2: ;
+        case 3: ;
+        case 5: ;
+        case 8: return true;
+      }
+    }
+    
+    return false;
 
   }
 
@@ -308,54 +325,54 @@ export class HomePage implements OnInit{
   }
 
   selectTipos(){
-    let selects = [
-      [
+    let selects = {
+      1: [
         {"name": "Exportação", "value": 1},
         {"name": "Importação", "value": 2},
         {"name": "Saldo Comercial", "value": 3},
         {"name": "Corrente de Comércio", "value": 4}
       ],
-      [
+      2: [
         {"name": "Exportação", "value": 1},
         {"name": "Importação", "value": 2}
       ],
-      [
+      3: [
         {"name": "Exportação", "value": 1},
         {"name": "Importação", "value": 2},
         {"name": "Corrente de Comércio", "value": 4}
       ],
-      [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2},
-        {"name": "Saldo Comercial", "value": 3},
-        {"name": "Corrente de Comércio", "value": 4}
-      ],
-      [
+      5: [
         {"name": "Exportação", "value": 1},
         {"name": "Importação", "value": 2},
         {"name": "Saldo Comercial", "value": 3},
         {"name": "Corrente de Comércio", "value": 4}
       ],
-      [
+      8: [
+        {"name": "Exportação", "value": 1},
+        {"name": "Importação", "value": 2},
+        {"name": "Saldo Comercial", "value": 3},
+        {"name": "Corrente de Comércio", "value": 4}
+      ],
+      11: [
         {"name": "Exportação", "value": 1},
         {"name": "Importação", "value": 2}
       ],
-      [
+      12: [
         {"name": "Exportação", "value": 1},
         {"name": "Importação", "value": 2}
       ],
-      [
+      13: [
         {"name": "Exportação", "value": 1},
         {"name": "Importação", "value": 2},
         {"name": "Saldo Comercial", "value": 3},
         {"name": "Corrente de Comércio", "value": 4}
       ],
-      [
+      14: [
         {"name": "Exportação", "value": 1}
       ]
-    ]
+    }
 
-    return selects[this.parameters.var - 1];
+    return selects[this.parameters.var];
   }
 
   getDisplay(){
