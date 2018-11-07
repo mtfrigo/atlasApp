@@ -21,11 +21,10 @@ export class TreemapComponent implements OnChanges{
   height : number = window.innerHeight*0.25;
 
   @Input() url : string;
-  @Input() parameters : any[];
+  @Input() parameters : any;
 
   @Output() dadoGlobal = new EventEmitter();
 
-  view_title: any;
   private ready = false;
   private data : Treemap[] = [];
   private subtitles_1 : Treemap[] = [];
@@ -44,7 +43,6 @@ export class TreemapComponent implements OnChanges{
   constructor(private treemapProvider : TreemapProvider,
               private jsonsProvider: JsonsProvider,
               private dadosProvider: DadosProvider) {
-                this.view_title = "Treemap"
               }
 
   ngOnInit() {
@@ -111,6 +109,10 @@ export class TreemapComponent implements OnChanges{
     return y1 - y0 - (this.height)/100;
   }
 
+  selectCad(d){
+    this.parameters.cad = d.parent.data.colorId; 
+  }
+
   getData(): void {
 
     this.treemapProvider.getData(this.url)
@@ -137,6 +139,12 @@ export class TreemapComponent implements OnChanges{
       'height': '10px',
       'margin-top': '3px'
     }
+  }
+
+  getOpacity(d){
+    if(this.parameters.cad == 0) return 1
+    if(this.parameters.cad == d.parent.data.colorId) return 1
+    else return 0.8;
   }
 
   updateGlobalData(): void {

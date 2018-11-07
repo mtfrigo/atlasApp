@@ -17,6 +17,8 @@ export class MapaMundiComponent implements OnInit, OnChanges{
 
   @Input() parameters : any;
   @Input() url : string;
+  width  : number = window.innerWidth*0.8;
+  height : number = window.innerHeight*0.35;
   gdpAux = {'AF': 0, 'NA': 0, 'SA': 0, 'OC': 0, 'AS': 0, 'EU': 0};
   colors : any;
   minValue : number = 0;
@@ -72,8 +74,27 @@ export class MapaMundiComponent implements OnInit, OnChanges{
     })
   }
 
+  getTransform(){
+    let width_default = 898.5;
+    let height_default = 452.27;
+    let scale_width = (this.width)/width_default;
+    let scale_height = (this.height)/height_default;
+    let scale = Math.min(scale_width, scale_height);
+    let transform = 0;
+    if(scale_height < scale_width){
+      transform = ((10+ window.innerWidth) - (width_default*scale_height))/2 ;
+    }
+    return 'scale('+scale+') translate('+transform+', 0)';
+  }
+
   getColor(id: string){
-    return this.scaleLinear(this.gdpAux[id])
+    if(this.unconvertCode(this.parameters.prc) == id){
+      return this.colors.eixo[this.parameters.eixo].color['1'];
+    } else return this.scaleLinear(this.gdpAux[id])
+  }
+
+  updatePrc(prc : number){
+    this.parameters.prc = prc;
   }
 
   unconvertCode(code) {

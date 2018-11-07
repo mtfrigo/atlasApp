@@ -134,12 +134,15 @@ export class HomePage implements OnInit{
       } else {
         this.parameters.ocp = 0; 
       }
-    } else {
+    } else if(this.parameters.eixo == 3){
       if(!this.hasConsumo()) this.parameters.slc = 1
     }
 
+    this.parameters.chg = 0;
+
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     this.parameters.uf  = 0;
+
   }
 
   hasOcp(){
@@ -154,6 +157,22 @@ export class HomePage implements OnInit{
 
   }
 
+  viewButton(){
+    if(this.parameters.eixo == 3){
+      if(this.parameters.mundo == 0){
+        return 'Brasil'
+      } else {
+        return 'Mundo'
+      }
+    } else {
+      if(this.parameters.chg == 0){
+        return 'Treemap'
+      } else {
+        return 'Mapa'
+      }
+    }      
+  }
+
   hasConsumo(){
     if(this.parameters.eixo == 3){
       switch(this.parameters.var){
@@ -162,6 +181,26 @@ export class HomePage implements OnInit{
         case 3: ;
         case 5: ;
         case 8: return true;
+      }
+    }    
+    return false;
+
+  }
+
+
+  changeView(event){
+    this.parameters.chg = this.parameters.chg == 0? 1 : 0;
+  }
+
+
+  hasTreemapRegion(){
+    if(this.parameters.eixo == 0){
+      switch(this.parameters.var){
+        case 1: ;
+        case 2: ;
+        case 3: ;
+        case 4: ;
+        case 5: return true;
       }
     }
     
@@ -172,6 +211,11 @@ export class HomePage implements OnInit{
   updateDesag(event){
     this.parameters.deg = Math.floor(this.pre_desags/10);
     this.parameters.subdeg = this.pre_desags % 10;
+  }
+
+  updateMundo(event){
+    this.parameters.mundo = this.parameters.mundo == 0 ? 1 : 0;
+    this.parameters.chg = this.parameters.mundo;
   }
 
   getQuery(parameters : Object){

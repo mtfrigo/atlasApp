@@ -22,6 +22,7 @@ import { DadosProvider } from '../providers/dados/dados';
 import { EmpilhadasProvider } from '../providers/empilhadas/empilhadas';
 import { SobrePage } from '../pages/sobre/sobre';
 import { MapaMundiProvider } from '../providers/mapa-mundi/mapa-mundi';
+import { TreemapRegionProvider } from '../providers/treemap-region/treemap-region';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MapaMundiProvider } from '../providers/mapa-mundi/mapa-mundi';
     MapaProvider,
     DadosProvider,
     EmpilhadasProvider,
-    MapaMundiProvider
+    MapaMundiProvider,
+    TreemapRegionProvider
   ]
 })
 export class AppModule {}

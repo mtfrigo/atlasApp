@@ -8,6 +8,7 @@ import { MapaComponent } from './mapa/mapa';
 import { DadosComponent } from './dados/dados';
 import { EmpilhadasComponent } from './empilhadas/empilhadas';
 import { MapaMundiComponent } from './mapa-mundi/mapa-mundi';
+import { TreemapRegionComponent } from './treemap-region/treemap-region';
 
 @NgModule({
 	declarations: [
@@ -18,7 +19,8 @@ import { MapaMundiComponent } from './mapa-mundi/mapa-mundi';
     MapaComponent,
     DadosComponent,
     EmpilhadasComponent,
-    MapaMundiComponent],
+    MapaMundiComponent,
+    TreemapRegionComponent],
 	imports: [IonicModule],
   exports: [
     BarrasComponent,
@@ -28,6 +30,7 @@ import { MapaMundiComponent } from './mapa-mundi/mapa-mundi';
     MapaComponent,
     DadosComponent,
     EmpilhadasComponent,
-    MapaMundiComponent]
+    MapaMundiComponent,
+    TreemapRegionComponent]
 })
 export class ComponentsModule {}

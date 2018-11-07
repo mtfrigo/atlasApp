@@ -136,7 +136,6 @@ export class MapaComponent {
     var edgeValues = d3.extent(this.values);
     this.maxValue = edgeValues[1];
     this.minValue = edgeValues[0];
-
     var info = {};
     this.data.forEach(function(d) {
       info[d.id] = d;

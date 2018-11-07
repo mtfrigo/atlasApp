@@ -112,9 +112,12 @@
                     <hr>
                     <p class='title_view'>{{getTitleView(1)}}</p>
                     <view-mapa *ngIf="correctView(1, 'mapa')"  [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
+                    <view-treemap-region *ngIf="correctView(1, 'treemap_region')"  [parameters]="parameters" [url]="getQuery(parameters)" ></view-treemap-region>
                     <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="reciverData($event)"></view-barras>
                     <view-mapa-mundi *ngIf="correctView(1, 'mapa-mundi')" [parameters]="parameters" [url]="getQuery(parameters)"></view-mapa-mundi>
-                </ion-slide>
+                    <button *ngIf="hasConsumo()" class="teste" (click)="updateMundo($event)">{{viewButton()}}</button>
+                    <button *ngIf="hasTreemapRegion()" class="teste" (click)="changeView($event)">{{viewButton()}}</button>
+                  </ion-slide>
 
                 <ion-slide>
                   <hr>
@@ -132,6 +135,7 @@
                   <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
                 </ion-slide>
               </ion-slides>
+
             </ion-item>
         </ion-col>
       </ion-row>
