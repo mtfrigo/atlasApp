@@ -187,7 +187,7 @@ export class BarrasComponent implements OnChanges{
   {
     return d3Scale.scaleLinear()
       .domain(d3.extent(this.yTicksArray))
-      .rangeRound([this.minValue, this.maxValue])(i);
+      .range([this.minValue, this.maxValue])(i);
   }
 
   getTickY(d, i){

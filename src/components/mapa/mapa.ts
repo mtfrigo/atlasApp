@@ -104,8 +104,6 @@ export class MapaComponent {
   }
 
   updateData(): void {
-
-
     this.mapaProvider.getData(this.url)
       .subscribe(response => (this.data = response),
                  error => '[MAPA] ERRO!',
