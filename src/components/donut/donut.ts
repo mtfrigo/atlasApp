@@ -67,7 +67,9 @@ export class DonutComponent implements OnChanges{
   }
 
   selectTyp(d){
-    this.parameters.typ = d.data.id;
+    if(this.parameters.eixo == 3){
+      this.parameters.typ = d.data.id;
+    }    
   }
 
   getColor(tipo : string) {
