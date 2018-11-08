@@ -740,7 +740,7 @@
 			},
 			{
 				"id": 18,
-				"title":"<span>CONSUMO VIA VALE-CULTURA<span>",
+				"title":"Consumo via Vale-Cultura",
 				"desc_int":"consumidos com cartão Vale-Cultura [cad] [uf] ",
 				"desc_percent": "Total consumido [cad] [uf] ",
 				"botoes":[],
@@ -761,7 +761,7 @@
 			},
 			{
 				"id": 19,
-				"title":"<span>AGENTES DO VALE-CULTURA<span>",
+				"title":"Agentes do Vale-Cultura",
 				"desc_int":"[cad] [uf]",
 				"desc_percent": "[cad] [uf]",
 				"desc_var_mapa": "Quantidade de trabalhadores beneficiados e quantidade de empresas habilitadas a receber o cartão Vale-Cultura como forma de pagamento por produtos e serviços culturais",
@@ -856,7 +856,7 @@
 			},
 			{
 				"id": 7,
-				"title":"PERCENTUAL DE RECURSOS PRIVADOS NO TOTAL FINANCIADO VIA MECENATO",
+				"title":"Percentual de Recursos Privados no total financiado via Mecenato",
 				"desc":"Retrata o percentual dos recursos privados em cultura e despesas em fomento da cultura nos estratos referidos.",
 				"desc_int":"PERCENTUAL DO APOIO PRIVADO NO TOTAL APOIADO VIA MECENATO [uf].",
 				"desc_percent": "",
@@ -1083,7 +1083,7 @@
 			},
 			{
 				"id": 17,
-				"title":"<span>Fomento Público Estadual à Cultura<span>",
+				"title":"Fomento Público Estadual à Cultura",
 				"desc_int":"FINANCIADOS POR MEIO DE MECANISMOS DE MECENATO ESTADUAL [uf]",
 				"desc_percent": "",
 				"desc_var_mapa": "A variável demonstra os estados que possuem fomento em nível estadual em duas perspectivas: Editais Estaduais e Mecenato Estadual. Dentro dessas perspectivas, a variável ainda demonstra o valor - conforme informado por cada Estado - para o ano selecionado e a soma dos valores das Unidades Federativas disponíveis para cada ano.",

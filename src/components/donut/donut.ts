@@ -22,9 +22,6 @@ export class DonutComponent implements OnChanges{
   @Input() parameters : any;
   @Input() url : string;
 
-
-  view_title: string;
-
   private radius : number = Math.min(this.width, this.height)/2;
   private svg;
   private data : any[] = [];
@@ -43,7 +40,6 @@ export class DonutComponent implements OnChanges{
       .value((d : Donut) => d.valor);
 
   constructor(private donutProvider : DonutProvider, private jsonsProvider : JsonsProvider) {
-    this.view_title = "Donut";
   }
 
   ngOnInit() {
@@ -78,10 +74,29 @@ export class DonutComponent implements OnChanges{
   }
 
   getData(): void {
+    console.log(this.url)
     this.donutProvider.getData(this.url)
         .subscribe(data => {
           this.data = this.pie(data);
         });
+  }
+
+  splitLegends(){
+    var legends = [[],[]]
+    for(let i = 0; i < this.data.length; i++){
+      legends[i%2].push(this.data[i].tipo);
+    }
+
+    return legends;
+  }
+
+  getSubtitleStyle(tipo : string){
+    return {
+      'background-color': this.getColor(tipo),
+      'width': '10px',
+      'height': '10px',
+      'margin-top': '3px'
+    }
   }
 
 }

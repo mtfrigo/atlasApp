@@ -97,6 +97,7 @@ export class BarrasComponent implements OnChanges{
   sendBarData(valor, percent) {
 
     if(this.dadosProvider.isIHHorC4(this.parameters)){
+
       if(this.uos)
         this.dadoGlobal.emit({view: 'barras', uos2: valor, percentual: percent});
       else
@@ -262,6 +263,7 @@ export class BarrasComponent implements OnChanges{
 
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
+    console.log(this.uos)
     this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
 
     let i = 0;

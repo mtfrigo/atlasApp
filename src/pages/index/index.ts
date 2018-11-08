@@ -27,7 +27,6 @@ export class IndexPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IndexPage');
   }
 
   goToOtherPage(d){

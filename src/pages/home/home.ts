@@ -39,6 +39,9 @@ export class HomePage implements OnInit{
     'cad': 0,
     'deg': 0,
     'subdeg': 0,
+    'mec': 0,
+    'mod': 0,
+    'pfj': 0,
     'ocp': 0,
     'chg': 0,
     'slc': 0,
@@ -56,6 +59,26 @@ export class HomePage implements OnInit{
     {"name": "Porte Grande", "value": 12}
   ]
 
+  mecanismos = [
+    {"name": "Todos", "value": 0},
+    {"name": "FNC", "value": 1},
+    {"name": "Mecenato", "value": 2},
+    {"name": "Fundo Cultural", "value": 3},
+    {"name": "Outros", "value": 4},
+  ]
+
+  pessoas = [
+    {"name": "Todos", "value": 0},
+    {"name": "Pessoa Física", "value": 1},
+    {"name": "Pessoa Jurídica", "value": 2},
+  ]
+
+  modalidades = [
+    {"name": "Todos", "value": 0},
+    {"name": "Direta", "value": 1},
+    {"name": "Indireta", "value": 2},
+  ]
+
   parceiros = [
     {"name": "Mundo", "value": 0},
     {"name": "África", "value": 1},
@@ -71,6 +94,9 @@ export class HomePage implements OnInit{
     public navParams : NavParams) {
       this.info_eixo = navParams.get('data');
       this.parameters.eixo = this.info_eixo.value;
+      if(this.parameters.eixo == 3){
+        this.parameters.slc = 1;
+      }
   }
 
   segmentChanged(slide, index){
@@ -124,17 +150,29 @@ export class HomePage implements OnInit{
 
   update(event){
     let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
-    
+
     if(this.parameters.eixo == 1){
       if(ocp_default[this.parameters.var] == 0){
         this.parameters.slc = 0;
-      } 
-      if(this.parameters.slc == 1){
-        this.parameters.ocp = ocp_default[this.parameters.var];  
-      } else {
-        this.parameters.ocp = 0; 
       }
-    } else if(this.parameters.eixo == 3){
+      if(this.parameters.slc == 1){
+        this.parameters.ocp = ocp_default[this.parameters.var];
+      } else {
+        this.parameters.ocp = 0;
+      }
+    }
+    else if(this.parameters.eixo == 2)
+    {
+      this.parameters.slc = 0;
+      this.getMecDefault();
+
+      if(this.parameters.var == 3)
+      {
+        if(this.parameters.mec != 0) this.parameters.mod = 0;
+        if(this.parameters.mod != 0) this.parameters.mec = 0;
+      }
+    }
+    else if(this.parameters.eixo == 3){
       if(!this.hasConsumo()) this.parameters.slc = 1
     }
 
@@ -145,13 +183,82 @@ export class HomePage implements OnInit{
 
   }
 
+  getMecDefault(){
+
+    if(this.parameters.var == 7 || this.parameters.var == 11 || this.parameters.var == 12 || this.parameters.var == 13 || this.parameters.var == 14)
+      this.parameters.mec = 2;
+    else
+      this.parameters.mec = 0;
+  }
+
+  hasMec(){
+
+    if(this.parameters.eixo == 2)
+    {
+      if(this.parameters.var == 3)
+      {
+        this.mecanismos = [
+          {"name": "Todos", "value": 0},
+          {"name": "Fundo Cultural", "value": 3},
+          {"name": "Outros", "value": 4},
+        ];
+
+        if(this.parameters.mod != 0) this.parameters.mec = 0;
+
+        return true;
+      }
+      else if(this.parameters.var == 1 || this.parameters.var == 8 || this.parameters.var == 9 || this.parameters.var == 15 || this.parameters.var == 16 || this.parameters.var == 17)
+      {
+        this.mecanismos = [
+          {"name": "Todos", "value": 0},
+          {"name": "FNC", "value": 1},
+          {"name": "Mecenato", "value": 2},
+        ];
+
+        return true;
+      }
+
+
+    }
+    else
+      return false;
+
+  }
+
+  hasMod(){
+
+    if(this.parameters.eixo == 2 && this.parameters.var == 3)
+    {
+      if(this.parameters.mec != 0 ) this.parameters.mod = 0;
+      return true;
+    }
+    else
+    {
+      this.parameters.mod = 0;
+      return false;
+    }
+
+  }
+
+  hasPfj(){
+
+    if(this.parameters.eixo == 2 && this.parameters.var == 4)
+      return true;
+    else
+    {
+      this.parameters.pfj = 0;
+      return false;
+    }
+
+  }
+
   hasOcp(){
 
     let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
 
     if(this.parameters.eixo == 1 && ocp_default[this.parameters.var] == 0){
       this.parameters.slc = 0;
-      return false; 
+      return false;
     }
     return true;
 
@@ -203,7 +310,7 @@ export class HomePage implements OnInit{
         case 5: return true;
       }
     }
-    
+
     return false;
 
   }
@@ -316,7 +423,7 @@ export class HomePage implements OnInit{
       if(ocp_default[this.parameters.var] == 3)
         return d;
       else if(d.value != 3) return d;
-    });   
+    });
 
   }
 
@@ -352,8 +459,9 @@ export class HomePage implements OnInit{
       case 2:
         if(this.parameters.var == 15 || this.parameters.var == 16){
           if(box == 2) return 1;
-        } else if(this.parameters.var == 10){
-          if(box == 1) return 0;
+        }
+        else if(this.parameters.var == 10){
+          if(box == 2) return 1;
         }
         return 0;
 

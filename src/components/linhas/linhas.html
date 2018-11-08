@@ -1,5 +1,5 @@
 <!-- Generated template for the LinhasComponent component -->
-<div *ngIf='teste'>
+<div *ngIf='teste && colors'>
   <svg [attr.width]="width" [attr.height]="height">
       <g [attr.width]="linesWidth" [attr.height]="linesHeight" [attr.transform]="getLinesTransform()">
         <path *ngFor="let d of data; index as i"

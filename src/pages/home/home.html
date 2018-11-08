@@ -88,12 +88,34 @@
       </ion-select>
     </ion-item>
 
+    <ion-item *ngIf="hasMec()">
+      <ion-label>Mecanismo</ion-label>
+      <ion-select [(ngModel)]="parameters.mec">
+        <ion-option *ngFor="let mec of mecanismos" [value]="mec.value">{{mec.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasPfj()">
+      <ion-label>Pessoa</ion-label>
+      <ion-select [(ngModel)]="parameters.pfj">
+        <ion-option *ngFor="let pfj of pessoas" [value]="pfj.value">{{pfj.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="hasMod()">
+      <ion-label>Modalidade</ion-label>
+      <ion-select [(ngModel)]="parameters.mod">
+        <ion-option *ngFor="let mod of modalidades" [value]="mod.value">{{mod.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
     <ion-item *ngIf="parameters.eixo == 3">
       <ion-label>Tipo</ion-label>
       <ion-select [(ngModel)]="parameters.typ">
         <ion-option *ngFor="let typ of selectTipos()" [value]="typ.value">{{typ.name}}</ion-option>
       </ion-select>
     </ion-item>
+
 
   </div>
 </div>

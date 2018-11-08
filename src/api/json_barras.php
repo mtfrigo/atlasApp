@@ -416,6 +416,13 @@ else if($eixo == 1 && $var > 11) {
 
 
         }
+
+        $year = (object) array(
+            (int) $tupla->Ano => $values
+        );
+
+        array_push ( $barras , $values );
+
     }
 
 

@@ -503,10 +503,14 @@ else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag != 0) {
           if(!isset($aux[$id][$id][$ano])){
             $aux[$id][$id][$ano]['id'] = $id;
             $aux[$id][$id][$ano]['valor'] = $valor;
+            $anos['valores'][] = $valor;
             $aux[$id][$id][$ano]['ano'] = $ano;
           }
           else
+          {
+            $anos['valores'][] = $aux[$id][$id][$ano]['valor'] + $valor;
             $aux[$id][$id][$ano]['valor'] = $aux[$id][$id][$ano]['valor'] + $valor;
+          }
     }
 
     foreach ($anos as $ano){
@@ -552,9 +556,14 @@ else if($eixo == 1 && ($var == 4 || $var == 5) && $desag == 0 && $ocp == 0)  {
         $aux[$id][$id][$ano]['id'] = $id;
         $aux[$id][$id][$ano]['valor'] = $valor;
         $aux[$id][$id][$ano]['ano'] = $ano;
+        $anos['valores'][] = $valor;
       }
       else
+      {
+        $anos['valores'][] = $aux[$id][$id][$ano]['valor'] + $valor;
+
         $aux[$id][$id][$ano]['valor'] = $aux[$id][$id][$ano]['valor'] + $valor;
+      }
   }
 
   foreach ($anos as $ano){

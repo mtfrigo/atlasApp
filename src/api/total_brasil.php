@@ -7,7 +7,7 @@
 
     if($eixo == 1){
       require_once("EixoDois.php");
-      $vars = array(1);
+      $vars = array(1, 7);
 
       if(in_array($var, $vars)){
           foreach(EixoDois::getTotalBrasil($var) as $result){

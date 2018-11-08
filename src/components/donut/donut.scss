@@ -2,8 +2,20 @@ donut {
 
 }
 
-.botao{
-    width:50px;
-    height: 50px;
-    background-color: blue;
+.subtitle{
+    display: flex;
+    flex-direction: row;
+    margin: 3px 0px;
+}
+
+.subtitle-text{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 90%;
+    text-align: left;
+}
+
+.subtitle-text p {
+    margin: 1px 3px;
+    font-size: 12px;
 }
