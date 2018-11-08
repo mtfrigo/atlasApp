@@ -53,7 +53,7 @@
     </ion-item>
 
     <ion-item *ngIf="parameters.cad != null && !(parameters.slc == 1 && parameters.eixo == 1)">
-      <ion-label>Cadeia</ion-label>
+      <ion-label>Setor</ion-label>
       <ion-select [(ngModel)]="parameters.cad">
           <ion-option *ngFor="let cad of cads" [value]="cad.value">{{cad.name}}</ion-option>
       </ion-select>

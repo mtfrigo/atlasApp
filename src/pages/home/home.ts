@@ -166,6 +166,8 @@ export class HomePage implements OnInit{
       this.parameters.slc = 0;
       this.getMecDefault();
 
+      this.getCads();
+
       if(this.parameters.var == 3)
       {
         if(this.parameters.mec != 0) this.parameters.mod = 0;
@@ -180,6 +182,45 @@ export class HomePage implements OnInit{
 
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     this.parameters.uf  = 0;
+
+  }
+
+  getCads(){
+    if(this.parameters.eixo == 2)
+    {
+      if(this.parameters.var == 18)
+      {
+        this.cads = [
+          {"name":"Todos","value":"0"},
+          {"name":"Artes Cênicas e Espetáculos","value":"2"},
+          {"name":"Audiovisual", "value":"3"},
+          {"name":"Cultura Digital","value":"4"},
+          {"name":"Editorial","value":"5"},
+          {"name":"Educação e Criação em Artes","value":"6"},
+          {"name":"Música","value":"8"},
+          {"name":"Patrimônio","value":"9"}
+        ]
+      }
+      else if(this.parameters.var == 19)
+      {
+        this.cads = [
+          {"name":"Todos","value":"0"},
+          {"name":"Artes Cênicas e Espetáculos","value":"2"},
+          {"name":"Audiovisual", "value":"3"},
+          {"name":"Editorial","value":"5"},
+          {"name":"Música","value":"8"},
+          {"name":"Outros","value":"11"}
+        ]
+      }
+      else if(this.parameters.var == 15 || this.parameters.var == 16)
+      {
+        this.cads = [
+          {"name":"Todos","value":"0"}
+        ]
+      }
+      else
+        this.cads = this.pt_br['select']['cad'];
+    }
 
   }
 
@@ -277,7 +318,7 @@ export class HomePage implements OnInit{
       } else {
         return 'Mapa'
       }
-    }      
+    }
   }
 
   hasConsumo(){
@@ -289,7 +330,7 @@ export class HomePage implements OnInit{
         case 5: ;
         case 8: return true;
       }
-    }    
+    }
     return false;
 
   }

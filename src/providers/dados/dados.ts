@@ -190,6 +190,41 @@ export class DadosProvider {
     }
   }
 
+  getMecName(idMec){
+
+    idMec = parseInt(idMec);
+
+    switch(idMec){
+        case 0: return "Todos";
+        case 1: return "FNC";
+        case 2: return "Mecenato";
+        case 3: return "Fundo Cultural";
+        case 4: return "Outros";
+    }
+  }
+
+  getPfjName(idPfj){
+
+    idPfj = parseInt(idPfj);
+
+    switch(idPfj){
+        case 0: return "Todos";
+        case 1: return "Pessoa Física";
+        case 2: return "Pessoa Jurídica";
+    }
+  }
+
+  getModName(idMod)
+  {
+    idMod = parseInt(idMod);
+
+    switch(idMod){
+        case 0: return "Todos";
+        case 1: return "Direta";
+        case 2: return "Indireta";
+    }
+  }
+
   getPorteName(idPorte){
 
     idPorte = parseInt(idPorte);
@@ -236,6 +271,9 @@ export class DadosProvider {
     var deg_text = "";
 
     var cad_text = this.getCadName(parameters.cad).toUpperCase();
+    var mec_text = this.getMecName(parameters.mec).toUpperCase();
+    var mod_text = this.getModName(parameters.mod).toUpperCase();
+    var pfj_text = this.getPfjName(parameters.pfj).toUpperCase();
 
     var nomeano = parameters.ano;
     var anoanterior = parseInt(nomeano)-1;
@@ -245,7 +283,13 @@ export class DadosProvider {
     if(parameters.eixo == 0)
       deg_text = "DE"+' '+ this.getPorteName(parameters.deg);
 
-    return text.replace('[uf]', nomeestado).replace('[cad]', cad_text).replace('[deg]', deg_text).replace('[ano]', "DO ANO "+anoanterior+' AO '+nomeano);
+    return text.replace('[uf]', nomeestado)
+    .replace('[cad]', cad_text)
+    .replace('[deg]', deg_text)
+    .replace('[ano]', "DO ANO "+anoanterior+' AO '+nomeano)
+    .replace('[mec]', "VIA "+mec_text)
+    .replace('[mod]', mod_text)
+    .replace('[pfj]', pfj_text);
   }
 
   isIHHorC4(parameters){

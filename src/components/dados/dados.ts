@@ -156,8 +156,16 @@ export class DadosComponent {
     //var prefix = this.pt_br.var[this.parameters.eixo][this.parameters.var-1]['prefixo_valor'];
    // var suffix = this.pt_br.var[this.parameters.eixo][this.parameters.var-1]['sufixo_valor']
 
-    var prefix = '';
-    var suffix = '';
+    let parameters = this.parameters;
+    function filterByID(obj) {
+      if ('id' in obj && !isNaN(obj.id) && obj.id == parameters.var)
+        return true;
+    }
+
+    var descVar = this.pt_br.var[this.parameters.eixo].filter(filterByID);
+
+    var prefix = descVar[0]['prefixo_valor'];
+    var suffix = descVar[0]['sufixo_valor'];
 
     if(this.parameters.eixo == 0)
     {

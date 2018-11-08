@@ -96,8 +96,6 @@ export class BarrasComponent implements OnChanges{
 
   sendBarData(valor, percent) {
 
-    console.log("Send: "+percent)
-
     if(this.dadosProvider.isIHHorC4(this.parameters)){
 
       if(this.uos)

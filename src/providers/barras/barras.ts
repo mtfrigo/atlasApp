@@ -28,6 +28,7 @@ export class BarrasProvider {
   }
 
   getData (parameters, uos : number): Observable<any[]> {
+
     return (this.http.get<any[]>(this.configUrl+this.getQuery(parameters)+'&uos='+uos));
   }
 
