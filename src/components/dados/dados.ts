@@ -112,6 +112,8 @@ export class DadosComponent {
     var uos1 = this.dadosProvider.globalData['barras'].uos1;
     var uos2 = this.dadosProvider.globalData['barras'].uos2;
 
+    if(this.parameters.eixo == 2 && this.parameters.var == 18) percentual = this.dadosProvider.globalData['barras'].percentual;
+
 
     let valores = {valor: valor, percentual: percentual, total: total, uos1: uos1, uos2: uos2}
 
@@ -123,7 +125,6 @@ export class DadosComponent {
       case 2: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
       case 3: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
     }
-
 
     if(this.parameters.eixo != 3)
     for(var i = 0; i < descByEixo.length; i++){
@@ -215,7 +216,6 @@ export class DadosComponent {
     }
     else if(this.parameters.eixo == 2)
     {
-      console.log(valores)
       switch(box){
         case 0:
               if(this.parameters.var == 7)
@@ -228,7 +228,12 @@ export class DadosComponent {
                 return prefix+this.formatNumber(valores.valor)+suffix;
         case 1:
 
-          if(this.treemapRelativeValue() && valores.total)
+          if(this.parameters.var == 18)
+          {
+            console.log(valores)
+            return this.formatNumber(valores.percentual);
+          }
+          else if(this.treemapRelativeValue() && valores.total)
             return this.formatDecimal(valores.valor/valores.total, 2)+"%";
           else if(this.dadosProvider.isIHHorC4(this.parameters))
             return this.formatNumber(valores.uos2);

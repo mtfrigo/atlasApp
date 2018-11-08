@@ -67,10 +67,14 @@ export class DonutComponent implements OnChanges{
   }
 
   getColor(tipo : string) {
-    switch(tipo){
-      case 'Exportação': return this.colors.eixo[this.parameters.eixo].color['1'];
-      case 'Importação': return this.colors.eixo[this.parameters.eixo].color['2']
-    }
+
+    if(this.parameters.eixo == 2)
+      return this.colors.cadeias[tipo].color;
+    else
+      switch(tipo){
+        case 'Exportação': return this.colors.eixo[this.parameters.eixo].color['1'];
+        case 'Importação': return this.colors.eixo[this.parameters.eixo].color['2']
+      }
   }
 
   getData(): void {
@@ -83,14 +87,19 @@ export class DonutComponent implements OnChanges{
 
   splitLegends(){
     var legends = [[],[]]
-    for(let i = 0; i < this.data.length; i++){
-      legends[i%2].push(this.data[i].tipo);
-    }
+
+    if(this.parameters.eixo == 2)
+      for(let i = 0; i < this.data.length; i++)
+        legends[i%2].push(this.data[i].data.tipo);
+    else
+      for(let i = 0; i < this.data.length; i++)
+        legends[i%2].push(this.data[i].tipo);
 
     return legends;
   }
 
   getSubtitleStyle(tipo : string){
+    if(this.parameters.eixo == 3)
     return {
       'background-color': this.getColor(tipo),
       'width': '10px',

@@ -96,6 +96,8 @@ export class BarrasComponent implements OnChanges{
 
   sendBarData(valor, percent) {
 
+    console.log("Send: "+percent)
+
     if(this.dadosProvider.isIHHorC4(this.parameters)){
 
       if(this.uos)
@@ -263,8 +265,20 @@ export class BarrasComponent implements OnChanges{
 
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
-    console.log(this.uos)
-    this.sendBarData(this.data[index_ano].valor, this.data[index_ano].percentual);
+    console.log(this.data)
+    console.log(index_ano)
+    let valor = this.data[index_ano].valor;
+    let percentual = this.data[index_ano].percentual;
+
+    if(this.parameters.eixo == 2 && (this.parameters.var == 18 && this.parameters.var == 19))
+    {
+      percentual = 0;
+      this.data.forEach(element => {
+        percentual = percentual + element.valor;
+      });
+      console.log("Total: " + percentual)
+    }
+    this.sendBarData(valor, percentual);
 
     let i = 0;
     let n_iteracoes = 25; //ideal que seja divisor de 100 ou 1000 (aumentando deixa mais smooth)
@@ -278,7 +292,6 @@ export class BarrasComponent implements OnChanges{
     const interp_y = d3.interpolate(this.y_list, new_y_list);
 
     let animation = setInterval(d => {
-
 
       this.heights = interp_h(i);
       this.y_list = interp_y(i);
