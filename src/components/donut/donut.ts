@@ -66,6 +66,10 @@ export class DonutComponent implements OnChanges{
 
   }
 
+  selectTyp(d){
+    this.parameters.typ = d.data.id;
+  }
+
   getColor(tipo : string) {
     switch(tipo){
       case 'Exportação': return this.colors.eixo[this.parameters.eixo].color['1'];
@@ -73,19 +77,19 @@ export class DonutComponent implements OnChanges{
     }
   }
 
+
   getData(): void {
-    console.log(this.url)
     this.donutProvider.getData(this.url)
         .subscribe(data => {
           this.data = this.pie(data);
         });
   }
 
-  splitLegends(){
-    var legends = [[],[]]
-    for(let i = 0; i < this.data.length; i++){
-      legends[i%2].push(this.data[i].tipo);
-    }
+  splitLegends(index: number){
+    var legends = [];
+
+    if(index == 0) for(let i = 0; i < this.data.length/2; i++) legends.push(this.data[i].data.tipo);
+    if(index == 1) for(let i = this.data.length/2; i < this.data.length; i++) legends.push(this.data[i].data.tipo);
 
     return legends;
   }

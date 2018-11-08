@@ -1,5 +1,5 @@
 export interface Donut {
     id: number;
-    index: number;
+    tipo: number;
     valor: number;
 }

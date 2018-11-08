@@ -1,18 +1,18 @@
 <div *ngIf='data.length'>
   <svg [attr.width]="width" [attr.height]="height">
       <g [attr.transform]="center">
-        <path *ngFor="let d of data; index as i" [attr.d]="arc(d)" [attr.fill]="getColor(d.data.tipo)"></path>
+        <path *ngFor="let d of data; index as i" [attr.d]="arc(d)" [attr.fill]="getColor(d.data.tipo)" (click)="selectTyp(d)"></path>
       </g>
   </svg>
   <ion-row style=" height: 65px; overflow: auto">
     <ion-col style="max-width: 50%; height: 100%;">
-      <div *ngFor="let d of splitLegends()" class='subtitle'>
-        <div [ngStyle]="getSubtitleStyle(d)"></div>
+      <div *ngFor="let d of splitLegends(0)" class='subtitle left'>
         <div class="subtitle-text"><p>{{d}}</p></div>
+        <div [ngStyle]="getSubtitleStyle(d)"></div>
       </div>
     </ion-col>
     <ion-col style="max-width: 50%; min-height: 100%;">
-      <div *ngFor="let d of splitLegends()" class='subtitle'>
+      <div *ngFor="let d of splitLegends(1)" class='subtitle right'>
         <div [ngStyle]="getSubtitleStyle(d)"></div>
         <div class="subtitle-text"><p>{{d}}</p></div>
       </div>
