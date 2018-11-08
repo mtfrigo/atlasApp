@@ -71,7 +71,7 @@ export class MapaComponent {
     this.mapHeight = this.height*0.85 - this.margin.top - this.margin.bottom;
     this.mapWidth = this.width - this.margin.left - this.margin.right;
 
-    this.view_title = "Mapa do Brasil"
+    this.view_title = "Mapa do Brasil";
   }
 
   ngOnInit() {
@@ -85,8 +85,6 @@ export class MapaComponent {
         this.getData();
       })
     })
-
-
   }
 
   ngOnChanges(){
@@ -110,8 +108,6 @@ export class MapaComponent {
                  () => this.parseData()
                 );
   }
-
-
 
   getMapTransform(){
     return "translate(" + (this.margin.left+5) + "," + (this.margin.top+5) + ")";
@@ -154,11 +150,28 @@ export class MapaComponent {
   }
 
   getStateColor(d){
-    if(this.parameters.uf == d.id){
-      return this.colors.eixo[this.parameters.eixo].color['1'];
+
+    function filterByID(obj) {
+      if ('id' in obj && typeof(obj.id) === 'number' && !isNaN(obj.id) && obj.id == d.id) {
+        return true;
+      }
+    }
+
+    if(this.parameters.eixo == 2 && this.parameters.var == 17)
+    {
+      var state = this.data.filter(filterByID);
+      if(this.colors.binario[state[0]['SouN']]) return this.colors.binario[state[0]['SouN']].color;
     }
     else
-      return this.colorScale(this.info[d.id].valor);
+    {
+      if(this.parameters.uf == d.id)
+        return this.colors.eixo[this.parameters.eixo].color['1'];
+      else
+        return this.colorScale(this.info[d.id].valor);
+    }
+
+
+
   }
 
 
