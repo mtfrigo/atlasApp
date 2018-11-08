@@ -265,18 +265,15 @@ export class BarrasComponent implements OnChanges{
 
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
-    console.log(this.data)
-    console.log(index_ano)
     let valor = this.data[index_ano].valor;
     let percentual = this.data[index_ano].percentual;
 
-    if(this.parameters.eixo == 2 && (this.parameters.var == 18 && this.parameters.var == 19))
+    if(this.parameters.eixo == 2 && (this.parameters.var == 18 || this.parameters.var == 19))
     {
       percentual = 0;
       this.data.forEach(element => {
         percentual = percentual + element.valor;
       });
-      console.log("Total: " + percentual)
     }
     this.sendBarData(valor, percentual);
 

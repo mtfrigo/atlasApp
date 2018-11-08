@@ -15,7 +15,6 @@ export class DonutProvider {
   }
 
   getData(parameters){
-    console.log(this.donutUrl+'?'+parameters)
     return this.http.get<any[]>(this.donutUrl+'?'+parameters);
   }
 

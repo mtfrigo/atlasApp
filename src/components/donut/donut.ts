@@ -66,6 +66,10 @@ export class DonutComponent implements OnChanges{
 
   }
 
+  selectTyp(d){
+    this.parameters.typ = d.data.id;
+  }
+
   getColor(tipo : string) {
 
     if(this.parameters.eixo == 2)
@@ -77,29 +81,24 @@ export class DonutComponent implements OnChanges{
       }
   }
 
+
   getData(): void {
-    console.log(this.url)
     this.donutProvider.getData(this.url)
         .subscribe(data => {
           this.data = this.pie(data);
         });
   }
 
-  splitLegends(){
-    var legends = [[],[]]
+  splitLegends(index: number){
+    var legends = [];
 
-    if(this.parameters.eixo == 2)
-      for(let i = 0; i < this.data.length; i++)
-        legends[i%2].push(this.data[i].data.tipo);
-    else
-      for(let i = 0; i < this.data.length; i++)
-        legends[i%2].push(this.data[i].tipo);
+    if(index == 0) for(let i = 0; i < this.data.length/2; i++) legends.push(this.data[i].data.tipo);
+    if(index == 1) for(let i = this.data.length/2; i < this.data.length; i++) legends.push(this.data[i].data.tipo);
 
     return legends;
   }
 
   getSubtitleStyle(tipo : string){
-    if(this.parameters.eixo == 3)
     return {
       'background-color': this.getColor(tipo),
       'width': '10px',

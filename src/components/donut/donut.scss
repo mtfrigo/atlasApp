@@ -4,8 +4,15 @@ donut {
 
 .subtitle{
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     margin: 3px 0px;
+}
+
+.right{
+    float: left;
+}
+.left{
+    float: right;
 }
 
 .subtitle-text{
