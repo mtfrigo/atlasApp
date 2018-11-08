@@ -171,6 +171,7 @@ if($eixo == 3){
 
         // $barras[$tupla->Ano] = $tupla->Valor;
         $valor = array();
+	$valor['id'] = $tupla->idTipo;
         $valor['tipo'] = map_tipo($tupla->idTipo);
         $valor['valor'] = (float) $tupla->Valor;
         array_push($tipos, $valor);

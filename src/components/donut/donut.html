@@ -6,13 +6,13 @@
   </svg>
   <ion-row style=" height: 65px; overflow: auto">
     <ion-col style="max-width: 50%; height: 100%;">
-      <div *ngFor="let d of splitLegends(0)" class='subtitle left'>
-        <div class="subtitle-text"><p>{{d}}</p></div>
+      <div *ngFor="let d of splitLegends(0)" class='subtitle'>
         <div [ngStyle]="getSubtitleStyle(d)"></div>
+        <div class="subtitle-text"><p>{{d}}</p></div>
       </div>
     </ion-col>
     <ion-col style="max-width: 50%; min-height: 100%;">
-      <div *ngFor="let d of splitLegends(1)" class='subtitle right'>
+      <div *ngFor="let d of splitLegends(1)" class='subtitle'>
         <div [ngStyle]="getSubtitleStyle(d)"></div>
         <div class="subtitle-text"><p>{{d}}</p></div>
       </div>
