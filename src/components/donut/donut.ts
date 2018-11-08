@@ -73,7 +73,14 @@ export class DonutComponent implements OnChanges{
   getColor(tipo : string) {
 
     if(this.parameters.eixo == 2)
-      return this.colors.cadeias[tipo].color;
+    {
+      if(this.parameters.var == 17)
+        return this.colors.binario[tipo].color;
+      else
+        return this.colors.cadeias[tipo].color;
+
+    }
+
     else
       switch(tipo){
         case 'Exportação': return this.colors.eixo[this.parameters.eixo].color['1'];
@@ -93,7 +100,7 @@ export class DonutComponent implements OnChanges{
     var legends = [];
 
     if(index == 0) for(let i = 0; i < this.data.length/2; i++) legends.push(this.data[i].data.tipo);
-    if(index == 1) for(let i = this.data.length/2; i < this.data.length; i++) legends.push(this.data[i].data.tipo);
+    if(index == 1) for(let i = Math.ceil(this.data.length/2); i < this.data.length; i++) legends.push(this.data[i].data.tipo);
 
     return legends;
   }

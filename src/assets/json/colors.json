@@ -409,6 +409,14 @@
 		"1": {
 			"name": "Sim",
 			"color": "#077DDD"
+		},
+		"Sim": {
+			"name": "Sim",
+			"color": "#077DDD"
+		},
+		"Não": {
+			"name": "Não",
+			"color": "rgb(217, 213, 222)"
 		}
 	},
 	"deg": {
