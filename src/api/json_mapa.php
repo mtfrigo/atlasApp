@@ -154,7 +154,7 @@ else if($eixo == 2) {
     $mapa[] = $valores;
 }
 else if($eixo == 3) {
-    require_once("EixoQuatro.php");
+    require_once("Eixo4.php");
 
     foreach (EixoQuatro::getter_mapa($var, $cad, $typ, $ano, $prc, $uf, $mundo, $slc) as $tupla) {
 

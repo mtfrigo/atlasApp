@@ -520,7 +520,7 @@ else if($eixo == 2) {
     }
 }
 if($eixo == 3) {
-    require_once("EixoQuatro.php");
+    require_once("Eixo4.php");
     $result = EixoQuatro::find($var, $prc, $uf, $typ, $ano, $slc);
     foreach($result as $tupla){
         if($tupla->idCadeia != '0'){

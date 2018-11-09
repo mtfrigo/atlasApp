@@ -77,7 +77,6 @@ export class DadosComponent {
 
                 this.total_deg = d;
 
-                this.total_setor = d;
                 this.dadosProvider.getTotalBrasil(this.parameters)
                   .subscribe(d=>{
 
@@ -111,11 +110,11 @@ export class DadosComponent {
     var total = this.dadosProvider.globalData['treemap'].total;
     var uos1 = this.dadosProvider.globalData['barras'].uos1;
     var uos2 = this.dadosProvider.globalData['barras'].uos2;
+    var uos3 = this.dadosProvider.globalData['barras'].uos3;
 
     if(this.parameters.eixo == 2 && (this.parameters.var == 18 || this.parameters.var == 19)) percentual = this.dadosProvider.globalData['barras'].percentual;
 
-
-    let valores = {valor: valor, percentual: percentual, total: total, uos1: uos1, uos2: uos2}
+    let valores = {valor: valor, percentual: percentual, total: total, uos1: uos1, uos2: uos2, uos3: uos3}
 
     var descByEixo;
 
@@ -123,10 +122,9 @@ export class DadosComponent {
       case 0: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var]; break;
       case 1: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
       case 2: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
-      case 3: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.slc]; break;
+      case 3: descByEixo = this.descricoes[this.parameters.eixo][this.parameters.var][this.parameters.mundo]; break;
     }
 
-    if(this.parameters.eixo != 3)
     for(var i = 0; i < descByEixo.length; i++){
 
       if(descByEixo[i][this.desc_key] != ""){
@@ -252,7 +250,36 @@ export class DadosComponent {
     }
     else if(this.parameters.eixo == 3)
     {
+      switch(box){
+        case 0:
+              if(this.parameters.var == 2 || this.parameters.var == 3)
+                return this.formatDecimal(valores.valor/100, 5)+"%";
+              else if(this.dadosProvider.isIHHorC4(this.parameters))
+                return this.formatNumber(valores.uos1);
+              else
+                return prefix+this.formatNumber(valores.valor)+suffix;
+        case 1:
 
+          if(this.treemapRelativeValue() && valores.total)
+            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
+          else if(this.parameters.var == 5)
+            return this.formatNumber(valores.uos2);
+          else if(this.parameters.var == 8)
+            return this.formatNumber(valores.uos3);
+          else if(this.dadosProvider.isIHHorC4(this.parameters))
+            return this.formatNumber(valores.uos2);
+          else
+              return this.formatDecimal(valores.percentual, 2)+"%";
+
+
+        case 2:
+        if(this.parameters.var == 5)
+          return this.formatNumber(valores.uos3);
+        else if(this.parameters.var == 8)
+          return this.formatNumber(valores.uos2);
+        else
+          return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
+      }
     }
 
   }
@@ -292,6 +319,8 @@ export class DadosComponent {
 
   formatDecimal(valor, casas)
   {
+
+
 
     valor = valor * 100;
     valor = valor.toFixed(casas);

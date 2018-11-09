@@ -274,8 +274,6 @@ class EixoQuatro {
     else
 			$query .= " AND ex.Consumo = 1";
 
-    $stmt = mysqli_stmt_init(self::$conn);
-
     $stmt = $pdo->prepare($query);
     $stmt->execute($params);
     while($row  = $stmt->fetch(PDO::FETCH_OBJ))
