@@ -78,7 +78,7 @@ switch($mod) {
 $mapa = array();
 $valores = array();
 if($eixo == 0) {
-    require_once("EixoUm.php");
+    require_once("Eixo1.php");
 
 	foreach (EixoUm::getter_mapa($var, $cad, $deg, $ano) as $tupla) {
 
@@ -103,7 +103,7 @@ if($eixo == 0) {
     $mapa[] = $valores;
 }
 else if($eixo == 1) {
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
     foreach (EixoDois::getter_mapa($var, $cad, $ocp, $ano) as $tupla) {
 
 
@@ -124,7 +124,7 @@ else if($eixo == 1) {
 
 }
 else if($eixo == 2) {
-    require_once("EixoTres.php");
+    require_once("Eixo3.php");
     foreach (EixoTres::getter_mapa($var, $cad, $mec, $mod, $pfj, $ano) as $tupla) {
 
         if($var == 17){

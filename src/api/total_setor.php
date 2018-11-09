@@ -16,7 +16,7 @@
 
     $json = array();
     if($eixo == 0){
-      require_once("EixoUm.php");
+      require_once("Eixo1.php");
       $vars = array(1,4,5,6,7,8);
 
       if(in_array($var, $vars)){
@@ -26,7 +26,7 @@
       }
   }
   else if($eixo == 1){
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
     $vars = array(1);
 
     if(in_array($var, $vars)){

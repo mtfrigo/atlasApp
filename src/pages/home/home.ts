@@ -182,6 +182,7 @@ export class HomePage implements OnInit{
 
     this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     this.parameters.uf  = 0;
+    this.parameters.cad  = 0;
 
   }
 

@@ -299,7 +299,7 @@ $linhas = array();
 $anos = array();
 $ids = (object) array();
 if($eixo == 0 && ($var == 3 || $var == 9)) {
-    require_once("EixoUm.php");
+    require_once("Eixo1.php");
 
 
     foreach (EixoUm::getter_linhas($var, $uf, $cad, $deg, $uos) as $tupla) {
@@ -334,7 +334,7 @@ if($eixo == 0 && ($var == 3 || $var == 9)) {
     }
 }
 else if($eixo == 0 && $var > 9 ) {
-    require_once("EixoUm.php");
+    require_once("Eixo1.php");
     for ($uos = 0; $uos <= 1; $uos++) {
 
         foreach (EixoUm::getter_linhas($var, $uf, $cad, $deg, $uos) as $tupla) {
@@ -369,7 +369,7 @@ else if($eixo == 0 && $var > 9 ) {
     }
 }
 else if($eixo == 1 && ($var > 11)) {
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
 
     if($ocp == 0){
 
@@ -459,7 +459,7 @@ else if($eixo == 1 && ($var > 11)) {
 
 }
 else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag != 0) {
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
     foreach(EixoDois::getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg) as $tupla){
 
           $ano = $tupla->Ano;
@@ -518,7 +518,7 @@ else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag != 0) {
     }
 
     foreach ($aux as $id){
-      $child = [];
+      $child = array();
       foreach ($id as $ano){
         foreach ($ano as $obj){
           $child[] = $obj;
@@ -528,7 +528,7 @@ else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag != 0) {
     }
 }
 else if($eixo == 1 && ($var == 4 || $var == 5) && $desag == 0 && $ocp == 0)  {
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
 
     foreach (EixoDois::getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg) as $tupla) {
 
@@ -571,7 +571,7 @@ else if($eixo == 1 && ($var == 4 || $var == 5) && $desag == 0 && $ocp == 0)  {
   }
 
   foreach ($aux as $id){
-    $child = [];
+    $child = array();
     foreach ($id as $ano){
       foreach ($ano as $obj){
         $child[] = $obj;
@@ -581,7 +581,7 @@ else if($eixo == 1 && ($var == 4 || $var == 5) && $desag == 0 && $ocp == 0)  {
   }
 }
 else if($eixo == 1 && ($var == 11 || $var == 10 || $var == 9 || $var == 8 || ($var == 6 && $desag == 0 && $ocp == 0))) {
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
     for ($cad = 1; $cad <= 10; $cad++) {
 
         foreach (EixoDois::getter_linhas($var, $uf, $cad, $ocp, $uos, $slc, $desag, $subdeg) as $tupla) {
@@ -622,7 +622,7 @@ else if($eixo == 1 && ($var == 11 || $var == 10 || $var == 9 || $var == 8 || ($v
     }
 
     foreach ($aux as $id){
-      $child = [];
+      $child = array();
       foreach ($id as $ano){
         foreach ($ano as $obj){
           $child[] = $obj;
@@ -633,7 +633,7 @@ else if($eixo == 1 && ($var == 11 || $var == 10 || $var == 9 || $var == 8 || ($v
 
 }
 else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag == 0 && $ocp != 0) {
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
 
     foreach (EixoDois::getter_linhas($var, $uf, $cad, 3, $uos, $slc, $desag, $subdeg) as $tupla) {
 
@@ -671,7 +671,8 @@ else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag == 0 && $o
     }
 
     foreach ($aux as $id){
-      $child = [];
+
+      $child = array();
       foreach ($id as $ano){
         foreach ($ano as $obj){
           $child[] = $obj;
@@ -682,7 +683,7 @@ else if($eixo == 1 && ($var == 4 || $var == 5 || $var == 6) && $desag == 0 && $o
 
 }
 else if($eixo == 2 && $var > 14) {
-    require_once("EixoTres.php");
+    require_once("Eixo3.php");
     for ($uos = 0; $uos <= 1; $uos++) {
 
         foreach (EixoTres::getter_barras($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
@@ -718,7 +719,7 @@ else if($eixo == 2 && $var > 14) {
 
 }
 else if($eixo == 2 && $var == 10) {
-    require_once("EixoTres.php");
+    require_once("Eixo3.php");
     for ($mec = 0; $mec <= 1; $mec++) {
 
         foreach (EixoTres::getter_linhas($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
@@ -754,7 +755,7 @@ else if($eixo == 2 && $var == 10) {
 }
 else if($eixo == 2 && $var < 15){
 
-    require_once("EixoTres.php");
+    require_once("Eixo3.php");
     for ($cad = 1; $cad <= 10; $cad++) {
 
 

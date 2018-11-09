@@ -106,7 +106,7 @@ if($eixo == 2 && $var == 17){
 
     $aux = array();
 
-    require_once("EixoTres.php");
+    require_once("Eixo3.php");
 
     foreach (EixoTres::getter_donut($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
 
@@ -149,7 +149,7 @@ if($eixo == 2 && $var >= 18){
 
     $aux = array();
 
-    require_once("EixoTres.php");
+    require_once("Eixo3.php");
 
     foreach (EixoTres::getter_donut($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
 

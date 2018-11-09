@@ -15,7 +15,7 @@ export class JsonsProvider {
   private descricoesUrl   : string = "assets/json/descricoes.json";
   private brStatesUrl : string = "assets/json/br-min.json";
   private selectDesags : string = "assets/json/select-deg.json";
-  private anos_default : string = "http://143.54.230.124/ministerio/atlasOBEC/app/db/api_anos_default.php";
+  private anos_default : string = "http://www.ufrgs.br/obec/atlas/api/api_anos_default.php";
 
 
   constructor(public http: HttpClient) {

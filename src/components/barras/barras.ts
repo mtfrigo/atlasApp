@@ -115,6 +115,7 @@ export class BarrasComponent implements OnChanges{
   }
 
   afterGetData(data){
+    console.log(data)
     this.initAxis();
     this.parseData();
     this.heights = this.getHeightList(data);

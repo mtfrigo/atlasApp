@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EmpilhadasProvider {
 
-  configUrl = 'http://143.54.231.10/atlasApp/src/api/json_barras_empilhadas.php?';
+  configUrl = 'http://www.ufrgs.br/obec/atlas/api/json_barras_empilhadas.php?';
   //configUrl = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_barras_empilhadas.php?';
   constructor(public http: HttpClient) {
 
