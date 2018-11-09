@@ -67,10 +67,10 @@ export class DadosComponent {
       .subscribe(d=>{
 
         this.descricoes = d;
-
+        this.parameters.cad = Number(this.parameters.cad)
+        this.parameters.uf = Number(this.parameters.uf)
         this.dadosProvider.getTotalSetor(this.parameters)
           .subscribe(d=>{
-
             this.total_setor = d;
             this.dadosProvider.getTotalDeg(this.parameters)
               .subscribe(d=>{
@@ -189,7 +189,7 @@ export class DadosComponent {
 
 
         case 2:
-
+          console.log(this.total_setor)
           return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
       }
     }
