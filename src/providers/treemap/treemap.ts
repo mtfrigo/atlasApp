@@ -10,7 +10,7 @@ import { Treemap } from '../../interfaces/treemap';
 */
 @Injectable()
 export class TreemapProvider {
-  treemapUrl : string = "http://143.54.230.124/ministerio/atlasOBEC/app/db/json_treemap_scc.php";
+  treemapUrl : string = "http://www.ufrgs.br/obec/atlas/api/json_treemap_scc.php";
 
   constructor(public http: HttpClient) {
   }

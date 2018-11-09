@@ -31,7 +31,7 @@ class EixoQuatro {
 
 	//informações Cadeia
 	public $CadeiaNome;
-	
+
 	//informações Parceiro
 	public $ParceiroNome;
 
@@ -40,11 +40,11 @@ class EixoQuatro {
 
 
 ## Metodos ##
-	
+
 	/*-----------------------------------------------------------------------------
 	Função: Connect
 	    função para estabelecer conexão do objeto com o banco de dados
-	Entrada: 
+	Entrada:
 	    void
 	Saída:
 	    Positivo = Retorna PDO de conexão com o banco de dados
@@ -66,7 +66,7 @@ class EixoQuatro {
 	/*-----------------------------------------------------------------------------
 	Função: Disconnect
 	    função para desconectar o objeto do banco de dados
-	Entrada: 
+	Entrada:
 	    void
 	Saída:
 	    valor de retorno do mysql_close()
@@ -84,13 +84,13 @@ class EixoQuatro {
         $result_array = [];
         $result_object = $stmt->get_result();
         $keys = $result_object->fetch_fields();
-        
+
         while ($row = $result_object->fetch_object()) {
             $result_array[] = $row;
         }
         return $result_array;
     }
-    
+
 	/*-----------------------------------------------------------------------------
 	Função: getter_most_recent_year
 	    função para buscar o ano mais recente no banco de dados para todas as variáveis
@@ -103,17 +103,17 @@ class EixoQuatro {
 
 		$query = "SELECT DISTINCT Ano, Numero, Consumo FROM `Eixo_4` WHERE `idUF` = 0 and (Consumo = 0 OR Consumo = 1)";
         $stmt = mysqli_stmt_init(self::$conn);
-        mysqli_stmt_prepare($stmt, $query);        
+        mysqli_stmt_prepare($stmt, $query);
         $stmt->execute();
-        
+
         $allObjects = array();
         $allObjects = self::fetch_results($stmt);
 		self::disconnect();
-        
+
 		return $allObjects;
 	}
 
-        
+
     public static function getAnoDefault($var){
 		self::connect();
 
@@ -129,9 +129,9 @@ class EixoQuatro {
             $stmt->execute();
             $obj = self::fetch_results($stmt)[0];
         }
-        
+
 		self::disconnect();
-        
+
 		$ano = $obj->Ano;
 
 		return $ano;
@@ -140,12 +140,12 @@ class EixoQuatro {
 	/*-----------------------------------------------------------------------------
 	Função: Find
 	    função para buscar um conjunto de tupla no banco de dados
-	Entrada: 
-	    $var = número da váriavel 
-	    $parc = id do Parceiro 
-	    $cad = id do SCC 
+	Entrada:
+	    $var = número da váriavel
+	    $parc = id do Parceiro
+	    $cad = id do SCC
 	    $tipo = id do Tipo
-	    $anos = ano 
+	    $anos = ano
 	Saída:
 	    Um conjunto de instâncias da Classe EixoQuatro com seus devidos atributos
 	-----------------------------------------------------------------------------*/
@@ -154,7 +154,7 @@ class EixoQuatro {
 		self::connect();
         $params = [];
         $stmt = mysqli_stmt_init(self::$conn);
-        
+
         $query = "SELECT * FROM ".self::$table." AS ex"
                ." JOIN Parceiro AS parc ON parc.idParceiro = ex.idParceiro AND parc.idParceiro = ?"
                ." JOIN UF AS uf ON uf.idUF = ex.idUF AND uf.idUF = ?"
@@ -162,43 +162,43 @@ class EixoQuatro {
                ." JOIN Tipo AS tipo ON tipo.idTipo = ex.idTipo AND tipo.idTipo = ?"
                ." WHERE ex.Numero = ?"
                ." AND ex.Ano = ?";
-        
+
 		$params[] = $parc;
         $params[] = $uf;
         $params[] = $tipo;
         $params[] = $var;
         $params[] = $anos;
-        
+
         if($slc == 0)
             $query .= " AND ex.Consumo = 1";
         else{
             $query .= " AND ex.Consumo = 0";
         }
-        
+
         $paramsStr = '';
         foreach ($params as $param) {
             $paramsStr .= 's';
         }
         $allObjects = [];
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
         if (mysqli_stmt_prepare($stmt, $query)) {
             $stmt->bind_param($paramsStr, ...$params);
-            
+
             $stmt->execute();
             $allObjects = self::fetch_results($stmt);
         }
-        
+
         return $allObjects;
 	}
 
 	/*-----------------------------------------------------------------------------
 	Função: All
 	    função para buscar todas tupla no banco de dados
-	Entrada: 
+	Entrada:
 	    void
 	Saída:
-	    Todas instancia da Classe EixoQuatro com seus devidos atributos 
+	    Todas instancia da Classe EixoQuatro com seus devidos atributos
 	-----------------------------------------------------------------------------*/
 	public static function all(){
 		self::connect();
@@ -206,7 +206,7 @@ class EixoQuatro {
 			$query = "SELECT * FROM ".self::$table." AS ex"
 						." JOIN Parceiro AS parc ON parc.idParceiro = ex.idParceiro"
 						." JOIN Cadeia AS cad ON cad.idCadeia = ex.idCadeia"
-						." JOIN Tipo AS tipo ON tipo.idTipo = ex.idTipo"				
+						." JOIN Tipo AS tipo ON tipo.idTipo = ex.idTipo"
 						." ORDER BY id";
 
         $query .= " AND ex.Consumo = 1";
@@ -218,16 +218,16 @@ class EixoQuatro {
 			}
 
 		self::disconnect();
-		
+
 		return $allObjects;
 	}
 
 	/*-----------------------------------------------------------------------------
 	Função: Getter Mapa
 	    função para obter um conjunto de tuplas para o mapa
-	Entrada: 
-	    $var = número da váriavel 
-	    $cad = id do SCC 
+	Entrada:
+	    $var = número da váriavel
+	    $cad = id do SCC
 	    $tipo = id da Tipo
 	    $anos = ano
 	Saída:
@@ -250,32 +250,32 @@ class EixoQuatro {
             $params[] = $cad;
             $params[] = $tipo;
             $params[] = $var;
-            
+
             if ($anos > 0) {
                 $query .= " AND ex.Ano = ?";
                 $params[] = $anos;
             }
-            
+
             if ($slc == 0) {
                 $query .= " AND ex.Consumo = 0";
             } else {
                 $query .= " AND ex.Consumo = 1";
             }
-            
+
             $paramsStr = '';
             foreach ($params as $param) {
                 $paramsStr .= 's';
             }
             $allObjects = [];
-            
+
             $stmt = mysqli_stmt_init(self::$conn);
             if (mysqli_stmt_prepare($stmt, $query)) {
                 $stmt->bind_param($paramsStr, ...$params);
-                
+
                 $stmt->execute();
                 $allObjects = self::fetch_results($stmt);
             }
-            
+
 		} else {
 			$query = "SELECT * FROM ".self::$table." AS ex"
 				." JOIN Parceiro AS parc ON parc.idParceiro = ex.idParceiro AND parc.idParceiro = ?"
@@ -288,7 +288,7 @@ class EixoQuatro {
             $params[] = $cad;
             $params[] = $tipo;
             $params[] = $var;
-            
+
             if ($anos > 0) {
                 $query .= " AND ex.Ano = ?";
                 $params[] = $anos;
@@ -306,11 +306,11 @@ class EixoQuatro {
                 $paramsStr .= 's';
             }
             $allObjects = [];
-            
+
             $stmt = mysqli_stmt_init(self::$conn);
             if (mysqli_stmt_prepare($stmt, $query)) {
                 $stmt->bind_param($paramsStr, ...$params);
-                
+
                 $stmt->execute();
                 $allObjects = self::fetch_results($stmt);
             }
@@ -319,17 +319,17 @@ class EixoQuatro {
         }
 
 		self::disconnect();
-		
+
 		return $allObjects;
 	}
 
 	/*-----------------------------------------------------------------------------
 	Função: Getter Barras
 	    função para obter um conjunto de tuplas para o barras
-	Entrada: 
-	    $var = número da váriavel 
-	    $parc = id do Parceiro 
-	    $cad = id do SCC 
+	Entrada:
+	    $var = número da váriavel
+	    $parc = id do Parceiro
+	    $cad = id do SCC
 	    $tipo = id do Tipo
 	Saída:
 	    Um conjunto de instâncias da Classe EixoQuatro com seus devidos atributos
@@ -339,7 +339,7 @@ class EixoQuatro {
 		self::connect();
         $stmt = mysqli_stmt_init(self::$conn);
         $params = [];
-        
+
         $query = "SELECT * FROM ".self::$table." AS ex"
                 ." JOIN Parceiro AS parc ON parc.idParceiro = ex.idParceiro AND parc.idParceiro = ?"
                 ." JOIN UF AS uf ON uf.idUF = ex.idUF AND uf.idUF = ?"
@@ -349,7 +349,7 @@ class EixoQuatro {
 
         $params[] = $parc;
         $params[] = $uf;
-        
+
         //variáveis de IHH e C4
         if($var == 5 || $var == 8){
             $params[] = $uos;
@@ -358,41 +358,41 @@ class EixoQuatro {
         }
         $params[] = $tipo;
         $params[] = $var;
-        
+
         if($slc == 0) {
 			$query .= " AND ex.Consumo = 0";
         } else {
 			$query .= " AND ex.Consumo = 1";
         }
-        
+
         $paramsStr = '';
         foreach ($params as $param) {
             $paramsStr .= 's';
         }
         $allObjects = [];
-        
+
         $stmt = mysqli_stmt_init(self::$conn);
         if (mysqli_stmt_prepare($stmt, $query)) {
             $stmt->bind_param($paramsStr, ...$params);
-            
+
             $stmt->execute();
             $allObjects = self::fetch_results($stmt);
         }
-        
+
 		self::disconnect();
-		
+
 		return $allObjects;
 	}
-	
+
 
 	/*-----------------------------------------------------------------------------
 	Função: Getter Region
 	    função para obter um conjunto de tuplas para treemap region
-	Entrada: 
-	    $var = número da váriavel  
-	    $cad = id do SCC 
+	Entrada:
+	    $var = número da váriavel
+	    $cad = id do SCC
 	    $tipo = id do Tipo
-	    $anos = ano 
+	    $anos = ano
 	Saída:
 	    Um conjunto de instâncias da Classe EixoQuatro com seus devidos atributos
 	-----------------------------------------------------------------------------*/
@@ -400,15 +400,15 @@ class EixoQuatro {
 
 		self::connect();
         $stmt = mysqli_stmt_init(self::$conn);
-        
+
         $query = "SELECT * FROM ".self::$table." AS ex"
                ." JOIN Parceiro AS parc ON parc.idParceiro = ex.idParceiro AND parc.ParceiroNome LIKE ?"
                ." JOIN Cadeia AS cad ON cad.idCadeia = ex.idCadeia AND cad.idCadeia = ?"
                ." JOIN Tipo AS tipo ON tipo.idTipo = ex.idTipo AND tipo.idTipo = ?"
                ." WHERE ex.Numero = ?";
-        
+
         $query .= ($anos > 0) ? " AND ex.Ano = ?" : "" ;
-        
+
         if ($anos > 0) {
             if ($stmt->prepare($query)) {
                 $stmt->bind_param(
@@ -428,12 +428,12 @@ class EixoQuatro {
                     $cad,
                     $tipo,
                     $var
-                );      
+                );
             }
-        }            
+        }
         $stmt->execute();
         $allObjects = self::fetch_results($stmt);
-        
+
 		self::disconnect();
 		return $allObjects;
 	}
@@ -441,7 +441,7 @@ class EixoQuatro {
 	public static function getter_donut($var, $cad, $ano, $cons, $uf, $parc){
 		self::connect();
         $stmt = mysqli_stmt_init(self::$conn);
-        
+
         $query = "SELECT ex.Valor, ex.idTipo FROM ".self::$table." AS ex"
                ." JOIN Parceiro AS parc ON parc.idParceiro = ex.idParceiro AND parc.idParceiro = ?"
                ." JOIN UF AS uf ON uf.idUF = ex.idUF AND uf.idUF = ?"
@@ -449,7 +449,7 @@ class EixoQuatro {
                ." WHERE ex.Numero = ".$var." AND (ex.idTipo = 2 OR ex.idTipo = 1) AND ex.Consumo = ?";
 
         $query .= ($ano > 0) ? " AND ex.Ano = ?" : "" ;
-        
+
         if ($ano > 0) {
             if ($stmt->prepare($query)) {
                 $stmt->bind_param(
@@ -471,10 +471,10 @@ class EixoQuatro {
                     $cons
                 );
             }
-        }            
+        }
         $stmt->execute();
         $allObjects = self::fetch_results($stmt);
-        
+
 		self::disconnect();
 		return $allObjects;
 	}

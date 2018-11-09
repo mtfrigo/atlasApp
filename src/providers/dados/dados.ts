@@ -14,9 +14,11 @@ export class DadosProvider {
 
   globalData: any;
 
-  private totalSetorUrl : string = "http://143.54.231.10/atlasApp/src/api/total_setor.php?";
-  private totalDegUrl : string = "http://143.54.231.10/atlasApp/src/api/total_desag.php?";
-  private totalBrasilUrl : string = "http://143.54.231.10/atlasApp/src/api/total_brasil.php?";
+  private totalSetorUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_setor.php?";
+  private totalDegUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_desag.php?";
+  private totalBrasilUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_brasil.php?";
+
+
 
   constructor(public http: HttpClient) {
 

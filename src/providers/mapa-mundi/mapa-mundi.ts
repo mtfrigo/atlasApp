@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MapaMundiProvider {
 
-  configUrl : string = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_mapa.php?';
+  configUrl : string = 'http://www.ufrgs.br/obec/atlas/api/json_mapa.php?';
 
   constructor(public http: HttpClient) {
 

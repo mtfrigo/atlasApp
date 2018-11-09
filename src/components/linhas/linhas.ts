@@ -178,7 +178,7 @@ export class LinhasComponent {
         if(this.parameters['var'] == 10)
         {
           if(d[0].id == "Despesa Minc / Receita executivo")
-            return "red"
+            return "rgb(144, 215, 188)"
           else
             return "green"
 

@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class MapaProvider {
 
   //configUrl = 'http://143.54.231.10/atlasApp/src/api/json_mapa.php?';
-  configUrl = 'http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_mapa.php?';
+  configUrl = 'http://www.ufrgs.br/obec/atlas/api/json_mapa.php?';
   constructor(public http: HttpClient) {
   }
 

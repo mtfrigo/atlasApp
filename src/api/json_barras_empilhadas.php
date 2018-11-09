@@ -319,7 +319,7 @@ else if($eixo == 1 && $var > 11) {
 
 }
 else if($eixo == 1) {
-    require_once("EixoDois.php");
+    require_once("Eixo2.php");
 
     $aux = array();
     foreach (EixoDois::getter_barras($var, $uf, $cad, $ocp, $uos, $slc, $deg, $subdeg, $ano) as $tupla) {

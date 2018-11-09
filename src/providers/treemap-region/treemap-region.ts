@@ -11,7 +11,7 @@ import { Treemap } from '../../interfaces/treemap';
 @Injectable()
 export class TreemapRegionProvider {
 
-  treemapUrl : string = "http://143.54.230.124/ministerio/atlasOBEC/app/db/api/json_treemap_region.php";
+  treemapUrl : string = "http://www.ufrgs.br/obec/atlas/api/json_treemap_region.php";
 
   constructor(public http: HttpClient) {
   }
