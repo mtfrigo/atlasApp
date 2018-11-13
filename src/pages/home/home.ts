@@ -175,13 +175,32 @@ export class HomePage implements OnInit{
 
     this.parameters.chg = 0;
 
-    this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
+    if(this.parameters.eixo == 2 && this.parameters.var == 17)
+    {
+      let anosAux = this.anos[this.parameters.var][this.parameters.slc];
+      anosAux.pop();
+      this.parameters.ano = Math.max.apply(null, anosAux);
+    }
+    else
+      this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     this.parameters.uf  = 0;
     this.parameters.cad  = 0;
 
   }
 
+  hasUf(){
+    if(this.parameters.eixo == 2)
+    {
+      if(this.parameters.var == 10 || this.parameters.var == 16 || this.parameters.var == 15)
+        return false;
+      else
+        return true;
+    }
+    else return true;
+  }
+
   getCads(){
+
     if(this.parameters.eixo == 2)
     {
       if(this.parameters.var == 18)
@@ -208,7 +227,7 @@ export class HomePage implements OnInit{
           {"name":"Outros","value":"11"}
         ]
       }
-      else if(this.parameters.var == 15 || this.parameters.var == 16)
+      else if(this.parameters.var == 15 || this.parameters.var == 16 || this.parameters.var == 10)
       {
         this.cads = [
           {"name":"Todos","value":"0"}

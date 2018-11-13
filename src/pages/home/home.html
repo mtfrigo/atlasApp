@@ -38,7 +38,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="list_uf.length" >
+    <ion-item *ngIf="list_uf.length && hasUf()" >
       <ion-label>Estados</ion-label>
       <ion-select [(ngModel)]="parameters.uf">
           <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
