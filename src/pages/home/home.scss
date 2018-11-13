@@ -206,7 +206,11 @@ page-home .scroll-content{
   padding-top: 60px;
 }
 
-
+button.opt{
+  position: fixed;
+  bottom: 0px;
+	color: #FFF;
+}
 #views{
   min-height: 65%;
   flex-grow: 1;
