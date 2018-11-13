@@ -793,7 +793,7 @@ else if($eixo == 2 && $var < 15){
 
 }
 else if($eixo == 3 && ($var >= 5 && $var <= 10)){
-    require_once("EixoQuatro.php");
+    require_once("Eixo4.php");
     for($i = 1; $i <= 4 ; $i++){
         foreach (EixoQuatro::getter_barras($var, 0, 0, $i, 0, 0, $slc) as $tupla) {
             $ano = (int)$tupla->Ano;

@@ -559,7 +559,7 @@ else if($eixo == 2) {
     echo $treemap;
 }
 else if($eixo == 3) {
-    require_once("EixoQuatro.php");
+    require_once("Eixo4.php");
     $treemap = '{
  			  "name": "region",
  			  	"children": [

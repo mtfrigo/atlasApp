@@ -565,7 +565,7 @@ else if($eixo == 2) {
         }
 }
 else if($eixo == 3) {
-    require_once("EixoQuatro.php");
+    require_once("Eixo4.php");
     foreach (EixoQuatro::getter_barras($var, $prc, $cad, $typ, $uf, $mundo, $slc, $uos) as $tupla) {
 
 

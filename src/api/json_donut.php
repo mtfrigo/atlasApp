@@ -166,7 +166,7 @@ if($eixo == 2 && $var >= 18){
 }
 
 if($eixo == 3){
-    require_once("EixoQuatro.php");
+    require_once("Eixo4.php");
     foreach (EixoQuatro::getter_donut($var, $cad, $ano, $slc, $uf, $prc) as $tupla) {
 
         // $barras[$tupla->Ano] = $tupla->Valor;

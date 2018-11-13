@@ -6,7 +6,6 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import * as d3 from "d3";
 import * as d3Scale from "d3-scale";
-import * as d3Axis from "d3-axis";
 
 import { BarrasProvider } from '../../providers/barras/barras';
 import { DadosProvider } from '../../providers/dados/dados';
@@ -98,11 +97,16 @@ export class BarrasComponent implements OnChanges{
 
     if(this.dadosProvider.isIHHorC4(this.parameters)){
 
-      if(this.uos)
+      if(this.uos == 1)
         this.dadoGlobal.emit({view: 'barras', uos2: valor, percentual: percent});
-      else
+      else if(this.uos == 0)
         this.dadoGlobal.emit({view: 'barras', uos1: valor, percentual: percent});
+      else if(this.uos == 2)
+      {
+        console.log("Uos 2: "+ valor)
+        this.dadoGlobal.emit({view: 'barras', uos3: valor, percentual: percent});
 
+      }
     }
     else{
       this.dadoGlobal.emit({view: 'barras', valor: valor, percentual: percent});
@@ -115,7 +119,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   afterGetData(data){
-    console.log(data)
     this.initAxis();
     this.parseData();
     this.heights = this.getHeightList(data);

@@ -67,12 +67,25 @@ export class DadosProvider {
 
     var key = "";
 
-    if(parameters.uf != 0) key = key + "u";
-    if(parameters.cad != 0) key = key + "s";
-    if(parameters.deg != 0) key = key + "d";
-    if(parameters.mec != 0) key = key + "m";
-    if(parameters.mod != 0) key = key + "n";
-    if(parameters.pfj != 0) key = key + "p";
+    if(parameters.eixo == 3)
+    {
+      switch(parameters.typ)
+      {
+        case 1: key = 'e'; break;
+        case 2: key = 'i'; break;
+        case 3: key = 's'; break;
+        case 4: key = 'c'; break;
+      }
+    }
+    else
+    {
+      if(parameters.uf != 0) key = key + "u";
+      if(parameters.cad != 0) key = key + "s";
+      if(parameters.deg != 0) key = key + "d";
+      if(parameters.mec != 0) key = key + "m";
+      if(parameters.mod != 0) key = key + "n";
+      if(parameters.pfj != 0) key = key + "p";
+    }
 
     return key;
 
@@ -88,11 +101,20 @@ export class DadosProvider {
       this.globalData[valores.view]['uos1'] = valores.uos1;
     if('uos2' in valores)
       this.globalData[valores.view]['uos2'] = valores.uos2;
+    if('uos3' in valores)
+      this.globalData[valores.view]['uos3'] = valores.uos3;
   }
 
   getGlobalData(){
     return this.globalData;
   }
+
+  mapPronome(string, array_pron, array_new_pron){
+    array_pron.forEach(function(d, i){
+        string = string.replace(array_pron[i], array_new_pron[i])
+    })
+    return string
+}
 
   getPrepos(uf){
     uf = uf.toUpperCase()
@@ -232,10 +254,26 @@ export class DadosProvider {
     idPorte = parseInt(idPorte);
 
     switch(idPorte){
-        case 9: return "PORTE MICRO";
-        case 10: return "PORTE PEQUENO";
-        case 11: return "PORTE MÉDIO";
-        case 12: return "PORTE GRANDE";
+      case 9: return "PORTE MICRO";
+      case 10: return "PORTE PEQUENO";
+      case 11: return "PORTE MÉDIO";
+      case 12: return "PORTE GRANDE";
+    }
+
+  }
+
+  getPrcName(idPrc){
+
+    idPrc = parseInt(idPrc);
+
+    switch(idPrc){
+      case 0: return "Mundo";
+      case 1: return "África";
+      case 2: return "América do Norte";
+      case 3: return "América do Sul";
+      case 4: return "Ásia";
+      case 5: return "Europa";
+      case 6: return "Oceania";
     }
   }
 
@@ -276,6 +314,11 @@ export class DadosProvider {
     var mec_text = this.getMecName(parameters.mec).toUpperCase();
     var mod_text = this.getModName(parameters.mod).toUpperCase();
     var pfj_text = this.getPfjName(parameters.pfj).toUpperCase();
+    var prc_text = this.getPrcName(parameters.prc).toUpperCase();
+
+    let nomeprc;
+
+    //this.mapPronome(this.getPrepos(prc_text), ['DE', 'DA', 'DO'], ['', 'A', 'O'])+' '+prc_text
 
     var nomeano = parameters.ano;
     var anoanterior = parseInt(nomeano)-1;
@@ -284,6 +327,25 @@ export class DadosProvider {
     var nomeestado = this.getPrepos(uf_text)+' '+uf_text;
     if(parameters.eixo == 0)
       deg_text = "DE"+' '+ this.getPorteName(parameters.deg);
+    if(parameters.eixo == 3)
+    {
+
+      let desc_key = this.getDescriptionKey(parameters);
+      switch(desc_key){
+        case 'i':
+          uf_text = this.mapPronome(this.getPrepos(uf_text), ['DE', 'DA', 'DO'], ['', 'A', 'O'])+' '+uf_text
+          nomeprc = this.getPrepos(prc_text)+' '+prc_text
+          break;
+        case 'e':
+          uf_text = this.getPrepos(uf_text)+' '+uf_text;
+          nomeprc = this.mapPronome(this.getPrepos(prc_text), ['DE', 'DA', 'DO'], ['', 'A', 'O'])+' '+prc_text;
+          break;
+        case 'c':
+          uf_text = this.mapPronome(this.getPrepos(uf_text), ['DE', 'DA', 'DO'], ['', 'A', 'O'])+' '+uf_text
+          nomeprc = this.mapPronome(this.getPrepos(prc_text), ['DE', 'DA', 'DO'], ['', 'A', 'O'])+' '+prc_text;
+          break;
+      }
+    }
 
     return text.replace('[uf]', nomeestado)
     .replace('[cad]', cad_text)
@@ -291,6 +353,7 @@ export class DadosProvider {
     .replace('[ano]', "DO ANO "+anoanterior+' AO '+nomeano)
     .replace('[mec]', "VIA "+mec_text)
     .replace('[mod]', mod_text)
+    .replace('[prc]', nomeprc)
     .replace('[pfj]', pfj_text);
   }
 
@@ -312,6 +375,8 @@ export class DadosProvider {
     }
     else if(parameters.eixo == 3)
     {
+      if(parameters.var == 5 || parameters.var == 8)
+        return true;
 
     }
     return false;

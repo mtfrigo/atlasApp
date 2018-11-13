@@ -45,7 +45,7 @@
             }
             break;
         case 3:
-            require_once('EixoQuatro.php');
+            require_once('Eixo4.php');
             foreach(EixoQuatro::getter_most_recent_year() as $result){
                 if(!isset($json[$result->Numero]))
                     $json[$result->Numero] = array();
