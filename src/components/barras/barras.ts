@@ -177,15 +177,16 @@ export class BarrasComponent implements OnChanges{
     return data.map(d => this.getBarHeight(d.valor));
   }
 
-  getYList(data){
+  getYList(data)
+  {
     return data.map(d => this.getBarY(d.valor));
   }
 
   getTickYValue(d,i)
   {
-    return d3Scale.scaleLinear()
+    return this.dadosProvider.formatData(d3Scale.scaleLinear()
       .domain(d3.extent(this.yTicksArray))
-      .range([this.minValue, this.maxValue])(i);
+      .range([this.minValue, this.maxValue])(i));
   }
 
   getTickY(d, i){

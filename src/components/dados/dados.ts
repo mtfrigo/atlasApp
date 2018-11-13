@@ -319,8 +319,6 @@ export class DadosComponent {
   formatDecimal(valor, casas)
   {
 
-
-
     valor = valor * 100;
     valor = valor.toFixed(casas);
 

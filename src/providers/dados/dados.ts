@@ -382,4 +382,61 @@ export class DadosProvider {
     return false;
   }
 
+  formatData(value)
+  {
+    if(value > 1 || value == 0)
+      return this.formatNumber(value);
+    else
+      return this.formatDecimal(value);
+
+  }
+
+  formatNumber(value)
+  {
+    if(value == undefined) return 1;
+
+    if(value.toString().includes(".")){
+      value = value.toFixed(2).toString().replace(".",",");
+    }
+
+    value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    let splitedValue = value.split(",");
+    let decimalPart = splitedValue[1];
+    let integerPart = splitedValue[0].split(".");
+
+    switch(integerPart.length)
+    {
+      case 1: return integerPart[0];
+        break;
+
+      case 2: return integerPart[0] + "," + integerPart[1] + "K";
+        break;
+
+      case 3: return integerPart[0] + "," + integerPart[1] + "M";
+        break;
+
+      case 4: return integerPart[0] + "," + integerPart[1] + "G";
+        break;
+
+    }
+
+    return;
+  }
+
+  formatDecimal(value)
+  {
+
+    if(value < 0.1)
+      value = (value*1000).toFixed(2) + "m";
+    else if(value < 0.0001)
+      value = (value * 1000 * 1000).toFixed(2) + "u";
+    else if(value < 0.0000001)
+      value = (value *1000 * 1000 * 1000).toFixed(2) + "p";
+    else
+      value = value.toFixed(2);
+
+    return value;
+  }
+
 }
