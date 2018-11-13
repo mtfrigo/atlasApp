@@ -698,7 +698,7 @@ class EixoTres {
         }
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
         while($row  = $stmt->fetch(PDO::FETCH_OBJ))
         {
           $allObjects[] = $row;
@@ -718,7 +718,7 @@ class EixoTres {
 
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
         while($row  = $stmt->fetch(PDO::FETCH_OBJ))
         {
           $allObjects[] = $row;
@@ -801,7 +801,8 @@ class EixoTres {
           }
 
           $stmt = $pdo->prepare($query);
-          $stmt->execute();
+          $stmt->execute($params);
+
           while($row  = $stmt->fetch(PDO::FETCH_OBJ))
           {
             $allObjects[] = $row;
@@ -821,7 +822,7 @@ class EixoTres {
           $params[] = $var;
 
           $stmt = $pdo->prepare($query);
-          $stmt->execute();
+          $stmt->execute($params);
           while($row  = $stmt->fetch(PDO::FETCH_OBJ))
           {
             $allObjects[] = $row;
@@ -841,7 +842,7 @@ class EixoTres {
 
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
         while($row  = $stmt->fetch(PDO::FETCH_OBJ))
         {
           $allObjects[] = $row;
