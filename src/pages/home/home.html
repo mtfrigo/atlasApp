@@ -90,7 +90,7 @@
 
     <ion-item *ngIf="hasMec()">
       <ion-label>Mecanismo</ion-label>
-      <ion-select [(ngModel)]="parameters.mec">
+      <ion-select [(ngModel)]="parameters.mec" (ngModelChange)="event_mec($event)">
         <ion-option *ngFor="let mec of mecanismos" [value]="mec.value">{{mec.name}}</ion-option>
       </ion-select>
     </ion-item>
@@ -104,7 +104,7 @@
 
     <ion-item *ngIf="hasMod()">
       <ion-label>Modalidade</ion-label>
-      <ion-select [(ngModel)]="parameters.mod">
+      <ion-select [(ngModel)]="parameters.mod" (ngModelChange)="event_mod($event)">
         <ion-option *ngFor="let mod of modalidades" [value]="mod.value">{{mod.name}}</ion-option>
       </ion-select>
     </ion-item>

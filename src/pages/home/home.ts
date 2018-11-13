@@ -168,11 +168,6 @@ export class HomePage implements OnInit{
 
       this.getCads();
 
-      if(this.parameters.var == 3)
-      {
-        if(this.parameters.mec != 0) this.parameters.mod = 0;
-        if(this.parameters.mod != 0) this.parameters.mec = 0;
-      }
     }
     else if(this.parameters.eixo == 3){
       if(!this.hasConsumo()) this.parameters.slc = 1
@@ -245,8 +240,6 @@ export class HomePage implements OnInit{
           {"name": "Outros", "value": 4},
         ];
 
-        if(this.parameters.mod != 0) this.parameters.mec = 0;
-
         return true;
       }
       else if(this.parameters.var == 1 || this.parameters.var == 8 || this.parameters.var == 9 || this.parameters.var == 15 || this.parameters.var == 16 || this.parameters.var == 17)
@@ -271,12 +264,10 @@ export class HomePage implements OnInit{
 
     if(this.parameters.eixo == 2 && this.parameters.var == 3)
     {
-      if(this.parameters.mec != 0 ) this.parameters.mod = 0;
       return true;
     }
     else
     {
-      this.parameters.mod = 0;
       return false;
     }
 
@@ -292,6 +283,18 @@ export class HomePage implements OnInit{
       return false;
     }
 
+  }
+
+  event_mod(event){
+    if(this.parameters.eixo == 2 && this.parameters.var == 3){
+      if(this.parameters.mod != 0) this.parameters.mec = 0;
+    }
+  }
+
+  event_mec(event){
+    if(this.parameters.eixo == 2 && this.parameters.var == 3){
+      if(this.parameters.mec != 0) this.parameters.mod = 0;
+    }
   }
 
   hasOcp(){
