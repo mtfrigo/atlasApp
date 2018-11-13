@@ -102,11 +102,7 @@ export class BarrasComponent implements OnChanges{
       else if(this.uos == 0)
         this.dadoGlobal.emit({view: 'barras', uos1: valor, percentual: percent});
       else if(this.uos == 2)
-      {
-        console.log("Uos 2: "+ valor)
         this.dadoGlobal.emit({view: 'barras', uos3: valor, percentual: percent});
-
-      }
     }
     else{
       this.dadoGlobal.emit({view: 'barras', valor: valor, percentual: percent});

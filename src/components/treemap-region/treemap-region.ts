@@ -80,23 +80,22 @@ export class TreemapRegionComponent implements OnChanges{
 
     this.treemapProvider.getData(this.url)
         .subscribe(data => {
-          console.log(this.colors)
           this.data = data;
           //this.updateGlobalData();
           this.treemapData = this.treemap(this.getHierarchy());
           this.ready = true;
         });
   }
-  
+
   getFontSize(d){
     return this.fontSizeStd*d.data.percentual + 8;
   }
-  
+
   formatPercent(percentual : string){
     let value : number  = parseFloat(percentual)*100
     return value.toFixed(2).toString() + '%'
   }
-  
+
   testCondition(d){
     let marginX = this.width/150;
     let betweenLetters : number = 1; // number of pixels between each letter

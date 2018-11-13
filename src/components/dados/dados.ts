@@ -189,7 +189,6 @@ export class DadosComponent {
 
 
         case 2:
-          console.log(this.total_setor)
           return this.formatDecimal(valores.valor/this.total_setor[this.parameters.ano], 2)+"%";
       }
     }
