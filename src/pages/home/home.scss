@@ -207,8 +207,6 @@ page-home .scroll-content{
 }
 
 button.opt{
-  position: fixed;
-  bottom: 0px;
 	color: #FFF;
 }
 #views{
@@ -219,6 +217,11 @@ button.opt{
 #dados{
   flex-grow: 2;
   overflow-y: scroll;
+}
+
+.absolut{
+  position: absolute;
+  left: 6%;
 }
 
 page-home .slide-zoom{
