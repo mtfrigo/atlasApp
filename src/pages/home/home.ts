@@ -173,19 +173,17 @@ export class HomePage implements OnInit{
       if(!this.hasConsumo()) this.parameters.slc = 1
     }
 
-    this.parameters.chg = 0;
-
     if(this.parameters.eixo == 2 && this.parameters.var == 17)
     {
       let anosAux = this.anos[this.parameters.var][this.parameters.slc];
       anosAux.pop();
       this.parameters.ano = Math.max.apply(null, anosAux);
     }
-    else
+    else{
       this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
-    this.parameters.uf  = 0;
-    this.parameters.cad  = 0;
-
+    }
+    
+    this.resetParameters();
   }
 
   hasUf(){
@@ -290,6 +288,50 @@ export class HomePage implements OnInit{
       return false;
     }
 
+  }
+
+  resetParameters(){
+    this.parameters.uf  = 0;
+    this.parameters.cad  = 0;
+    this.parameters.prc = 0;
+    this.parameters.mundo = 0;
+    this.parameters.chg = 0;
+  }
+
+  isIHHC4(){
+    let isIHHC4 = [
+      [10, 11, 12, 13],
+      [12, 13, 14, 15],
+      [15, 16],
+      [5, 8]
+    ]
+
+    if(isIHHC4[this.parameters.eixo].indexOf(this.parameters.var) == -1){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  disableButton(){
+    let vars_enabled = [];
+    switch(this.parameters.eixo){
+      case 0:
+        vars_enabled = [1, 4, 5, 6, 7, 8];
+        if(vars_enabled.indexOf(this.parameters.var) == -1){
+          return true;
+        } else {
+          return false;
+        }
+      case 3:
+        vars_enabled = [1, 2, 3, 13];
+        if(vars_enabled.indexOf(this.parameters.var) == -1){
+          return true;
+        } else {
+          return false;
+        }
+    }
   }
 
   hasPfj(){

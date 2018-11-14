@@ -38,7 +38,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="list_uf.length && hasUf()" >
+    <ion-item *ngIf="list_uf.length && hasUf() && !isIHHC4()" >
       <ion-label>Estados</ion-label>
       <ion-select [(ngModel)]="parameters.uf">
           <ion-option *ngFor="let state of list_uf" [value]="state.id">{{state.name}}</ion-option>
@@ -52,7 +52,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="parameters.cad != null && !(parameters.slc == 1 && parameters.eixo == 1)">
+    <ion-item *ngIf="!isIHHC4() && !(parameters.slc == 1 && parameters.eixo == 1)">
       <ion-label>Setor</ion-label>
       <ion-select [(ngModel)]="parameters.cad">
           <ion-option *ngFor="let cad of cads" [value]="cad.value">{{cad.name}}</ion-option>
@@ -60,7 +60,7 @@
     </ion-item>
 
 
-    <ion-item *ngIf="(parameters.slc == 1 && parameters.eixo == 1)">
+    <ion-item *ngIf="(parameters.slc == 1 && parameters.eixo == 1) && !isIHHC4()">
       <ion-label>Ocupação</ion-label>
       <ion-select [(ngModel)]="parameters.ocp">
           <ion-option *ngFor="let ocp of getOcpSelect()" [value]="ocp.value">{{ocp.name}}</ion-option>
@@ -74,14 +74,14 @@
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="parameters.eixo == 1">
+    <ion-item *ngIf="parameters.eixo == 1 && !isIHHC4()">
       <ion-label>Desagregação</ion-label>
       <ion-select [(ngModel)]="pre_desags" (ngModelChange)="updateDesag($event)">
         <ion-option *ngFor="let desag of select_desags" [value]="desag.value" [disabled]="desag.group_name">{{desag.name}}</ion-option>
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="parameters.eixo == 3">
+    <ion-item *ngIf="parameters.eixo == 3 && !isIHHC4()">
       <ion-label>Parceiro</ion-label>
       <ion-select [(ngModel)]="parameters.prc">
         <ion-option *ngFor="let prc of parceiros" [value]="prc.value">{{prc.name}}</ion-option>
@@ -162,8 +162,8 @@
 
       </ion-row>
       
-      <button ion-button round small *ngIf="hasConsumo()" class="opt" color="eixo4" (click)="updateMundo($event)">{{viewButton()}}</button>
-      <button ion-button round small *ngIf="hasTreemapRegion()" class="opt" color="eixo1" (click)="changeView($event)">{{viewButton()}}</button>
+      <button ion-button round small [disabled]="disableButton()" *ngIf="hasConsumo()" class="opt" color="eixo4" (click)="updateMundo($event)">{{viewButton()}}</button>
+      <button ion-button round small [disabled]="disableButton()" *ngIf="hasTreemapRegion()" class="opt" color="eixo1" (click)="changeView($event)">{{viewButton()}}</button>
     
       <ion-row id='dados'>
         <ion-col col-12>
