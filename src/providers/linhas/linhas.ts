@@ -11,15 +11,14 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class LinhasProvider {
 
-  configUrl = 'http://143.54.231.10/atlasApp/src/api/json_linhas.php?var=3&chg=0&uf=32&deg=0&cad=0&ano=2014&eixo=empreendimentos#empreendimentos';
+  configUrl = 'http://www.ufrgs.br/obec/atlas/api/json_linhas.php?';
 
   constructor(public http: HttpClient) {
 
   }
 
   getData (parameters): Observable<any[]> {
-    //console.log('http://143.54.231.10/atlasApp/src/api/json_linhas.php?'+this.getQuery(parameters))
-    return (this.http.get<any[]>('http://www.ufrgs.br/obec/atlas/api/json_linhas.php?'+this.getQuery(parameters)));
+    return (this.http.get<any[]>(this.configUrl+this.getQuery(parameters)));
   }
 
   getQuery(parameters : Object){

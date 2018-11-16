@@ -68,7 +68,7 @@ export class DonutComponent implements OnChanges{
 
   selectTyp(d){
     if(this.parameters.eixo == 3){
-      this.parameters.typ = d.data.id;
+      this.parameters.typ = Number(d.data.id);
     }    
   }
 

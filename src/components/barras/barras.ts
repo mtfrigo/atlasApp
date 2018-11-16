@@ -115,8 +115,8 @@ export class BarrasComponent implements OnChanges{
   }
 
   afterGetData(data){
-    this.initAxis();
     this.parseData();
+    this.initAxis();
     this.heights = this.getHeightList(data);
     this.y_list = this.getYList(data);
 
@@ -136,7 +136,8 @@ export class BarrasComponent implements OnChanges{
        .subscribe(response => (this.data = response),
                   error => 'oioio',
                   () => {
-                    this.animateBars()
+                    
+                    this.animateBars();
                   }
                  );
   }
@@ -152,6 +153,7 @@ export class BarrasComponent implements OnChanges{
 
     this.maxValue = edgeValues[1];
     this.minValue = edgeValues[0];
+
 
   }
 
@@ -169,6 +171,7 @@ export class BarrasComponent implements OnChanges{
     this.yTicksScale = d3Scale.scaleLinear()
       .rangeRound([this.y(this.minValue), this.y(this.maxValue)])
       .domain(d3.extent(this.yTicksArray)).nice();
+
 
   }
 
@@ -205,7 +208,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   getBarY(d) {
-
     var barHeight = this.y(d);
     var zeroPosition = this.minValue < 0 ? this.y(0) : false;
     var isValueNegative = d < 0;
@@ -261,7 +263,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   animateBars() : void {
-
     this.parseData();
     let index_ano = this.keys.indexOf(this.parameters.ano);
     let valor = this.data[index_ano].valor;
