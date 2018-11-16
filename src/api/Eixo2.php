@@ -801,6 +801,31 @@ class EixoDois {
       return $allObjects;
     }
 
+    public static function getTotalEstado($var, $uf){
+      $pdo 	= self::connect();
+
+      $allObjects  = array();
+      $params  = array();
+
+      $query = "SELECT MAX(Valor) as Valor, Ano FROM ".self::$table
+              ." WHERE Numero = ?"
+              ." AND idCadeia = 0"
+              ." AND idUF = ? GROUP BY Ano";
+
+      $params[] = $var;
+      $params[] = $uf;
+
+      $stmt = $pdo->prepare($query);
+      $stmt->execute($params);
+
+      while($row  = $stmt->fetch(PDO::FETCH_OBJ))
+      {
+        $allObjects[] = $row;
+      }
+
+      return $allObjects;
+    }
+
 
 }
 

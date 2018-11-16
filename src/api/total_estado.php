@@ -8,35 +8,19 @@
 
     $ocp    =   isset($_GET["ocp"])   ?   $_GET["ocp"]  :   0;
 
-    if($deg != 0){
-        $deg = $deg - 8;
-    }
-
     $json = array();
 
-    if($eixo == 0){
-      require_once("Eixo1.php");
-      $vars = array(1, 5);
+    if($eixo == 1){
+      require_once("Eixo2.php");
+      $vars = array(1, 7);
 
       if(in_array($var, $vars)){
-          foreach(EixoUm::getTotalSumPrt($var, $uf, $deg, $cad) as $result){
-              $json[$result->Ano] = $result->Valor;
-          }
-      }
-
-  }
-
-  if($eixo == 1){
-    require_once("Eixo2.php");
-    $vars = array(1, 7);
-
-    if(in_array($var, $vars)){
-        foreach(EixoDois::getTotalSumPrt($var, $uf, $cad, $ocp) as $result){
+        foreach(EixoDois::getTotalEstado($var, $uf) as $result){
             $json[$result->Ano] = $result->Valor;
         }
-    }
+      }
 
-}
+    }
 
     echo json_encode($json);
 

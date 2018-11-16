@@ -136,7 +136,7 @@ export class BarrasComponent implements OnChanges{
        .subscribe(response => (this.data = response),
                   error => 'oioio',
                   () => {
-                    
+
                     this.animateBars();
                   }
                  );
@@ -253,9 +253,7 @@ export class BarrasComponent implements OnChanges{
     if (barHeight <= this.minBarHeight){
         return  this.minBarHeight;
     }
-
     return  Math.abs(this.y(d) - zeroPosition);
-
   }
 
   update() : void {
@@ -264,6 +262,10 @@ export class BarrasComponent implements OnChanges{
 
   animateBars() : void {
     this.parseData();
+
+    if(typeof (this.parameters.ano) == "string")
+      this.parameters.ano = parseInt(this.parameters.ano);
+
     let index_ano = this.keys.indexOf(this.parameters.ano);
     let valor = this.data[index_ano].valor;
     let percentual = this.data[index_ano].percentual;

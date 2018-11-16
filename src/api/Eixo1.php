@@ -179,7 +179,33 @@
       return $allObjects;
     }
 
-    public static function getTotalSumPrt($var, $uf)
+    public static function getTotalBrasil($var, $deg){
+      $pdo 	= self::connect();
+
+      $allObjects  = array();
+      $params  = array();
+
+      $query = "SELECT MAX(Valor) as Valor, Ano FROM ".self::$table
+              ." WHERE Numero = ?"
+              ." AND idCadeia = 0"
+              ." AND idPorte = ?"
+              ." AND idUF = 0 GROUP BY Ano";
+
+      $params[] = $var;
+      $params[] = $deg;
+
+      $stmt = $pdo->prepare($query);
+      $stmt->execute($params);
+
+      while($row  = $stmt->fetch(PDO::FETCH_OBJ))
+      {
+        $allObjects[] = $row;
+      }
+
+      return $allObjects;
+    }
+
+    public static function getTotalSumPrt($var, $uf, $deg, $cad)
     {
       $pdo 	= self::connect();
 
@@ -465,8 +491,10 @@
       {
         echo $e->getMessage();
 
-        return $allObjects;
       }
+
+      return $allObjects;
+
 
     }
 
@@ -545,8 +573,10 @@
       {
         echo $e->getMessage();
 
-        return $allObjects;
       }
+
+      return $allObjects;
+
 
     }
 

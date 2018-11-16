@@ -182,7 +182,7 @@ export class HomePage implements OnInit{
     else{
       this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
     }
-    
+
     this.resetParameters();
   }
 
@@ -225,7 +225,7 @@ export class HomePage implements OnInit{
           {"name":"Outros","value":"11"}
         ]
       }
-      else if(this.parameters.var == 15 || this.parameters.var == 16 || this.parameters.var == 10)
+      else if(this.parameters.var == 15 || this.parameters.var == 16  || this.parameters.var == 10 || this.parameters.var == 17)
       {
         this.cads = [
           {"name":"Todos","value":"0"}
@@ -259,7 +259,7 @@ export class HomePage implements OnInit{
 
         return true;
       }
-      else if(this.parameters.var == 1 || this.parameters.var == 8 || this.parameters.var == 9 || this.parameters.var == 15 || this.parameters.var == 16 || this.parameters.var == 17)
+      else if(this.parameters.var == 1 || this.parameters.var == 8 || this.parameters.var == 9 || this.parameters.var == 15 || this.parameters.var == 16)
       {
         this.mecanismos = [
           {"name": "Todos", "value": 0},
@@ -267,6 +267,14 @@ export class HomePage implements OnInit{
           {"name": "Mecenato", "value": 2},
         ];
 
+        return true;
+      }
+      else if(this.parameters.var == 17)
+      {
+        this.mecanismos = [
+          {"name": "Mecenato Estadual", "value": 0},
+          {"name": "Editais Estaduais", "value": 1},
+        ];
         return true;
       }
 
@@ -296,6 +304,9 @@ export class HomePage implements OnInit{
     this.parameters.prc = 0;
     this.parameters.mundo = 0;
     this.parameters.chg = 0;
+    this.parameters.deg = 0;
+    this.parameters.mec = 0;
+    this.parameters.mod = 0;
   }
 
   isIHHC4(){
@@ -370,6 +381,14 @@ export class HomePage implements OnInit{
 
   }
 
+  hasTrabRec()
+  {
+    if(this.parameters.var == 18 || this.parameters.var == 19)
+    {
+      return true;
+    }
+  }
+
   viewButton(){
     if(this.parameters.eixo == 3){
       if(this.parameters.mundo == 0){
@@ -424,6 +443,10 @@ export class HomePage implements OnInit{
   updateDesag(event){
     this.parameters.deg = Math.floor(this.pre_desags/10);
     this.parameters.subdeg = this.pre_desags % 10;
+  }
+
+  updateCad(event){
+    this.parameters.cad = 0;
   }
 
   updateMundo(event){
