@@ -1276,34 +1276,34 @@
       "1" : [
         [
           {
-            "e": "de valor exportado [uf] para [prc] [cad]",
-            "i": "de valor importado [prc] para [uf] [cad]",
-            "s": "de saldo comercial entre [uf] e [prc]",
-            "c": "de corrente de comércio entre [uf] e [prc]"
+            "e": "DE VALOR EXPORTADO [uf] PARA [prc] [cad]",
+            "i": "DE VALOR IMPORTADO [prc] PARA [uf] [cad]",
+            "s": "DE SALDO COMERCIAL ENTRE [uf] E [prc]",
+            "c": "DE CORRENTE DE COMÉRCIO ENTRE [uf] E [prc]"
           }
           ,
           {
-            "e": "do valor exportado [uf]",
-            "i": "do valor importado para [uf]",
+            "e": "DO VALOR EXPORTADO [uf]",
+            "i": "DO VALOR IMPORTADO PARA [uf]",
             "s": "",
-            "c": "da corrente de comércio do Brasil"
+            "c": "DA CORRENTE DE COMÉRCIO DO BRASIL"
           }
 
         ]
         ,
         [
           {
-            "e": "de valor exportado [uf] para [prc] [cad]",
-            "i": "de valor importado [prc] para o Brasil [cad]",
-            "s": "de saldo comercial entre [uf] e [prc]",
-            "c": "de corrente de comércio [uf] e [prc]"
+            "e": "DE VALOR EXPORTADO [uf] PARA [prc] [cad]",
+            "i": "DE VALOR IMPORTADO [prc] PARA O BRASIL [cad]",
+            "s": "DE SALDO COMERCIAL ENTRE [uf] E [prc]",
+            "c": "DE CORRENTE DE COMÉRCIO [uf] E [prc]"
           }
           ,
           {
-            "e": "do valor exportado pelo Brasil para [prc]",
-            "i": "do valor importado pelo Brasil [prc]",
+            "e": "DO VALOR EXPORTADO PELO BRASIL PARA [prc]",
+            "i": "DO VALOR IMPORTADO PELO BRASIL [prc]",
             "s": "",
-            "c": "da corrente de comércio entre Brasil e [prc]"
+            "c": "DA CORRENTE DE COMÉRCIO ENTRE BRASIL E [prc]"
           }
         ]
       ]
@@ -1311,9 +1311,9 @@
       "2" : [
         [
           {
-            "e": "de participação no valor exportado [uf] para [prc] [cad]",
-            "i": "de participação no valor importado [prc] para [uf] [cad]",
-            "c": "de participação na corrente de comércio entre [uf] e [prc] [cad]"
+            "e": "DE PARTICIPAÇÃO NO VALOR EXPORTADO [uf] PARA [prc] [cad]",
+            "i": "DE PARTICIPAÇÃO NO VALOR IMPORTADO [prc] PARA [uf] [cad]",
+            "c": "DE PARTICIPAÇÃO NA CORRENTE DE COMÉRCIO ENTRE [uf] E [prc] [cad]"
           }
           ,
           {
@@ -1325,9 +1325,9 @@
         ,
         [
           {
-            "e": "de participação no valor exportado [uf] para [prc] [cad]",
-            "i": "de participação no valor importado [prc] para [uf] [cad]",
-            "c": "de participação na corrente de comércio entre [uf] e [prc] [cad]"
+            "e": "DE PARTICIPAÇÃO NO VALOR EXPORTADO [uf] PARA [prc] [cad]",
+            "i": "DE PARTICIPAÇÃO NO VALOR IMPORTADO [prc] PARA [uf] [cad]",
+            "c": "DE PARTICIPAÇÃO NA CORRENTE DE COMÉRCIO ENTRE [uf] E [prc] [cad]"
           }
           ,
           {
@@ -1341,9 +1341,9 @@
       "3" : [
         [
           {
-            "e": "de participação do valor exportado [prc] para [uf] [cad] no valor adicionado",
-            "i": "de participação do valor importado [prc] para [uf] [cad] no valor adicionado",
-            "c": "da corrente de comércio entre [uf] e [prc] [cad] no valor adicionado"
+            "e": "DE PARTICIPAÇÃO DO VALOR EXPORTADO [prc] PARA [uf] [cad] NO VALOR ADICIONADO",
+            "i": "DE PARTICIPAÇÃO DO VALOR IMPORTADO [prc] PARA [uf] [cad] NO VALOR ADICIONADO",
+            "c": "DA CORRENTE DE COMÉRCIO ENTRE [uf] E [prc] [cad] NO VALOR ADICIONADO"
           }
           ,
           {
@@ -1355,9 +1355,9 @@
         ,
         [
           {
-            "e": "de participação do valor exportado [prc] para [uf] [cad] no valor adicionado",
-            "i": "de participação do valor importado [prc] para [uf] [cad] no valor adicionado",
-            "c": "da corrente de comércio entre [uf] e [prc] [cad] no valor adicionado"
+            "e": "DE PARTICIPAÇÃO DO VALOR EXPORTADO [prc] PARA [uf] [cad] NO VALOR ADICIONADO",
+            "i": "DE PARTICIPAÇÃO DO VALOR IMPORTADO [prc] PARA [uf] [cad] NO VALOR ADICIONADO",
+            "c": "DA CORRENTE DE COMÉRCIO ENTRE [uf] E [prc] [cad] NO VALOR ADICIONADO"
           }
           ,
           {
@@ -1469,8 +1469,8 @@
       "11" : [
         [
           {
-            "e": "índice de quantum do valor absoluto das exportações",
-            "i": "índice de quantum do valor absoluto das importações"
+            "e": "ÍNDICE DE QUANTUM DO VALOR ABSOLUTO DAS EXPORTAÇÕES",
+            "i": "ÍNDICE DE QUANTUM DO VALOR ABSOLUTO DAS IMPORTAÇÕES"
           }
           ,
           {
@@ -1481,8 +1481,8 @@
         ,
         [
           {
-            "e": "índice de quantum do valor absoluto das exportações",
-            "i": "índice de quantum do valor absoluto das importações"
+            "e": "ÍNDICE DE QUANTUM DO VALOR ABSOLUTO DAS EXPORTAÇÕES",
+            "i": "ÍNDICE DE QUANTUM DO VALOR ABSOLUTO DAS IMPORTAÇÕES"
           }
           ,
           {
@@ -1495,8 +1495,8 @@
       "12" : [
         [
           {
-            "e": "índice de preços do valor absoluto das exportações",
-            "i": "índice de preços do valor absoluto das importações"
+            "e": "ÍNDICE DE PREÇOS DO VALOR ABSOLUTO DAS EXPORTAÇÕES",
+            "i": "ÍNDICE DE PREÇOS DO VALOR ABSOLUTO DAS IMPORTAÇÕES"
           }
           ,
           {
@@ -1507,8 +1507,8 @@
         ,
         [
           {
-            "e": "índice de preços do valor absoluto das exportações",
-            "i": "índice de preços do valor absoluto das importações"
+            "e": "ÍNDICE DE PREÇOS DO VALOR ABSOLUTO DAS EXPORTAÇÕES",
+            "i": "ÍNDICE DE PREÇOS DO VALOR ABSOLUTO DAS IMPORTAÇÕES"
           }
           ,
           {
@@ -1521,33 +1521,33 @@
       "13" : [
         [
           {
-            "e": "exportados [uf] para [prc] [cad]",
-            "i": "importados [prc] para [uf] [cad]",
-            "s": "de saldo comercial entre [uf] e [prc] [cad]",
-            "c": "do [uf] e [prc] [cad]"
+            "e": "EXPORTADOS [uf] PARA [prc] [cad]",
+            "i": "IMPORTADOS [prc] PARA [uf] [cad]",
+            "s": "DE SALDO COMERCIAL ENTRE [uf] E [prc] [cad]",
+            "c": "DO [uf] E [prc] [cad]"
           }
           ,
           {
-            "e": "dos kg exportados [uf]",
-            "i": "dos kg importados para [uf]",
+            "e": "DOS Kg EXPORTADOS [uf]",
+            "i": "DOS Kg IMPORTADOS PARA [uf]",
             "s": "",
-            "c": "dos kg transacionados entre [uf] e o Mundo"
+            "c": "DOS KG TRANSACIONADOS ENTRE [uf] E O MUNDO"
           }
         ]
         ,
         [
           {
-            "e": "exportados [uf] para [prc] [cad]",
-            "i": "importados [prc] para [uf] [cad]",
-            "s": "de saldo comercial entre [uf] e [prc] [cad]",
-            "c": "do [uf] com [prc] [cad]"
+            "e": "EXPORTADOS [uf] PARA [prc] [cad]",
+            "i": "IMPORTADOS [prc] PARA [uf] [cad]",
+            "s": "DE SALDO COMERCIAL ENTRE [uf] E [prc] [cad]",
+            "c": "DO [uf] COM [prc] [cad]"
           }
           ,
           {
-            "e": "dos kg exportados pelo Brasil para [prc]",
-            "i": "dos kg importados pelo Brasil [prc]",
+            "e": "DOS Kg EXPORTADOS PELO BRASIL PARA [prc]",
+            "i": "DOS Kg IMPORTADOS PELO BRASIL [prc]",
             "s": "",
-            "c": "dos kg transacionados entre Brasil e [prc] [cad]"
+            "c": "DOS Kg TRANSACIONADOS ENTRE BRASIL E [prc] [cad]"
           }
         ]
       ]

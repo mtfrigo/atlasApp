@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { MapaMundiProvider } from '../../providers/mapa-mundi/mapa-mundi';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import * as d3  from 'd3';
+import { DadosProvider } from '../../providers/dados/dados';
 /**
  * Generated class for the MapaMundiComponent component.
  *
@@ -17,6 +18,8 @@ export class MapaMundiComponent implements OnInit, OnChanges{
 
   @Input() parameters : any;
   @Input() url : string;
+  @Output() dadoGlobal = new EventEmitter();
+
   width  : number = window.innerWidth*0.8;
   height : number = window.innerHeight*0.35;
   gdpAux = {'AF': 0, 'NA': 0, 'SA': 0, 'OC': 0, 'AS': 0, 'EU': 0};
@@ -49,9 +52,11 @@ export class MapaMundiComponent implements OnInit, OnChanges{
   getData(){
     this.provider.getData(this.url)
     .subscribe(response => {
-
+      let percent : number = 1;
+      let mundo_valor : number;
       for(let data in response){
         if(response[data].id != 0) this.gdpAux[this.unconvertCode(response[data].id)] = response[data].valor;
+        else mundo_valor = response[data].valor;
       }
 
       this.minValue = d3.min(response.map(d => {
@@ -70,6 +75,12 @@ export class MapaMundiComponent implements OnInit, OnChanges{
 
 
       this.ready = true;
+
+      if(this.parameters.prc != 0){
+        percent = this.gdpAux[this.unconvertCode(this.parameters.prc)]/mundo_valor;
+      }
+      
+      this.dadoGlobal.emit({view: 'mapa-mundi', percentual: percent});
 
     })
   }

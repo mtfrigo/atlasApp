@@ -136,7 +136,6 @@ export class BarrasComponent implements OnChanges{
        .subscribe(response => (this.data = response),
                   error => 'oioio',
                   () => {
-                    
                     this.animateBars();
                   }
                  );
