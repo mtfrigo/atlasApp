@@ -81,6 +81,17 @@ export class DadosProvider {
         case 4: key = 'c'; break;
       }
     }
+    else if(parameters.eixo == 2)
+    {
+
+      if(parameters.uf != 0) key = key + "u";
+      if(parameters.cad != 0) key = key + "s";
+      if(parameters.deg != 0) key = key + "d";
+      if(!(parameters.var == 18 || parameters.var == 19))
+        if(parameters.mec != 0) key = key + "m";
+      if(parameters.mod != 0) key = key + "n";
+      if(parameters.pfj != 0) key = key + "p";
+    }
     else
     {
       if(parameters.uf != 0) key = key + "u";
@@ -359,6 +370,8 @@ export class DadosProvider {
     }
 
     return text.replace('[uf]', nomeestado)
+    .replace('{uf}', nomeestado)
+    .replace('{cad}', cad_text)
     .replace('[cad]', cad_text)
     .replace('[deg]', deg_text)
     .replace('[ano]', "DO ANO "+anoanterior+' AO '+nomeano)
@@ -391,6 +404,59 @@ export class DadosProvider {
 
     }
     return false;
+  }
+
+  formatData(value)
+  {
+    if(value > 1 || value == 0)
+      return this.formatNumber(value);
+    else
+      return this.formatDecimal(value);
+
+  }
+
+  formatNumber(value)
+  {
+    if(value == undefined) return 1;
+
+    if(value.toString().includes(".")){
+      value = value.toFixed(2).toString().replace(".",",");
+    }
+
+    value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    let splitedValue = value.split(",");
+    let decimalPart = splitedValue[1];
+    let integerPart = splitedValue[0].split(".");
+
+    switch(integerPart.length)
+    {
+      case 1: return integerPart[0];
+
+      case 2: return integerPart[0] + "," + integerPart[1] + "K";
+
+      case 3: return integerPart[0] + "," + integerPart[1] + "M";
+
+      case 4: return integerPart[0] + "," + integerPart[1] + "G";
+
+    }
+
+    return;
+  }
+
+  formatDecimal(value)
+  {
+
+    if(value < 0.1)
+      value = (value*1000).toFixed(2) + "m";
+    else if(value < 0.0001)
+      value = (value * 1000 * 1000).toFixed(2) + "u";
+    else if(value < 0.0000001)
+      value = (value *1000 * 1000 * 1000).toFixed(2) + "p";
+    else
+      value = value.toFixed(2);
+
+    return value;
   }
 
 }

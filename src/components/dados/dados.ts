@@ -176,7 +176,7 @@ export class DadosComponent {
       switch(box){
         case 0:
               if(this.parameters.var == 2 || this.parameters.var == 3 || this.parameters.var == 9)
-                return this.formatDecimal(valores.valor, 2)+"%";
+                return this.formatDecimal(valores.valor, 5)+"%";
               else if(this.dadosProvider.isIHHorC4(this.parameters))
                 return this.formatNumber(valores.uos1);
               else
@@ -187,9 +187,18 @@ export class DadosComponent {
             return this.formatDecimal(valores.valor/valores.total, 2)+"%";
           else if(this.dadosProvider.isIHHorC4(this.parameters))
             return this.formatNumber(valores.uos2);
+          else if(this.parameters.var == 5 && this.parameters.cad != 0 && this.parameters.uf != 0)
+            return this.formatDecimal(valores.valor/this.total_deg[this.parameters.ano], 2)+"%"
           else
             if(this.parameters.deg != 0)
-              return this.formatDecimal(valores.valor/this.total_deg[this.parameters.ano], 2)+"%"
+            {
+              if(this.parameters.uf == 0)
+                return this.formatDecimal(valores.valor/this.total_brasil[this.parameters.ano], 2)+"%"
+
+              else
+                return this.formatDecimal(valores.valor/this.total_deg[this.parameters.ano], 2)+"%"
+
+            }
             else
               return this.formatDecimal(valores.percentual, 2)+"%";
 
@@ -239,7 +248,9 @@ export class DadosComponent {
                 return prefix+this.formatNumber(valores.valor)+suffix;
         case 1:
 
-          if(this.parameters.var == 18 || this.parameters.var == 19)
+          if(this.parameters.var == 18)
+            return "R$ " + this.formatNumber(valores.percentual);
+          else if(this.parameters.var == 19)
             return this.formatNumber(valores.percentual);
           else if(this.treemapRelativeValue() && valores.total)
             return this.formatDecimal(valores.valor/valores.total, 2)+"%";
@@ -326,12 +337,22 @@ export class DadosComponent {
   {
 
 
-
     valor = valor * 100;
-    valor = valor.toFixed(casas);
+    let newValor = valor.toFixed(casas);
 
-    let inteiro = this.formatNumber(valor.split('.')[0]);
-    let decimal = valor.split('.')[1];
+    let inteiro = this.formatNumber(newValor.split('.')[0]);
+    let decimal =  newValor.split('.')[1];
+
+    while(decimal == 0 && casas < 5)
+    {
+      casas++;
+
+      newValor = valor.toFixed(casas);
+      decimal =  newValor.split('.')[1];
+    }
+    casas++;
+    newValor = valor.toFixed(casas);
+    decimal =  newValor.split('.')[1];
 
     for (var i = decimal.length-1; i >= 0; i--) {
       if(decimal.charAt(i) == "0") decimal = decimal.slice(0, - 1)

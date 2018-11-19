@@ -58,10 +58,10 @@ function getNameCadeia($id){
 
 if (!empty($_GET["var"])) {
 
-    $var = $_GET["var"];
-    $uf = $_GET["uf"];
-    $cad = $_GET["cad"];
-    $deg = $_GET["deg"];
+    $var = isset($_GET["var"])   ?   $_GET["var"]  :   0;
+    $uf = isset($_GET["uf"])   ?   $_GET["uf"]  :   0;
+    $cad = isset($_GET["cad"])   ?   $_GET["cad"]  :   0;
+    $deg = isset($_GET["deg"])   ?   $_GET["deg"]  :   0;
     $ocp    =   isset($_GET["ocp"])   ?   $_GET["ocp"]  :   0;	   /*== ocupação ==*/
     $mec    =   isset($_GET["mec"])   ?   $_GET["mec"]  :   0;	   /*== mecanismo ==*/
     $mod    =   isset($_GET["mod"])   ?   $_GET["mod"]  :   0;	   /*== modalidade ==*/
@@ -300,7 +300,6 @@ $anos = array();
 $ids = (object) array();
 if($eixo == 0 && ($var == 3 || $var == 9)) {
     require_once("Eixo1.php");
-
 
     foreach (EixoUm::getter_linhas($var, $uf, $cad, $deg, $uos) as $tupla) {
 

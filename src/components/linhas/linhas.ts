@@ -188,6 +188,7 @@ export class LinhasComponent {
       }
       else
         return this.colors.cadeias[d[0].id].color;
+
     }
 
   }

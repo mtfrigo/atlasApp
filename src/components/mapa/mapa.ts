@@ -9,6 +9,7 @@ import * as t from "topojson-client";
 import { MapaProvider } from '../../providers/mapa/mapa';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import { color } from 'd3';
+import { DadosProvider } from '../../providers/dados/dados';
 
 
 /*
@@ -66,7 +67,7 @@ export class MapaComponent {
   colorScale: any;
 
 
-  constructor(public navCtrl: NavController, private mapaProvider: MapaProvider, private jsonProvider: JsonsProvider) {
+  constructor(public navCtrl: NavController, private mapaProvider: MapaProvider, private dadosProvider :DadosProvider, private jsonProvider: JsonsProvider) {
 
     this.mapHeight = this.height*0.85 - this.margin.top - this.margin.bottom;
     this.mapWidth = this.width - this.margin.left - this.margin.right;
@@ -136,7 +137,7 @@ export class MapaComponent {
     })
     this.info = info;
 
-    this.legend_data = [String(this.minValue), String(0.5*(this.maxValue+this.minValue)), String(this.maxValue)];
+    this.legend_data = [String(this.dadosProvider.formatData(this.minValue)), String(this.dadosProvider.formatData(0.5*(this.maxValue+this.minValue))), String(this.dadosProvider.formatData(this.maxValue))];
 
     if(this.colors)
     this.colorScale = d3.scaleLinear()

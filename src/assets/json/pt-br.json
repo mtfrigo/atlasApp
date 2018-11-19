@@ -119,7 +119,7 @@
 				"views": {
 					"view_box1": [{"id": "mapa", "title": "MAPA DO BRASIL"}, {"id": "treemap_region", "title": "TREEMAP UFs"}],
 					"view_box2": [{"id": "barras", "title": "SÉRIE HISTÓRICA [uf] [cad]"}],
-					"view_box3": [{"id": "linhas", "title": "TREEMAP - SETORES CULTURAIS CRIATIVOS [uf]"}]
+					"view_box3": [{"id": "linhas", "title": "GRÁFICO DE LINHAS - SETORES CULTURAIS CRIATIVOS [uf]"}]
 				},
 				"fontes": "Elaboração do NECCULT com base na RAIS.",
 				"mapa_valores": "Valores em pecentual.",
