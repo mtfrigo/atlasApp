@@ -19,6 +19,7 @@ export class HomePage implements OnInit{
   private anos : number[];
   private pre_desags : number = 0;
   private select_desags : any = [];
+  private desags : any = [];
   private cads : any[];
   private ready_pt_br : boolean = false;
   private info_eixo = {'value': 0, 'name': '', 'color': '#fff', 'ioncolor': 'eixo1'};
@@ -127,7 +128,8 @@ export class HomePage implements OnInit{
 
     this.jsonsProvider.getSelectDesags()
       .subscribe( d => {
-        this.select_desags = d;
+        this.desags = d;
+        this.select_desags = this.desags[0];
       })
 
     this.jsonsProvider.getAnos(this.parameters.eixo)
@@ -152,6 +154,12 @@ export class HomePage implements OnInit{
     let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
 
     if(this.parameters.eixo == 1){
+
+      if(this.parameters.ocp == 0)
+        this.select_desags = this.desags[1];
+      else
+        this.select_desags = this.desags[0];
+
       if(ocp_default[this.parameters.var] == 0){
         this.parameters.slc = 0;
       }
@@ -305,6 +313,7 @@ export class HomePage implements OnInit{
     this.parameters.mundo = 0;
     this.parameters.chg = 0;
     this.parameters.deg = 0;
+    this.parameters.subdeg = 0;
     this.parameters.mec = 0;
     this.parameters.mod = 0;
   }
@@ -317,12 +326,10 @@ export class HomePage implements OnInit{
       [5, 8]
     ]
 
-    if(isIHHC4[this.parameters.eixo].indexOf(this.parameters.var) == -1){
+    if(isIHHC4[this.parameters.eixo].indexOf(this.parameters.var) == -1)
       return false;
-    }
-    else{
+    else
       return true;
-    }
   }
 
   disableButton(){

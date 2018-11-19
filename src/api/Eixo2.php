@@ -73,7 +73,9 @@ class EixoDois {
                     PDO::ATTR_EMULATE_PREPARES   => false,
                   );
       // Create a PDO instance (connect to the database)
-      return new PDO($dsn, $un, $pwd, $opt);
+      $pdo = new PDO($dsn, $un, $pwd, $opt);
+      $pdo->exec("set names utf8");
+      return $pdo;
     }
 
     public static function getter_most_recent_year(){
@@ -276,13 +278,15 @@ class EixoDois {
               ." AND Previdencia = 0"
               ." AND Formalidade = 0"
               ." AND ex.Sexo IS NULL";
+
+          $params[] = $cad;
+          $params[] = $ocp;
+          $params[] = $var;
+
+
         };
 
-        $params[] = $cad;
 
-        if($ocp != 3) $params[] = $ocp;
-
-        $params[] = $var;
 
         if ($anos > 0) {
             $query .= " AND ex.Ano = ?";
@@ -801,7 +805,7 @@ class EixoDois {
       return $allObjects;
     }
 
-    public static function getTotalEstado($var, $uf){
+    public static function getTotalEstado($var, $uf, $ocp){
       $pdo 	= self::connect();
 
       $allObjects  = array();
@@ -810,9 +814,11 @@ class EixoDois {
       $query = "SELECT MAX(Valor) as Valor, Ano FROM ".self::$table
               ." WHERE Numero = ?"
               ." AND idCadeia = 0"
+              ." AND idOcupacao = ?"
               ." AND idUF = ? GROUP BY Ano";
 
       $params[] = $var;
+      $params[] = $ocp;
       $params[] = $uf;
 
       $stmt = $pdo->prepare($query);

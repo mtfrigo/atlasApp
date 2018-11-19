@@ -93,9 +93,10 @@ export class LinhasComponent {
   ngOnChanges(){
 
     this.linhasProvider.getData(this.parameters)
-      .subscribe(response => (this.new_data = response),
+      .subscribe(response => (this.data = response),
                  error => '[LINHAS] ERRO!',
-                 () => this.animateLines()
+                 () => this.afterGetData()
+                //  () => this.animateLines()
                 );
   }
 
@@ -131,6 +132,9 @@ export class LinhasComponent {
 
     this.minValue = this.edgeValues[0];
     this.maxValue = this.edgeValues[1];
+
+    console.log(this.edgeValues);
+    console.log(this.linesHeight, this.linesWidth);
 
     return data;
   }
@@ -186,6 +190,19 @@ export class LinhasComponent {
         else
           return this.colors.cadeias[d[0].id].color;
       }
+      else if(this.parameters["eixo"] == 1 && this.parameters["ocp"] > 0 && this.parameters["deg"] == 0)
+      {
+        if(i == 0)
+        {
+          return this.colors.ocupacoes["Relacionadas"].color;
+        }
+
+        else if(i == 1)
+        {
+          return this.colors.ocupacoes["Culturais"].color;
+
+        }
+      }
       else
         return this.colors.cadeias[d[0].id].color;
 
@@ -216,7 +233,7 @@ export class LinhasComponent {
 
     this.data = this.parseData(this.new_data);
 
-    let i = 0;
+    //let i = 0;
 /*
     let animation = setInterval(d => {
       this.data = d3.interpolate(this.data, this.new_data)(i);

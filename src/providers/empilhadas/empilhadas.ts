@@ -18,6 +18,7 @@ export class EmpilhadasProvider {
   }
 
   getData (parameters, uos : number): Observable<any[]> {
+    console.log(this.configUrl+this.getQuery(parameters)+'&uos='+uos)
     return (this.http.get<any[]>(this.configUrl+this.getQuery(parameters)+'&uos='+uos));
   }
 

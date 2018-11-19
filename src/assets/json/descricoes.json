@@ -394,7 +394,7 @@
             "us": "DO TOTAL DE TRABALHADORES DO SETOR [cad] DO BRASIL",
             "ud": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL",
             "sd": "",
-            "usd": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS DO BRASIL"
+            "usd": "DO TOTAL DE TRABALHADORES DOS SETORES CULTURAIS E CRIATIVOS [uf]"
           }
         ]
         ,
@@ -446,28 +446,6 @@
             "sd": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL",
             "usd": "DE PARTICIPAÇÃO DO EMPREGO NO SETOR [cad] NO EMPREGO TOTAL"
           }
-          ,
-          {
-            "": "",
-            "u": "",
-            "s": "",
-            "d": "",
-            "us": "",
-            "ud": "",
-            "sd": "",
-            "usd": ""
-          }
-          ,
-          {
-            "": "",
-            "u": "",
-            "s": "",
-            "d": "",
-            "us": "",
-            "ud": "",
-            "sd": "",
-            "usd": ""
-          }
         ]
         ,
         [
@@ -480,21 +458,6 @@
             "ud": "DE PARTICIPAÇÃO DOS OCUPADOS EM ATIVIDADES CULTURAIS E CRIATIVAS NO EMPREGO TOTAL",
             "sd": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL",
             "usd": "DE PARTICIPAÇÃO DOS OCUPADOS [cad] NO EMPREGO TOTAL"
-          }
-          ,
-          {
-            "": "",
-            "u": "",
-            "s": "",
-            "d": "",
-            "us": "",
-            "ud": "",
-            "sd": "",
-            "usd": ""
-          }
-          ,
-          {
-
           }
         ]
       ]
@@ -511,17 +474,6 @@
             "sd": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DO SETOR [cad] NO BRASIL",
             "usd": "DE REMUNERAÇÃO MÉDIA DOS TRABALHADORES [deg] DO SETOR [cad] [uf]"
           }
-          ,
-          {
-            "": "",
-            "u": "",
-            "s": "",
-            "d": "",
-            "us": "",
-            "ud": "",
-            "sd": "",
-            "usd": ""
-          }
 
         ]
         ,
@@ -535,28 +487,6 @@
             "ud": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] NO BRASIL",
             "sd": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] NO BRASIL",
             "usd": "DE REMUNERAÇÃO MÉDIA DOS OCUPADOS [deg] [cad] [uf]"
-          }
-          ,
-          {
-            "": "",
-            "u": "",
-            "s": "",
-            "d": "",
-            "us": "",
-            "ud": "",
-            "sd": "",
-            "usd": ""
-          }
-          ,
-          {
-            "": "",
-            "u": "",
-            "s": "",
-            "d": "",
-            "us": "",
-            "ud": "",
-            "sd": "",
-            "usd": ""
           }
         ]
       ]
@@ -644,14 +574,14 @@
         ,
         [
           {
-            "": "",
-            "u": "",
-            "s": "",
-            "d": "",
-            "us": "",
-            "ud": "",
-            "sd": "",
-            "usd": ""
+            "": "  ",
+            "u": "  ",
+            "s": "  ",
+            "d": "  ",
+            "us": "  ",
+            "ud": "  ",
+            "sd": "  ",
+            "usd": "  "
           }
           ,
           {

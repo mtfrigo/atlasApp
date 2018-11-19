@@ -436,7 +436,7 @@ else if($eixo == 1) {
 
 
         if($deg == 0 || $var == 4 || $var == 5 || $var == 6) {
-          if($var == 6 && $uos == 1 && $deg == 0){
+          if($var == 6 && $uos == 1 && $deg == 0) {
 
             $ocp == 0 ? $id = sigla_cadeia(getNameCadeia($tupla->idCadeia)) :  $id = getNameOCP($tupla->idOcupacao);
 
@@ -510,7 +510,6 @@ else if($eixo == 1) {
 
               $aux[intval($id-2007)]['ano'] = (int)$tupla->Ano;
 
-
               if(!isset($aux[intval($id-2007)]['valores'][$nomeDesag]))
                   $aux[intval($id-2007)]['valores'][$nomeDesag] = 0;
 
@@ -539,7 +538,6 @@ else if($eixo == 2) {
         foreach (EixoTres::getter_barras($var, $uf, $cad, $mec, $pfj, $mod, $ano, $uos) as $tupla) {
 
             if ($var < 15 && $var != 10) {
-
               $values = (object) array(
                 'uf' => $tupla->UFNome,
                 'ano' => (int) $tupla->Ano,
@@ -547,10 +545,8 @@ else if($eixo == 2) {
                 'percentual' => (double)$tupla->Percentual,
                 'taxa' => (double)$tupla->Taxa
               );
-
             }
             else {
-
               $values = (object) array(
                 'ano' => (int) $tupla->Ano,
                 'valor' => (double)$tupla->Valor,
@@ -558,9 +554,7 @@ else if($eixo == 2) {
                 'taxa' => (double)$tupla->Taxa,
                 'uos' => (int) $uos
               );
-
             }
-
             array_push($barras, $values);
         }
 }

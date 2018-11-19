@@ -94,6 +94,7 @@ export class BarrasComponent implements OnChanges{
   }
 
   sendBarData(valor, percent) {
+    if(percent == 2) percent = 1;
 
     if(this.dadosProvider.isIHHorC4(this.parameters)){
 

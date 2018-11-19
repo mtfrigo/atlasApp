@@ -79,7 +79,7 @@
     <ion-item *ngIf="parameters.eixo == 1 && !isIHHC4()">
       <ion-label>Desagregação</ion-label>
       <ion-select [(ngModel)]="pre_desags" (ngModelChange)="updateDesag($event)">
-        <ion-option *ngFor="let desag of select_desags" [value]="desag.value" [disabled]="desag.group_name">{{desag.name}}</ion-option>
+        <ion-option  *ngFor="let desag of select_desags"  [value]="desag.value" [disabled]="desag.group_name">{{desag.name}}</ion-option>
       </ion-select>
     </ion-item>
 

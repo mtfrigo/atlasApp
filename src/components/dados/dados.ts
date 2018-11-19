@@ -47,6 +47,7 @@ export class DadosComponent {
   total_setor: any;
   total_deg: any;
   total_brasil: any;
+  total_estado: any;
 
   constructor(public navCtrl: NavController,
               private dadosProvider: DadosProvider,
@@ -81,11 +82,16 @@ export class DadosComponent {
                   .subscribe(d=>{
 
                     this.total_brasil = d;
-                    this.getData();
 
-                  })
-              })
-          })
+                    this.dadosProvider.getTotalEstado(this.parameters)
+                      .subscribe(d=>{
+                        this.total_estado = d;
+                        this.getData();
+
+                    })
+                })
+            })
+        })
       })
     })
   }
@@ -101,7 +107,6 @@ export class DadosComponent {
 
 
     this.desc_key = this.dadosProvider.getDescriptionKey(this.parameters);
-
 
     this.desc_array = [];
 
@@ -220,10 +225,25 @@ export class DadosComponent {
             return this.formatDecimal(valores.valor/this.total_deg[this.parameters.ano], 2)+"%";
           else if(this.parameters['var'] == 7 && this.parameters.cad != 0 && this.parameters.deg == 0 && this.parameters.uf == 0)
             return this.formatDecimal(valores.valor/this.total_brasil[this.parameters.ano], 2)+"%";
+          else if(this.parameters['var'] == 7 && this.parameters.ocp != 0 && this.parameters.deg != 0 && this.parameters.uf != 0)
+          {
+            console.log(this.total_brasil[this.parameters.ano])
+            console.log(this.total_deg[this.parameters.ano])
+            console.log(this.total_estado[this.parameters.ano])
+            return this.formatDecimal(valores.valor/this.total_estado[this.parameters.ano], 2)+"%";
+
+
+          }
+          else if(this.parameters.ocp == 3)
+            return this.formatDecimal(valores.valor/this.total_brasil[this.parameters.ano], 2)+"%";
           else
             return this.formatDecimal(valores.percentual, 2)+"%";
         case 2:
+          if(this.parameters.cad != 0 && this.parameters.deg != 0)
+            return this.formatDecimal(valores.valor/this.total_estado[this.parameters.ano], 2)+"%";
+          else
           return this.formatDecimal(valores.valor/this.total_brasil[this.parameters.ano], 2)+"%";
+
 
       }
 
@@ -329,8 +349,6 @@ export class DadosComponent {
 
   formatDecimal(valor, casas)
   {
-
-
     valor = valor * 100;
     let newValor = valor.toFixed(casas);
 

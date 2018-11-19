@@ -15,7 +15,7 @@
       $vars = array(1, 7);
 
       if(in_array($var, $vars)){
-        foreach(EixoDois::getTotalEstado($var, $uf) as $result){
+        foreach(EixoDois::getTotalEstado($var, $uf, $ocp) as $result){
             $json[$result->Ano] = $result->Valor;
         }
       }

@@ -17,6 +17,7 @@ export class DadosProvider {
   private totalSetorUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_setor.php?";
   private totalDegUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_desag.php?";
   private totalBrasilUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_brasil.php?";
+  private totalEstadoUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_estado.php?";
 
 
 
@@ -53,6 +54,10 @@ export class DadosProvider {
 
   getTotalDeg (parameters): Observable<any[]> {
     return (this.http.get<any[]>(this.totalDegUrl+this.getQuery(parameters)));
+  }
+
+  getTotalEstado (parameters): Observable<any[]> {
+    return (this.http.get<any[]>(this.totalEstadoUrl+this.getQuery(parameters)));
   }
 
   getQuery(parameters : Object){
@@ -92,6 +97,7 @@ export class DadosProvider {
     {
       if(parameters.uf != 0) key = key + "u";
       if(parameters.cad != 0) key = key + "s";
+      if(parameters.ocp > 0 && parameters.ocp != 3) key = key + "s";
       if(parameters.deg != 0) key = key + "d";
       if(parameters.mec != 0) key = key + "m";
       if(parameters.mod != 0) key = key + "n";
@@ -304,6 +310,74 @@ export class DadosProvider {
         case 4: return "Grande"
       }
     }
+    else if(deg == 2) // sexo
+    {
+      switch(subdeg)
+      {
+        case 1: return "Masculino";
+        case 2: return "Feminino";
+      }
+    }
+    else if(deg == 3)
+    {
+      switch(subdeg)
+      {
+        case 1: return "10 a 17";
+        case 2: return "18 a 29";
+        case 3: return "30 a 49";
+        case 4: return "50 a 64";
+        case 5: return "65 ou mais";
+        case 6: return "Não classificado";
+      }
+    }
+    else if(deg == 4)
+    {
+      switch(subdeg)
+      {
+        case 1: return "Sem instrução";
+        case 2: return "Fundamental Incompleto";
+        case 3: return "Fundamental Completo";
+        case 4: return "Médio Completo";
+        case 5: return "Superior Incompleto";
+        case 6: return "Superior Completo";
+        case 7: return "Não Determinado";
+      }
+    }
+    else if(deg == 5)
+    {
+      switch(subdeg)
+      {
+        case 1: return "Indígena";
+        case 2: return "Branca";
+        case 3: return "Preta";
+        case 4: return "Amarela";
+        case 5: return "Parda";
+      }
+    }
+    else if(deg == 6)
+    {
+      switch(subdeg)
+      {
+        case 1: return "Formal";
+        case 2: return "Informal";
+      }
+    }
+    else if(deg == 7)
+    {
+      switch(subdeg)
+      {
+        case 1: return "Contribuinte";
+        case 2: return "Não contribuinte";
+      }
+    }
+    else if(deg == 8)
+    {
+      switch(subdeg)
+      {
+        case 1: return "Membro";
+        case 2: return "Não membro";
+      }
+    }
   }
 
   getDegId(subdeg, deg)
@@ -322,6 +396,16 @@ export class DadosProvider {
     var deg_text = "";
 
     var cad_text = this.getCadName(parameters.cad).toUpperCase();
+
+    if(parameters.ocp == 1){
+        cad_text = "EM ATIVIDADES RELACIONADAS À CULTURA";
+    } else if(parameters.ocp == 2) {
+        cad_text = "EM ATIVIDADES CULTURAIS";
+    }
+
+    if(parameters.eixo == 1 && parameters.deg > 0)
+      deg_text = this.descDesag(parameters, this.getDegName(parameters.subdeg, parameters.deg), parameters.deg) ;
+
     var mec_text = this.getMecName(parameters.mec).toUpperCase();
     var mod_text = this.getModName(parameters.mod).toUpperCase();
     var pfj_text = this.getPfjName(parameters.pfj).toUpperCase();
@@ -358,7 +442,8 @@ export class DadosProvider {
       }
     }
 
-    return text.replace('[uf]', nomeestado)
+    return text
+    .replace('[uf]', nomeestado)
     .replace('{uf}', nomeestado)
     .replace('{cad}', cad_text)
     .replace('[cad]', cad_text)
@@ -446,6 +531,98 @@ export class DadosProvider {
       value = value.toFixed(2);
 
     return value;
+  }
+
+descDesag(parameters, desc, deg)
+{
+
+  desc = desc.toUpperCase();
+
+
+  switch(deg)
+  {
+      case 1:
+          desc = "DE EMPRESAS DE PORTE "+desc; break;
+      case 2:
+          if(parameters.eixo == 6){
+              desc = "DO SEXO "+desc; break;
+          }
+          else{
+              desc = "DO SEXO "+desc; break;
+          }
+      case 3:
+          desc = "COM IDADE ENTRE "+desc+" ANOS"; break;
+      case 4:
+          if(parameters.eixo  == 6){
+
+              if(desc == "Sem Instrução")
+                  desc = "QUE NÃO POSSUEM INSTRUÇÃO"
+              else
+                  desc = "QUE POSSUEM ESCOLARIDADE DE NÍVEL "+desc; break;
+          }
+          else{
+              if(desc == "Sem Instrução")
+                  desc = "E QUE NÃO POSSUEM INSTRUÇÃO"
+              else
+                  desc = "E QUE POSSUEM ESCOLARIDADE DE NÍVEL "+desc; break;
+          }
+
+      case 5:
+
+          if(parameters.eixo  == 6){
+              switch(desc){
+                  case "Indígena":
+                      desc = "DECLARADOS INDÍGENAS"; break;
+                  case "Branca":
+                      desc = "DECLARADOS BRANCOS"; break;
+                  case "Preta":
+                      desc = "DECLARADOS PRETOS"; break;
+                  case "Amarela":
+                      desc = "DECLARADOS AMARELOS"; break;
+                  case "Parda":
+                      desc = "DECLARADOS PARDOS"; break;
+              }
+          }
+          else{
+              switch(desc){
+                  case "INDÍGENA":
+                      desc = "DOS DECLARADOS INDÍGENAS"; break;
+                  case "BRANCA":
+                      desc = "DOS DECLARADOS BRANCOS"; break;
+                  case "PRETA":
+                      desc = "DOS DECLARADOS PRETOS"; break;
+                  case "AMARELA":
+                      desc = "DOS DECLARADOS AMARELOS"; break;
+                  case "OARDA":
+                      desc = "DOS DECLARADOS PARDOS"; break;
+              }
+          }
+
+          desc = desc; break;
+      case 6:
+          if(desc == "FORMAL"){
+              desc = "COM FORMALIDADE"; break;
+          } else {
+              desc = "SEM FORMALIDADE"; break;
+          }
+      case 7:
+          if(desc == "CONTRIBUINTE"){
+              desc = "COM PREVIDÊNCIA"; break;
+          }
+          else{
+              desc = "SEM PREVIDÊNCIA"; break;
+          }
+      case 8:
+          if(desc == "MEMBRO"){
+              desc = "COM SINDICATO"; break;
+          }
+          else{
+              desc = "SEM SINDICADO";break;
+          }
+      default:
+          desc = "";
+    }
+    return desc;
   }
 
 }

@@ -16,7 +16,6 @@ export class MapaProvider {
   }
 
   getData (parameters : string): Observable<any[]> {
-    console.log(this.configUrl+parameters)
     return (this.http.get<any[]>(this.configUrl+parameters));
   }
 
