@@ -78,6 +78,7 @@ export class TreemapComponent implements OnChanges{
   }
 
   getColorCadeia(d){
+
     return this.colors != undefined ? this.colors.cadeias[d.parent.data.colorId].color : 'black'
   }
 
@@ -129,6 +130,7 @@ export class TreemapComponent implements OnChanges{
                                   .filter((d, i) => {
                                     if(i >= Math.floor(this.data['children'].length / 2)) return d;
                                   });
+          
         });
   }
 

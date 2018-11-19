@@ -15,7 +15,7 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'donut.html'
 })
 export class DonutComponent implements OnChanges{
-  width  : number = window.innerHeight*0.4;
+  width  : number = window.innerHeight*0.35;
   height : number = this.width;
 
 

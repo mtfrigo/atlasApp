@@ -239,8 +239,7 @@ export class HomePage implements OnInit{
           {"name":"Todos","value":"0"}
         ]
       }
-      else
-        this.cads = this.pt_br['select']['cad'];
+      else this.cads = this.pt_br['select']['cad'];
     }
 
   }

@@ -406,8 +406,7 @@ export class DadosProvider {
 
     var deg_text = "";
 
-<<<<<<< HEAD
-    var cad_text = this.getCadName(parameters.cad).toUpperCase();
+    var cad_text = this.getCadName(parameters.cad, parameters.eixo);
 
     if(parameters.ocp == 1){
         cad_text = "EM ATIVIDADES RELACIONADAS À CULTURA";
@@ -418,9 +417,6 @@ export class DadosProvider {
     if(parameters.eixo == 1 && parameters.deg > 0)
       deg_text = this.descDesag(parameters, this.getDegName(parameters.subdeg, parameters.deg), parameters.deg) ;
 
-=======
-    var cad_text = this.getCadName(parameters.cad, parameters.eixo); 
->>>>>>> 45e37409b934a552d89ec051382db9ef11454e6f
     var mec_text = this.getMecName(parameters.mec).toUpperCase();
     var mod_text = this.getModName(parameters.mod).toUpperCase();
     var pfj_text = this.getPfjName(parameters.pfj).toUpperCase();
@@ -526,7 +522,7 @@ export class DadosProvider {
 
       case 3: return integerPart[0] + "," + integerPart[1] + "M";
 
-      case 4: return integerPart[0] + "," + integerPart[1] + "G";
+      case 4: return integerPart[0] + "," + integerPart[1] + "B";
 
     }
 

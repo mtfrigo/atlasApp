@@ -107,10 +107,7 @@ export class DadosComponent {
 
 
     this.desc_key = this.dadosProvider.getDescriptionKey(this.parameters);
-<<<<<<< HEAD
-=======
     var percentual : number = 1;
->>>>>>> 45e37409b934a552d89ec051382db9ef11454e6f
 
     this.desc_array = [];
 
