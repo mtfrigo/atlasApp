@@ -42,6 +42,10 @@ export class DadosProvider {
     this.globalData['mapa']['valor'] = 0;
     this.globalData['mapa']['percentual'] = 0;
 
+    this.globalData['mapa-mundi'] = {};
+    this.globalData['mapa-mundi']['valor'] = 0;
+    this.globalData['mapa-mundi']['percentual'] = 0;
+
   }
 
   getTotalBrasil (parameters): Observable<any[]> {
@@ -109,7 +113,6 @@ export class DadosProvider {
   }
 
   setGlobalData(valores){
-
     this.globalData[valores.view]['valor'] = valores.valor;
     this.globalData[valores.view]['percentual'] = valores.percentual;
     this.globalData[valores.view]['total'] = valores.total;
@@ -212,23 +215,31 @@ export class DadosProvider {
     }
   }
 
-  getCadName(idCad){
-
+  getCadName(idCad, eixo : number){
     idCad = parseInt(idCad);
+    let cad : string;
 
     switch(idCad){
-        case 0: return "Todos";
-        case 1: return "Arquitetura e Design";
-        case 2: return "Artes Cênicas e Espetáculos";
-        case 3: return "Audiovisual";
-        case 4: return "Cultura Digital";
-        case 5: return "Editorial";
-        case 6: return "Educação e Criação em Artes";
-        case 7: return "Entretenimento";
-        case 8: return "Música";
-        case 9: return "Patrimônio";
-        case 10: return "Publicidade";
+        case 0: cad = "Todos"; break;
+        case 1: cad = "ARQUITETURA E DESIGN"; break;
+        case 2: cad = "ARTES CÊNICAS E ESPETÁCULOS"; break;
+        case 3: cad = "AUDIOVISUAL"; break;
+        case 4: cad = "CULTURA DIGITAL"; break;
+        case 5: cad = "EDITORIAL"; break;
+        case 6: cad = "EDUCAÇÃO E CRIAÇÃO EM ARTES"; break;
+        case 7: cad = "ENTRETENIMENTO"; break;
+        case 8: cad = "MÚSICA"; break;
+        case 9: cad = "PATRIMÔNIO"; break;
+        case 10: cad = "PUBLICIDADE"; 
     }
+
+    if(eixo == 3){
+      if(idCad != 0) cad = 'NO SETOR '+cad;
+      else cad = 'NOS SETORES CULTURAIS E CRIATIVOS';
+    } 
+    
+    return cad;
+    
   }
 
   getMecName(idMec){
@@ -395,6 +406,7 @@ export class DadosProvider {
 
     var deg_text = "";
 
+<<<<<<< HEAD
     var cad_text = this.getCadName(parameters.cad).toUpperCase();
 
     if(parameters.ocp == 1){
@@ -406,6 +418,9 @@ export class DadosProvider {
     if(parameters.eixo == 1 && parameters.deg > 0)
       deg_text = this.descDesag(parameters, this.getDegName(parameters.subdeg, parameters.deg), parameters.deg) ;
 
+=======
+    var cad_text = this.getCadName(parameters.cad, parameters.eixo); 
+>>>>>>> 45e37409b934a552d89ec051382db9ef11454e6f
     var mec_text = this.getMecName(parameters.mec).toUpperCase();
     var mod_text = this.getModName(parameters.mod).toUpperCase();
     var pfj_text = this.getPfjName(parameters.pfj).toUpperCase();

@@ -20,7 +20,7 @@ export class TreemapRegionComponent implements OnChanges{
   width  : number = window.innerWidth*0.8;
   height : number = window.innerHeight*0.25;
   @Input() url : string;
-  @Input() parameters : any[];
+  @Input() parameters : any;
   private ready = false;
   private data : Treemap[] = [];
   private colors;
@@ -66,7 +66,8 @@ export class TreemapRegionComponent implements OnChanges{
   }
 
   getColorCadeia(d){
-    return this.colors != undefined ? this.colors.regioes[d.parent.data.colorId].color : 'black'
+    if(d.data.id == this.parameters.uf) return this.colors.eixo[this.parameters.eixo].color['1'];
+    else return this.colors != undefined ? this.colors.regioes[d.parent.parent.data.colorId].color : 'black'
   }
   textX(x1, x0){
     return x1 - x0 - (this.width)/200;
@@ -74,6 +75,10 @@ export class TreemapRegionComponent implements OnChanges{
 
   textY(y1, y0){
     return y1 - y0 - (this.height)/100;
+  }
+
+  click(d){
+    this.parameters.uf = d.data.id;
   }
 
   getData(): void {

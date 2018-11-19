@@ -107,15 +107,25 @@ export class DadosComponent {
 
 
     this.desc_key = this.dadosProvider.getDescriptionKey(this.parameters);
+<<<<<<< HEAD
+=======
+    var percentual : number = 1;
+>>>>>>> 45e37409b934a552d89ec051382db9ef11454e6f
 
     this.desc_array = [];
 
     var valor = this.dadosProvider.globalData['barras'].valor;
-    var percentual = this.parameters.cad == '0' ? this.dadosProvider.globalData['barras'].percentual : this.dadosProvider.globalData['treemap'].percentual;
     var total = this.dadosProvider.globalData['treemap'].total;
     var uos1 = this.dadosProvider.globalData['barras'].uos1;
     var uos2 = this.dadosProvider.globalData['barras'].uos2;
     var uos3 = this.dadosProvider.globalData['barras'].uos3;
+
+    if(this.parameters.eixo == 3){
+      percentual = this.parameters.mundo == 1 ? this.dadosProvider.globalData['barras'].percentual : this.dadosProvider.globalData['mapa-mundi'].percentual;
+    
+    } else {
+      percentual = this.parameters.cad == '0' ? this.dadosProvider.globalData['barras'].percentual : this.dadosProvider.globalData['treemap'].percentual;
+    }
 
     if(this.parameters.eixo == 2 && (this.parameters.var == 18 || this.parameters.var == 19)) percentual = this.dadosProvider.globalData['barras'].percentual;
 
