@@ -522,7 +522,7 @@ export class DadosProvider {
 
       case 3: return integerPart[0] + "," + integerPart[1] + "M";
 
-      case 4: return integerPart[0] + "," + integerPart[1] + "G";
+      case 4: return integerPart[0] + "," + integerPart[1] + "B";
 
     }
 
