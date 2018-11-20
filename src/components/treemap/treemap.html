@@ -3,8 +3,8 @@
     <g>
       <g *ngFor="let d of treemapData.leaves()" [attr.transform]="getTranslate(d)">
         <rect [attr.height]="d.y1 - d.y0" [attr.width]="d.x1 - d.x0" [attr.fill]="getColorCadeia(d.parent)" (click)="selectCad(d.parent)" [attr.opacity]="getOpacity(d.parent)"></rect>
-        <text *ngIf='d.data.percentual*100 > 2' text-anchor="end" [attr.y]="textY(d.y1, d.y0)" [attr.x]="textX(d.x1, d.x0)" [attr.font-size]="getFontSize(d)">
-            {{formatPercent(d.data.percentual)}}
+        <text *ngIf='d.data.size/treemapData.value*100 > 2' text-anchor="end" [attr.y]="textY(d.y1, d.y0)" [attr.x]="textX(d.x1, d.x0)" [attr.font-size]="getFontSize(d)">
+            {{formatPercent(d.data.size/treemapData.value)}}
         </text>
         <text *ngIf="testCondition(d)" text-anchor="start" [attr.font-size]="titleSize" y=10 [attr.x]="width/150">
             {{d.data.name}}
