@@ -136,6 +136,8 @@ export class LinhasComponent {
     console.log(this.edgeValues);
     console.log(this.linesHeight, this.linesWidth);
 
+    console.log(data)
+
     return data;
   }
 
@@ -204,7 +206,11 @@ export class LinhasComponent {
         }
       }
       else
-        return this.colors.cadeias[d[0].id].color;
+      {
+        if(this.colors.cadeias[d[0].id] != undefined )
+          return this.colors.cadeias[d[0].id].color;
+
+      }
 
     }
 

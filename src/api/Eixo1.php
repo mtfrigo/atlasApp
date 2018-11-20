@@ -56,7 +56,10 @@
                     PDO::ATTR_EMULATE_PREPARES   => false,
                   );
       // Create a PDO instance (connect to the database)
-      return new PDO($dsn, $un, $pwd, $opt);
+      $pdo = new PDO($dsn, $un, $pwd, $opt);
+      $pdo->exec("set names utf8");
+
+      return $pdo;
 
     }
 

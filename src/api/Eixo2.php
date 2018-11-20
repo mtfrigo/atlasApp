@@ -720,6 +720,13 @@ class EixoDois {
       $query .= self::concatDeg($desag, 7, "Previdencia");
       $query .= self::concatDeg($desag, 8, "Sindical");
 
+      if(self::concatValueDegSexo($desag, 2, $subdeg) == "IS NULL"){
+          $query .= " AND Sexo IS NULL";
+      }
+      else{
+          $query .= " AND Sexo = ?";
+      };
+
       $stmt = $pdo->prepare($query);
       $stmt->execute($params);
 

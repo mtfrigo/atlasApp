@@ -107,10 +107,7 @@ export class DadosComponent {
 
 
     this.desc_key = this.dadosProvider.getDescriptionKey(this.parameters);
-<<<<<<< HEAD
-=======
     var percentual : number = 1;
->>>>>>> 45e37409b934a552d89ec051382db9ef11454e6f
 
     this.desc_array = [];
 
@@ -122,7 +119,7 @@ export class DadosComponent {
 
     if(this.parameters.eixo == 3){
       percentual = this.parameters.mundo == 1 ? this.dadosProvider.globalData['barras'].percentual : this.dadosProvider.globalData['mapa-mundi'].percentual;
-    
+
     } else {
       percentual = this.parameters.cad == '0' ? this.dadosProvider.globalData['barras'].percentual : this.dadosProvider.globalData['treemap'].percentual;
     }
@@ -236,14 +233,7 @@ export class DadosComponent {
           else if(this.parameters['var'] == 7 && this.parameters.cad != 0 && this.parameters.deg == 0 && this.parameters.uf == 0)
             return this.formatDecimal(valores.valor/this.total_brasil[this.parameters.ano], 2)+"%";
           else if(this.parameters['var'] == 7 && this.parameters.ocp != 0 && this.parameters.deg != 0 && this.parameters.uf != 0)
-          {
-            console.log(this.total_brasil[this.parameters.ano])
-            console.log(this.total_deg[this.parameters.ano])
-            console.log(this.total_estado[this.parameters.ano])
             return this.formatDecimal(valores.valor/this.total_estado[this.parameters.ano], 2)+"%";
-
-
-          }
           else if(this.parameters.ocp == 3)
             return this.formatDecimal(valores.valor/this.total_brasil[this.parameters.ano], 2)+"%";
           else
