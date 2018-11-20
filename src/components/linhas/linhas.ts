@@ -58,8 +58,10 @@ export class LinhasComponent {
   uf_index: any = 0;
   ufs = [0, 32];
 
-  count = 0;
   teste = false;
+
+  subtitles_1: any;
+  subtitles_2: any;
 
 
 
@@ -133,6 +135,15 @@ export class LinhasComponent {
     this.minValue = this.edgeValues[0];
     this.maxValue = this.edgeValues[1];
 
+    this.subtitles_1 = this.ids
+                        .filter((d, i) => {
+                          if(i < Math.floor(this.ids.length / 2)) return d;
+                        });
+    this.subtitles_2 = this.ids
+                        .filter((d, i) => {
+                          if(i >= Math.floor(this.ids.length / 2)) return d;
+                        });
+
     return data;
   }
 
@@ -167,8 +178,6 @@ export class LinhasComponent {
   }
 
   getLineColor(d, i){
-    this.count++;
-
 
     if(this.colors)
     {
@@ -204,6 +213,48 @@ export class LinhasComponent {
       {
         if(this.colors.cadeias[d[0].id] != undefined )
           return this.colors.cadeias[d[0].id].color;
+
+      }
+
+    }
+
+  }
+
+  getSubtitleColor(d){
+    if(this.colors)
+    {
+      if(this.parameters['eixo'] == 1 && this.parameters['deg'] != 0)
+        return this.colors['deg'][this.parameters['deg']]['subdeg'][d];
+      else if(this.parameters['eixo'] == 2)
+      {
+        if(this.parameters['var'] == 10)
+        {
+          if(d == "Despesa Minc / Receita executivo")
+            return "rgb(144, 215, 188)"
+          else
+            return "green"
+
+        }
+        else
+          return this.colors.cadeias[d].color;
+      }
+      else if(this.parameters["eixo"] == 1 && this.parameters["ocp"] > 0 && this.parameters["deg"] == 0)
+      {
+        if(i == 0)
+        {
+          return this.colors.ocupacoes["Relacionadas"].color;
+        }
+
+        else if(i == 1)
+        {
+          return this.colors.ocupacoes["Culturais"].color;
+
+        }
+      }
+      else
+      {
+        if(this.colors.cadeias[d] != undefined )
+          return this.colors.cadeias[d].color;
 
       }
 
@@ -248,6 +299,15 @@ export class LinhasComponent {
 
   }
 
+  getSubtitleStyle(d){
+
+    return {
+      'background-color': this.getSubtitleColor(d),
+      'width': '10px',
+      'height': '10px',
+      'margin-top': '3px'
+    }
+  }
 
 
 }

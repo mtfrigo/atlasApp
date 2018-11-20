@@ -323,7 +323,10 @@ export class BarrasComponent implements OnChanges{
   getBarColor(d){
     if(this.seriePorSetor(d))
     {
-      return this.colors['cadeias'][d.id] ? this.colors['cadeias'][d.id].color :  "red";
+      if(this.parameters.deg != 0)
+        return this.colors['deg'][this.parameters.deg]['subdeg'][d.id] ? this.colors['deg'][this.parameters.deg]['subdeg'][d.id] : "red";
+      else
+        return this.colors['cadeias'][d.id] ? this.colors['cadeias'][d.id].color :  "red";
     }
     else
     {
