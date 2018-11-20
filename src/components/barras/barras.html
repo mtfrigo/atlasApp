@@ -22,7 +22,7 @@
         <rect *ngFor="let d of data; index as i"
           class='bar'
           opacity='0.8'
-          [attr.x]='x(d.ano)'
+          [attr.x]=' seriePorSetor(d) ? x(d.id) : x(d.ano)'
           [attr.y]='y_list[i]'
           [attr.height]='heights[i]'
           [attr.width]='x.bandwidth()'
@@ -38,13 +38,14 @@
                 <text
                 class='axis-title'
                 fill="#000"
-                [attr.x]='x(d.ano)+x.bandwidth()/2'
+                [attr.x]='seriePorSetor(d) ? x(d.id)+x.bandwidth()/2 : x(d.ano)+x.bandwidth()/2'
                 font-size='10'
                 dy="1.2em"
                 text-anchor='middle'
                 text='Frequency'
+
               >
-                {{ d.ano }}
+                {{ seriePorSetor(d) ? d.id : d.ano }}
               </text>
 
               <line
@@ -53,8 +54,8 @@
                 opacity=1
                 [attr.y1]="3"
                 [attr.y2]="0"
-                [attr.x1]='x(d.ano)+x.bandwidth()/2'
-                [attr.x2]='x(d.ano)+x.bandwidth()/2'
+                [attr.x1]='seriePorSetor(d) ? x(d.id)+x.bandwidth()/2 : x(d.ano)+x.bandwidth()/2'
+                [attr.x2]='seriePorSetor(d) ? x(d.id)+x.bandwidth()/2 : x(d.ano)+x.bandwidth()/2'
               >
               </line>
 

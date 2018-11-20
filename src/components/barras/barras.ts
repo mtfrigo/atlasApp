@@ -144,7 +144,11 @@ export class BarrasComponent implements OnChanges{
 
   parseData(){
 
-    this.keys = this.data.map( d => d.ano);
+    if(this.parameters.eixo == 1 && this.parameters.var == 6 && this.uos == 1)
+      this.keys = this.data.map( d => d.id);
+    else
+      this.keys = this.data.map( d => d.ano);
+
     this.values = this.data.map( d => d.valor);
 
     this.first_year = this.keys[0];
@@ -197,7 +201,15 @@ export class BarrasComponent implements OnChanges{
   }
 
   getTickX(d, i){
-    return 'translate('+ this.x(d.ano) +', '+ this.barsHeight +')';
+
+    console.log("opioioi")
+
+
+
+    if(this.seriePorSetor(d))
+      return 'translate('+ this.x(d.id) +', '+ this.barsHeight +')';
+    else
+      return 'translate('+ this.x(d.ano) +', '+ this.barsHeight +')';
   }
 
 
@@ -267,8 +279,8 @@ export class BarrasComponent implements OnChanges{
       this.parameters.ano = parseInt(this.parameters.ano);
 
     let index_ano = this.keys.indexOf(this.parameters.ano);
-    let valor = this.data[index_ano].valor;
-    let percentual = this.data[index_ano].percentual;
+    let valor = this.data[index_ano] ? this.data[index_ano].valor : 0;
+    let percentual = this.data[index_ano] ?  this.data[index_ano].percentual : 0  ;
 
     if(this.parameters.eixo == 2 && (this.parameters.var == 18 || this.parameters.var == 19))
     {
@@ -309,8 +321,25 @@ export class BarrasComponent implements OnChanges{
   }
 
   getBarColor(d){
-    if(this.parameters.ano == d.ano){
-      return this.colors.eixo[this.parameters.eixo].color['1'];
-    } else  return (this.colors['cadeias'][this.parameters.cad]['color']);
+    if(this.seriePorSetor(d))
+    {
+      return this.colors['cadeias'][d.id] ? this.colors['cadeias'][d.id].color :  "red";
+    }
+    else
+    {
+      if(this.parameters.ano == d.ano){
+        return this.colors.eixo[this.parameters.eixo].color['1'];
+      } else  return (this.colors['cadeias'][this.parameters.cad]['color']);
+    }
+
+    }
+
+  seriePorSetor(d)
+  {
+
+    if(this.parameters.eixo == 1 && this.parameters.var == 6 && this.uos == 1)
+      return true;
+    else
+      return false;
   }
 }

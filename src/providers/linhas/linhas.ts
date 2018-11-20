@@ -18,7 +18,7 @@ export class LinhasProvider {
   }
 
   getData (parameters): Observable<any[]> {
-    console.log(this.configUrl+this.getQuery(parameters))
+    //console.log(this.configUrl+this.getQuery(parameters))
     return (this.http.get<any[]>(this.configUrl+this.getQuery(parameters)));
   }
 

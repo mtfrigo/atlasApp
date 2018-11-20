@@ -95,7 +95,6 @@ export class EmpilhadasComponent {
   }
 
   sendBarData(valor, percent,total) {
-    console.log(valor, percent, total)
     this.dadoGlobal.emit({view: 'barras', valor: valor, percentual: percent, total: total});
   }
 

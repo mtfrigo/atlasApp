@@ -133,11 +133,6 @@ export class LinhasComponent {
     this.minValue = this.edgeValues[0];
     this.maxValue = this.edgeValues[1];
 
-    console.log(this.edgeValues);
-    console.log(this.linesHeight, this.linesWidth);
-
-    console.log(data)
-
     return data;
   }
 

@@ -458,6 +458,7 @@ class EixoDois {
           $params[] = $ano;
       }
 
+
       $stmt = $pdo->prepare($query);
       $stmt->execute($params);
 
