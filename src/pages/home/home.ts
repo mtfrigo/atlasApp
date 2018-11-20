@@ -129,7 +129,9 @@ export class HomePage implements OnInit{
     this.jsonsProvider.getSelectDesags()
       .subscribe( d => {
         this.desags = d;
-        this.select_desags = this.desags[0];
+        this.select_desags = this.desags.filter(d => {
+          if(d.setor == true) return d;
+        });
       })
 
     this.jsonsProvider.getAnos(this.parameters.eixo)
@@ -154,20 +156,22 @@ export class HomePage implements OnInit{
     let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
 
     if(this.parameters.eixo == 1){
-
-      if(this.parameters.ocp == 0)
-        this.select_desags = this.desags[1];
-      else
-        this.select_desags = this.desags[0];
-
+      
       if(ocp_default[this.parameters.var] == 0){
         this.parameters.slc = 0;
       }
       if(this.parameters.slc == 1){
         this.parameters.ocp = ocp_default[this.parameters.var];
+        this.select_desags = this.desags.filter(d => {
+          if(d.ocp == true) return d;
+        });
       } else {
         this.parameters.ocp = 0;
+        this.select_desags = this.desags.filter(d => {
+          if(d.setor == true) return d;
+        });
       }
+
     }
     else if(this.parameters.eixo == 2)
     {
