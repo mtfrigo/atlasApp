@@ -201,6 +201,10 @@ export class EmpilhadasComponent {
 
   }
 
+  teste(d){
+    console.log(d)
+  }
+
   getBarsTransform()
   {
     return "translate(" + (this.margin.left+5) + "," + this.valueTop + ")";
