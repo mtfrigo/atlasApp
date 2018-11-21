@@ -111,7 +111,7 @@ export class TreemapComponent implements OnChanges{
   }
 
   selectCad(d){
-    this.parameters.cad = d.parent.data.colorId; 
+    this.parameters.cad = d.parent.data.colorId;
   }
 
   getData(): void {
@@ -130,7 +130,7 @@ export class TreemapComponent implements OnChanges{
                                   .filter((d, i) => {
                                     if(i >= Math.floor(this.data['children'].length / 2)) return d;
                                   });
-          
+
         });
   }
 

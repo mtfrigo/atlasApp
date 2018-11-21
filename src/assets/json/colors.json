@@ -302,7 +302,19 @@
 				"6": "#EADAC3"
 			}
 		},
-		"Educação e Criação em Artes": {
+		"Entretenimento": {
+			"name": "Entretenimento",
+			"color": "#AD5468",
+			"gradient": {
+				"1": "#FEFDFC",
+				"2": "#F4E8EA",
+				"3": "#EDDADD",
+				"4": "#E3C6CB",
+				"5": "#DAB2B7",
+				"6": "#D29EA4"
+			}
+    },
+    "Educação e Criação em Artes": {
 			"name": "Educação e Criação em Artes",
 			"color": "#EC8A91",
 			"gradient": {
@@ -462,6 +474,8 @@
 			"subdeg": {
 				"Micro": "rgb(109, 191, 201)",
 				"Pequeno": "green",
+				"Pequena": "green",
+				"Média": "black",
 				"Médio": "black",
 				"Grande": "yellow"
 			}
@@ -490,13 +504,20 @@
 			"name": "Escolaridade",
 			"color": "#071342",
 			"subdeg": {
-				"Sem instruição": "#071342",
+				"Sem instrução": "#071342",
+				"Sem Instrução": "#071342",
 				"Fundamental incompleto": "#077DDD",
+				"Fundamental Incompleto": "#077DDD",
 				"Fundamental completo": "#8178AF",
+				"Fundamental Completo": "#8178AF",
 				"Médio completo": "#EC8A91",
+				"Médio Completo": "#EC8A91",
 				"Superior incompleto": "#E96B00",
+				"Superior Incompleto": "#E96B00",
 				"Superior completo": "rgb(109, 191, 201)",
-				"Não determinado": "red"
+				"Superior Completo": "rgb(109, 191, 201)",
+				"Não determinado": "red",
+				"Não Determinado": "red"
 			}
 		},
 		"5": {
