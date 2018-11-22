@@ -6,6 +6,7 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import * as d3 from "d3";
 import * as d3Scale from "d3-scale";
+import { reduce } from 'rxjs/operator/reduce';
 
 /**
  * Generated class for the EmpilhadasComponent component.
@@ -239,8 +240,12 @@ export class EmpilhadasComponent {
     return Math.abs(d[0] - d[1])
   }
 
-  getRectColor(color, i){
-    return this.colors.cadeias[this.parameters.cad].gradient[5-i];
+  getRectColor(color, i, d){
+
+    if(d.data.ano == this.parameters.ano && this.dadosProvider.getDegId(0, color) == this.parameters.subdeg)
+      return this.colors.eixo['1'].color['1'];
+
+    return this.colors.deg[this.parameters.deg].subdeg[color];
   }
 
   empilhadaClick(deg, d)

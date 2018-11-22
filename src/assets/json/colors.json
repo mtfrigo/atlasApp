@@ -472,7 +472,7 @@
 			"name": "Porte",
 			"color": "#071342",
 			"subdeg": {
-				"Micro": "rgb(109, 191, 201)",
+				"Micro": "blue",
 				"Pequeno": "green",
 				"Pequena": "green",
 				"Média": "black",

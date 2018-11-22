@@ -29,7 +29,7 @@
             [attr.height]='getRectHeight(d)'
             [attr.width]='x.bandwidth()'
             [attr.data]=d.valor
-            [attr.fill]='getRectColor(deg.key, i)'
+            [attr.fill]='getRectColor(deg.key, i, d)'
             (click)="empilhadaClick(deg, d)"
           >
           </rect>

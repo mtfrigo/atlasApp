@@ -156,7 +156,12 @@ export class HomePage implements OnInit{
     let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
 
     if(this.parameters.eixo == 1){
-      
+
+
+      this.parameters.deg = 0;
+      this.parameters.subdeg = 0;
+      this.pre_desags = 0;
+
       if(ocp_default[this.parameters.var] == 0){
         this.parameters.slc = 0;
       }
@@ -315,8 +320,6 @@ export class HomePage implements OnInit{
     this.parameters.prc = 0;
     this.parameters.mundo = 0;
     this.parameters.chg = 0;
-    this.parameters.deg = 0;
-    this.parameters.subdeg = 0;
     this.parameters.mec = 0;
     this.parameters.mod = 0;
   }
