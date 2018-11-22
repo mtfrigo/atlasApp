@@ -193,7 +193,7 @@ export class BarrasComponent implements OnChanges{
   {
     return this.dadosProvider.formatData(d3Scale.scaleLinear()
       .domain(d3.extent(this.yTicksArray))
-      .range([this.minValue, this.maxValue])(i));
+      .range([this.minValue, this.maxValue])(i), this.parameters);
   }
 
   getTickY(d, i){
@@ -201,11 +201,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   getTickX(d, i){
-
-    console.log("opioioi")
-
-
-
     if(this.seriePorSetor(d))
       return 'translate('+ this.x(d.id) +', '+ this.barsHeight +')';
     else

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { JsonsProvider } from '../jsons/jsons';
 
 /*
   Generated class for the DadosProvider provider.
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
 export class DadosProvider {
 
   globalData: any;
-
+  pt_br : any;
   private totalSetorUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_setor.php?";
   private totalDegUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_desag.php?";
   private totalBrasilUrl : string = "http://www.ufrgs.br/obec/atlas/api/total_brasil.php?";
@@ -21,7 +22,8 @@ export class DadosProvider {
 
 
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,            
+              private jsonsProvider: JsonsProvider) {
 
     this.globalData = {};
 
@@ -45,6 +47,11 @@ export class DadosProvider {
     this.globalData['mapa-mundi'] = {};
     this.globalData['mapa-mundi']['valor'] = 0;
     this.globalData['mapa-mundi']['percentual'] = 0;
+
+    jsonsProvider.getPTBR()
+      .subscribe(d => {
+        this.pt_br = d;
+      })
 
   }
 
@@ -524,12 +531,12 @@ export class DadosProvider {
     return false;
   }
 
-  formatData(value)
+  formatData(value, parameters)
   {
-    if(value > 1 || value == 0)
+    if(Math.abs(value) > 1 || value == 0)
       return this.formatNumber(value);
     else
-      return this.formatDecimal(value);
+      return this.formatDecimal(value, parameters);
 
   }
 
@@ -562,19 +569,27 @@ export class DadosProvider {
     return;
   }
 
-  formatDecimal(value)
+  formatDecimal(value, parameters)
   {
 
-    if(value < 0.1)
-      value = (value*1000).toFixed(2) + "m";
-    else if(value < 0.0001)
-      value = (value * 1000 * 1000).toFixed(2) + "u";
-    else if(value < 0.0000001)
-      value = (value *1000 * 1000 * 1000).toFixed(2) + "p";
-    else
-      value = value.toFixed(2);
+    let var_data = this.pt_br.var[parameters.eixo].filter( d => {
+      if(d.id == parameters.var) return d;
+    })[0];
 
-    return value;
+    let sufixo = var_data.sufixo_valor;
+    let prefixo= var_data.prefixo_valor;
+    if(sufixo == '%')
+      value = (value*100).toFixed(2);
+    else if(value < 0.0000001)
+      value = (value *10^9).toFixed(2) + "p";
+    else if(value < 0.0001)
+      value = (value * 10^6).toFixed(2) + "u";
+    else if(value < 0.01)
+      value = (value*10^3).toFixed(2) + "m";
+    else 
+      value = (value).toFixed(2);
+    
+    return prefixo+String(value)+sufixo;
   }
 
 descDesag(parameters, desc, deg)
