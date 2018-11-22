@@ -177,7 +177,7 @@ export class LinhasComponent {
     return "translate(" + (this.margin.left+5) + "," + (this.margin.top+5) + ")";
   }
 
-  getLineColor(d, i){
+  getLineColor(d, i : number){
 
     if(this.colors)
     {

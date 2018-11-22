@@ -137,7 +137,9 @@ export class MapaComponent {
     })
     this.info = info;
 
-    this.legend_data = [String(this.dadosProvider.formatData(this.minValue)), String(this.dadosProvider.formatData(0.5*(this.maxValue+this.minValue))), String(this.dadosProvider.formatData(this.maxValue))];
+    this.legend_data = [String(this.dadosProvider.formatData(this.minValue, this.parameters)), 
+                        String(this.dadosProvider.formatData(0.5*(this.maxValue+this.minValue), this.parameters)), 
+                        String(this.dadosProvider.formatData(this.maxValue, this.parameters))];
 
     if(this.colors)
     this.colorScale = d3.scaleLinear()

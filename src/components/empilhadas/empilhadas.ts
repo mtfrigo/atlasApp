@@ -201,9 +201,6 @@ export class EmpilhadasComponent {
 
   }
 
-  teste(d){
-    console.log(d)
-  }
 
   getBarsTransform()
   {

@@ -163,8 +163,6 @@ export class DadosComponent {
 
   formatDescValue(box, valores)
   {
-    //var prefix = this.pt_br.var[this.parameters.eixo][this.parameters.var-1]['prefixo_valor'];
-   // var suffix = this.pt_br.var[this.parameters.eixo][this.parameters.var-1]['sufixo_valor']
 
     let parameters = this.parameters;
     function filterByID(obj) {
