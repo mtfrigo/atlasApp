@@ -571,21 +571,21 @@ export class DadosProvider {
 
   formatDecimal(value, parameters)
   {
+
     let var_data = this.pt_br.var[parameters.eixo].filter( d => {
       if(d.id == parameters.var) return d;
-    })
+    })[0];
 
     let sufixo = var_data.sufixo_valor;
     let prefixo= var_data.prefixo_valor;
-
-    if(value < 0.0000001)
+    if(sufixo == '%')
+      value = (value*100).toFixed(2);
+    else if(value < 0.0000001)
       value = (value *10^9).toFixed(2) + "p";
     else if(value < 0.0001)
       value = (value * 10^6).toFixed(2) + "u";
     else if(value < 0.01)
       value = (value*10^3).toFixed(2) + "m";
-    else if(sufixo == '%')
-      value = (value*100).toFixed(2);
     else 
       value = (value).toFixed(2);
     
