@@ -201,11 +201,6 @@ export class BarrasComponent implements OnChanges{
   }
 
   getTickX(d, i){
-
-    console.log("opioioi")
-
-
-
     if(this.seriePorSetor(d))
       return 'translate('+ this.x(d.id) +', '+ this.barsHeight +')';
     else
