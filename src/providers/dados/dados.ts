@@ -406,6 +406,39 @@ export class DadosProvider {
       case "PEQUENA" : return 2;
       case "MÉDIA": return 3;
       case "GRANDE" : return 4;
+
+      case "MASCULINO" : return 1;
+      case "FEMININO" : return 2;
+
+      case "10 A 17" : return 1;
+      case "18 A 29" : return 2;
+      case "30 A 49" : return 3;
+      case "50 A 64" : return 4;
+      case "65 OU MAIS" : return 5;
+
+      case "SEM INSTRUÇÃO" : return 1;
+      case "FUNDAMENTAL INCOMPLETO" : return 2;
+      case "FUNDAMENTAL COMPLETO" : return 3;
+      case "MÉDIO COMPLETO" : return 4;
+      case "SUPERIOR INCOMPLETO" : return 5;
+      case "SUPERIOR COMPLETO" : return 6;
+
+      case "INDÍGENA" : return 1;
+      case "BRANCA" : return 2;
+      case "PRETA" : return 3;
+      case "AMARELA" : return 4;
+      case "PARDA" : return 5;
+
+      case "INFORMAL" : return 2;
+      case "FORMAL" : return 1;
+
+      case "NÃO CONTRIBUINTE" : return 2;
+      case "CONTRIBUINTE" : return 1;
+
+      case "MEMBRO" : return 1;
+      case "NÃO MEMBRO" : return 2;
+
+      default: return 0;
     }
   }
 

@@ -19,7 +19,7 @@ import * as d3Scale from "d3-scale";
 })
 export class EmpilhadasComponent {
 
-  width  : number = window.innerWidth*0.8;
+  width  : number = window.innerWidth*1;
   height : number = window.innerHeight*0.4;
 
   @Input() parameters : any;
@@ -35,7 +35,7 @@ export class EmpilhadasComponent {
   yTicksArray: number[];
   yTicksScale: any;
 
-  margin = {top: 0, right: 5, bottom: 30, left: window.innerWidth*0.05};
+  margin = {top: 0, right: window.innerWidth*0.15, bottom: 30, left: window.innerWidth*0.15};
 
   x: any;
   y: any;
@@ -238,6 +238,16 @@ export class EmpilhadasComponent {
 
   getRectColor(color, i){
     return this.colors.cadeias[this.parameters.cad].gradient[5-i];
+  }
+
+  empilhadaClick(deg, d)
+  {
+    this.parameters.ano = d.data.ano;
+    //this.parameters.subdeg = i;
+
+    this.parameters.subdeg = this.dadosProvider.getDegId(0, deg.key);
+
+    console.log(deg.key, this.dadosProvider.getDegId(0, deg.key))
   }
 
 }
