@@ -240,12 +240,12 @@ export class LinhasComponent {
       }
       else if(this.parameters["eixo"] == 1 && this.parameters["ocp"] > 0 && this.parameters["deg"] == 0)
       {
-        if(i == 0)
+        if(d == "Relacionadas")
         {
           return this.colors.ocupacoes["Relacionadas"].color;
         }
 
-        else if(i == 1)
+        else if(d == "Culturais")
         {
           return this.colors.ocupacoes["Culturais"].color;
 
