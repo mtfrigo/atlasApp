@@ -33,7 +33,10 @@ import { TreemapRegionProvider } from '../providers/treemap-region/treemap-regio
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsPlacement: 'top',
+      backButtonText: ' '
+    }),
     ComponentsModule,
     HttpClientModule,
     FormsModule,
