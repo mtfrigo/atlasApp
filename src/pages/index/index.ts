@@ -33,13 +33,13 @@ export class IndexPage {
     if(d.name == 'Atlas')
     {
       this.navCtrl.push(SobrePage, {
-        data: d
+        data: d,
       });
     }
     else
     {
       this.navCtrl.push(HomePage, {
-        data: d
+        data: d,
       });
     }
   }

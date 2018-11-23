@@ -1,7 +1,15 @@
 page-home {
   height: 100%;
 
-  #menu-container .item-ios{
+  #menu .item-ios{
+    background-color: inherit;
+  }
+  .toolbar-ios-eixo2 .toolbar-title-ios, .toolbar-ios-eixo2 .bar-button-clear-ios, .toolbar-ios-eixo2 .bar-button-default-io{
+    font-size: 1.2rem;
+    text-overflow: clip;
+  }
+
+  #menu-options .item-ios{
     background-color: #DDDEDE;
   }
 
@@ -74,10 +82,9 @@ page-home {
 #menu-container{
 
   padding: 4px 3px 5px 3px;
-  position: absolute;
-  z-index: 2;
   width: 100%;
-  margin: 70px auto 0 auto;
+  z-index: 2;
+  position: absolute;
 }
 
 #menu-container #menu{
@@ -87,6 +94,15 @@ page-home {
   border: 1px solid rgba(187, 187, 187, 0.384);
   border-radius: 10px;
   opacity: 0.7;
+}
+
+#menu-options{
+
+  background-color: #DDDEDE;
+  padding-bottom: 20px;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
 #menu-container .label-md{
@@ -150,10 +166,7 @@ page-home {
   padding-left: 0;
 }
 
-#menu-options{
-  background-color: #DDDEDE;
-  padding-bottom: 20px;
-}
+
 
 #menu-options .item-md.item-block .item-inner{
   border-bottom: none;
