@@ -33,8 +33,15 @@ page-home {
   color: #ffffff;
 }
 .teste{
-  width: 40px;
+  width: 30px;
   height: 20px;
+}
+.segment-ios .segment-button:last-of-type{
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  margin: 0 10px;
+  border-left-width: 1px;
 }
 .toolbar-title-md {
   padding: 0 12px;
@@ -51,9 +58,12 @@ page-home {
 .swiper-wrapper{
 }
 
+.segment-ios .segment-button {
+  width: 16px;
+}
+
 .segment-btn{
   width: 8px;
-
 }
 
 .segment-md .segment-button{
@@ -75,9 +85,7 @@ page-home {
   width: 8px;
 }
 
-#segment-container .segment{
-  width: 2px;
-}
+
 
 #menu-container{
 
