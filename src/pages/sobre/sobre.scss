@@ -1,11 +1,19 @@
-page-sobre .bar-button-default-md, page-sobre .toolbar-title-md{
 
-  color: white;
+page-sobre{
+  .toolbar-background-ios{
+    background: inherit;
+  }
 
-}
+  .bar-button-default-md, page-sobre .toolbar-title-md{
 
-page-sobre .toolbar-md{
-  min-height: 80px;
+    color: white;
+
+  }
+
+  .toolbar-md{
+    min-height: 80px;
+  }
+
 }
 
 page-sobre .header-img{
