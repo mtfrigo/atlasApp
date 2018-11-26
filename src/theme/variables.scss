@@ -13,6 +13,10 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
+@import "./eixo1";
+@import "./eixo2";
+@import "./eixo3";
+@import "./eixo4";
 
 
 // Shared Variables
@@ -45,7 +49,10 @@ $colors: (
   eixo4: #003F33,
   back_color: red,
   antigo: #E9F2ED,
+  eixo: #488aff
 );
+
+
 
 
 // App iOS Variables

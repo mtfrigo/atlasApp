@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events, Platform } from 'ionic-angular';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import { DadosProvider } from '../../providers/dados/dados';
 import { ObserveOnMessage } from 'rxjs/operators/observeOn';
@@ -89,11 +89,26 @@ export class HomePage implements OnInit{
     {"name": "Oceania", "value": 5}
   ]
 
+  theme:String = 'index';
+
   constructor(public navCtrl: NavController,
     private jsonsProvider : JsonsProvider,
     private dadosProvider : DadosProvider,
-    public navParams : NavParams) {
+    public navParams : NavParams,
+    public events : Events,
+    public platform: Platform) {
+
       this.info_eixo = navParams.get('data');
+
+      switch(this.info_eixo.value)
+      {
+        case 0: this.theme = 'eixo1'; break;
+        case 1: this.theme = 'eixo2'; break;
+        case 2: this.theme = 'eixo3'; break;
+        case 3: this.theme = 'eixo4'; break;
+      }
+
+
       this.parameters.eixo = this.info_eixo.value;
       if(this.parameters.eixo == 3){
         this.parameters.slc = 1;

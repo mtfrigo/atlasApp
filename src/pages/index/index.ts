@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { SobrePage } from '../sobre/sobre';
 
@@ -16,6 +16,8 @@ import { SobrePage } from '../sobre/sobre';
   templateUrl: 'index.html',
 })
 export class IndexPage {
+
+
   private eixos = [
     {'name': "Atlas", 'value': -1, 'color': "#ccc"},
     {'name': "EMPREENDIMENTOS \n CULTURAIS", 'value': 0, 'color': '#efc851', 'ioncolor': 'eixo1'},
@@ -23,13 +25,18 @@ export class IndexPage {
     {'name': "POLÍTICAS \n PÚBLICAS", 'value': 2, 'color': '#00916D', 'ioncolor': 'eixo3'},
     {'name': "COMÉRCIO \n INTERNACIONAL", 'value': 3, 'color': '#003F33', 'ioncolor': 'eixo4'}
   ]
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public event: Events) {
+
   }
+
 
   ionViewDidLoad() {
   }
 
   goToOtherPage(d){
+
     if(d.name == 'Atlas')
     {
       this.navCtrl.push(SobrePage, {
@@ -38,6 +45,7 @@ export class IndexPage {
     }
     else
     {
+
       this.navCtrl.push(HomePage, {
         data: d,
       });

@@ -1,3 +1,5 @@
+
+
 <ion-header>
   <ion-navbar color="{{info_eixo.ioncolor}}">
     <ion-title>
@@ -8,7 +10,7 @@
 
 
 
-<ion-content  style="background-color: ffffff;">
+<ion-content  [class]='theme' style="background-color: ffffff;">
 
   <div id='menu-container' >
 
@@ -194,7 +196,7 @@
 </ion-content>
 
 
-<ion-footer no-border style='height: 30px; margin-top: 0; padding-top: 0; '>
+<ion-footer [class]='theme' no-border style='height: 30px; margin-top: 0; padding-top: 0; '>
   <ion-toolbar style='height: 30px; margin-top: 0; padding-top: 0'>
     <div id='segment-container' style='height: 60px; margin-top: 0; padding-top: 0'>
       <ion-segment [(ngModel)]="view" color="primary" style='height: 40px; margin-top: 0; padding-top: 0'>
@@ -202,12 +204,15 @@
         <div class='seg-btn-ctn'>
           <ion-segment-button value="0" class='segment-btn' (ionSelect)="segmentChanged(slides, 0)"></ion-segment-button>
         </div>
+
         <div class='seg-btn-ctn'>
           <ion-segment-button value="1" class='segment-btn' (ionSelect)="segmentChanged(slides, 1)"></ion-segment-button>
         </div>
+
         <div class='seg-btn-ctn'>
-          <ion-segment-button value="2" class='segment-btn' (ionSelect)="segmentChanged(slides, 2)"></ion-segment-button>
+          <ion-segment-button value="2" class='segment-btn'  (ionSelect)="segmentChanged(slides, 2)"></ion-segment-button>
         </div>
+
       </ion-segment>
     </div>
   </ion-toolbar>
