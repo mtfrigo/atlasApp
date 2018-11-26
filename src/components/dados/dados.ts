@@ -297,7 +297,7 @@ export class DadosComponent {
           else if(this.dadosProvider.isIHHorC4(this.parameters))
             return this.formatNumber(valores.uos2);
           else
-              return this.formatDecimal(valores.percentual, 2)+"%";
+            return this.formatDecimal(valores.percentual, 2)+"%";
 
 
         case 2:

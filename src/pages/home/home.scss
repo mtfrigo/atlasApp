@@ -37,11 +37,6 @@ page-home {
     color: #ffffff;
   }
 
-  .teste{
-    width: 30px;
-    height: 20px;
-  }
-
   .segment-ios .segment-button:last-of-type{
     border-radius: 50%;
     width: 15px;
@@ -237,6 +232,15 @@ page-home {
 
   button.opt{
     color: #FFF;
+  }
+
+  .btn-view{
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  button.full-width{
+    width: 100%;
   }
 
   #views{

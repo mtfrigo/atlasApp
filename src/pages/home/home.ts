@@ -455,16 +455,8 @@ export class HomePage implements OnInit{
 
   hasTreemapRegion(){
     if(this.parameters.eixo == 0){
-      switch(this.parameters.var){
-        case 1: ;
-        case 2: ;
-        case 3: ;
-        case 4: ;
-        case 5: return true;
-      }
-    }
-
-    return false;
+       return true;
+    } else return false;
 
   }
 
