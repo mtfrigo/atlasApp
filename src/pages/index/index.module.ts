@@ -1,7 +1,6 @@
 
 
 import { NgModule } from '@angular/core';
-import { FormsModule }  from '@angular/forms';
 import { IndexPage } from './index';
 
 import { IonicPageModule } from 'ionic-angular';

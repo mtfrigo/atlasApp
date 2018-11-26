@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import { NavController, NavParams, Events, Platform } from 'ionic-angular';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import { DadosProvider } from '../../providers/dados/dados';
-import { ObserveOnMessage } from 'rxjs/operators/observeOn';
 import { BehaviorSubject } from 'rxjs';
 import { Slides } from 'ionic-angular';
 
@@ -18,10 +17,10 @@ export class HomePage implements OnInit{
   public pt_br : any = [];
   private anos : number[];
   private pre_desags : number = 0;
-  private select_desags : any = [];
+  protected select_desags : any = [];
   private desags : any = [];
-  private cads : any[];
-  private ready_pt_br : boolean = false;
+  protected cads : any[];
+  protected ready_pt_br : boolean = false;
   private info_eixo = {'value': 0, 'name': '', 'color': '#fff', 'ioncolor': 'eixo1'};
   data: any;
   i = 0;

@@ -4,7 +4,6 @@ import { TreemapProvider } from '../../providers/treemap/treemap';
 import { Treemap } from '../../interfaces/treemap';
 import { HierarchyRectangularNode } from 'd3';
 import { JsonsProvider } from '../../providers/jsons/jsons';
-import { DadosProvider } from '../../providers/dados/dados';
 /**
  * Generated class for the TreemapComponent component.
  *
@@ -25,12 +24,12 @@ export class TreemapComponent implements OnChanges{
 
   @Output() dadoGlobal = new EventEmitter();
 
-  private ready = false;
+  protected ready = false;
   private data : Treemap[] = [];
-  private subtitles_1 : Treemap[] = [];
-  private subtitles_2 : Treemap[] = [];
+  protected subtitles_1 : Treemap[] = [];
+  protected subtitles_2 : Treemap[] = [];
   private colors;
-  private treemapData : HierarchyRectangularNode<{}>;
+  protected treemapData : HierarchyRectangularNode<{}>;
   private fontSizeStd : number = 20;
   private titleSize : number = 8;
 
@@ -41,8 +40,7 @@ export class TreemapComponent implements OnChanges{
         .paddingInner(1);
 
   constructor(private treemapProvider : TreemapProvider,
-              private jsonsProvider: JsonsProvider,
-              private dadosProvider: DadosProvider) {
+              private jsonsProvider: JsonsProvider) {
               }
 
   ngOnInit() {

@@ -23,10 +23,10 @@ export class DonutComponent implements OnChanges{
   @Input() url : string;
 
   private radius : number = Math.min(this.width, this.height)/2;
-  private svg;
+  protected svg;
   private data : any[] = [];
   private colors : any ;
-  private center : string = `translate(${this.width/2}, ${this.height/2})`;
+  protected center : string = `translate(${this.width/2}, ${this.height/2})`;
   private data_end = []
 
   arc =
@@ -69,7 +69,7 @@ export class DonutComponent implements OnChanges{
   selectTyp(d){
     if(this.parameters.eixo == 3){
       this.parameters.typ = Number(d.data.id);
-    }    
+    }
   }
 
   getColor(tipo : string) {

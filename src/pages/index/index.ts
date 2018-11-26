@@ -18,7 +18,7 @@ import { SobrePage } from '../sobre/sobre';
 export class IndexPage {
 
 
-  private eixos = [
+  protected eixos = [
     {'name': "Atlas", 'value': -1, 'color': "#ccc"},
     {'name': "EMPREENDIMENTOS \n CULTURAIS", 'value': 0, 'color': '#efc851', 'ioncolor': 'eixo1'},
     {'name': "MERCADO DE \n TRABALHO", 'value': 1, 'color': '#97BE13', 'ioncolor': 'eixo2'},

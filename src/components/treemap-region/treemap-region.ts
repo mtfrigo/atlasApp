@@ -20,10 +20,10 @@ export class TreemapRegionComponent implements OnChanges{
   height : number = window.innerHeight*0.25;
   @Input() url : string;
   @Input() parameters : any;
-  private ready = false;
+  protected ready = false;
   private data : Treemap[] = [];
   private colors;
-  private treemapData : HierarchyRectangularNode<{}>;
+  protected treemapData : HierarchyRectangularNode<{}>;
   private fontSizeStd : number = 20;
   private titleSize : number = 8;
 
