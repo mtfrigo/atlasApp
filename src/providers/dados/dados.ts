@@ -547,7 +547,6 @@ export class DadosProvider {
     if(value.toString().includes(".")){
       value = value.toFixed(2).toString().replace(".",",");
     }
-
     value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
     let splitedValue = value.split(",");
@@ -556,7 +555,7 @@ export class DadosProvider {
 
     switch(integerPart.length)
     {
-      case 1: return integerPart[0];
+      case 1: return value;
 
       case 2: return integerPart[0] + "," + integerPart[1] + "K";
 
