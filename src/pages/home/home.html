@@ -173,10 +173,10 @@
         </ion-col>
 
       </ion-row>
-
-      <button ion-button round small [disabled]="disableButton()" *ngIf="hasConsumo()" class="opt" color="eixo4" (click)="updateMundo($event)">{{viewButton()}}</button>
-      <button ion-button round small [disabled]="disableButton()" *ngIf="hasTreemapRegion()" class="opt" color="eixo1" (click)="changeView($event)">{{viewButton()}}</button>
-
+      <ion-row class="btn-view">
+        <button ion-button round small [disabled]="disableButton()" *ngIf="hasConsumo()" class="opt full-width" color="eixo4" (click)="updateMundo($event)">{{viewButton()}}</button>
+        <button ion-button round small [disabled]="disableButton()" *ngIf="hasTreemapRegion()" class="opt full-width" color="eixo1" (click)="changeView($event)">{{viewButton()}}</button>
+      </ion-row>
       <ion-row id='dados'>
         <ion-col col-12>
             <ion-item text-wrap  style="background-color: #ffffff; " >
