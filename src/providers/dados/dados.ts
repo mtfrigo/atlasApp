@@ -22,7 +22,7 @@ export class DadosProvider {
 
 
 
-  constructor(public http: HttpClient,            
+  constructor(public http: HttpClient,
               private jsonsProvider: JsonsProvider) {
 
     this.globalData = {};
@@ -48,7 +48,7 @@ export class DadosProvider {
     this.globalData['mapa-mundi']['valor'] = 0;
     this.globalData['mapa-mundi']['percentual'] = 0;
 
-    jsonsProvider.getPTBR()
+    this.jsonsProvider.getPTBR()
       .subscribe(d => {
         this.pt_br = d;
       })
@@ -550,7 +550,7 @@ export class DadosProvider {
     value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
     let splitedValue = value.split(",");
-    let decimalPart = splitedValue[1];
+    //let decimalPart = splitedValue[1];
     let integerPart = splitedValue[0].split(".");
 
     switch(integerPart.length)
@@ -585,9 +585,9 @@ export class DadosProvider {
       value = (value * 10^6).toFixed(2) + "u";
     else if(value < 0.01)
       value = (value*10^3).toFixed(2) + "m";
-    else 
+    else
       value = (value).toFixed(2);
-    
+
     return prefixo+String(value)+sufixo;
   }
 

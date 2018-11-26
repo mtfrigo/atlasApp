@@ -283,16 +283,6 @@ export class LinhasComponent {
 
     this.data = this.parseData(this.new_data);
 
-    //let i = 0;
-/*
-    let animation = setInterval(d => {
-      this.data = d3.interpolate(this.data, this.new_data)(i);
-      if (i >= 1){
-        clearInterval(animation)
-      }
-    i  = i + 0.1;
-    }, 30)*/
-
     this.initAxis();
 
   }

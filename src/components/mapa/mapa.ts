@@ -8,7 +8,6 @@ import * as t from "topojson-client";
 
 import { MapaProvider } from '../../providers/mapa/mapa';
 import { JsonsProvider } from '../../providers/jsons/jsons';
-import { color } from 'd3';
 import { DadosProvider } from '../../providers/dados/dados';
 
 
@@ -137,8 +136,8 @@ export class MapaComponent {
     })
     this.info = info;
 
-    this.legend_data = [String(this.dadosProvider.formatData(this.minValue, this.parameters)), 
-                        String(this.dadosProvider.formatData(0.5*(this.maxValue+this.minValue), this.parameters)), 
+    this.legend_data = [String(this.dadosProvider.formatData(this.minValue, this.parameters)),
+                        String(this.dadosProvider.formatData(0.5*(this.maxValue+this.minValue), this.parameters)),
                         String(this.dadosProvider.formatData(this.maxValue, this.parameters))];
 
     if(this.colors)

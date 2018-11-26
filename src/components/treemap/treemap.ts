@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import * as d3 from 'd3';
 import { TreemapProvider } from '../../providers/treemap/treemap';
 import { Treemap } from '../../interfaces/treemap';
@@ -78,7 +78,7 @@ export class TreemapComponent implements OnChanges{
   }
 
   getColorCadeia(d){
-    
+
     return this.colors != undefined ? this.colors.cadeias[d.parent.data.colorId].color : 'black'
   }
 

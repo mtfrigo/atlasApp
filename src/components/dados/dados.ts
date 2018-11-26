@@ -1,12 +1,10 @@
-import { Component, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import { DadosProvider } from '../../providers/dados/dados';
 import { Observable } from 'rxjs';
-import { count } from 'rxjs/operators';
-
 /**
  * Generated class for the DadosComponent component.
  *

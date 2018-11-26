@@ -2,7 +2,6 @@ import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angu
 import { MapaMundiProvider } from '../../providers/mapa-mundi/mapa-mundi';
 import { JsonsProvider } from '../../providers/jsons/jsons';
 import * as d3  from 'd3';
-import { DadosProvider } from '../../providers/dados/dados';
 /**
  * Generated class for the MapaMundiComponent component.
  *
@@ -79,7 +78,7 @@ export class MapaMundiComponent implements OnInit, OnChanges{
       if(this.parameters.prc != 0){
         percent = this.gdpAux[this.unconvertCode(this.parameters.prc)]/mundo_valor;
       }
-      
+
       this.dadoGlobal.emit({view: 'mapa-mundi', percentual: percent});
 
     })

@@ -1,10 +1,9 @@
-import { Component, Input, OnChanges, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import * as d3 from 'd3';
 import { TreemapRegionProvider } from '../../providers/treemap-region/treemap-region';
 import { Treemap } from '../../interfaces/treemap';
 import { HierarchyRectangularNode } from 'd3';
 import { JsonsProvider } from '../../providers/jsons/jsons';
-import { DadosProvider } from '../../providers/dados/dados';
 
 /**
  * Generated class for the TreemapRegionComponent component.

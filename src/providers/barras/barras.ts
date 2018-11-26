@@ -9,11 +9,6 @@ import { Observable } from 'rxjs';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-const options = {
-  'headers': new HttpHeaders({
-    'Access-Control-Allow-Origin': '*'
-  })
-}
 
 
 @Injectable()

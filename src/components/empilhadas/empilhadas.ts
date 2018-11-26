@@ -6,7 +6,6 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import * as d3 from "d3";
 import * as d3Scale from "d3-scale";
-import { reduce } from 'rxjs/operator/reduce';
 
 /**
  * Generated class for the EmpilhadasComponent component.
