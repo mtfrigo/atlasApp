@@ -1,50 +1,54 @@
-dados {
+view-dados {
+  #dados-container{
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .dado{
+      display:flex;
+      width: 50%;
+      margin: 10px 0;
+      flex-flow: column;
+      align-content: center;
+
+    }
+
+    .dado-valor{
+      text-align: center;
+      font-size: 12;
+      font-size: 5vw;
+
+      color: #6DBFC9;
+      white-space: nowrap
+    }
+
+    .dado:nth-child(even) {
+      padding: 0 0 0 2px;
+    }
+
+    .dado:nth-child(odd) {
+      padding: 0 2px 0 0;
+    }
+
+    .dado-desc{
+      font-size: 9px;
+      padding: 2px 1px;
+      text-align: center;
+      font-weight: 500;
+      color: #bbb;
+      letter-spacing: 1px;
+
+    }
+
+  }
+
+
 
 }
 
-#dados-container{
 
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: auto;
-  flex-wrap: wrap;
-  justify-content: space-around;
 
-}
-
-#dados-container .dado{
-  display:flex;
-  width: 50%;
-  margin: 10px 0;
-  flex-flow: column;
-  align-content: center;
-
-}
-
-#dados-container .dado-valor{
-  text-align: center;
-  font-size: 12;
-  font-size: 5vw;
-
-  color: #6DBFC9;
-  white-space: nowrap
-}
-
-#dados-container .dado:nth-child(even) {
-  padding: 0 0 0 2px;
-}
-
-#dados-container .dado:nth-child(odd) {
-  padding: 0 2px 0 0;
-}
-
-#dados-container .dado-desc{
-  font-size: 9px;
-  padding: 2px 1px;
-  text-align: center;
-  font-weight: 500;
-  color: #bbb;
-  letter-spacing: 1px;
-
-}
