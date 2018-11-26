@@ -63,8 +63,6 @@ export class LinhasComponent {
   subtitles_1: any;
   subtitles_2: any;
 
-
-
   constructor(public navCtrl: NavController, private linhasProvider: LinhasProvider, private jsonProvider: JsonsProvider) {
     this.text = 'Hello World';
 

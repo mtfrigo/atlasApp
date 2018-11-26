@@ -1,6 +1,6 @@
 <!-- Generated template for the EmpilhadasComponent component -->
 <div *ngIf='data.length && dataset && x && y && colors'>
-<svg [attr.width]="width" [attr.height]="height">
+  <svg [attr.width]="width" [attr.height]="height">
     <g [attr.width]="barsWidth" [attr.height]="barsHeight" [attr.transform]="getBarsTransform()">
 
         <g class='grid'>
@@ -87,6 +87,23 @@
         </g>
 
     </g>
-</svg>
+  </svg>
+
+  <ion-row style=" height: 50px; overflow: auto">
+
+    <ion-col style="max-width: 50%; height: 100%;">
+      <div *ngFor="let d of subtitles_1" class='subtitle'>
+        <div [ngStyle]="getSubtitleStyle(d)"></div>
+        <div class="subtitle-text"><p>{{d}}</p></div>
+      </div>
+    </ion-col>
+    <ion-col style="max-width: 50%; min-height: 100%;">
+      <div *ngFor="let d of subtitles_2" class='subtitle'>
+        <div [ngStyle]="getSubtitleStyle(d)"></div>
+        <div class="subtitle-text"><p>{{d}}</p></div>
+      </div>
+    </ion-col>
+
+  </ion-row>
 </div>
 

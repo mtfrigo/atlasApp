@@ -21,7 +21,7 @@ import { reduce } from 'rxjs/operator/reduce';
 export class EmpilhadasComponent {
 
   width  : number = window.innerWidth*1;
-  height : number = window.innerHeight*0.4;
+  height : number = window.innerHeight*0.35;
 
   @Input() parameters : any;
   @Input() url : string;
@@ -67,6 +67,9 @@ export class EmpilhadasComponent {
   index = true;
   first_year: any;
   dataset: any;
+
+  subtitles_1: any;
+  subtitles_2: any;
 
   constructor(public navCtrl: NavController, private empilhadasProvider: EmpilhadasProvider, private dadosProvider: DadosProvider,private jsonsProvider: JsonsProvider) {
     this.view_title = 'Histograma empilhado'
@@ -119,6 +122,15 @@ export class EmpilhadasComponent {
   parseData(){
     this.anos = this.data.map( d => d.ano);
     this.ids = Object.keys(this.data[0].valores);
+
+    this.subtitles_1 = this.ids
+                        .filter((d, i) => {
+                          if(i < Math.floor(this.ids.length / 2)) return d;
+                        });
+    this.subtitles_2 = this.ids
+                        .filter((d, i) => {
+                          if(i >= Math.floor(this.ids.length / 2)) return d;
+                        });
 
     this.values = [];
     var valuesByDeg = {};
@@ -248,11 +260,19 @@ export class EmpilhadasComponent {
   empilhadaClick(deg, d)
   {
     this.parameters.ano = d.data.ano;
-    //this.parameters.subdeg = i;
 
     this.parameters.subdeg = this.dadosProvider.getDegId(0, deg.key);
 
-    console.log(deg.key, this.dadosProvider.getDegId(0, deg.key))
+  }
+
+  getSubtitleStyle(d){
+
+    return {
+      'background-color': this.colors.deg[this.parameters.deg].subdeg[d],
+      'width': '10px',
+      'height': '10px',
+      'margin-top': '3px'
+    }
   }
 
 }
