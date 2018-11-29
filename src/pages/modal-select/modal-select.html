@@ -17,8 +17,11 @@
   <ion-row>
     <ion-col>
       <ion-list *ngIf="!group">
-        <ion-item *ngFor="let item of items" (click)="dismiss(item)">
-          {{item.name}}
+        <ion-item *ngFor="let item of items"  (click)="dismiss(item)">
+          <div [class]="isSelected(item.id)">
+              {{item.name}}
+          </div>
+          
         </ion-item>
       </ion-list>
 
@@ -26,7 +29,9 @@
         <ion-list *ngFor="let group of teste_group; index as i">
           <ion-label>{{group.name}}</ion-label>
           <ion-item *ngFor="let item of teste_desags[i]" (click)="dismiss({'group': group, 'item': item})">
-              {{item.name}}
+              <div [class]="isSelected(item.id)">
+                  {{item.name}}
+              </div>
           </ion-item>
         </ion-list>
         

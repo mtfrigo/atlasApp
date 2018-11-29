@@ -15,6 +15,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class ModalSelectPage {
   group = false;
+  selected : number;
   items;
   teste_group;
   title = "";
@@ -26,6 +27,8 @@ export class ModalSelectPage {
     this.items = this.navParams.get('items');
     this.group = this.navParams.get('group');
     this.title = this.navParams.get('title');
+    this.selected = this.navParams.get('selected');
+
     
     if(this.group){
       this.teste_group = this.items.filter(d=>{
@@ -43,6 +46,11 @@ export class ModalSelectPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalSelectPage');
+  }
+
+  isSelected(id : number){
+    if(id == this.selected) return 'selected'
+    else return '';
   }
 
   dismiss(data){

@@ -30,7 +30,7 @@ export class SelectAtlasComponent implements OnInit {
   }
 
   openModal(){
-    let profileModal = this.modalCtrl.create('ModalSelectPage', {'items': this.items, 'group': this.group, 'title': this.title});
+    let profileModal = this.modalCtrl.create('ModalSelectPage', {'items': this.items, 'group': this.group, 'title': this.title, 'selected': this.default});
     profileModal.present();
 
     profileModal.onDidDismiss(data => {
