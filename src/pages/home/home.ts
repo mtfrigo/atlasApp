@@ -90,6 +90,8 @@ export class HomePage implements OnInit{
   }
 
   updateParameter(dado, parameter : string){
+    if(dado == null) return;
+
     if(parameter == 'subdeg'){
       this.parameters.deg = dado.group;
       this.parameters.subdeg = dado.item;
