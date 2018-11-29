@@ -17,7 +17,7 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 })
 export class TreemapRegionComponent implements OnChanges{
   width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.25;
+  height : number = window.innerHeight*0.4;
   @Input() url : string;
   @Input() parameters : any;
   protected ready = false;
