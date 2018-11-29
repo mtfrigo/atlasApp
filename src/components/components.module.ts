@@ -9,6 +9,7 @@ import { DadosComponent } from './dados/dados';
 import { EmpilhadasComponent } from './empilhadas/empilhadas';
 import { MapaMundiComponent } from './mapa-mundi/mapa-mundi';
 import { TreemapRegionComponent } from './treemap-region/treemap-region';
+import { SelectAtlasComponent } from './select-atlas/select-atlas';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { TreemapRegionComponent } from './treemap-region/treemap-region';
     DadosComponent,
     EmpilhadasComponent,
     MapaMundiComponent,
-    TreemapRegionComponent],
+    TreemapRegionComponent,
+    SelectAtlasComponent],
 	imports: [IonicModule],
   exports: [
     BarrasComponent,
@@ -31,6 +33,7 @@ import { TreemapRegionComponent } from './treemap-region/treemap-region';
     DadosComponent,
     EmpilhadasComponent,
     MapaMundiComponent,
-    TreemapRegionComponent]
+    TreemapRegionComponent,
+    SelectAtlasComponent]
 })
 export class ComponentsModule {}

@@ -31,6 +31,16 @@ export class HomePage implements OnInit{
   menu_color: string = "#ffffff";
   expand: boolean = false;
 
+  mecanismos = [];
+  pessoas = [];
+  portes = [];
+  classific = [];
+  consumo = [];
+  select_anos = [];
+  parceiros = [];
+  modalidades = [];
+  trab = [];
+
   private parameters = {
     'uf': 0,
     'var': 1,
@@ -51,42 +61,6 @@ export class HomePage implements OnInit{
   };
 
 
-  portes = [
-    {"name": "Escolher", "value": 0},
-    {"name": "Porte Micro", "value": 9},
-    {"name": "Porte Pequeno", "value": 10},
-    {"name": "Porte Médio", "value": 11},
-    {"name": "Porte Grande", "value": 12}
-  ]
-
-  mecanismos = [
-    {"name": "Todos", "value": 0},
-    {"name": "FNC", "value": 1},
-    {"name": "Mecenato", "value": 2},
-    {"name": "Fundo Cultural", "value": 3},
-    {"name": "Outros", "value": 4},
-  ]
-
-  pessoas = [
-    {"name": "Todos", "value": 0},
-    {"name": "Pessoa Física", "value": 1},
-    {"name": "Pessoa Jurídica", "value": 2},
-  ]
-
-  modalidades = [
-    {"name": "Todos", "value": 0},
-    {"name": "Direta", "value": 1},
-    {"name": "Indireta", "value": 2},
-  ]
-
-  parceiros = [
-    {"name": "Mundo", "value": 0},
-    {"name": "África", "value": 1},
-    {"name": "América do Norte", "value": 2},
-    {"name": "América do Sul", "value": 3},
-    {"name": "Europa", "value": 4},
-    {"name": "Oceania", "value": 5}
-  ]
 
   theme:String = 'index';
 
@@ -112,6 +86,31 @@ export class HomePage implements OnInit{
       if(this.parameters.eixo == 3){
         this.parameters.slc = 1;
       }
+
+  }
+
+  updateParameter(dado, parameter : string){
+    if(parameter == 'subdeg'){
+      this.parameters.deg = dado.group;
+      this.parameters.subdeg = dado.item;
+    } else {
+      this.parameters[parameter] = dado;
+    }
+
+    if(parameter == 'var' || parameter == 'slc'){
+      this.update(dado);
+    }
+    if(parameter == 'mec'){
+      if(this.parameters.eixo == 2 && this.hasTrabRec() ){
+        this.updateCad(dado);
+      } else {
+        this.event_mec(dado);
+      }      
+    }
+    if(parameter == 'mod'){
+      this.event_mod(dado);
+    }
+    
   }
 
   segmentChanged(slide, index){
@@ -136,8 +135,16 @@ export class HomePage implements OnInit{
     this.jsonsProvider.getPTBR()
       .subscribe( d => {
         this.pt_br = d;
-        this.ready_pt_br = true;
         this.cads = d['select']['cad'];
+        this.mecanismos = d['select']['mec'];
+        this.pessoas = d['select']['pfj'];
+        this.portes = d['select']['prt'];
+        this.classific = d['select']['classific'];
+        this.consumo = d['select']['consumo']
+        this.parceiros = d['select']['prc'];
+        this.modalidades = d['select']['mod'];
+        this.trab = d['select']['trab'];
+        this.ready_pt_br = true;
       })
 
     this.jsonsProvider.getSelectDesags()
@@ -152,6 +159,9 @@ export class HomePage implements OnInit{
       .subscribe(d => {
         this.anos = d;
         this.parameters.ano = Math.max.apply(null, this.anos[this.parameters.var][this.parameters.slc]);
+        this.select_anos = this.anos[this.parameters.var][this.parameters.slc].reverse().map(d => {
+          return {"id": Number(d), "name": String(d)}
+        })
       })
 
   }
@@ -160,7 +170,7 @@ export class HomePage implements OnInit{
     return this.dadosProvider.getGlobalData();
   }
 
-  reciverData(dadoGlobal) {
+  receiverData(dadoGlobal) {
     this.dadosProvider.setGlobalData(dadoGlobal);
     this.data.next(this.getGlobalData());
   }
@@ -204,6 +214,11 @@ export class HomePage implements OnInit{
       if(!this.hasConsumo()) this.parameters.slc = 1
     }
 
+    this.select_anos = this.anos[this.parameters.var][this.parameters.slc].reverse().map(d => {
+      return {"id": Number(d), "name": String(d)}
+    })
+
+
     if(this.parameters.eixo == 2 && this.parameters.var == 17)
     {
       let anosAux = this.anos[this.parameters.var][this.parameters.slc];
@@ -235,31 +250,31 @@ export class HomePage implements OnInit{
       if(this.parameters.var == 18)
       {
         this.cads = [
-          {"name":"Todos","value":"0"},
-          {"name":"Artes Cênicas e Espetáculos","value":"2"},
-          {"name":"Audiovisual", "value":"3"},
-          {"name":"Cultura Digital","value":"4"},
-          {"name":"Editorial","value":"5"},
-          {"name":"Educação e Criação em Artes","value":"6"},
-          {"name":"Música","value":"8"},
-          {"name":"Patrimônio","value":"9"}
+          {"name":"Todos", "id": 0},
+          {"name":"Artes Cênicas e Espetáculos", "id": 2},
+          {"name":"Audiovisual", "id":"3"},
+          {"name":"Cultura Digital", "id": 4},
+          {"name":"Editorial", "id": 5},
+          {"name":"Educação e Criação em Artes", "id": 6},
+          {"name":"Música", "id": 8},
+          {"name":"Patrimônio", "id": 9}
         ]
       }
       else if(this.parameters.var == 19)
       {
         this.cads = [
-          {"name":"Todos","value":"0"},
-          {"name":"Artes Cênicas e Espetáculos","value":"2"},
-          {"name":"Audiovisual", "value":"3"},
-          {"name":"Editorial","value":"5"},
-          {"name":"Música","value":"8"},
-          {"name":"Outros","value":"11"}
+          {"name":"Todos", "id": 0},
+          {"name":"Artes Cênicas e Espetáculos", "id": 2},
+          {"name":"Audiovisual", "id": 3},
+          {"name":"Editorial", "id": 5},
+          {"name":"Música", "id": 8},
+          {"name":"Outros", "id": 11}
         ]
       }
       else if(this.parameters.var == 15 || this.parameters.var == 16  || this.parameters.var == 10 || this.parameters.var == 17)
       {
         this.cads = [
-          {"name":"Todos","value":"0"}
+          {"name":"Todos", "id": 0}
         ]
       }
       else this.cads = this.pt_br['select']['cad'];
@@ -558,11 +573,7 @@ export class HomePage implements OnInit{
   }
 
   getOcpSelect(){
-    let ocp_data = [
-      {'name': 'Todos', 'value': 3},
-      {'name': 'Atividades Relacionadas', 'value': 1},
-      {'name': 'Cultura', 'value': 2}
-    ]
+    let ocp_data = this.pt_br['select']['ocp'];
 
     let ocp_default = { 1: 3, 2: 3, 4: 1, 5: 1, 6: 1, 7: 3, 9: 0, 11: 0, 12: 3, 13: 3, 14: 3, 15: 3 }
 
@@ -570,7 +581,7 @@ export class HomePage implements OnInit{
     return ocp_data.filter(d => {
       if(ocp_default[this.parameters.var] == 3)
         return d;
-      else if(d.value != 3) return d;
+      else if(d.id != 3) return d;
     });
 
   }
@@ -627,48 +638,48 @@ export class HomePage implements OnInit{
   selectTipos(){
     let selects = {
       1: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2},
-        {"name": "Saldo Comercial", "value": 3},
-        {"name": "Corrente de Comércio", "value": 4}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2},
+        {"name": "Saldo Comercial", "id": 3},
+        {"name": "Corrente de Comércio", "id": 4}
       ],
       2: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2}
       ],
       3: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2},
-        {"name": "Corrente de Comércio", "value": 4}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2},
+        {"name": "Corrente de Comércio", "id": 4}
       ],
       5: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2},
-        {"name": "Saldo Comercial", "value": 3},
-        {"name": "Corrente de Comércio", "value": 4}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2},
+        {"name": "Saldo Comercial", "id": 3},
+        {"name": "Corrente de Comércio", "id": 4}
       ],
       8: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2},
-        {"name": "Saldo Comercial", "value": 3},
-        {"name": "Corrente de Comércio", "value": 4}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2},
+        {"name": "Saldo Comercial", "id": 3},
+        {"name": "Corrente de Comércio", "id": 4}
       ],
       11: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2}
       ],
       12: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2}
       ],
       13: [
-        {"name": "Exportação", "value": 1},
-        {"name": "Importação", "value": 2},
-        {"name": "Saldo Comercial", "value": 3},
-        {"name": "Corrente de Comércio", "value": 4}
+        {"name": "Exportação", "id": 1},
+        {"name": "Importação", "id": 2},
+        {"name": "Saldo Comercial", "id": 3},
+        {"name": "Corrente de Comércio", "id": 4}
       ],
       14: [
-        {"name": "Exportação", "value": 1}
+        {"name": "Exportação", "id": 1}
       ]
     }
 

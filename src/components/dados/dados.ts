@@ -163,11 +163,11 @@ export class DadosComponent {
   {
 
     let parameters = this.parameters;
+    
     function filterByID(obj) {
       if ('id' in obj && !isNaN(obj.id) && obj.id == parameters.var)
         return true;
     }
-
     var descVar = this.pt_br.var[this.parameters.eixo].filter(filterByID);
 
     var prefix = descVar[0]['prefixo_valor'];
