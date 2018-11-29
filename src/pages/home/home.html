@@ -22,7 +22,6 @@
     <div id='menu-options' class="item item-ios" *ngIf=expand [style.background-color]="menu_color">
 
       <ion-item *ngIf="parameters.eixo == 1 && hasOcp()">
-        <span>Classificação</span>
         <atlas-select [group]="false" 
                       [items]="classific" 
                       [default]="parameters.slc"
@@ -32,7 +31,6 @@
       </ion-item>
 
       <ion-item *ngIf="hasConsumo()">
-        <span>Consumo</span>
         <atlas-select [group]="false" 
                       [items]="consumo" 
                       [default]="parameters.slc"
@@ -42,7 +40,6 @@
       </ion-item>
 
       <ion-item *ngIf="ready_pt_br">
-        <span>Variável</span>
         <atlas-select [group]="false" 
                       [items]="pt_br.var[parameters.eixo]" 
                       [default]="parameters.var"
@@ -52,7 +49,6 @@
       </ion-item>
 
       <ion-item *ngIf="list_uf.length && hasUf() && !isIHHC4()" >
-        <span>Estados</span>
         <atlas-select [group]="false" 
                       [items]="list_uf" 
                       [default]="parameters.uf"
@@ -62,7 +58,6 @@
       </ion-item>
 
       <ion-item *ngIf="parameters.ano > 0">
-          <span>Ano</span>
           <atlas-select [group]="false" 
                         [items]="select_anos" 
                         [default]="parameters.ano"
@@ -72,7 +67,6 @@
       </ion-item>
 
       <ion-item *ngIf="!isIHHC4() && !(parameters.slc == 1 && parameters.eixo == 1)">
-        <span>Setor</span>
         <atlas-select [group]="false" 
                       [items]="cads" 
                       [default]="parameters.cad" 
@@ -83,7 +77,6 @@
 
 
       <ion-item *ngIf="(parameters.slc == 1 && parameters.eixo == 1) && !isIHHC4()">
-          <span>Ocupação</span>
           <atlas-select [group]="false" 
                         [items]="getOcpSelect()" 
                         [default]="parameters.ocp" 
@@ -93,7 +86,6 @@
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 0 && vrvPorte()">
-          <span>Desagregação</span>
           <atlas-select [group]="false" 
                         [items]="portes" 
                         [default]="parameters.deg" 
@@ -103,7 +95,6 @@
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 1 && !isIHHC4()">
-        <span>Desagregação</span>
         <atlas-select [group]="true" 
                       [items]="select_desags" 
                       [default]="parameters.deg*10+parameters.subdeg" 
@@ -123,7 +114,6 @@
       </ion-item>
 
       <ion-item *ngIf="hasMec()">
-        <span>Mecanismo</span>
         <atlas-select [group]="false" 
                       [items]="mecanismos" 
                       [default]="parameters.mec"
@@ -133,7 +123,6 @@
       </ion-item>
 
       <ion-item *ngIf="hasPfj()">
-        <span>Pessoa</span>
         <atlas-select [group]="false" 
                       [items]="pessoas" 
                       [default]="parameters.pfj"
@@ -143,7 +132,6 @@
       </ion-item>
 
       <ion-item *ngIf="hasMod()">
-        <span>Modalidade</span>
         <atlas-select [group]="false" 
                       [items]="modalidades" 
                       [default]="parameters.mod"
@@ -153,7 +141,6 @@
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 3">
-        <span>Tipo</span>
         <atlas-select [group]="false" 
                       [items]="selectTipos()" 
                       [default]="parameters.typ"
@@ -163,7 +150,6 @@
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 2 && hasTrabRec()">
-        <span>Recebedor / Trabalhador</span>
         <atlas-select [group]="false" 
                       [items]="trab" 
                       [default]="parameters.mec"
