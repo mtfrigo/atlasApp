@@ -22,8 +22,9 @@ import { DadosProvider } from '../../providers/dados/dados';
   templateUrl: 'mapa.html'
 })
 export class MapaComponent {
-  @Input() width  : number = window.innerWidth*0.8;
-  @Input() height : number = window.innerHeight*0.4;
+
+  @Input() width  : number;
+  @Input() height : number;
 
   @Input() parameters : any;
   @Input() url : string;
@@ -53,12 +54,7 @@ export class MapaComponent {
   values: number[] = [];
   legend_data : string[] = [];
 
-  legend_config = {
-    'width':  this.width*0.3,
-    'height': this.height*0.03,
-    'x':      this.width*0.05,
-    'y':      this.height*0.8
-  }
+  legend_config : any;
 
   minValue: number;
   maxValue: number;
@@ -68,13 +64,26 @@ export class MapaComponent {
 
   constructor(public navCtrl: NavController, private mapaProvider: MapaProvider, private dadosProvider :DadosProvider, private jsonProvider: JsonsProvider) {
 
-    this.mapHeight = this.height*0.85 - this.margin.top - this.margin.bottom;
-    this.mapWidth = this.width - this.margin.left - this.margin.right;
-
     this.view_title = "Mapa do Brasil";
   }
 
   ngOnInit() {
+
+    if(this.height > this.width)
+      this.height = this.width;
+    else
+      this.width = this.height;
+
+    this.mapHeight = this.height - this.margin.top - this.margin.bottom;
+    this.mapWidth = this.width - this.margin.left - this.margin.right;
+
+    this.legend_config = {
+      'width':  this.width*0.3,
+      'height': this.height*0.03,
+      'x':      this.width*0.05,
+      'y':      this.height*0.8
+    }
+
     this.jsonProvider.getColors()
       .subscribe(d=>{
         this.colors = d;
@@ -85,6 +94,10 @@ export class MapaComponent {
         this.getData();
       })
     })
+  }
+
+  ionViewDidEnter(){
+
   }
 
   ngOnChanges(){

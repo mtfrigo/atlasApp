@@ -19,8 +19,9 @@ export class MapaMundiComponent implements OnInit, OnChanges{
   @Input() url : string;
   @Output() dadoGlobal = new EventEmitter();
 
-  width  : number = window.innerWidth*0.8;
-  height : number = document.getElementById("views").offsetHeight*0.9;
+  @Input() width: any;
+  @Input() height: any;
+
   gdpAux = {'AF': 0, 'NA': 0, 'SA': 0, 'OC': 0, 'AS': 0, 'EU': 0};
   colors : any;
   minValue : number = 0;
@@ -95,7 +96,7 @@ export class MapaMundiComponent implements OnInit, OnChanges{
     if(scale_height < scale_width){
       transform_x = (this.width - (width_default*scale))/2 ;
     } else {
-      transform_y = Math.abs(this.height - (height_default*scale))/2;
+      transform_y = (Math.abs(this.height - (height_default*scale))/2)+this.height/2;
     }
 
     return 'scale('+scale+') translate('+transform_x+', '+transform_y+')';

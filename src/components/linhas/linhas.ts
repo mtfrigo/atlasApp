@@ -20,15 +20,14 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'linhas.html'
 })
 export class LinhasComponent {
-  width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.35;
+
+  @Input() width  : number;
+  @Input() height : number;
 
   @Input() url: string;
   @Input() parameters: Object;
 
   view_title: any;
-
-  text: string;
 
   yTicks: any;
   yTicksArray: number[];
@@ -39,7 +38,7 @@ export class LinhasComponent {
   colors: any;
 
   // margin = {top: 100, right: 20, bottom: 30, left: window.innerWidth*0.075};
-  margin = {top: 0, right: 20, bottom: 30, left: window.innerWidth*0.075};
+  margin : any;
   linesWidth: any;
   linesHeight: any;
 
@@ -64,9 +63,15 @@ export class LinhasComponent {
   subtitles_2: any;
 
   constructor(public navCtrl: NavController, private linhasProvider: LinhasProvider, private jsonProvider: JsonsProvider) {
-    this.text = 'Hello World';
-
     this.view_title = "Linhas"
+
+  }
+
+  ngOnInit() {
+
+    this.height = this.height * 0.8;
+
+    this.margin = {top: 0, right: 20, bottom: 30, left: this.width*0.075};
 
     this.linesHeight = this.height - this.margin.top - this.margin.bottom;
     this.linesWidth = this.width - this.margin.left - this.margin.right;
@@ -77,9 +82,6 @@ export class LinhasComponent {
     for(var i = 0; i < this.yTicks; i++){
       this.yTicksArray.push(i);
     }
-  }
-
-  ngOnInit() {
 
     this.jsonProvider.getColors()
       .subscribe(d=>{

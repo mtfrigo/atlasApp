@@ -16,8 +16,8 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 })
 export class TreemapComponent implements OnChanges{
 
-  width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.25;
+  @Input() width : number;
+  @Input() height : number;
 
   @Input() url : string;
   @Input() parameters : any;
@@ -33,17 +33,23 @@ export class TreemapComponent implements OnChanges{
   private fontSizeStd : number = 20;
   private titleSize : number = 8;
 
-  treemap = d3.treemap()
-        .tile(d3.treemapResquarify)
-        .size([this.width, this.height])
-        .round(true)
-        .paddingInner(1);
+  treemap : any;
 
   constructor(private treemapProvider : TreemapProvider,
               private jsonsProvider: JsonsProvider) {
               }
 
   ngOnInit() {
+
+    this.height = this.height*0.8;
+    this.width = this.width*0.95;
+
+    this.treemap = d3.treemap()
+        .tile(d3.treemapResquarify)
+        .size([this.width, this.height])
+        .round(true)
+        .paddingInner(1);
+
     this.jsonsProvider.getColors()
       .subscribe(d=>{
         this.colors = d;

@@ -1,5 +1,5 @@
-<div *ngIf='ready && colors' class="view">
-  <svg [attr.width]="width" [attr.height]="height" [style.max-height]="'70%'">
+<div  id='treemap-region' class="view">
+  <svg *ngIf='ready && colors' [attr.width]="width" [attr.height]="height" [style.max-height]="'70%'">
     <g>
       <g *ngFor="let d of treemapData.leaves()" [attr.transform]="getTranslate(d)">
         <rect [attr.height]="d.y1 - d.y0" [attr.width]="d.x1 - d.x0" [attr.fill]="getColorCadeia(d)" (click)="click(d)"></rect>

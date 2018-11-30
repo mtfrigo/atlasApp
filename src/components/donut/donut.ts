@@ -15,34 +15,41 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'donut.html'
 })
 export class DonutComponent implements OnChanges{
-  width  : number = window.innerHeight*0.35;
-  height : number = this.width;
-
+  @Input() width  : number;
+  @Input() height : number;
 
   @Input() parameters : any;
   @Input() url : string;
 
-  private radius : number = Math.min(this.width, this.height)/2;
+  private radius : number;
   protected svg;
   private data : any[] = [];
   private colors : any ;
-  protected center : string = `translate(${this.width/2}, ${this.height/2})`;
+  protected center : string;
   private data_end = []
 
-  arc =
-    d3.arc()
-      .outerRadius(this.radius - this.radius/18)   //valor raio círculo de fora
-      .innerRadius(this.radius - this.radius/2.5);
+  arc: any;
 
-  pie : d3.Pie<any, Donut> =
-    d3.pie<Donut>()
-      .sort((a: Donut, b: Donut) => a.index - b.index)
-      .value((d : Donut) => d.valor);
+  pie : d3.Pie<any, Donut>;
 
   constructor(private donutProvider : DonutProvider, private jsonsProvider : JsonsProvider) {
   }
 
   ngOnInit() {
+
+    this.radius = Math.min(this.width, this.height)/2;
+    this.center = `translate(${this.width/2}, ${this.height/2})`;
+
+    this.arc =
+      d3.arc()
+        .outerRadius(this.radius - this.radius/18)   //valor raio círculo de fora
+        .innerRadius(this.radius - this.radius/2.5);
+
+    this.pie =
+      d3.pie<Donut>()
+        .sort((a: Donut, b: Donut) => a.index - b.index)
+        .value((d : Donut) => d.valor);
+
     this.jsonsProvider.getColors()
       .subscribe( d => {
         this.colors = d;

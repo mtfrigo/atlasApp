@@ -22,8 +22,8 @@ import { DadosProvider } from '../../providers/dados/dados';
 })
 
 export class BarrasComponent implements OnChanges{
-  width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.35;
+  @Input() width  : number;
+  @Input() height : number;
 
   @Input() parameters : any;
   @Input() url : string;
@@ -68,6 +68,9 @@ export class BarrasComponent implements OnChanges{
 
   constructor(public navCtrl: NavController, private barrasProvider: BarrasProvider, private dadosProvider: DadosProvider,private jsonsProvider: JsonsProvider) {
     this.view_title = 'Histograma'
+  }
+
+  ngOnInit() {
 
     this.barsHeight = this.height - this.margin.top - this.margin.bottom;
     this.barsWidth = this.width - this.margin.left - this.margin.right;
@@ -78,9 +81,6 @@ export class BarrasComponent implements OnChanges{
     for(var i = 0; i < this.yTicks; i++){
       this.yTicksArray.push(i);
     }
-  }
-
-  ngOnInit() {
 
     this.jsonsProvider.getColors()
       .subscribe(d=>{

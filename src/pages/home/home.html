@@ -22,54 +22,54 @@
     <div id='menu-options' class="item item-ios" *ngIf=expand [style.background-color]="menu_color">
 
       <ion-item *ngIf="parameters.eixo == 1 && hasOcp()">
-        <atlas-select [group]="false" 
-                      [items]="classific" 
+        <atlas-select [group]="false"
+                      [items]="classific"
                       [default]="parameters.slc"
-                      [title]="'Classificação'" 
+                      [title]="'Classificação'"
                       (parameter)="updateParameter($event, 'slc')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="hasConsumo()">
-        <atlas-select [group]="false" 
-                      [items]="consumo" 
+        <atlas-select [group]="false"
+                      [items]="consumo"
                       [default]="parameters.slc"
-                      [title]="'Consumo'" 
+                      [title]="'Consumo'"
                       (parameter)="updateParameter($event, 'slc')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="ready_pt_br">
-        <atlas-select [group]="false" 
-                      [items]="pt_br.var[parameters.eixo]" 
+        <atlas-select [group]="false"
+                      [items]="pt_br.var[parameters.eixo]"
                       [default]="parameters.var"
-                      [title]="'Variável'" 
+                      [title]="'Variável'"
                       (parameter)="updateParameter($event, 'var')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="list_uf.length && hasUf() && !isIHHC4()" >
-        <atlas-select [group]="false" 
-                      [items]="list_uf" 
+        <atlas-select [group]="false"
+                      [items]="list_uf"
                       [default]="parameters.uf"
-                      [title]="'Estados'" 
+                      [title]="'Estados'"
                       (parameter)="updateParameter($event, 'uf')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="parameters.ano > 0">
-          <atlas-select [group]="false" 
-                        [items]="select_anos" 
+          <atlas-select [group]="false"
+                        [items]="select_anos"
                         [default]="parameters.ano"
-                        [title]="'Ano'" 
+                        [title]="'Ano'"
                         (parameter)="updateParameter($event, 'ano')">
           </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="!isIHHC4() && !(parameters.slc == 1 && parameters.eixo == 1)">
-        <atlas-select [group]="false" 
-                      [items]="cads" 
-                      [default]="parameters.cad" 
+        <atlas-select [group]="false"
+                      [items]="cads"
+                      [default]="parameters.cad"
                       [title]="'Setor'"
                       (parameter)="updateParameter($event, 'cad')">
         </atlas-select>
@@ -77,27 +77,27 @@
 
 
       <ion-item *ngIf="(parameters.slc == 1 && parameters.eixo == 1) && !isIHHC4()">
-          <atlas-select [group]="false" 
-                        [items]="getOcpSelect()" 
-                        [default]="parameters.ocp" 
+          <atlas-select [group]="false"
+                        [items]="getOcpSelect()"
+                        [default]="parameters.ocp"
                         [title]="'Ocupação'"
                         (parameter)="updateParameter($event, 'ocp')">
           </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 0 && vrvPorte()">
-          <atlas-select [group]="false" 
-                        [items]="portes" 
-                        [default]="parameters.deg" 
+          <atlas-select [group]="false"
+                        [items]="portes"
+                        [default]="parameters.deg"
                         [title]="'Desagregação'"
                         (parameter)="updateParameter($event, 'deg')">
           </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 1 && !isIHHC4()">
-        <atlas-select [group]="true" 
-                      [items]="select_desags" 
-                      [default]="parameters.deg*10+parameters.subdeg" 
+        <atlas-select [group]="true"
+                      [items]="select_desags"
+                      [default]="parameters.deg*10+parameters.subdeg"
                       [title]="'Desagregação'"
                       (parameter)="updateParameter($event, 'subdeg')">
         </atlas-select>
@@ -105,55 +105,55 @@
 
       <ion-item *ngIf="parameters.eixo == 3 && !isIHHC4()">
           <span>Parceiro</span>
-          <atlas-select [group]="false" 
-                        [items]="parceiros" 
-                        [default]="parameters.prc" 
+          <atlas-select [group]="false"
+                        [items]="parceiros"
+                        [default]="parameters.prc"
                         [title]="'Parceiro'"
                         (parameter)="updateParameter($event, 'prc')">
           </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="hasMec()">
-        <atlas-select [group]="false" 
-                      [items]="mecanismos" 
+        <atlas-select [group]="false"
+                      [items]="mecanismos"
                       [default]="parameters.mec"
-                      [title]="'Mecanismo'" 
+                      [title]="'Mecanismo'"
                       (parameter)="updateParameter($event, 'mec')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="hasPfj()">
-        <atlas-select [group]="false" 
-                      [items]="pessoas" 
+        <atlas-select [group]="false"
+                      [items]="pessoas"
                       [default]="parameters.pfj"
-                      [title]="'Pessoa'" 
+                      [title]="'Pessoa'"
                       (parameter)="updateParameter($event, 'pfj')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="hasMod()">
-        <atlas-select [group]="false" 
-                      [items]="modalidades" 
+        <atlas-select [group]="false"
+                      [items]="modalidades"
                       [default]="parameters.mod"
-                      [title]="'Modalidade'" 
+                      [title]="'Modalidade'"
                       (parameter)="updateParameter($event, 'mod')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 3">
-        <atlas-select [group]="false" 
-                      [items]="selectTipos()" 
+        <atlas-select [group]="false"
+                      [items]="selectTipos()"
                       [default]="parameters.typ"
-                      [title]="'Tipo'" 
+                      [title]="'Tipo'"
                       (parameter)="updateParameter($event, 'typ')">
         </atlas-select>
       </ion-item>
 
       <ion-item *ngIf="parameters.eixo == 2 && hasTrabRec()">
-        <atlas-select [group]="false" 
-                      [items]="trab" 
+        <atlas-select [group]="false"
+                      [items]="trab"
                       [default]="parameters.mec"
-                      [title]="'Recebedor / Trabalhador'" 
+                      [title]="'Recebedor / Trabalhador'"
                       (parameter)="updateParameter($event, 'mec')">
         </atlas-select>
       </ion-item>
@@ -166,34 +166,49 @@
 
   <ion-grid id='content-container'>
 
-      <ion-row id='views' #views>
-        <ion-col col-12 >
+      <ion-row id='views' #views >
+        <ion-col  col-12 >
             <ion-item *ngIf="parameters.ano > 0 && ready_pt_br" style="background-color: ffffff; height: 100%; width: 100%;" >
               <ion-slides #slides (ionSlideDidChange)="slideChanged()" style="height: 100%">
                 <ion-slide>
-                    <hr>
-                    <p class='title_view'>{{getTitleView(1)}}</p>
-                    <view-mapa *ngIf="correctView(1, 'mapa')"  [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
-                    <view-treemap-region *ngIf="correctView(1, 'treemap_region')"  [parameters]="parameters" [url]="getQuery(parameters)" ></view-treemap-region>
-                    <view-barras *ngIf="correctView(1, 'barras')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-barras>
-                    <view-mapa-mundi *ngIf="correctView(1, 'mapa-mundi')" [parameters]="parameters" [url]="getQuery(parameters)" (dadoGlobal)="receiverData($event)"></view-mapa-mundi>
+
+                    <div class='view_container'>
+                        <p class='title_view'>{{getTitleView(1)}}</p>
+                        <div id='view1' class='view'>
+                          <view-mapa  *ngIf="correctView(1, 'mapa') && view1"  [height]='view1.height' [width]='view1.width' [url]="getQuery(parameters)" [parameters]="parameters" ></view-mapa>
+                          <view-treemap-region *ngIf="correctView(1, 'treemap_region') && view1"  [height]='view1.height' [width]='view1.width'  [parameters]="parameters" [url]="getQuery(parameters)" ></view-treemap-region>
+                          <view-barras *ngIf="correctView(1, 'barras') && view1"  [height]='view1.height' [width]='view1.width' [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-barras>
+                          <view-mapa-mundi *ngIf="correctView(1, 'mapa-mundi') && view1"  [height]='view1.height' [width]='view1.width' [parameters]="parameters" [url]="getQuery(parameters)" (dadoGlobal)="receiverData($event)"></view-mapa-mundi>
+                        </div>
+
+                    </div>
+
 
                   </ion-slide>
 
                 <ion-slide>
-                  <hr>
-                  <p class='title_view'>{{getTitleView(2)}}</p>
-                  <view-donut *ngIf="correctView(2, 'donut')" [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
-                  <view-empilhadas *ngIf="correctView(2, 'empilhadas')" [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-empilhadas>
-                  <view-barras *ngIf="correctView(2, 'barras')" [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-barras>
+
+                    <div class='view_container'>
+                        <p class='title_view'>{{getTitleView(2)}}</p>
+                        <div id='view2' class='view'>
+                          <view-donut *ngIf="correctView(2, 'donut') && view2"  [height]='view2.height' [width]='view2.width' [url]="getQuery(parameters)" [parameters]="parameters"></view-donut>
+                          <view-empilhadas *ngIf="correctView(2, 'empilhadas') && view2"  [height]='view2.height' [width]='view2.width' [uos]="getUos(2)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-empilhadas>
+                          <view-barras *ngIf="correctView(2, 'barras') && view2"  [height]='view2.height' [width]='view2.width' [uos]="getUos(1)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-barras>
+                        </div>
+
+                    </div>
+
                 </ion-slide>
 
                 <ion-slide>
-                  <hr>
-                  <p class='title_view'>{{getTitleView(3)}}</p>
-                  <view-barras *ngIf="correctView(3, 'barras')" [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-barras>
-                  <view-treemap *ngIf="correctView(3, 'treemap_scc')" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-treemap>
-                  <view-linhas *ngIf="correctView(3, 'linhas')" [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
+                  <div class='view_container'>
+                      <p class='title_view'>{{getTitleView(3)}}</p>
+                      <div id='view3' class='view'>
+                        <view-barras *ngIf="correctView(3, 'barras') && view3"  [height]='view3.height' [width]='view3.width' [uos]="getUos(3)" [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-barras>
+                        <view-treemap *ngIf="correctView(3, 'treemap_scc') && view3"  [height]='view3.height' [width]='view3.width' [url]="getQuery(parameters)" [parameters]="parameters" (dadoGlobal)="receiverData($event)"></view-treemap>
+                        <view-linhas *ngIf="correctView(3, 'linhas') && view3"  [height]='view3.height' [width]='view3.width' [url]="getQuery(parameters)" [parameters]="parameters"></view-linhas>
+                      </div>
+                  </div>
                 </ion-slide>
               </ion-slides>
 
@@ -201,10 +216,12 @@
         </ion-col>
 
       </ion-row>
+
       <ion-row class="btn-view" *ngIf="parameters.eixo == 0 || parameters.eixo == 3">
         <button ion-button round small [disabled]="disableButton()" *ngIf="hasConsumo()" class="opt full-width" color="eixo4" (click)="updateMundo($event)">{{viewButton()}}</button>
         <button ion-button round small [disabled]="disableButton()" *ngIf="hasTreemapRegion()" class="opt full-width" color="eixo1" (click)="changeView($event)">{{viewButton()}}</button>
       </ion-row>
+
       <ion-row id='dados'>
         <ion-col col-12>
             <ion-item text-wrap  style="background-color: #ffffff; " >

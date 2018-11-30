@@ -1,6 +1,6 @@
 <!-- Generated template for the EmpilhadasComponent component -->
-<div *ngIf='data.length && dataset && x && y && colors'>
-  <svg [attr.width]="width" [attr.height]="height">
+<div id='empilhadas'>
+  <svg *ngIf='data.length && dataset && x && y && colors' [attr.width]="width" [attr.height]="height">
     <g [attr.width]="barsWidth" [attr.height]="barsHeight" [attr.transform]="getBarsTransform()">
 
         <g class='grid'>

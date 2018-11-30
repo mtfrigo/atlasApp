@@ -19,8 +19,8 @@ import * as d3Scale from "d3-scale";
 })
 export class EmpilhadasComponent {
 
-  width  : number = window.innerWidth*1;
-  height : number = window.innerHeight*0.35;
+  @Input() width  : number;
+  @Input() height : number;
 
   @Input() parameters : any;
   @Input() url : string;
@@ -35,14 +35,14 @@ export class EmpilhadasComponent {
   yTicksArray: number[];
   yTicksScale: any;
 
-  margin = {top: 0, right: window.innerWidth*0.15, bottom: 30, left: window.innerWidth*0.15};
+  margin : any;
 
   x: any;
   y: any;
   svg: any;
   g: any;
 
-  valueTop = this.margin.top + 5;
+  valueTop : any;
 
   data: any = [];
 
@@ -72,9 +72,18 @@ export class EmpilhadasComponent {
 
   constructor(public navCtrl: NavController, private empilhadasProvider: EmpilhadasProvider, private dadosProvider: DadosProvider,private jsonsProvider: JsonsProvider) {
     this.view_title = 'Histograma empilhado'
+  }
+
+  ngOnInit() {
+
+    this.height = this.height*0.8;
+
+    this.margin = {top: 0, right: 0, bottom: 30, left: this.width*0.15};
 
     this.barsHeight = this.height - this.margin.top - this.margin.bottom;
     this.barsWidth = this.width - this.margin.left - this.margin.right;
+
+    this.valueTop = this.margin.top + 5;
 
     this.yTicks = 7;
     this.yTicksArray = [];
@@ -82,9 +91,6 @@ export class EmpilhadasComponent {
     for(var i = 0; i < this.yTicks; i++){
       this.yTicksArray.push(i);
     }
-  }
-
-  ngOnInit() {
 
     this.jsonsProvider.getColors()
       .subscribe(d=>{

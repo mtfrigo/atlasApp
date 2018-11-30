@@ -1,6 +1,7 @@
 <!-- Generated template for the LinhasComponent component -->
-<div *ngIf='states != null && colors'>
-  <svg id="mapSVG" [attr.width]="width" [attr.height]="height">
+<div id='map' style='height: 100%; width: 100%;'>
+  <svg *ngIf='states != null && colors' id="mapSVG" [attr.width]="width" [attr.height]="height">
+  <!-- <svg *ngIf='false' id="mapSVG" [attr.width]="width" [attr.height]="height"> -->
       <g [attr.width]="mapaWidth" [attr.height]="mapHeight" [attr.transform]="getMapTransform()">.
             <path *ngFor="let d of states.features; index as i" (click)="selectUF(d.id)"
             [attr.data-legend]='1'
@@ -9,24 +10,24 @@
             >
             </path>
       </g>
-      
+
       <defs>
         <linearGradient id="grad" x1="0%" y1="100%" x2="90%" y2="100%">
           <stop class="begin" offset="0%" [style.stop-color]="colorScale(minValue)" [style.stop-opacity]="1"></stop>
           <stop class="end" offset="90%" [style.stop-color]="colorScale(maxValue)" [style.stop-opacity]="1"></stop>
         </linearGradient>
       </defs>
-      
+
       <g>
-        <rect [attr.width]="legend_config.width" 
-              [attr.height]="legend_config.height" 
-              [attr.x]="legend_config.x" 
+        <rect [attr.width]="legend_config.width"
+              [attr.height]="legend_config.height"
+              [attr.x]="legend_config.x"
               [attr.y]="legend_config.y" [attr.fill]="'url(#grad)'">
         </rect>
       </g>
 
       <g>
-        <line *ngFor="let d of legend_data; index as i" 
+        <line *ngFor="let d of legend_data; index as i"
               class="legend-line"
               [attr.x1]="legend_config.x + i*legend_config.width/2"
               [attr.x2]="legend_config.x + i*legend_config.width/2"

@@ -13,6 +13,10 @@ export class HomePage implements OnInit{
 
   @ViewChild(Slides) slides: Slides;
 
+  view1: any;
+  view2: any;
+  view3: any;
+
   private list_uf : any = [];
   public pt_br : any = [];
   private anos : number[];
@@ -107,12 +111,12 @@ export class HomePage implements OnInit{
         this.updateCad(dado);
       } else {
         this.event_mec(dado);
-      }      
+      }
     }
     if(parameter == 'mod'){
       this.event_mod(dado);
     }
-    
+
   }
 
   segmentChanged(slide, index){
@@ -710,6 +714,23 @@ export class HomePage implements OnInit{
       this.menu_plus = '-';
       this.menu_opacity = 1;
     }
+  }
+  ionViewDidEnter(){
+
+    this.getViewsHeight();
+  }
+
+  getViewsHeight(){
+
+    this.view1 = {height: document.getElementById('view1').offsetHeight, width: document.getElementById('view1').offsetWidth };
+    this.view2 = {height: document.getElementById('view2').offsetHeight, width: document.getElementById('view2').offsetWidth };
+    this.view3 = {height: document.getElementById('view3').offsetHeight, width: document.getElementById('view3').offsetWidth };
+
+  }
+
+  getHeight()
+  {
+    return {height: '300px'};
   }
 }
 

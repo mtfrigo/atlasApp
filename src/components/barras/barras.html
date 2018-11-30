@@ -1,5 +1,5 @@
-<div *ngIf='data.length && x && y && colors'>
-  <svg [attr.width]="width" [attr.height]="height">
+<div id='bars' style='height: 100%; width: 100%;'>
+  <svg *ngIf='data.length && x && y && colors' [attr.width]="width" [attr.height]="height">
       <g [attr.width]="barsWidth" [attr.height]="barsHeight" [attr.transform]="getBarsTransform()">
 
         <g class='grid'>

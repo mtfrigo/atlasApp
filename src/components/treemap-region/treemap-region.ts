@@ -16,10 +16,13 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
   templateUrl: 'treemap-region.html'
 })
 export class TreemapRegionComponent implements OnChanges{
-  width  : number = window.innerWidth*0.8;
-  height : number = window.innerHeight*0.4;
+
+  @Input() width  : number;
+  @Input() height : number;
+
   @Input() url : string;
   @Input() parameters : any;
+
   protected ready = false;
   private data : Treemap[] = [];
   private colors;
@@ -27,17 +30,24 @@ export class TreemapRegionComponent implements OnChanges{
   private fontSizeStd : number = 20;
   private titleSize : number = 8;
 
-  treemap = d3.treemap()
-        .tile(d3.treemapResquarify)
-        .size([this.width, this.height])
-        .round(true)
-        .paddingInner(1);
+  treemap: any;
 
   constructor(private treemapProvider : TreemapRegionProvider,
               private jsonsProvider: JsonsProvider) {
               }
 
   ngOnInit() {
+
+    this.height = this.height*0.95;
+    this.width = this.width*0.95;
+
+    this.treemap = d3.treemap()
+        .tile(d3.treemapResquarify)
+        .size([this.width, this.height])
+        .round(true)
+        .paddingInner(1);
+
+
     this.jsonsProvider.getColors()
       .subscribe(d=>{
         this.colors = d;
