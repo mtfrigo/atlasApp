@@ -31,7 +31,7 @@ export class MapaComponent {
 
   view_title: any;
 
-  margin = {top: 0, right: 0, bottom: 0, left: 0};
+  margin = {top: 0, right: 0, bottom: 5, left: 0};
   mapWidth: any;
   mapHeight: any;
 
@@ -69,19 +69,15 @@ export class MapaComponent {
 
   ngOnInit() {
 
-    if(this.height > this.width)
-      this.height = this.width;
-    else
-      this.width = this.height;
 
     this.mapHeight = this.height - this.margin.top - this.margin.bottom;
     this.mapWidth = this.width - this.margin.left - this.margin.right;
 
     this.legend_config = {
-      'width':  this.width*0.3,
+      'width':  this.width*0.35,
       'height': this.height*0.03,
-      'x':      this.width*0.05,
-      'y':      this.height*0.8
+      'x':      this.width*0.01,
+      'y':      this.height*0.75
     }
 
     this.jsonProvider.getColors()

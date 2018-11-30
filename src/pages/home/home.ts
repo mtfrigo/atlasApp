@@ -716,16 +716,23 @@ export class HomePage implements OnInit{
     }
   }
   ionViewDidEnter(){
-
-    this.getViewsHeight();
+    if(!this.getViewsHeight())
+      this.getViewsHeight();
   }
 
   getViewsHeight(){
+
+    if( document.getElementById('view1') == null ||
+        document.getElementById('view2') == null ||
+        document.getElementById('view3') == null)
+        return false;
 
     this.view1 = {height: document.getElementById('view1').offsetHeight, width: document.getElementById('view1').offsetWidth };
     this.view2 = {height: document.getElementById('view2').offsetHeight, width: document.getElementById('view2').offsetWidth };
     this.view3 = {height: document.getElementById('view3').offsetHeight, width: document.getElementById('view3').offsetWidth };
 
+
+    return true;
   }
 
   getHeight()
