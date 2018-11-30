@@ -303,9 +303,9 @@ export class HomePage implements OnInit{
       if(this.parameters.var == 3)
       {
         this.mecanismos = [
-          {"name": "Todos", "value": 0},
-          {"name": "Fundo Cultural", "value": 3},
-          {"name": "Outros", "value": 4},
+          {"name": "Todos", "id": 0},
+          {"name": "Fundo Cultural", "id": 3},
+          {"name": "Outros", "id": 4},
         ];
 
         return true;
@@ -313,9 +313,9 @@ export class HomePage implements OnInit{
       else if(this.parameters.var == 1 || this.parameters.var == 8 || this.parameters.var == 9 || this.parameters.var == 15 || this.parameters.var == 16)
       {
         this.mecanismos = [
-          {"name": "Todos", "value": 0},
-          {"name": "FNC", "value": 1},
-          {"name": "Mecenato", "value": 2},
+          {"name": "Todos", "id": 0},
+          {"name": "FNC", "id": 1},
+          {"name": "Mecenato", "id": 2},
         ];
 
         return true;
@@ -323,8 +323,8 @@ export class HomePage implements OnInit{
       else if(this.parameters.var == 17)
       {
         this.mecanismos = [
-          {"name": "Mecenato Estadual", "value": 0},
-          {"name": "Editais Estaduais", "value": 1},
+          {"name": "Mecenato Estadual", "id": 0},
+          {"name": "Editais Estaduais", "id": 1},
         ];
         return true;
       }
