@@ -39,14 +39,16 @@ export class BarrasComponent implements OnChanges{
   yTicksArray: number[];
   yTicksScale: any;
 
-  margin = {top: 0, right: 5, bottom: 30, left: window.innerWidth*0.075};
+
+
+  margin : any;
 
   x: any;
   y: any;
   svg: any;
   g: any;
 
-  valueTop = this.margin.top + 5;
+  valueTop : any;
 
   data: any = [];
 
@@ -71,6 +73,8 @@ export class BarrasComponent implements OnChanges{
   }
 
   ngOnInit() {
+
+    this.margin = {top: 5, right: 0, bottom: 20, left: this.width*0.075};
 
     this.barsHeight = this.height - this.margin.top - this.margin.bottom;
     this.barsWidth = this.width - this.margin.left - this.margin.right;
@@ -211,7 +215,7 @@ export class BarrasComponent implements OnChanges{
 
   getBarsTransform()
   {
-    return "translate(" + (this.margin.left+5) + "," + this.valueTop + ")";
+    return "translate(" + (this.margin.left+5) + "," + (this.margin.top+5) + ")";
   }
 
   getBarY(d) {
