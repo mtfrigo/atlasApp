@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 
 /**
@@ -11,7 +11,7 @@ import { ModalController } from 'ionic-angular';
   selector: 'atlas-select',
   templateUrl: 'select-atlas.html'
 })
-export class SelectAtlasComponent implements OnInit {
+export class SelectAtlasComponent implements OnInit, OnChanges {
   @Input() default : number;
   @Input() items = [];
   @Input() group = false;
@@ -24,6 +24,12 @@ export class SelectAtlasComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.selected_text = this.items.filter( d => {
+      if(this.default == d.id) return d;
+    })[0].name;
+  }
+
+  ngOnChanges(){
     this.selected_text = this.items.filter( d => {
       if(this.default == d.id) return d;
     })[0].name;
