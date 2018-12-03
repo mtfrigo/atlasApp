@@ -94,7 +94,7 @@
           </atlas-select>
       </ion-item>
 
-      <ion-item *ngIf="parameters.eixo == 1 && !isIHHC4()">
+      <ion-item *ngIf="parameters.eixo == 1 && !isIHHC4() && parameters.var != 11 && parameters.var != 9">
         <atlas-select [group]="true"
                       [items]="select_desags"
                       [default]="parameters.deg*10+parameters.subdeg"
