@@ -163,7 +163,7 @@ export class DadosComponent {
   {
 
     let parameters = this.parameters;
-    
+
     function filterByID(obj) {
       if ('id' in obj && !isNaN(obj.id) && obj.id == parameters.var)
         return true;
@@ -262,10 +262,10 @@ export class DadosComponent {
             return "R$ " + this.formatNumber(valores.percentual);
           else if(this.parameters.var == 19)
             return this.formatNumber(valores.percentual);
-          else if(this.treemapRelativeValue() && valores.total)
-            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
           else if(this.dadosProvider.isIHHorC4(this.parameters))
             return this.formatNumber(valores.uos2);
+          else if(this.treemapRelativeValue() && valores.total)
+            return this.formatDecimal(valores.valor/valores.total, 2)+"%";
           else
             return this.formatDecimal(valores.percentual, 2)+"%";
 
