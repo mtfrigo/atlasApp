@@ -357,6 +357,7 @@ export class HomePage implements OnInit{
     this.parameters.chg = 0;
     this.parameters.mec = 0;
     this.parameters.mod = 0;
+    if(this.parameters.eixo == 0) this.parameters.deg = 0;
   }
 
   isIHHC4(){
