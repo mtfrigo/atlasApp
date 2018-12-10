@@ -28,7 +28,6 @@ O projeto Atlas conta com uma plataforma WEB disponível em http://atlas.base-wp
 
 As ferramentas necessárias para o desenvolvimento são:
 
-* nvm
 * node
 * d3.js
 * topojson-client
@@ -39,6 +38,27 @@ As ferramentas necessárias para o desenvolvimento são:
 
 ### Linux
 
+Vamos começar atualizando o sistema para garantir que tudo corra bem
+```
+  sudo apt-get update
+```
+Em seguida, instalamos as dependências. Utilizamos um instalador chamado *nvm* a fim de facilitar a instalação e configuração do *node*.
+Para a instalação do *nvm* é preciso ter instalado o *curl* no seu sistema. Você pode checar se ele já está instalado usando o comando
+```
+  curl --version
+```
+Caso ele não esteja instalado, utilize o comando 
+```
+  sudo apt install curl
+```
+Agora, podemos instalar o *nvm* com o comando
+```
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
+e então instalar o *node*
+```
+  nvm install node
+```
 
 ### Windows
 
