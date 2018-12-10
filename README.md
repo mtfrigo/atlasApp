@@ -90,7 +90,7 @@ Agora, podemos instalar o *nvm* com o comando
 ```
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 ```
-e então instalar o *node*
+e então fechar o terminal e abrir um novo para carregar o *nvm* e então instalar o *node*
 ```
   nvm install node
 ```
@@ -98,6 +98,23 @@ Agora que temos o *node*, instalamos o *Ionic* e o *Cordova*
 ```
   npm install -g ionic cordova
 ```
+Clone o repositório em algum diretório (usaremos o ~/ como exemplo) e navegue para o repositório clonado
+```
+  cd ~/
+  git clone git@github.com:mtfrigo/atlasApp.git
+  cd atlasApp/
+```
+Certifique-se de que o *npm* foi instalado e então execute
+```
+  npm install
+```
+Esse comando instalará todas as dependências contidas no arquivo *package.json*.
+
+Agora execute o servidor
+```
+   ionic serve 
+```
+A plataforma deve estar rodando no seu navegador após esse passo.
 
 ### Windows
 
