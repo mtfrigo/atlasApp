@@ -67,6 +67,7 @@ As ferramentas necessárias para o desenvolvimento são:
 * topojson-client
 * npm
 * Ionic
+* Cordova (*para dar build no aplicativo*)
 * Git
 * Android Studio
 
@@ -92,6 +93,10 @@ Agora, podemos instalar o *nvm* com o comando
 e então instalar o *node*
 ```
   nvm install node
+```
+Agora que temos o *node*, instalamos o *Ionic* e o *Cordova*
+```
+  npm install -g ionic cordova
 ```
 
 ### Windows
