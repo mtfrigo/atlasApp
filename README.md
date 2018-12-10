@@ -20,76 +20,41 @@ O projeto Atlas conta com uma plataforma WEB disponível em http://atlas.base-wp
 
 ## Diretórios
 
-- [resources](https://github.com/mtfrigo/atlasApp/tree/master/resources)
-
-- [src](https://github.com/mtfrigo/atlasApp/tree/master/src)
-
--- [API](https://github.com/mtfrigo/atlasApp/tree/master/src/api)
-
--- [Assets](https://github.com/mtfrigo/atlasApp/tree/master/src/assets)
-
--- [components](https://github.com/mtfrigo/atlasApp/tree/master/src/components)
-
---- [barras](https://github.com/mtfrigo/atlasApp/tree/master/src/components/barras)
-
---- [dados](https://github.com/mtfrigo/atlasApp/tree/master/src/components/dados)
-
---- [donut](https://github.com/mtfrigo/atlasApp/tree/master/src/components/donut)
-
---- [empilhadas](https://github.com/mtfrigo/atlasApp/tree/master/src/components/empilhadas)
-
---- [linhas](https://github.com/mtfrigo/atlasApp/tree/master/src/components/linhas)
-
---- [mapa](https://github.com/mtfrigo/atlasApp/tree/master/src/components/mapa)
-
---- [mapa-mundi](https://github.com/mtfrigo/atlasApp/tree/master/src/components/mapa-mundi)
-
---- [select-atlas](https://github.com/mtfrigo/atlasApp/tree/master/src/components/select-atlas)
-
---- [treemap](https://github.com/mtfrigo/atlasApp/tree/master/src/components/treemap)
-
---- [treemap-region](https://github.com/mtfrigo/atlasApp/tree/master/src/components/treemap-region)
-
--- [interfaces](https://github.com/mtfrigo/atlasApp/tree/master/src/interfaces)
-
---- [donut](https://github.com/mtfrigo/atlasApp/tree/master/src/interfaces/donut)
-
---- [treemap](https://github.com/mtfrigo/atlasApp/tree/master/src/interfaces/treemap)
-
--- [pages](https://github.com/mtfrigo/atlasApp/tree/master/src/pages)
-
---- [home](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/home)
-
---- [index](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/index)
-
---- [modal-select](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/modal-select)
-
---- [sobre](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/sobre)
-
--- [providers](https://github.com/mtfrigo/atlasApp/tree/master/src/providers)
-
---- [barras](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/barras)
-
---- [dados](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/dados)
-
---- [donut](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/donut)
-
---- [empilhadas](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/empilhadas)
-
---- [jsons](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/jsons)
-
---- [linhas](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/linhas)
-
---- [mapa](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/mapa)
-
---- [mapa-mundi](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/mapa-mundi)
-
---- [treemap](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/treemap)
-
---- [treemap-region](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/treemap-region)
-
--- [theme](https://github.com/mtfrigo/atlasApp/tree/master/src/theme)
-
+--- [resources](https://github.com/mtfrigo/atlasApp/tree/master/resources)
+--- [src](https://github.com/mtfrigo/atlasApp/tree/master/src)
+--------- [API](https://github.com/mtfrigo/atlasApp/tree/master/src/api)
+--------- [Assets](https://github.com/mtfrigo/atlasApp/tree/master/src/assets)
+--------- [components](https://github.com/mtfrigo/atlasApp/tree/master/src/components)
+--------------- [barras](https://github.com/mtfrigo/atlasApp/tree/master/src/components/barras)
+--------------- [dados](https://github.com/mtfrigo/atlasApp/tree/master/src/components/dados)
+--------------- [donut](https://github.com/mtfrigo/atlasApp/tree/master/src/components/donut)
+--------------- [empilhadas](https://github.com/mtfrigo/atlasApp/tree/master/src/components/empilhadas)
+--------------- [linhas](https://github.com/mtfrigo/atlasApp/tree/master/src/components/linhas)
+--------------- [mapa](https://github.com/mtfrigo/atlasApp/tree/master/src/components/mapa)
+--------------- [mapa-mundi](https://github.com/mtfrigo/atlasApp/tree/master/src/components/mapa-mundi)
+--------------- [select-atlas](https://github.com/mtfrigo/atlasApp/tree/master/src/components/select-atlas)
+--------------- [treemap](https://github.com/mtfrigo/atlasApp/tree/master/src/components/treemap)
+--------------- [treemap-region](https://github.com/mtfrigo/atlasApp/tree/master/src/components/treemap-region)
+--------- [interfaces](https://github.com/mtfrigo/atlasApp/tree/master/src/interfaces)
+--------------- [donut](https://github.com/mtfrigo/atlasApp/tree/master/src/interfaces/donut)
+--------------- [treemap](https://github.com/mtfrigo/atlasApp/tree/master/src/interfaces/treemap)
+--------- [pages](https://github.com/mtfrigo/atlasApp/tree/master/src/pages)
+--------------- [home](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/home)
+--------------- [index](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/index)
+--------------- [modal-select](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/modal-select)
+--------------- [sobre](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/sobre)
+--------- [providers](https://github.com/mtfrigo/atlasApp/tree/master/src/providers)
+--------------- [barras](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/barras)
+--------------- [dados](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/dados)
+--------------- [donut](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/donut)
+--------------- [empilhadas](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/empilhadas)
+--------------- [jsons](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/jsons)
+--------------- [linhas](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/linhas)
+--------------- [mapa](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/mapa)
+--------------- [mapa-mundi](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/mapa-mundi)
+--------------- [treemap](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/treemap)
+--------------- [treemap-region](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/treemap-region)
+--------- [theme](https://github.com/mtfrigo/atlasApp/tree/master/src/theme)
 
 ## Setup
 
