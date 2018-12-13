@@ -24,7 +24,7 @@
       <ion-item *ngIf="parameters.eixo == 1 && hasOcp()">
         <atlas-select [group]="false"
                       [items]="classific"
-                      [default]="parameters.slc"
+                      [current]="parameters.slc"
                       [title]="'Classificação'"
                       (parameter)="updateParameter($event, 'slc')">
         </atlas-select>
@@ -33,7 +33,7 @@
       <ion-item *ngIf="hasConsumo()">
         <atlas-select [group]="false"
                       [items]="consumo"
-                      [default]="parameters.slc"
+                      [current]="parameters.slc"
                       [title]="'Consumo'"
                       (parameter)="updateParameter($event, 'slc')">
         </atlas-select>
@@ -42,7 +42,7 @@
       <ion-item *ngIf="ready_pt_br">
         <atlas-select [group]="false"
                       [items]="pt_br.var[parameters.eixo]"
-                      [default]="parameters.var"
+                      [current]="parameters.var"
                       [title]="'Variável'"
                       (parameter)="updateParameter($event, 'var')">
         </atlas-select>
@@ -51,7 +51,7 @@
       <ion-item *ngIf="list_uf.length && hasUf() && !isIHHC4()" >
         <atlas-select [group]="false"
                       [items]="list_uf"
-                      [default]="parameters.uf"
+                      [current]="parameters.uf"
                       [title]="'Estados'"
                       (parameter)="updateParameter($event, 'uf')">
         </atlas-select>
@@ -60,7 +60,7 @@
       <ion-item *ngIf="parameters.ano > 0">
           <atlas-select [group]="false"
                         [items]="select_anos"
-                        [default]="parameters.ano"
+                        [current]="parameters.ano"
                         [title]="'Ano'"
                         (parameter)="updateParameter($event, 'ano')">
           </atlas-select>
@@ -69,7 +69,7 @@
       <ion-item *ngIf="!isIHHC4() && !(parameters.slc == 1 && parameters.eixo == 1)">
         <atlas-select [group]="false"
                       [items]="cads"
-                      [default]="parameters.cad"
+                      [current]="parameters.cad"
                       [title]="'Setor'"
                       (parameter)="updateParameter($event, 'cad')">
         </atlas-select>
@@ -79,7 +79,7 @@
       <ion-item *ngIf="(parameters.slc == 1 && parameters.eixo == 1) && !isIHHC4()">
           <atlas-select [group]="false"
                         [items]="getOcpSelect()"
-                        [default]="parameters.ocp"
+                        [current]="parameters.ocp"
                         [title]="'Ocupação'"
                         (parameter)="updateParameter($event, 'ocp')">
           </atlas-select>
@@ -88,7 +88,7 @@
       <ion-item *ngIf="parameters.eixo == 0 && vrvPorte()">
           <atlas-select [group]="false"
                         [items]="portes"
-                        [default]="parameters.deg"
+                        [current]="parameters.deg"
                         [title]="'Desagregação'"
                         (parameter)="updateParameter($event, 'deg')">
           </atlas-select>
@@ -97,7 +97,7 @@
       <ion-item *ngIf="parameters.eixo == 1 && !isIHHC4() && parameters.var != 11 && parameters.var != 9">
         <atlas-select [group]="true"
                       [items]="select_desags"
-                      [default]="parameters.deg*10+parameters.subdeg"
+                      [current]="parameters.deg*10+parameters.subdeg"
                       [title]="'Desagregação'"
                       (parameter)="updateParameter($event, 'subdeg')">
         </atlas-select>
@@ -106,7 +106,7 @@
       <ion-item *ngIf="parameters.eixo == 3 && !isIHHC4()">
           <atlas-select [group]="false"
                         [items]="parceiros"
-                        [default]="parameters.prc"
+                        [current]="parameters.prc"
                         [title]="'Parceiro'"
                         (parameter)="updateParameter($event, 'prc')">
           </atlas-select>
@@ -115,7 +115,7 @@
       <ion-item *ngIf="hasMec()">
         <atlas-select [group]="false"
                       [items]="mecanismos"
-                      [default]="parameters.mec"
+                      [current]="parameters.mec"
                       [title]="'Mecanismo'"
                       (parameter)="updateParameter($event, 'mec')">
         </atlas-select>
@@ -124,7 +124,7 @@
       <ion-item *ngIf="hasPfj()">
         <atlas-select [group]="false"
                       [items]="pessoas"
-                      [default]="parameters.pfj"
+                      [current]="parameters.pfj"
                       [title]="'Pessoa'"
                       (parameter)="updateParameter($event, 'pfj')">
         </atlas-select>
@@ -133,7 +133,7 @@
       <ion-item *ngIf="hasMod()">
         <atlas-select [group]="false"
                       [items]="modalidades"
-                      [default]="parameters.mod"
+                      [current]="parameters.mod"
                       [title]="'Modalidade'"
                       (parameter)="updateParameter($event, 'mod')">
         </atlas-select>
@@ -142,7 +142,7 @@
       <ion-item *ngIf="parameters.eixo == 3">
         <atlas-select [group]="false"
                       [items]="selectTipos()"
-                      [default]="parameters.typ"
+                      [current]="parameters.typ"
                       [title]="'Tipo'"
                       (parameter)="updateParameter($event, 'typ')">
         </atlas-select>
@@ -151,7 +151,7 @@
       <ion-item *ngIf="parameters.eixo == 2 && hasTrabRec()">
         <atlas-select [group]="false"
                       [items]="trab"
-                      [default]="parameters.mec"
+                      [current]="parameters.mec"
                       [title]="'Recebedor / Trabalhador'"
                       (parameter)="updateParameter($event, 'mec')">
         </atlas-select>

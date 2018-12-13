@@ -12,7 +12,7 @@ import { ModalController } from 'ionic-angular';
   templateUrl: 'select-atlas.html'
 })
 export class SelectAtlasComponent implements OnInit, OnChanges {
-  @Input() default : number;
+  @Input() current : number;
   @Input() items = [];
   @Input() group = false;
   @Input() title : string;
@@ -25,18 +25,18 @@ export class SelectAtlasComponent implements OnInit, OnChanges {
 
   ngOnInit(){
     this.selected_text = this.items.filter( d => {
-      if(this.default == d.id) return d;
+      if(this.current == d.id) return d;
     })[0].name;
   }
 
   ngOnChanges(){
     this.selected_text = this.items.filter( d => {
-      if(this.default == d.id) return d;
+      if(this.current == d.id) return d;
     })[0].name;
   }
 
   openModal(){
-    let profileModal = this.modalCtrl.create('ModalSelectPage', {'items': this.items, 'group': this.group, 'title': this.title, 'selected': this.default});
+    let profileModal = this.modalCtrl.create('ModalSelectPage', {'items': this.items, 'group': this.group, 'title': this.title, 'selected': this.current});
     profileModal.present();
 
     profileModal.onDidDismiss(data => {

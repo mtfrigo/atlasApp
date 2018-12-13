@@ -18,6 +18,10 @@ Mais informações em http://atlas.base-wp.cultura.gov.br/sobre/
 
 O projeto Atlas conta com uma plataforma WEB disponível em http://atlas.base-wp.cultura.gov.br/
 
+## Banco de Dados
+
+O servidor e os arquivos que se comunicam com o servidor e retornam os dados estão *hosteados* no servidor da UFRGS.
+
 ## Diretórios
 
 A documentação de cada diretório está em seu respectivo link. 
@@ -60,7 +64,7 @@ A documentação de cada diretório está em seu respectivo link.
 
 ## Setup
 
-As ferramentas necessárias para o desenvolvimento são:
+As ferramentas necessárias para o desenvolvimento e para fazer uma APK são:
 
 * node
 * d3.js
