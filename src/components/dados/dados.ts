@@ -5,12 +5,14 @@ import { JsonsProvider } from '../../providers/jsons/jsons';
 
 import { DadosProvider } from '../../providers/dados/dados';
 import { Observable } from 'rxjs';
+
 /**
  * Generated class for the DadosComponent component.
  *
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
+
 @Component({
   selector: 'view-dados',
   templateUrl: 'dados.html'
