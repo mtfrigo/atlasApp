@@ -14,9 +14,26 @@ Cada component tem três estruturas básicas:
 
 O arquivo *components.module.ts* cuida das dependencias. Ele contém todos imports e exports necessários para a aplicação rodar.
 
-## Atlas
+## Implementação
 
-Cada component teu sua respectiva documentação em seu diretório.
+Como muito dos módulos se repetem em diferentes components, alguns serão explicados logo abaixo:
+
+
+**ngOnInit**: Função que é chamada logo no início, após carregamento do DOM (é chamada depois do constructor). Sua função é declarar alguns valores iniciais e fundamentais para o component, como margem, altura e largura do SVG e, pros gráficos com escala, define a quantidade de ticks e também inicializa alguns JSON, como o JSON de cores.
+
+**getData**: Função chamada logo depois do Init. Ela é responsável em pedir para o provider do component os dados correspondentes. Tem como *callback* a função *afterGetData*
+
+**ngOnChanges**: Função que é chamada sempre que há uma mudança num Input do component. Todos components tem como Input a variável *parameters*, por exemplo, e por isso, sempre que uma das opções do menu é mudada, é chamada essa função em cada component, assim, é chamada a função *updateData*.
+
+**updateData**: Tem a mesma responsabilidade que a função getData, o que muda é que ela é chamada sempre que há uma mudança no menu e seu *callback*, que pode chamar a função de animação ou não.
+
+**afterGetData**: Essa função é reponsável por controlar o fluxo da aplicação depois das funções iniciais (*ngOnInit* e *getData*, e em alguns casos *updateData*). Basicamente ela acontece sempre depois que o component já coletou os dados e chama as funções que formatam os dados, iniciam o gráfico e etc..
+
+**parseData**: Função responsável por formatar os dados recebidos do provider para o formato específico da visualização em questão. Cada component teu seu formato, então sua implementação varia de visualização pra visualização.
+
+**initAxis**: Já com os dados formatados, essa função inicializa as escalas do component e, quando necessário, os ticks das escalas do gráfico.
+
+Cada component teu sua respectiva documentação mais detalhada em seu diretório.
 
 Para os atlas foram implementados, até o momento, os seguintes components:
 
