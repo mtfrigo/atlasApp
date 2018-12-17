@@ -51,14 +51,14 @@ A documentação de cada diretório está em seu respectivo link.
 >>>[treemap](https://github.com/mtfrigo/atlasApp/tree/master/src/interfaces/treemap)  
 
 
->└─── [pages](https://github.com/mtfrigo/atlasApp/tree/master/src/pages)  
+>>└─── [pages](https://github.com/mtfrigo/atlasApp/tree/master/src/pages)  
 >>>[home](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/home)  
 >>>[index](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/index)  
 >>>[modal-select](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/modal-select)  
 >>>[sobre](https://github.com/mtfrigo/atlasApp/tree/master/src/pages/sobre)  
 
 
->└─── [providers](https://github.com/mtfrigo/atlasApp/tree/master/src/providers)  
+>>└─── [providers](https://github.com/mtfrigo/atlasApp/tree/master/src/providers)  
 >>>[barras](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/barras)  
 >>>[dados](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/dados)  
 >>>[donut](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/donut)  
@@ -71,7 +71,7 @@ A documentação de cada diretório está em seu respectivo link.
 >>>[treemap-region](https://github.com/mtfrigo/atlasApp/tree/master/src/providers/treemap-region)  
 
 
->└─── [theme](https://github.com/mtfrigo/atlasApp/tree/master/src/theme)  
+>>└─── [theme](https://github.com/mtfrigo/atlasApp/tree/master/src/theme)  
 
 
 ## Setup
