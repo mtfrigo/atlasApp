@@ -96,7 +96,7 @@ Agora, podemos instalar o *nvm* com o comando
 ```
 e então fechar o terminal e abrir um novo para carregar o *nvm* e então instalar o *node*
 ```
-  nvm install node
+  nvm install 8.11.3
 ```
 Agora que temos o *node*, instalamos o *Ionic* e o *Cordova*
 ```
@@ -108,7 +108,15 @@ Clone o repositório em algum diretório (usaremos o ~/ como exemplo) e navegue 
   git clone git@github.com:mtfrigo/atlasApp.git
   cd atlasApp/
 ```
-Certifique-se de que o *npm* foi instalado e então execute
+Antes de instalarmos as dependências, certifique-se de que seu sistema tenha o python
+```
+  python --version
+```
+Caso não tenha, instale-o com o comando
+```
+  sudo apt install python
+```
+Agora certifique-se de que o *npm* foi instalado e então execute
 ```
   npm install
 ```
