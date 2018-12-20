@@ -148,4 +148,47 @@ A plataforma deve estar rodando no seu navegador após esse passo.
 
 ## Build
 
+Para construir uma APK, é preciso do *java* e do Android Studio instalado.
 
+Portanto, instale-os.
+
+Para instalar o *java*
+```
+  sudo add-apt-repository ppa:webupd8team/java
+  sudo apt-get update
+  sudo apt-get install oracle-java8-installer
+  sudo apt-get install oracle-java8-set-default
+```
+
+Configure as variáveis de ambiente escrevendo no final do arquivo ~/.bashrc
+
+```
+sudo gedit ~/.bashrc
+
+export ANDROID_HOME=/home/user_directory/Android/Sdk
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+```
+
+Aceite as licenças do Android Studio
+```
+ cd ~/Android/sdk/tools/bin
+ ./sdkmanager --licenses
+```
+
+Baixe a versão do [Gradle](https://gradle.org/releases) mais recente. E descompacte o arquivo.
+```
+ mkdir /opt/gradle
+ unzip -d /opt/gradle gradle-5.0-bin.zip
+ ls /opt/gradle/gradle-5.0
+  LICENSE  NOTICE  bin  getting-started.html  init.d  lib  media
+```
+E então atualize a variável $PATH
+```
+  export PATH=$PATH:/opt/gradle/gradle-5.0/bin
+```
+
+Agora é só dar build :)
+```
+  ionic cordova build android
+```
